@@ -2,18 +2,19 @@
 <html lang="en">
 
 <head>
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KEF8NTVQC"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-5KEF8NTVQC');
+        gtag('config', 'G-5KEF8NTVQC');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
+    <meta name="keywords"
+        content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
     <title>Shop | Bloom Cure Botanical Soaps</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <meta name="description"
@@ -1030,7 +1031,7 @@
             <ul class="premium-nav__links">
                 <li><a href="index.html" class="premium-nav__link">Home</a></li>
                 <li><a href="shop.html" class="premium-nav__link active">Shop</a></li>
-                <li><a href="index.html#about" class="premium-nav__link">About</a></li>
+                <li><a href="about.html" class="premium-nav__link">About</a></li>
                 <li><a href="index.html#ingredients" class="premium-nav__link">Ingredients</a></li>
             </ul>
             <div class="premium-nav__actions">
@@ -1082,13 +1083,14 @@
             <ul class="mobile-menu__links">
                 <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
                 <li><a href="shop.html" class="active" onclick="toggleMobileMenu()">Shop</a></li>
-                <li><a href="index.html#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
                 <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
             </ul>
             <div class="mobile-menu__footer">
                 <div class="mobile-menu__footer-tagline">Healing Skin, Blooming Confidence</div>
                 <div class="mobile-menu__socials">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
@@ -1104,12 +1106,12 @@
             </span>
             <h1>The Curated <em>Collection</em></h1>
             <p class="shop-hero__desc">
-                Each bar is a botanical masterpiece — handcrafted in small batches with cold-pressed oils, organic
+                Each bar is a botanical masterpiece handcrafted in small batches with cold-pressed oils, organic
                 herbs, and therapeutic-grade essential oils.
             </p>
             <div class="shop-stats">
                 <div class="shop-stats__item">
-                    <span class="shop-stats__number">100%</span>
+                    <span class="shop-stats__number">90%</span>
                     <span class="shop-stats__label">Natural</span>
                 </div>
                 <div class="shop-stats__item">
@@ -1121,7 +1123,7 @@
                     <span class="shop-stats__label">Happy Customers</span>
                 </div>
                 <div class="shop-stats__item">
-                    <span class="shop-stats__number">0%</span>
+                    <span class="shop-stats__number">10%</span>
                     <span class="shop-stats__label">Chemicals</span>
                 </div>
             </div>
@@ -1480,7 +1482,7 @@
                 <div class="product-card__info">
                     <div class="product-card__details">
                         <h3>Bamboo Toothbrush</h3>
-                        <p class="product-card__desc">Eco-friendly sustainable toothbrush with charcoal-infused soft
+                        <p class="product-card__desc">Eco-friendly sustainable toothbrush with charcoal infused soft
                             bristles.</p>
                     </div>
                     <div class="product-card__price-row">
@@ -1604,6 +1606,148 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Product 15: Rice Goat Milk Soap -->
+            <div class="product-card product-card--highlight" data-name="Rice Goat Milk Soap" data-price="299"
+                data-category="hydrating">
+                <div class="product-card__image" style="background-color: #F8F9FA;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Premium</span>
+                    <img src="assets/product_rice_goat_milk.png" alt="Bloom Cure Rice Goat Milk Soap"
+                        onerror="this.src='assets/logo.jpg'">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Rice Goat Milk Soap</h3>
+                        <p class="product-card__desc">Rich in vitamins and lactic acid to gently exfoliate and deeply
+                            moisturize for glass like glowing skin.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 16: Multani Mitti Soap -->
+            <div class="product-card product-card--highlight" data-name="Multani Mitti Soap" data-price="249"
+                data-category="healing">
+                <div class="product-card__image" style="background-color: #F4EBE1;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--green">Purifying</span>
+                    <img src="assets/product_multani_mitti.png" alt="Bloom Cure Multani Mitti Soap"
+                        onerror="this.src='assets/logo.jpg'">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Multani Mitti Soap</h3>
+                        <p class="product-card__desc">Natural Fuller's Earth to absorb impurities, reduce acne, and
+                            leave skin fresh and oil-free.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 17: Activated Charcoal Soap -->
+            <div class="product-card product-card--highlight" data-name="Activated Charcoal Soap" data-price="299"
+                data-category="healing">
+                <div class="product-card__image" style="background-color: #EAEAEA;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Anti-Pollution</span>
+                    <img src="assets/product_charcoal.png"
+                        alt="Bloom Cure Activated Charcoal Soap for Pollution Protection"
+                        onerror="this.src='assets/logo.jpg'">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Activated Charcoal Soap</h3>
+                        <p class="product-card__desc">Deep pore detox for pollution protection. Draws out toxins and
+                            unclogs pores for clear, healthy skin.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹129</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 18: Oats & Honey Soap -->
+            <div class="product-card product-card--highlight" data-name="Oats & Honey Soap" data-price="349"
+                data-category="hydrating">
+                <div class="product-card__image" style="background-color: #FDF3E1;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Soothing</span>
+                    <img src="assets/product_oats_honey.png"
+                        alt="Bloom Cure Oats & Honey Soap - Handmade Soap For Face & Body"
+                        onerror="this.src='assets/logo.jpg'">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Oats & Honey Soap</h3>
+                        <p class="product-card__desc">Gentle handcrafted soap for face & body. Soothes inflammation
+                            while locking in moisture.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- Trust Banner -->
         <div class="trust-banner">
@@ -1707,7 +1851,7 @@
                 <div>
                     <h4 class="footer-heading">Company</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#about">Our Story</a></li>
+                        <li><a href="about.html">Our Story</a></li>
                         <li><a href="#">The Ethos</a></li>
                         <li><a href="#">Sustainability</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -1727,9 +1871,11 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
                 <div class="footer-socials">
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank"
+                        aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
@@ -1748,14 +1894,14 @@
             <ul class="mobile-menu__links">
                 <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
                 <li><a href="shop.html" class="active" onclick="toggleMobileMenu()">Shop</a></li>
-                <li><a href="index.html#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
                 <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
             </ul>
             <div class="mobile-menu__footer">
                 <p>Healing Skin, Blooming Confidence</p>
                 <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
-                 <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
