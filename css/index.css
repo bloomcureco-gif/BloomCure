@@ -485,6 +485,108 @@ img {
         display: none !important;
         /* Simplified for now, would use hamburger in full version */
     }
+    
+    .wildlife-stats {
+        flex-direction: column;
+        gap: 2rem !important;
+    }
+}
+
+/* ═══════════════ WILDLIFE CONSERVATION SECTION ═══════════════ */
+.wildlife-section {
+    position: relative;
+    background-color: var(--clr-dark-green);
+    color: var(--clr-cream);
+    padding: 7rem 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.wildlife-section::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(197, 160, 40, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.wildlife-content {
+    position: relative;
+    z-index: 1;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.wildlife-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(197, 160, 40, 0.1);
+    color: var(--clr-gold);
+    border: 1px solid rgba(197, 160, 40, 0.25);
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.wildlife-title {
+    font-family: var(--ff-heading);
+    font-size: 3.2rem;
+    color: var(--clr-cream);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.wildlife-title em {
+    color: var(--clr-gold);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.wildlife-desc {
+    font-size: 1.1rem;
+    color: rgba(248, 246, 240, 0.8);
+    line-height: 1.8;
+}
+
+.wildlife-stats {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 3.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 3.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.wildlife-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wildlife-stat-number {
+    font-family: var(--ff-heading);
+    font-size: 3.8rem;
+    color: var(--clr-gold);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 10px 30px rgba(197, 160, 40, 0.2);
+}
+
+.wildlife-stat-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(248, 246, 240, 0.6);
+    font-weight: 600;
 }
 
 /* ═══════════════ FEEDBACK SECTION ═══════════════ */
