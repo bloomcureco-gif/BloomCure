@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KEF8NTVQC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5KEF8NTVQC');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="botanical soap, handmade soap, about bloom cure, wildlife conservation, organic skincare, vegan soap, bloom cure">
+    <title>Our Story | Bloom Cure</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta name="description"
+        content="Discover the story behind Bloom Cure. We craft premium botanical soaps and donate 10% of our share to wildlife conservation.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           About Page — Premium Styles
+           ═══════════════════════════════════════════ */
+
+        .about-hero {
+            position: relative;
+            padding: 14rem 0 8rem;
+            text-align: center;
+            background: linear-gradient(rgba(26, 46, 32, 0.8), rgba(26, 46, 32, 0.9)), url('assets/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--clr-cream);
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(26, 46, 32, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .about-hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-hero__label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--clr-gold);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(197, 160, 40, 0.5);
+        }
+
+        .about-hero h1 {
+            font-family: var(--ff-heading);
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: var(--clr-cream);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .about-hero h1 em {
+            font-style: italic;
+            color: var(--clr-gold);
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(248, 246, 240, 0.85);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 8rem 0;
+            background-color: var(--clr-cream);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .mission-image {
+            position: relative;
+        }
+
+        .mission-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-image::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--clr-gold);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .mission-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--clr-dark-green);
+            line-height: 1.2;
+        }
+
+        .mission-content p {
+            font-size: 1.1rem;
+            color: var(--clr-text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Enhanced Wildlife Section */
+        .premium-wildlife {
+            position: relative;
+            background-color: var(--clr-dark-green);
+            padding: 10rem 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .premium-wildlife::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(197, 160, 40, 0.15) 0%, transparent 60%);
+        }
+
+        .premium-wildlife::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 C70 40, 100 50, 50 100 C10 50, 30 15, 50 0 Z" fill="rgba(123, 139, 79, 0.05)"/></svg>') no-repeat center;
+            background-size: contain;
+            opacity: 0.5;
+            transform: rotate(-30deg);
+        }
+
+        .wildlife-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .wildlife-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(197, 160, 40, 0.15);
+            color: var(--clr-gold);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid rgba(197, 160, 40, 0.3);
+            margin-bottom: 2.5rem;
+        }
+
+        .wildlife-heading {
+            font-family: var(--ff-heading);
+            font-size: 4rem;
+            color: var(--clr-cream);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .wildlife-heading span {
+            color: var(--clr-gold);
+            font-style: italic;
+        }
+
+        .wildlife-text {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: rgba(248, 246, 240, 0.85);
+            margin-bottom: 4rem;
+        }
+
+        .wildlife-text strong {
+            color: var(--clr-gold);
+            font-size: 1.35rem;
+            font-weight: 600;
+            padding: 0 4px;
+        }
+
+        .wildlife-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            min-width: 250px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(197, 160, 40, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-value {
+            font-family: var(--ff-heading);
+            font-size: 4.5rem;
+            color: var(--clr-gold);
+            line-height: 1;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .metric-value i {
+            font-size: 3rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(248, 246, 240, 0.7);
+            font-weight: 600;
+        }
+
+        /* ═══════════════ PREMIUM NAVIGATION ═══════════════ */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(26, 46, 32, 0.92), rgba(30, 55, 38, 0.88));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(197, 160, 40, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .premium-nav.scrolled {
+            background: rgba(26, 46, 32, 0.97);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-bottom-color: rgba(197, 160, 40, 0.3);
+        }
+
+        .premium-nav__inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: padding 0.4s ease;
+        }
+
+        .premium-nav.scrolled .premium-nav__inner {
+            padding: 0.6rem 2.5rem;
+        }
+
+        .premium-nav__logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .premium-nav__logo img {
+            height: 52px;
+            width: 52px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-gold);
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .premium-nav.scrolled .premium-nav__logo img {
+            height: 42px;
+            width: 42px;
+        }
+
+        .premium-nav__brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .premium-nav__brand-name {
+            font-family: var(--ff-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--clr-cream);
+            line-height: 1.1;
+        }
+
+        .premium-nav__brand-tagline {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--clr-gold);
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        .premium-nav__links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+        }
+
+        .premium-nav__link {
+            position: relative;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(249, 247, 242, 0.75);
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .premium-nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+            transform: translateX(-50%);
+            transition: width 0.4s ease;
+        }
+
+        .premium-nav__link:hover,
+        .premium-nav__link.active {
+            color: var(--clr-cream);
+        }
+
+        .premium-nav__link:hover::after,
+        .premium-nav__link.active::after {
+            width: 70%;
+        }
+
+        .premium-nav__actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .premium-nav__icon-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: rgba(249, 247, 242, 0.75);
+            text-decoration: none;
+            border: 1px solid rgba(249, 247, 242, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .premium-nav__icon-btn:hover {
+            color: var(--clr-gold);
+            background: rgba(197, 160, 40, 0.1);
+            border-color: rgba(197, 160, 40, 0.3);
+        }
+
+        .premium-nav__cart-btn {
+            position: relative;
+        }
+
+        .premium-nav__menu-btn {
+            display: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        /* Responsive Design for About Page */
+        @media (max-width: 992px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .mission-image {
+                order: -1;
+            }
+
+            .premium-nav__links {
+                display: none;
+            }
+
+            .premium-nav__menu-btn {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 3rem;
+            }
+
+            .wildlife-metrics {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .wildlife-heading {
+                font-size: 2.8rem;
+            }
+
+            .mission-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+        /* ═══════════════ PREMIUM FOOTER ═══════════════ */
+        .premium-footer {
+            background: linear-gradient(rgba(26, 46, 32, 0.98), rgba(26, 46, 32, 1)), url('assets/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--clr-cream);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(197, 160, 40, 0.2);
+        }
+
+        .premium-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 40, 0.3), transparent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.8fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand__logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .footer-brand__logo img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-gold);
+            background: white;
+            padding: 2px;
+        }
+
+        .footer-brand__name {
+            font-family: var(--ff-heading);
+            font-size: 2.2rem;
+            color: var(--clr-cream);
+            margin: 0;
+        }
+
+        .footer-brand__desc {
+            color: rgba(249, 247, 242, 0.7);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            max-width: 320px;
+        }
+
+        .footer-heading {
+            color: var(--clr-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(249, 247, 242, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--clr-gold);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter__desc {
+            font-size: 0.95rem;
+            color: rgba(249, 247, 242, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        .footer-newsletter__form {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-newsletter__input {
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            flex: 1;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .footer-newsletter__btn {
+            background: var(--clr-gold);
+            color: var(--clr-dark-green);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter__btn:hover {
+            background: #DDB832;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(249, 247, 242, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(249, 247, 242, 0.5);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-socials a {
+            color: rgba(249, 247, 242, 0.6);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--clr-gold);
+            transform: translateY(-3px);
+        }
+
+        /* ═══════════════ MOBILE MENU ═══════════════ */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(26, 46, 32, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu__inner {
+            text-align: center;
+            width: 100%;
+            padding: 2rem;
+            transform: translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__inner {
+            transform: translateY(0);
+        }
+
+        .mobile-menu__close {
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            background: none;
+            border: 1px solid rgba(197, 160, 40, 0.3);
+            color: var(--clr-gold);
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu__close:hover {
+            background: rgba(197, 160, 40, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu__brand {
+            margin-bottom: 3rem;
+        }
+
+        .mobile-menu__brand img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-gold);
+            margin: 0 auto 1rem;
+        }
+
+        .mobile-menu__brand-name {
+            font-family: var(--ff-heading);
+            font-size: 2.5rem;
+            color: var(--clr-cream);
+            display: block;
+        }
+
+        .mobile-menu__links {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 4rem;
+        }
+
+        .mobile-menu__links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu__links a {
+            font-family: var(--ff-heading);
+            font-size: 1.8rem;
+            color: rgba(249, 247, 242, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-overlay .footer-socials a:hover {
+            color: var(--clr-gold);
+            border-color: rgba(197, 160, 40, 0.3);
+            background: rgba(197, 160, 40, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(197, 160, 40, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand__logo {
+                justify-content: center;
+            }
+
+            .footer-brand__desc {
+                margin: 0 auto 2rem;
+            }
+
+            .footer-newsletter__form {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* ═══════════════ TOAST ═══════════════ */
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 46, 32, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(197, 160, 40, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .toast.active {
+            bottom: 30px;
+        }
+
+        .toast i {
+            color: var(--clr-gold);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Premium Navigation -->
+    <nav class="premium-nav" id="mainNav">
+        <div class="premium-nav__inner">
+            <a href="index.html" class="premium-nav__logo">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <div class="premium-nav__brand">
+                    <span class="premium-nav__brand-name">Bloom Cure</span>
+                    <span class="premium-nav__brand-tagline">Artisan Botanicals</span>
+                </div>
+            </a>
+            <ul class="premium-nav__links">
+                <li><a href="index.html" class="premium-nav__link">Home</a></li>
+                <li><a href="shop.html" class="premium-nav__link">Shop</a></li>
+                <li><a href="about.html" class="premium-nav__link active">About</a></li>
+                <li><a href="index.html#ingredients" class="premium-nav__link">Ingredients</a></li>
+            </ul>
+            <div class="premium-nav__actions">
+                <a href="cart.html" class="premium-nav__icon-btn premium-nav__cart-btn" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count" class="premium-nav__cart-badge">0</span>
+                </a>
+                <button class="premium-nav__icon-btn premium-nav__menu-btn" title="Menu"
+                    onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <header class="about-hero">
+        <div class="container relative z-10">
+            <div class="about-hero__content reveal">
+                <span class="about-hero__label">A Botanical Journey</span>
+                <h1>Crafted from the Earth,<br>For Your <em>Radiance</em></h1>
+                <p>Welcome to Bloom Cure, where science meets pure nature. We believe in harnessing the potent, time
+                    tested power of botanical ingredients to create skincare that genuinely heals, nourishes, and
+                    transforms.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Our Mission & Process -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content reveal">
+                    <h2>The Art of Pure Skincare</h2>
+                    <p>Every bar of Bloom Cure soap is a testament to our dedication to purity and quality. We start by
+                        individually sourcing the finest ethically-harvested herbs, essential oils, and cold-pressed
+                        botanical butters from sustainable farms.</p>
+                    <p>We handcraft our soaps in small batches using traditional curing methods that take weeks to
+                        perfect. This slow, deliberate process ensures that the therapeutic properties of our
+                        ingredients are fully preserved, delivering a dense, creamy lather that locks moisture into your
+                        skin.</p>
+                    <p>No synthetics. No harsh detergents. Just the uncompromised healing touch of nature.</p>
+                </div>
+                <div class="mission-image reveal">
+                    <img src="assets/ingredients_botanical.png" alt="Handcrafted Botanical Skincare Process"
+                        onerror="this.src='assets/logo.jpg'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Wildlife Conservation Showcase -->
+    <section class="premium-wildlife">
+        <div class="container">
+            <div class="wildlife-inner reveal">
+                <div class="wildlife-badge">
+                    <i class="fa-solid fa-leaf"></i> Our Fundamental Promise
+                </div>
+                <h2 class="wildlife-heading">Giving Back to <span>Nature</span></h2>
+                <p class="wildlife-text">
+                    As an artisanal brand devoted to Earth’s natural ingredients, we have an undeniable responsibility
+                    to protect the wild ecosystems from which our ingredients bloom. That is why <strong>15% of our
+                        entire share</strong> is pledged directly to global wildlife conservation efforts and natural
+                    habitat protection.
+                </p>
+
+                <div class="wildlife-metrics">
+                    <div class="metric-card">
+                        <div class="metric-value">15<span style="font-size: 3rem;">%</span></div>
+                        <div class="metric-label">Share Donated</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value"><i class="fa-solid fa-paw"></i></div>
+                        <div class="metric-label">To Protect Wildlife</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PREMIUM FOOTER ═══════════════ -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-brand__logo">
+                        <img src="assets/logo.jpg" alt="Bloom Cure">
+                        <h2 class="footer-brand__name">Bloom Cure</h2>
+                    </a>
+                    <p class="footer-brand__desc">Handcrafting nature's best to help your skin bloom with radiance and
+                        health. Artisan botanicals for a mindful ritual.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Soaps</a></li>
+                        <li><a href="#">Gift Bundles</a></li>
+                        <li><a href="#">Subscribers Ritual</a></li>
+                        <li><a href="#">Digital Cards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="#">The Ethos</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p class="footer-newsletter__desc">Join our botanical circle for exclusive tips on natural skincare
+                        and early access to new arrivals.</p>
+                    <form class="footer-newsletter__form"
+                        onsubmit="event.preventDefault(); showToast('Welcome to the botanical circle! 🌿');">
+                        <input type="email" placeholder="Email Address" class="footer-newsletter__input" required>
+                        <button type="submit" class="footer-newsletter__btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu__inner">
+            <button class="mobile-menu__close" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu__brand">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <span class="mobile-menu__brand-name">Bloom Cure</span>
+            </div>
+            <ul class="mobile-menu__links">
+                <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="shop.html" onclick="toggleMobileMenu()">Shop</a></li>
+                <li><a href="about.html" class="active" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
+            </ul>
+            <div class="mobile-menu__footer">
+                <p>Healing Skin, Blooming Confidence</p>
+                <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-toast" class="toast glass-toast" style="color: var(--clr-cream);">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Item added to your botanical ritual.</span>
+    </div>
+
+    <script>
+        // Nav scroll effect
+        const nav = document.getElementById('mainNav');
+        if (nav) {
+            document.addEventListener('scroll', () => {
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        }
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('bloom_cure_cart')) || [];
+        const cartCountEl = document.getElementById('cart-count');
+        const toastEl = document.getElementById('cart-toast');
+
+        function updateCartUI() {
+            const totalItems = cart.length;
+            if (cartCountEl) {
+                cartCountEl.textContent = totalItems;
+                if (totalItems > 0) {
+                    cartCountEl.classList.add('active');
+                } else {
+                    cartCountEl.classList.remove('active');
+                }
+            }
+        }
+
+        function showToast(message) {
+            if (toastEl) {
+                const toastSpan = toastEl.querySelector('span');
+                if (toastSpan) toastSpan.textContent = message;
+                toastEl.classList.add('active');
+                setTimeout(() => {
+                    toastEl.classList.remove('active');
+                }, 3000);
+            }
+        }
+
+        // Initialize UI
+        updateCartUI();
+
+        function toggleMobileMenu() {
+            const menuOverlay = document.getElementById('mobileMenuOverlay');
+            if (menuOverlay) {
+                menuOverlay.classList.toggle('active');
+                if (menuOverlay.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
