@@ -2,18 +2,19 @@
 <html lang="en">
 
 <head>
-      <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KEF8NTVQC"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-5KEF8NTVQC');
+        gtag('config', 'G-5KEF8NTVQC');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
+    <meta name="keywords"
+        content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
     <title>Bloom Cure | Nature's Healing Touch for Your Skin</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <meta name="description"
@@ -1080,13 +1081,32 @@
             background: linear-gradient(90deg, var(--clr-gold), transparent);
         }
 
-        .spotlight-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
+        /* Slider wrapper */
+        .spotlight-slider {
+            position: relative;
+            overflow: hidden;
+            margin: 0 -1rem;
+            padding: 0 1rem;
+        }
+
+        .spotlight-slider__track {
+            display: flex;
+            gap: 1.8rem;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .spotlight-slider__track.is-dragging {
+            cursor: grabbing;
+            transition: none;
         }
 
         .spotlight-card {
+            min-width: calc(33.333% - 1.2rem);
+            max-width: calc(33.333% - 1.2rem);
+            flex-shrink: 0;
             background: rgba(249, 247, 242, 0.06);
             border: 1px solid rgba(197, 160, 40, 0.15);
             border-radius: 20px;
@@ -1185,15 +1205,127 @@
             flex: 1;
         }
 
+        /* Slider Navigation Arrows */
+        .spotlight-slider__nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .spotlight-slider__arrow {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            color: rgba(249, 247, 242, 0.7);
+            background: rgba(249, 247, 242, 0.06);
+            border: 1.5px solid rgba(197, 160, 40, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .spotlight-slider__arrow:hover {
+            color: var(--clr-gold);
+            background: rgba(197, 160, 40, 0.12);
+            border-color: var(--clr-gold);
+            box-shadow: 0 0 25px rgba(197, 160, 40, 0.2);
+            transform: scale(1.1);
+        }
+
+        .spotlight-slider__arrow:active {
+            transform: scale(0.95);
+        }
+
+        .spotlight-slider__arrow.disabled {
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* Slider Dots */
+        .spotlight-slider__dots {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spotlight-slider__dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(249, 247, 242, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 0;
+        }
+
+        .spotlight-slider__dot.active {
+            width: 32px;
+            border-radius: 4px;
+            background: var(--clr-gold);
+            box-shadow: 0 0 12px rgba(197, 160, 40, 0.4);
+        }
+
+        .spotlight-slider__dot:hover:not(.active) {
+            background: rgba(249, 247, 242, 0.4);
+            transform: scale(1.3);
+        }
+
+        /* Progress bar */
+        .spotlight-slider__progress {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--clr-gold), #DDB832);
+            border-radius: 2px;
+            transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 0 8px rgba(197, 160, 40, 0.3);
+        }
+
         @media (max-width: 992px) {
-            .spotlight-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
+            .spotlight-card {
+                min-width: calc(50% - 0.9rem);
+                max-width: calc(50% - 0.9rem);
             }
 
             .spotlight-title {
                 font-size: 2.2rem;
+            }
+
+            .spotlight-slider__arrow {
+                width: 44px;
+                height: 44px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .spotlight-card {
+                min-width: 85%;
+                max-width: 85%;
+            }
+
+            .spotlight-slider {
+                margin: 0 -0.5rem;
+                padding: 0 0.5rem;
+            }
+
+            .spotlight-slider__arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 0.85rem;
+            }
+
+            .spotlight-slider__nav {
+                gap: 1rem;
             }
         }
 
@@ -2125,7 +2257,7 @@
             <ul class="premium-nav__links">
                 <li><a href="index.html" class="premium-nav__link active">Home</a></li>
                 <li><a href="shop.html" class="premium-nav__link">Shop</a></li>
-                <li><a href="#about" class="premium-nav__link">About</a></li>
+                <li><a href="about.html" class="premium-nav__link">About</a></li>
                 <li><a href="#ingredients" class="premium-nav__link">Ingredients</a></li>
             </ul>
             <div class="premium-nav__actions">
@@ -2177,13 +2309,14 @@
             <ul class="mobile-menu__links">
                 <li><a href="index.html" class="active" onclick="toggleMobileMenu()">Home</a></li>
                 <li><a href="shop.html" onclick="toggleMobileMenu()">Shop</a></li>
-                <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
                 <li><a href="#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
             </ul>
             <div class="mobile-menu__footer">
                 <div class="mobile-menu__footer-tagline">Healing Skin, Blooming Confidence</div>
                 <div class="mobile-menu__socials">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
@@ -2230,7 +2363,7 @@
                 <div class="hero-overlay-box">
                     <div class="hero__label">Artisan Botanicals</div>
                     <h1 class="hero__title">Discover Pure<br><em>Luxury.</em></h1>
-                    <p class="hero__desc">Handcrafted botanical soaps made with nature's finest ingredients — for skin
+                    <p class="hero__desc">Handcrafted botanical soaps made with nature's finest ingredients for skin
                         that feels alive.</p>
                     <div class="hero__actions">
                         <a href="shop.html" class="hero__btn">Shop Collection <i
@@ -2288,165 +2421,297 @@
         <div class="container" style="position: relative; z-index: 2;">
             <div class="spotlight-label"><span>✦ New Arrivals ✦</span></div>
             <h2 class="spotlight-title">Discover Our Latest <em>Treasures</em></h2>
-            <p class="spotlight-subtitle">Three powerful Ayurvedic formulations  freshly crafted for your skin's
-                deepest needs.</p>
-            <div class="spotlight-grid">
-                <!-- Soap Nut Power -->
-                <div class="spotlight-card" data-name="Soap Nut Power" data-price="100">
-                    <div class="spotlight-card__image">
-                        <span class="spotlight-card__image-badge">✦ New</span>
-                        <img src="assets/product_soapnut.png" alt="Soap Nut Power Soap">
-                    </div>
-                    <div class="spotlight-card__body">
-                        <h3 class="spotlight-card__name">Soap Nut Power</h3>
-                        <p class="spotlight-card__desc">Ancient reetha cleanser with natural saponins for gentle,
-                            chemical-free cleansing and silky smooth skin.</p>
-                        <span class="spotlight-card__price">₹100</span>
-                        <div class="spotlight-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.5</span>
-                        </div>
-                        <div class="spotlight-card__actions">
-                            <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                                Now</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Seegekai -->
-                <div class="spotlight-card" data-name="Seegekai" data-price="100">
-                    <div class="spotlight-card__image">
-                        <span class="spotlight-card__image-badge">✦ New</span>
-                        <img src="assets/product_shikakai.png" alt="Seegekai Soap">
-                    </div>
-                    <div class="spotlight-card__body">
-                        <h3 class="spotlight-card__name">Seegekai</h3>
-                        <p class="spotlight-card__desc">Traditional shikakai infused bar for deep cleansing, scalp care,
-                            and a natural herbal luminous shine.</p>
-                        <span class="spotlight-card__price">₹100</span>
-                        <div class="spotlight-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-regular fa-star"></i>
-                            <span>4.0</span>
-                        </div>
-                        <div class="spotlight-card__actions">
-                            <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                                Now</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Besan -->
-                <div class="spotlight-card" data-name="Besan" data-price="100">
-                    <div class="spotlight-card__image">
-                        <span class="spotlight-card__image-badge">✦ New</span>
-                        <img src="assets/product_besan.png" alt="Besan Soap">
-                    </div>
-                    <div class="spotlight-card__body">
-                        <h3 class="spotlight-card__name">Besan</h3>
-                        <p class="spotlight-card__desc">Traditional gram flour face & body bar for a radiant complexion
-                            and smooth, naturally exfoliated skin.</p>
-                        <span class="spotlight-card__price">₹100</span>
-                        <div class="spotlight-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                        <div class="spotlight-card__actions">
-                            <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                                Now</button>
-                        </div>
-                    </div>
-                </div>
+            <p class="spotlight-subtitle">Freshly crafted Ayurvedic formulations slide to explore our newest additions.
+            </p>
 
-                <!-- Loofah Body Scrubber -->
-                <div class="spotlight-card" data-name="Loofah Body Scrubber" data-price="50">
-                    <div class="spotlight-card__image">
-                        <span class="spotlight-card__image-badge">✦ New</span>
-                        <img src="assets/product_loofah.png" alt="Loofah Body Scrubber">
-                    </div>
-                    <div class="spotlight-card__body">
-                        <h3 class="spotlight-card__name">Loofah Body Scrubber</h3>
-                        <p class="spotlight-card__desc">Natural exfoliating bath sponge for smooth, glowing skin. 100%
-                            biodegradable and sustainable.</p>
-                        <span class="spotlight-card__price">₹50</span>
-                        <div class="spotlight-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.8</span>
+            <div class="spotlight-slider" id="spotlightSlider">
+                <div class="spotlight-slider__track" id="spotlightTrack">
+                    <!-- Soap Nut Power -->
+                    <div class="spotlight-card" data-name="Soap Nut Power" data-price="100">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_soapnut.png" alt="Soap Nut Power Soap">
                         </div>
-                        <div class="spotlight-card__actions">
-                            <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                                Now</button>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Soap Nut Power</h3>
+                            <p class="spotlight-card__desc">Ancient reetha cleanser with natural saponins for gentle,
+                                chemical free cleansing and silky smooth skin.</p>
+                            <span class="spotlight-card__price">₹100</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.5</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <!-- Seegekai -->
+                    <div class="spotlight-card" data-name="Seegekai" data-price="100">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_shikakai.png" alt="Seegekai Soap">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Seegekai</h3>
+                            <p class="spotlight-card__desc">Traditional shikakai infused bar for deep cleansing, scalp
+                                care,
+                                and a natural herbal luminous shine.</p>
+                            <span class="spotlight-card__price">₹100</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span>4.0</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Besan -->
+                    <div class="spotlight-card" data-name="Besan" data-price="100">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_besan.png" alt="Besan Soap">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Besan</h3>
+                            <p class="spotlight-card__desc">Traditional gram flour face &amp; body bar for a radiant
+                                complexion
+                                and smooth, naturally exfoliated skin.</p>
+                            <span class="spotlight-card__price">₹100</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Loofah Body Scrubber -->
+                    <div class="spotlight-card" data-name="Loofah Body Scrubber" data-price="50">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_loofah.png" alt="Loofah Body Scrubber">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Loofah Body Scrubber</h3>
+                            <p class="spotlight-card__desc">Natural exfoliating bath sponge for smooth, glowing skin.
+                                100%
+                                biodegradable and sustainable.</p>
+                            <span class="spotlight-card__price">₹50</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bamboo Toothbrush -->
+                    <div class="spotlight-card" data-name="Bamboo Toothbrush" data-price="70">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_bamboo_toothbrush.png" alt="Bamboo Toothbrush">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Bamboo Toothbrush</h3>
+                            <p class="spotlight-card__desc">Eco-friendly sustainable toothbrush with charcoal-infused
+                                soft
+                                bristles for gentle cleaning.</p>
+                            <span class="spotlight-card__price">₹70</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Seegekai Powder -->
+                    <div class="spotlight-card" data-name="Seegekai Powder" data-price="249">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_seegekai_powder.png" alt="Seegekai Powder">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Seegekai Powder</h3>
+                            <p class="spotlight-card__desc">Pure organic hair wash powder for strong roots, reduced
+                                hairfall, and natural shine.</p>
+                            <span class="spotlight-card__price">₹100</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.7</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Rice Goat Milk Soap -->
+                    <div class="spotlight-card" data-name="Rice Goat Milk Soap" data-price="149">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_rice_goat_milk.png" alt="Bloom Cure Rice Goat Milk Soap"
+                                onerror="this.src='assets/logo.jpg'">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Rice Goat Milk Soap</h3>
+                            <p class="spotlight-card__desc">Rich in vitamins and lactic acid to gently exfoliate and
+                                deeply moisturize for glass-like glowing skin.</p>
+                            <span class="spotlight-card__price">₹149</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Multani Mitti Soap -->
+                    <div class="spotlight-card" data-name="Multani Mitti Soap" data-price="109">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_multani_mitti.png" alt="Bloom Cure Multani Mitti Soap"
+                                onerror="this.src='assets/logo.jpg'">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Multani Mitti Soap</h3>
+                            <p class="spotlight-card__desc">Natural Fuller's Earth to absorb impurities, reduce acne,
+                                and leave skin fresh and oil-free.</p>
+                            <span class="spotlight-card__price">₹109</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.7</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Activated Charcoal Soap -->
+                    <div class="spotlight-card" data-name="Activated Charcoal Soap" data-price="129">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_charcoal.png" alt="Bloom Cure Activated Charcoal Soap"
+                                onerror="this.src='assets/logo.jpg'">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Activated Charcoal Soap</h3>
+                            <p class="spotlight-card__desc">Deep pore detox for pollution protection. Draws out toxins
+                                and unclogs pores for clear, healthy skin.</p>
+                            <span class="spotlight-card__price">₹129</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Oats & Honey Soap -->
+                    <div class="spotlight-card" data-name="Oats &amp; Honey Soap" data-price="149">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_oats_honey.png" alt="Bloom Cure Oats & Honey Soap"
+                                onerror="this.src='assets/logo.jpg'">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Oats &amp; Honey Soap</h3>
+                            <p class="spotlight-card__desc">Gentle handcrafted soap for face &amp; body. Soothes
+                                inflammation while locking in moisture.</p>
+                            <span class="spotlight-card__price">₹149</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end track -->
+                <div class="spotlight-slider__progress" id="spotlightProgress"></div>
+            </div><!-- end slider -->
 
-                <!-- Bamboo Toothbrush -->
-                <div class="spotlight-card" data-name="Bamboo Toothbrush" data-price="70">
-                    <div class="spotlight-card__image">
-                        <span class="spotlight-card__image-badge">✦ New</span>
-                        <img src="assets/product_bamboo_toothbrush.png" alt="Bamboo Toothbrush">
-                    </div>
-                    <div class="spotlight-card__body">
-                        <h3 class="spotlight-card__name">Bamboo Toothbrush</h3>
-                        <p class="spotlight-card__desc">Eco-friendly sustainable toothbrush with charcoal-infused soft
-                            bristles for gentle cleaning.</p>
-                        <span class="spotlight-card__price">₹70</span>
-                        <div class="spotlight-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
-                            <span>4.9</span>
-                        </div>
-                        <div class="spotlight-card__actions">
-                            <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                                Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Seegekai Powder -->
-                <div class="spotlight-card" data-name="Seegekai Powder" data-price="249">
-                    <div class="spotlight-card__image">
-                        <span class="spotlight-card__image-badge">✦ New</span>
-                        <img src="assets/product_seegekai_powder.png" alt="Seegekai Powder">
-                    </div>
-                    <div class="spotlight-card__body">
-                        <h3 class="spotlight-card__name">Seegekai Powder</h3>
-                        <p class="spotlight-card__desc">Pure organic hair wash powder for strong roots, reduced
-                            hairfall, and natural shine.</p>
-                        <span class="spotlight-card__price">₹100</span>
-                        <div class="spotlight-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.7</span>
-                        </div>
-                        <div class="spotlight-card__actions">
-                            <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                                Now</button>
-                        </div>
-                    </div>
-                </div>
+            <!-- Slider Navigation -->
+            <div class="spotlight-slider__nav">
+                <button class="spotlight-slider__arrow" id="spotlightPrev" onclick="spotlightPrev()">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="spotlight-slider__dots" id="spotlightDots"></div>
+                <button class="spotlight-slider__arrow" id="spotlightNext" onclick="spotlightNext()">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
+
+
 
     <!-- ═══════════════ MODEL SHOWCASE ═══════════════ -->
     <section class="section-padding" style="background: white; overflow: hidden;">
@@ -2523,38 +2788,35 @@
         </div>
     </section>
 
-    <!-- ═══════════════ ABOUT SECTION ═══════════════ -->
-    <section id="about" class="section-padding about-section">
-        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
-            <div class="about-image-wrap" style="position: relative;">
-                <div
-                    style="width: 100%; height: 520px; background-color: var(--clr-beige); border-radius: 200px 200px 0 0; overflow: hidden;">
-                    <img src="assets/ingredients_botanical.png" alt="Botanical Ingredients"
-                        style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.1);">
+    <!-- ═══════════════ WILDLIFE CONSERVATION ═══════════════ -->
+    <section class="wildlife-section">
+        <div class="container">
+            <div class="wildlife-content reveal">
+                <div class="wildlife-badge">
+                    <i class="fa-solid fa-leaf"></i> Our Promise
                 </div>
-                <div class="about-experience">
-                    <span class="about-experience__number">5+</span>
-                    <span class="about-experience__label">Years of Craft</span>
-                </div>
-            </div>
-            <div class="about-text">
-                <span class="section-label">Our Philosophy</span>
-                <h2 class="section-heading">Born from the Earth,<br>Crafted with <em>Love</em></h2>
-                <p style="margin-bottom: 1.5rem; color: var(--clr-text-light); line-height: 1.8;">We believe in the
-                    blooming beauty of nature. Every Bloom Cure bar is handcrafted in small batches using ancient
-                    botanical wisdom and modern skin science. We use only the finest cold-pressed oils, organic herbs,
-                    and therapeutic-grade essential oils.</p>
-                <p style="margin-bottom: 2rem; color: var(--clr-text-light); line-height: 1.8;">No synthetics, no harsh
-                    chemicals just the healing touch of nature for your most radiant skin yet.</p>
-                <div class="about-features">
-                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Cold-pressed oils</div>
-                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Organic herbs</div>
-                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Cruelty-free</div>
-                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Plastic-free</div>
+                <h2 class="wildlife-title">Giving Back to <em>Nature</em></h2>
+                <p class="wildlife-desc">
+                    We believe in protecting the very source of our ingredients. That's why we proudly pledge
+                    <strong>15% of our share</strong> to wildlife conservation and protecting natural habitats. By
+                    choosing Bloom Cure, you're not just nourishing your skin you're helping to preserve the Earth's
+                    precious ecosystems and the wild creatures that call it home.
+                </p>
+                <div class="wildlife-stats">
+                    <div class="wildlife-stat-item">
+                        <span class="wildlife-stat-number">15%</span>
+                        <span class="wildlife-stat-label">Share Donated</span>
+                    </div>
+                    <div class="wildlife-stat-item">
+                        <span class="wildlife-stat-number"><i class="fa-solid fa-paw"
+                                style="font-size: 3.2rem; transform: translateY(-5px);"></i></span>
+                        <span class="wildlife-stat-label">For Wildlife</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- ═══════════════ PRODUCTS SECTION ═══════════════ -->
     <section class="section-padding container">
@@ -3004,10 +3266,13 @@
         <div class="container" style="max-width: 800px;">
             <div style="text-align: center; margin-bottom: 3rem;">
                 <span class="section-label" style="color: var(--clr-gold);">Your Experience</span>
-                <h2 class="section-heading" style="color: var(--clr-dark-green);">Share Your <em style="color: var(--clr-gold);">Thoughts</em></h2>
-                <p style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0; line-height: 1.6;">Have you tried our botanical soaps? We'd love to hear how your skin feels after experiencing Bloom Cure.</p>
+                <h2 class="section-heading" style="color: var(--clr-dark-green);">Share Your <em
+                        style="color: var(--clr-gold);">Thoughts</em></h2>
+                <p style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0; line-height: 1.6;">Have
+                    you tried our botanical soaps? We'd love to hear how your skin feels after experiencing Bloom Cure.
+                </p>
             </div>
-            
+
             <div class="feedback-form-container">
                 <form id="feedbackForm" onsubmit="submitFeedback(event)" class="premium-form">
                     <div class="form-row">
@@ -3031,7 +3296,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>Your Rating</label>
                         <div class="rating-stars-input" id="ratingStars">
@@ -3046,15 +3311,18 @@
 
                     <div class="form-group">
                         <label for="fbMessage">Your Feedback</label>
-                        <textarea id="fbMessage" rows="5" required placeholder="Tell us how your skin feels..."></textarea>
+                        <textarea id="fbMessage" rows="5" required
+                            placeholder="Tell us how your skin feels..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn-white" style="width: 100%; justify-content: center; margin-top: 1rem; background: var(--clr-dark-green); color: var(--clr-gold); border: 1px solid var(--clr-gold);">
+                    <button type="submit" class="btn-white"
+                        style="width: 100%; justify-content: center; margin-top: 1rem; background: var(--clr-dark-green); color: var(--clr-gold); border: 1px solid var(--clr-gold);">
                         Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>
                     </button>
-                    
+
                     <div id="feedbackSuccess" class="feedback-success-msg" style="display: none;">
-                        <i class="fa-solid fa-heart" style="color: red; margin-right: 5px;"></i> Thank you! Your feedback has been gracefully received.
+                        <i class="fa-solid fa-heart" style="color: red; margin-right: 5px;"></i> Thank you! Your
+                        feedback has been gracefully received.
                     </div>
                 </form>
             </div>
@@ -3068,7 +3336,7 @@
             <span class="section-label">Our Promise</span>
             <h2 class="section-heading">A Lighter <em>Footprint</em></h2>
             <p style="font-size: 1.15rem; line-height: 1.8; color: var(--clr-text-light); margin-bottom: 2.5rem;">We
-                are committed to the planet that heals us. Our process is strictly cruelty-free, our energy is
+                are committed to the planet that heals us. Our process is strictly cruelty free, our energy is
                 renewable, and our packaging is 100% plastic-free.<br>Because beautiful skin shouldn't cost the Earth.
             </p>
             <div class="sustainability-badges">
@@ -3115,7 +3383,7 @@
                 <div>
                     <h4 class="footer-heading">Company</h4>
                     <ul class="footer-links">
-                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="about.html">Our Story</a></li>
                         <li><a href="#">The Ethos</a></li>
                         <li><a href="#">Sustainability</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -3135,16 +3403,18 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
                 <div class="footer-socials">
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank"
+                        aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
         <div class="mobile-menu__inner">
             <button class="mobile-menu__close" onclick="toggleMobileMenu()">
                 <i class="fa-solid fa-xmark"></i>
@@ -3156,13 +3426,14 @@
             <ul class="mobile-menu__links">
                 <li><a href="index.html" class="active" onclick="toggleMobileMenu()">Home</a></li>
                 <li><a href="shop.html" onclick="toggleMobileMenu()">Shop</a></li>
-                <li><a href="index.html#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
                 <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
             </ul>
             <div class="mobile-menu__footer">
                 <p>Healing Skin, Blooming Confidence</p>
                 <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
-                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
@@ -3478,11 +3749,11 @@
             // Set default 5 stars active
             stars.forEach((star) => {
                 star.classList.add('active');
-                
+
                 star.addEventListener('click', () => {
                     const value = star.getAttribute('data-value');
                     ratingInput.value = value;
-                    
+
                     stars.forEach((s, i) => {
                         if (i < value) {
                             s.classList.add('active');
@@ -3499,24 +3770,222 @@
             const btn = e.target.querySelector('button[type="submit"]');
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i> Sending Feedback...';
             btn.style.opacity = '0.7';
-            
+
             // Simulate processing the feedback (would normally be an API call here)
             setTimeout(() => {
                 e.target.reset();
-                if(stars) stars.forEach(s => s.classList.add('active'));
-                if(ratingInput) ratingInput.value = '5';
-                
+                if (stars) stars.forEach(s => s.classList.add('active'));
+                if (ratingInput) ratingInput.value = '5';
+
                 btn.innerHTML = 'Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>';
                 btn.style.opacity = '1';
-                
+
                 const successMsg = document.getElementById('feedbackSuccess');
                 successMsg.style.display = 'block';
-                
+
                 setTimeout(() => {
                     successMsg.style.display = 'none';
                 }, 5000);
             }, 1200);
         }
+        // ═══════════════ SPOTLIGHT SLIDER ═══════════════
+        (function () {
+            const track = document.getElementById('spotlightTrack');
+            const slider = document.getElementById('spotlightSlider');
+            const dotsContainer = document.getElementById('spotlightDots');
+            const progressBar = document.getElementById('spotlightProgress');
+            if (!track || !slider) return;
+
+            const cards = track.querySelectorAll('.spotlight-card');
+            const totalCards = cards.length;
+            let currentIndex = 0;
+            let slidesPerView = 3;
+            let autoplayTimer;
+            const AUTOPLAY_DELAY = 4000;
+
+            function getSlidesPerView() {
+                if (window.innerWidth <= 600) return 1;
+                if (window.innerWidth <= 992) return 2;
+                return 3;
+            }
+
+            function getMaxIndex() {
+                return Math.max(0, totalCards - slidesPerView);
+            }
+
+            function getTotalPages() {
+                return getMaxIndex() + 1;
+            }
+
+            function buildDots() {
+                dotsContainer.innerHTML = '';
+                const pages = getTotalPages();
+                for (let i = 0; i < pages; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'spotlight-slider__dot' + (i === currentIndex ? ' active' : '');
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function updateDots() {
+                const dots = dotsContainer.querySelectorAll('.spotlight-slider__dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            function updateProgress() {
+                const maxIdx = getMaxIndex();
+                const pct = maxIdx === 0 ? 100 : ((currentIndex / maxIdx) * 100);
+                progressBar.style.width = pct + '%';
+            }
+
+            function updateArrows() {
+                const prevBtn = document.getElementById('spotlightPrev');
+                const nextBtn = document.getElementById('spotlightNext');
+                if (prevBtn) prevBtn.classList.toggle('disabled', currentIndex <= 0);
+                if (nextBtn) nextBtn.classList.toggle('disabled', currentIndex >= getMaxIndex());
+            }
+
+            function moveToSlide(index, smooth) {
+                currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+                const card = cards[0];
+                if (!card) return;
+                const gap = parseFloat(getComputedStyle(track).gap) || 0;
+                const cardWidth = card.offsetWidth + gap;
+                track.style.transition = smooth !== false ? 'transform 0.7s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
+                track.style.transform = 'translateX(' + (-currentIndex * cardWidth) + 'px)';
+                updateDots();
+                updateProgress();
+                updateArrows();
+            }
+
+            function goToSlide(index) {
+                moveToSlide(index);
+                resetAutoplay();
+            }
+
+            window.spotlightNext = function () {
+                if (currentIndex >= getMaxIndex()) {
+                    goToSlide(0);
+                } else {
+                    goToSlide(currentIndex + 1);
+                }
+            };
+
+            window.spotlightPrev = function () {
+                if (currentIndex <= 0) {
+                    goToSlide(getMaxIndex());
+                } else {
+                    goToSlide(currentIndex - 1);
+                }
+            };
+
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(() => {
+                    if (currentIndex >= getMaxIndex()) {
+                        goToSlide(0);
+                    } else {
+                        moveToSlide(currentIndex + 1);
+                    }
+                }, AUTOPLAY_DELAY);
+            }
+
+            function stopAutoplay() {
+                if (autoplayTimer) clearInterval(autoplayTimer);
+            }
+
+            function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            // Pause on hover
+            slider.addEventListener('mouseenter', stopAutoplay);
+            slider.addEventListener('mouseleave', startAutoplay);
+
+            // Drag / swipe support
+            let isDragging = false;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+
+            function getPositionX(e) {
+                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            }
+
+            function dragStart(e) {
+                isDragging = true;
+                startX = getPositionX(e);
+                const card = cards[0];
+                const gap = parseFloat(getComputedStyle(track).gap) || 0;
+                prevTranslate = -currentIndex * (card.offsetWidth + gap);
+                track.classList.add('is-dragging');
+                if (e.type === 'mousedown') e.preventDefault();
+            }
+
+            function dragMove(e) {
+                if (!isDragging) return;
+                const currentX = getPositionX(e);
+                const diff = currentX - startX;
+                currentTranslate = prevTranslate + diff;
+                track.style.transform = 'translateX(' + currentTranslate + 'px)';
+            }
+
+            function dragEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                track.classList.remove('is-dragging');
+                const moved = currentTranslate - prevTranslate;
+                const threshold = cards[0].offsetWidth * 0.2;
+                if (moved < -threshold) {
+                    window.spotlightNext();
+                } else if (moved > threshold) {
+                    window.spotlightPrev();
+                } else {
+                    moveToSlide(currentIndex);
+                }
+            }
+
+            track.addEventListener('mousedown', dragStart);
+            track.addEventListener('mousemove', dragMove);
+            track.addEventListener('mouseup', dragEnd);
+            track.addEventListener('mouseleave', () => { if (isDragging) dragEnd(); });
+            track.addEventListener('touchstart', dragStart, { passive: true });
+            track.addEventListener('touchmove', dragMove, { passive: true });
+            track.addEventListener('touchend', dragEnd);
+
+            // Prevent click on links during drag
+            track.addEventListener('click', (e) => {
+                if (Math.abs(currentTranslate - prevTranslate) > 5) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+
+            // Responsive resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    const newSPV = getSlidesPerView();
+                    if (newSPV !== slidesPerView) {
+                        slidesPerView = newSPV;
+                        if (currentIndex > getMaxIndex()) currentIndex = getMaxIndex();
+                        buildDots();
+                    }
+                    moveToSlide(currentIndex, false);
+                }, 150);
+            });
+
+            // Init
+            slidesPerView = getSlidesPerView();
+            buildDots();
+            moveToSlide(0, false);
+            startAutoplay();
+        })();
     </script>
 </body>
 
