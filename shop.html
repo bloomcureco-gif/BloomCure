@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Bloom Cure Botanical Soaps</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta name="description"
+        content="Shop our curated collection of handcrafted botanical soaps made with natural ingredients.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           Shop Page — Premium Styles
+           ═══════════════════════════════════════════ */
+
+        /* Hero Header */
+        .shop-hero {
+            position: relative;
+            padding: 12rem 0 6rem;
+            text-align: center;
+            background: linear-gradient(160deg, #F0EDE5 0%, #E8E3D8 30%, #F5F1E8 70%, #F9F7F2 100%);
+            overflow: hidden;
+        }
+
+        .shop-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(123, 139, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .shop-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .shop-hero__subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--clr-sage);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .shop-hero__subtitle::before,
+        .shop-hero__subtitle::after {
+            content: '';
+            width: 30px;
+            height: 1.5px;
+            background: var(--clr-gold);
+        }
+
+        .shop-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .shop-hero h1 em {
+            color: var(--clr-sage);
+            font-style: italic;
+        }
+
+        .shop-hero__desc {
+            color: var(--clr-text-light);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Stats bar */
+        .shop-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(26, 46, 32, 0.08);
+        }
+
+        .shop-stats__item {
+            text-align: center;
+        }
+
+        .shop-stats__number {
+            font-family: var(--ff-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--clr-dark-green);
+            display: block;
+        }
+
+        .shop-stats__label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--clr-text-light);
+            font-weight: 600;
+        }
+
+        /* Filter Navigation */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1.5px solid rgba(26, 46, 32, 0.1);
+            font-family: var(--ff-body);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            color: var(--clr-text-light);
+            cursor: pointer;
+            padding: 0.65rem 1.6rem;
+            border-radius: 50px;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--clr-sage);
+            color: var(--clr-sage);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(123, 139, 79, 0.12);
+        }
+
+        .filter-btn.active {
+            background: var(--clr-dark-green);
+            color: var(--clr-cream);
+            border-color: var(--clr-dark-green);
+            box-shadow: 0 6px 20px rgba(26, 46, 32, 0.25);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        /* Trust Banner */
+        .trust-banner {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 4rem 0;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(26, 46, 32, 0.06);
+        }
+
+        .trust-banner__item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--clr-text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .trust-banner__item i {
+            font-size: 1.3rem;
+            color: var(--clr-sage);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(123, 139, 79, 0.08);
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .shop-hero h1 {
+                font-size: 3rem;
+            }
+
+            .trust-banner {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+
+            .shop-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .shop-hero {
+                padding: 9rem 0 4rem;
+            }
+
+            .shop-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .filter-nav {
+                gap: 0.4rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
+            }
+
+            .trust-banner {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .shop-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Highlighted product card glow */
+        .product-card--highlight {
+            border: 2px solid var(--clr-gold) !important;
+            box-shadow: 0 0 0 4px rgba(197, 160, 40, 0.1), 0 8px 30px rgba(197, 160, 40, 0.12) !important;
+            position: relative;
+        }
+
+        .product-card--highlight::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(197, 160, 40, 0.15), transparent, rgba(123, 139, 79, 0.15));
+            z-index: -1;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.01);
+            }
+        }
+
+        .product-card__new-ribbon {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: linear-gradient(135deg, #C5A028, #DDB832);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+            z-index: 5;
+            box-shadow: 0 4px 12px rgba(197, 160, 40, 0.35);
+            animation: new-badge-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes new-badge-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 12px rgba(197, 160, 40, 0.35);
+            }
+
+            50% {
+                box-shadow: 0 4px 20px rgba(197, 160, 40, 0.6);
+            }
+        }
+
+        /* ═══════════════ PREMIUM NAVIGATION ═══════════════ */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(26, 46, 32, 0.92), rgba(30, 55, 38, 0.88));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(197, 160, 40, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .premium-nav.scrolled {
+            background: rgba(26, 46, 32, 0.97);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-bottom-color: rgba(197, 160, 40, 0.3);
+        }
+
+        .premium-nav__inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: padding 0.4s ease;
+        }
+
+        .premium-nav.scrolled .premium-nav__inner {
+            padding: 0.6rem 2.5rem;
+        }
+
+        .premium-nav__logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .premium-nav__logo img {
+            height: 52px;
+            width: 52px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-gold);
+            box-shadow: 0 0 20px rgba(197, 160, 40, 0.15);
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .premium-nav.scrolled .premium-nav__logo img {
+            height: 42px;
+            width: 42px;
+        }
+
+        .premium-nav__brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .premium-nav__brand-name {
+            font-family: var(--ff-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--clr-cream);
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+        }
+
+        .premium-nav__brand-tagline {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--clr-gold);
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        .premium-nav__links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .premium-nav__link {
+            position: relative;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(249, 247, 242, 0.75);
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .premium-nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+            transform: translateX(-50%);
+            transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .premium-nav__link:hover,
+        .premium-nav__link.active {
+            color: var(--clr-cream);
+        }
+
+        .premium-nav__link:hover::after,
+        .premium-nav__link.active::after {
+            width: 70%;
+        }
+
+        .premium-nav__link.active {
+            color: var(--clr-gold);
+        }
+
+        .premium-nav__actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .premium-nav__icon-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: rgba(249, 247, 242, 0.75);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(249, 247, 242, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .premium-nav__icon-btn:hover {
+            color: var(--clr-gold);
+            background: rgba(197, 160, 40, 0.1);
+            border-color: rgba(197, 160, 40, 0.3);
+            box-shadow: 0 0 15px rgba(197, 160, 40, 0.1);
+        }
+
+        .premium-nav__cart-btn {
+            position: relative;
+        }
+
+        .premium-nav__cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: linear-gradient(135deg, var(--clr-gold), #DDB832);
+            color: var(--clr-dark-green);
+            font-size: 0.55rem;
+            font-weight: 800;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(26, 46, 32, 0.9);
+        }
+
+        @media (max-width: 992px) {
+            .premium-nav__links {
+                display: none;
+            }
+
+            .premium-nav__inner {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        /* ═══════════════ PREMIUM FOOTER ═══════════════ */
+        .premium-footer {
+            background: linear-gradient(rgba(26, 46, 32, 0.98), rgba(26, 46, 32, 1)), url('assets/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--clr-cream);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 40, 0.3), transparent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.8fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand__logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .footer-brand__logo img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-gold);
+            background: white;
+            padding: 2px;
+        }
+
+        .footer-brand__name {
+            font-family: var(--ff-heading);
+            font-size: 2.2rem;
+            color: var(--clr-cream);
+            margin: 0;
+        }
+
+        .footer-brand__desc {
+            color: rgba(249, 247, 242, 0.7);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            max-width: 320px;
+        }
+
+        .footer-heading {
+            color: var(--clr-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(249, 247, 242, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--clr-gold);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter__desc {
+            font-size: 0.95rem;
+            color: rgba(249, 247, 242, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        .footer-newsletter__form {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-newsletter__input {
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            flex: 1;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .footer-newsletter__btn {
+            background: var(--clr-gold);
+            color: var(--clr-dark-green);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter__btn:hover {
+            background: #DDB832;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(249, 247, 242, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(249, 247, 242, 0.5);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-socials a {
+            color: rgba(249, 247, 242, 0.6);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--clr-gold);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand__logo {
+                justify-content: center;
+            }
+
+            .footer-brand__desc {
+                margin: 0 auto 2rem;
+            }
+
+            .footer-newsletter__form {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* ═══════════════ MOBILE MENU ═══════════════ */
+        .premium-nav__menu-btn {
+            display: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            .premium-nav__menu-btn {
+                display: flex;
+            }
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(26, 46, 32, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu__inner {
+            text-align: center;
+            width: 100%;
+            padding: 2rem;
+            transform: translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__inner {
+            transform: translateY(0);
+        }
+
+        .mobile-menu__close {
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            background: none;
+            border: 1px solid rgba(197, 160, 40, 0.3);
+            color: var(--clr-gold);
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu__close:hover {
+            background: rgba(197, 160, 40, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu__brand {
+            margin-bottom: 3rem;
+        }
+
+        .mobile-menu__brand img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-gold);
+            margin: 0 auto 1rem;
+        }
+
+        .mobile-menu__brand-name {
+            font-family: var(--ff-heading);
+            font-size: 2.5rem;
+            color: var(--clr-cream);
+            display: block;
+        }
+
+        .mobile-menu__links {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 4rem;
+        }
+
+        .mobile-menu__links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu__links a {
+            font-family: var(--ff-heading);
+            font-size: 1.8rem;
+            color: rgba(249, 247, 242, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu__socials a:hover {
+            color: var(--clr-gold);
+            border-color: rgba(197, 160, 40, 0.3);
+            background: rgba(197, 160, 40, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(197, 160, 40, 0.1);
+        }
+
+        /* ═══════════════ PREMIUM SEARCH OVERLAY ═══════════════ */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(170deg,
+                    rgba(18, 36, 24, 0.99) 0%,
+                    rgba(26, 46, 32, 0.98) 40%,
+                    rgba(20, 40, 28, 0.99) 100%);
+            backdrop-filter: blur(30px) saturate(1.2);
+            -webkit-backdrop-filter: blur(30px) saturate(1.2);
+            z-index: 2100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .search-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .search__close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(197, 160, 40, 0.08);
+            border: 1.5px solid rgba(197, 160, 40, 0.3);
+            color: var(--clr-gold);
+            font-size: 1.3rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(197, 160, 40, 0.08);
+        }
+
+        .search__close:hover {
+            background: rgba(197, 160, 40, 0.15);
+            transform: rotate(90deg) scale(1.08);
+            box-shadow: 0 0 30px rgba(197, 160, 40, 0.15);
+            border-color: var(--clr-gold);
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition-delay: 0.1s;
+        }
+
+        .search-overlay.active .search-container {
+            transform: translateY(0);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(249, 247, 242, 0.2);
+            padding: 1rem 3rem 1rem 0;
+            font-size: 3rem;
+            font-family: var(--ff-heading);
+            color: var(--clr-cream);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(249, 247, 242, 0.3);
+        }
+
+        .search-input:focus {
+            border-bottom-color: var(--clr-gold);
+        }
+
+        .search-icon-large {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--clr-gold);
+            font-size: 2rem;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Search Results styling */
+        .search-results {
+            width: 100%;
+            margin-top: 2rem;
+            max-height: 50vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .search-results::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .search-results::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .search-results::-webkit-scrollbar-thumb {
+            background: rgba(197, 160, 40, 0.5);
+            border-radius: 10px;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--clr-cream);
+            transition: all 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: rgba(197, 160, 40, 0.05);
+            border-color: rgba(197, 160, 40, 0.3);
+            transform: translateX(10px);
+        }
+
+        .search-result-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 160, 40, 0.2);
+        }
+
+        .search-result-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-result-title {
+            font-family: var(--ff-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--clr-cream);
+        }
+
+        .search-result-price {
+            color: var(--clr-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .search-empty {
+            text-align: center;
+            color: rgba(249, 247, 242, 0.5);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .search-input {
+                font-size: 2rem;
+            }
+
+            .search-icon-large {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="premium-nav" id="mainNav">
+        <div class="premium-nav__inner">
+            <a href="index.html" class="premium-nav__logo">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <div class="premium-nav__brand">
+                    <span class="premium-nav__brand-name">Bloom Cure</span>
+                    <span class="premium-nav__brand-tagline">Artisan Botanicals</span>
+                </div>
+            </a>
+            <ul class="premium-nav__links">
+                <li><a href="index.html" class="premium-nav__link">Home</a></li>
+                <li><a href="shop.html" class="premium-nav__link active">Shop</a></li>
+                <li><a href="index.html#about" class="premium-nav__link">About</a></li>
+                <li><a href="index.html#ingredients" class="premium-nav__link">Ingredients</a></li>
+            </ul>
+            <div class="premium-nav__actions">
+                <a href="#" class="premium-nav__icon-btn" title="Search" onclick="toggleSearch(event)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+                <a href="cart.html" class="premium-nav__icon-btn premium-nav__cart-btn" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count" class="premium-nav__cart-badge">0</span>
+                </a>
+                <button class="premium-nav__icon-btn premium-nav__menu-btn" title="Menu" onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ SEARCH OVERLAY ═══════════════ -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search__close" onclick="toggleSearch(event)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for pure luxury..."
+                    autocomplete="off" onkeyup="handleSearch()">
+                <i class="fa-solid fa-magnifying-glass search-icon-large"></i>
+            </div>
+
+            <div class="search-results" id="searchResults">
+                <!-- Search results will be injected here via JS -->
+            </div>
+            <div class="search-empty" id="searchEmpty">
+                No products found matching your search.
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MOBILE MENU OVERLAY ═══════════════ -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <button class="mobile-menu__close" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="mobile-menu__inner">
+            <div class="mobile-menu__brand">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <span class="mobile-menu__brand-name">Bloom Cure</span>
+            </div>
+            <ul class="mobile-menu__links">
+                <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="shop.html" class="active" onclick="toggleMobileMenu()">Shop</a></li>
+                <li><a href="index.html#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
+            </ul>
+            <div class="mobile-menu__footer">
+                <div class="mobile-menu__footer-tagline">Healing Skin, Blooming Confidence</div>
+                <div class="mobile-menu__socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Shop Hero -->
+    <header class="shop-hero">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="shop-hero__subtitle">
+                Artisan Botanical Soaps
+            </span>
+            <h1>The Curated <em>Collection</em></h1>
+            <p class="shop-hero__desc">
+                Each bar is a botanical masterpiece — handcrafted in small batches with cold-pressed oils, organic
+                herbs, and therapeutic-grade essential oils.
+            </p>
+            <div class="shop-stats">
+                <div class="shop-stats__item">
+                    <span class="shop-stats__number">100%</span>
+                    <span class="shop-stats__label">Natural</span>
+                </div>
+                <div class="shop-stats__item">
+                    <span class="shop-stats__number">9+</span>
+                    <span class="shop-stats__label">Varieties</span>
+                </div>
+                <div class="shop-stats__item">
+                    <span class="shop-stats__number">500+</span>
+                    <span class="shop-stats__label">Happy Customers</span>
+                </div>
+                <div class="shop-stats__item">
+                    <span class="shop-stats__number">0%</span>
+                    <span class="shop-stats__label">Chemicals</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="section-padding container">
+        <!-- Filter Pills -->
+        <div class="filter-nav">
+            <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-border-all"
+                    style="margin-right: 5px;"></i> All</button>
+            <button class="filter-btn" data-filter="healing"><i class="fa-solid fa-seedling"
+                    style="margin-right: 5px;"></i> Healing</button>
+            <button class="filter-btn" data-filter="calming"><i class="fa-solid fa-spa" style="margin-right: 5px;"></i>
+                Calming</button>
+            <button class="filter-btn" data-filter="radiance"><i class="fa-solid fa-sun" style="margin-right: 5px;"></i>
+                Radiance</button>
+            <button class="filter-btn" data-filter="hydrating"><i class="fa-solid fa-droplet"
+                    style="margin-right: 5px;"></i> Hydrating</button>
+        </div>
+
+        <!-- Product Grid — uses the same product-card system from index.css -->
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-name="Rose Bloom" data-price="449" data-category="hydrating">
+                <div class="product-card__image" style="background-color: #F8F4ED;">
+                    <span class="product-card__badge">Bestseller</span>
+                    <img src="assets/product_rose.png" alt="Rose Bloom Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Rose Bloom</h3>
+                        <p class="product-card__desc">Soothing rose petals & shea butter for deep hydration and a
+                            natural glow.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-name="Neem Purify" data-price="399" data-category="healing">
+                <div class="product-card__image" style="background-color: #F2F5EF;">
+                    <span class="product-card__badge product-card__badge--green">Organic</span>
+                    <img src="assets/product_neem.png" alt="Neem Purify Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Neem Purify</h3>
+                        <p class="product-card__desc">Deep cleansing antibacterial neem & tea tree oil for problem skin.
+                        </p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹399</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-name="Lavender Calm" data-price="449" data-category="calming">
+                <div class="product-card__image" style="background-color: #F5F1F8;">
+                    <span class="product-card__badge product-card__badge--purple">Popular</span>
+                    <img src="assets/product_lavender.png" alt="Lavender Calm Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Lavender Calm</h3>
+                        <p class="product-card__desc">Calming French lavender & chamomile for a spa-like bathing ritual.
+                        </p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-name="Turmeric Glow" data-price="399" data-category="radiance">
+                <div class="product-card__image" style="background-color: #F9F7EF;">
+                    <span class="product-card__badge product-card__badge--gold">Glow</span>
+                    <img src="assets/product_turmeric.png" alt="Turmeric Glow Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Turmeric Glow</h3>
+                        <p class="product-card__desc">Brightening turmeric & raw honey to even skin tone and add
+                            radiance.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-name="Sandalwood & Turmeric" data-price="499" data-category="radiance">
+                <div class="product-card__image" style="background-color: #FBF9F2;">
+                    <span class="product-card__badge product-card__badge--gold">Premium</span>
+                    <img src="assets/product_sandalwood_turmeric.png" alt="Sandalwood & Turmeric Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Sandalwood & Turmeric</h3>
+                        <p class="product-card__desc">Luxurious sandalwood & turmeric fusion for a warm, radiant bathing
+                            experience.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-name="Aloe Vera & Mint" data-price="449" data-category="calming">
+                <div class="product-card__image" style="background-color: #F0F6F0;">
+                    <span class="product-card__badge product-card__badge--green">Fresh</span>
+                    <img src="assets/product_aloe_mint.png" alt="Aloe Vera & Mint Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Aloe Vera & Mint</h3>
+                        <p class="product-card__desc">Cooling aloe vera & peppermint to refresh and revitalize tired
+                            skin.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card product-card--highlight" data-name="Soap Nut Power" data-price="349"
+                data-category="healing">
+                <div class="product-card__image" style="background-color: #F5F0E6;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Ayurvedic</span>
+                    <img src="assets/product_soapnut.png" alt="Soap Nut Power Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Soap Nut Power</h3>
+                        <p class="product-card__desc">Ancient reetha cleanser with natural saponins for gentle,
+                            chemical-free cleansing and silky skin.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹100</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card product-card--highlight" data-name="Seegekai" data-price="399"
+                data-category="healing">
+                <div class="product-card__image" style="background-color: #EBF2EB;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--green">Herbal</span>
+                    <img src="assets/product_shikakai.png" alt="Seegekai Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Seegekai</h3>
+                        <p class="product-card__desc">Traditional shikakai-infused bar for deep cleansing, scalp care,
+                            and a natural herbal shine.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹399</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card product-card--highlight" data-name="Besan" data-price="299"
+                data-category="radiance">
+                <div class="product-card__image" style="background-color: #FDF8ED;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Glow</span>
+                    <img src="assets/product_besan.png" alt="Besan Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Besan</h3>
+                        <p class="product-card__desc">Traditional gram flour face & body bar for a radiant complexion
+                            and smooth, exfoliated skin.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 10: Loofah Body Scrubber -->
+            <div class="product-card" data-name="Loofah Body Scrubber" data-price="199" data-category="radiance">
+                <div class="product-card__image" style="background-color: #F8F5EE;">
+                    <span class="product-card__badge product-card__badge--green">Eco</span>
+                    <img src="assets/product_loofah.png" alt="Loofah Body Scrubber">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Loofah Body Scrubber</h3>
+                        <p class="product-card__desc">Natural exfoliating bath sponge for smooth, glowing skin. 100%
+                            biodegradable.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹50</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 11: Bamboo Toothbrush -->
+            <div class="product-card" data-name="Bamboo Toothbrush" data-price="149" data-category="healing">
+                <div class="product-card__image" style="background-color: #EBF2EB;">
+                    <span class="product-card__badge product-card__badge--green">Eco</span>
+                    <img src="assets/product_bamboo_toothbrush.png" alt="Bamboo Toothbrush">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Bamboo Toothbrush</h3>
+                        <p class="product-card__desc">Eco-friendly sustainable toothbrush with charcoal-infused soft
+                            bristles.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹70</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 12: Seegekai Powder -->
+            <div class="product-card product-card--highlight" data-name="Seegekai Powder" data-price="249"
+                data-category="healing">
+                <div class="product-card__image" style="background-color: #FAF5ED;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Ayurvedic</span>
+                    <img src="assets/product_seegekai_powder.png" alt="Seegekai Powder">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Seegekai Powder</h3>
+                        <p class="product-card__desc">Pure organic hair wash powder for strong roots, reduced hairfall,
+                            and natural shine.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹249</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 13: Hotel Soaps -->
+            <div class="product-card product-card--highlight" data-name="Hotel Soaps" data-price="599"
+                data-category="radiance">
+                <div class="product-card__image" style="background-color: #F5F3ED;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Premium</span>
+                    <img src="assets/product_hotel_soaps.png" alt="Bloom Cure Hotel Soaps">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Hotel Soaps</h3>
+                        <p class="product-card__desc">Luxury miniature botanical soap set, perfect for hotels, resorts &
+                            gifting. Eco-friendly packaging.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹599</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 14: Exfoliating Coffee Soap -->
+            <div class="product-card product-card--highlight" data-name="Exfoliating Coffee Soap" data-price="399"
+                data-category="radiance">
+                <div class="product-card__image" style="background-color: #EFEBE5;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Exfoliating</span>
+                    <img src="assets/product_coffee_soap.png" alt="Exfoliating Coffee Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Exfoliating Coffee Soap</h3>
+                        <p class="product-card__desc">Rich roasted coffee granules for deep exfoliation and cellulite
+                            reduction. Leaves skin smooth and energized.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Trust Banner -->
+        <div class="trust-banner">
+            <div class="trust-banner__item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span>Free shipping over ₹999</span>
+            </div>
+            <div class="trust-banner__item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>100% Natural Guarantee</span>
+            </div>
+            <div class="trust-banner__item">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>30-Day Easy Returns</span>
+            </div>
+            <div class="trust-banner__item">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Eco-Friendly Packaging</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- ═══════════════ MODEL SHOWCASE ═══════════════ -->
+    <section style="padding: 6rem 0; background: linear-gradient(160deg, #EDE9E0 0%, #F5F1E8 100%); overflow: hidden;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-label"
+                    style="display: inline-flex; align-items: center; gap: 10px; color: var(--clr-sage); font-weight: 600; text-transform: uppercase; letter-spacing: 3px; font-size: 0.72rem;">
+                    <span
+                        style="width: 25px; height: 1.5px; background: var(--clr-gold); display: inline-block;"></span>
+                    Real People, Real Glow
+                    <span
+                        style="width: 25px; height: 1.5px; background: var(--clr-gold); display: inline-block;"></span>
+                </span>
+                <h2
+                    style="font-size: 3rem; margin-bottom: 1rem; margin-top: 1rem; line-height: 1.15; font-family: var(--ff-heading); color: var(--clr-dark-green);">
+                    Healing Skin, Blooming <em style="color: var(--clr-sage); font-style: italic;">Confidence</em>
+                </h2>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: stretch;">
+                <div
+                    style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); position: relative;">
+                    <img src="assets/model_1.png" alt="Bloom Cure Model"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s ease;"
+                        onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem 1.5rem 1.5rem;
+                        background: linear-gradient(transparent, rgba(26, 46, 32, 0.8)); color: var(--clr-cream);">
+                        <p style="font-family: var(--ff-heading); font-size: 1.1rem; font-style: italic;">
+                            "Nature's touch, visible results"
+                        </p>
+                    </div>
+                </div>
+                <div
+                    style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); position: relative;">
+                    <img src="assets/model_2.png" alt="Bloom Cure Model"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s ease;"
+                        onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem 1.5rem 1.5rem;
+                        background: linear-gradient(transparent, rgba(26, 46, 32, 0.8)); color: var(--clr-cream);">
+                        <p style="font-family: var(--ff-heading); font-size: 1.1rem; font-style: italic;">
+                            "Healing skin, blooming confidence"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Brand bar -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <p
+                    style="font-family: var(--ff-heading); font-size: 1.4rem; color: var(--clr-dark-green); font-weight: 700;">
+                    BLOOM CURE<sup style="font-size: 0.5em;">®</sup>
+                </p>
+                <p
+                    style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3px; color: var(--clr-text-light); margin-top: 0.25rem;">
+                    Healing Skin, Blooming Confidence
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PREMIUM FOOTER ═══════════════ -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-brand__logo">
+                        <img src="assets/logo.jpg" alt="Bloom Cure">
+                        <h2 class="footer-brand__name">Bloom Cure</h2>
+                    </a>
+                    <p class="footer-brand__desc">Handcrafting nature's best to help your skin bloom with radiance and
+                        health. Artisan botanicals for a mindful ritual.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Soaps</a></li>
+                        <li><a href="#">Gift Bundles</a></li>
+                        <li><a href="#">Subscribers Ritual</a></li>
+                        <li><a href="#">Digital Cards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">Our Story</a></li>
+                        <li><a href="#">The Ethos</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p class="footer-newsletter__desc">Join our botanical circle for exclusive tips on natural skincare
+                        and early access to new arrivals.</p>
+                    <form class="footer-newsletter__form"
+                        onsubmit="event.preventDefault(); showToast('Welcome to the botanical circle! 🌿');">
+                        <input type="email" placeholder="Email Address" class="footer-newsletter__input" required>
+                        <button type="submit" class="footer-newsletter__btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu__inner">
+            <button class="mobile-menu__close" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu__brand">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <span class="mobile-menu__brand-name">Bloom Cure</span>
+            </div>
+            <ul class="mobile-menu__links">
+                <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="shop.html" class="active" onclick="toggleMobileMenu()">Shop</a></li>
+                <li><a href="index.html#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
+            </ul>
+            <div class="mobile-menu__footer">
+                <p>Healing Skin, Blooming Confidence</p>
+                <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="cart-toast" class="toast glass-toast" style="color: var(--clr-cream);">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Item added to your botanical ritual.</span>
+    </div>
+
+    <script>
+        // Intersection Observer for reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('bloom_cure_cart')) || [];
+        const cartCountEl = document.getElementById('cart-count');
+        const toastEl = document.getElementById('cart-toast');
+
+        function updateCartUI() {
+            const totalItems = cart.length;
+            if (cartCountEl) {
+                cartCountEl.textContent = totalItems;
+                if (totalItems > 0) {
+                    cartCountEl.classList.add('active');
+                } else {
+                    cartCountEl.classList.remove('active');
+                }
+            }
+        }
+
+        function showToast(message) {
+            if (toastEl) {
+                const toastSpan = toastEl.querySelector('span');
+                if (toastSpan) toastSpan.textContent = message;
+                toastEl.classList.add('active');
+                setTimeout(() => {
+                    toastEl.classList.remove('active');
+                }, 3000);
+            }
+        }
+
+        function addToCart(btn) {
+            const card = btn.closest('.product-card') || btn.closest('.shop-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+
+            // Extract raw number price from dataset or text
+            const rawPrice = card.dataset.price || '0';
+            const priceMatch = String(rawPrice).match(/[\d,]+/);
+            const price = priceMatch ? priceMatch[0] : '0';
+
+            const img = card.querySelector('img')?.src || 'assets/logo.jpg';
+
+            // Check if item already exists
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+            } else {
+                cart.push({ name, price, img, quantity: 1 });
+            }
+
+            localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
+            updateCartUI();
+            showToast(name + ' added to your botanical ritual.');
+
+            // Button feedback
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Added!';
+            btn.classList.add('btn-success');
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('btn-success');
+            }, 1500);
+        }
+
+        function buyNow(btn) {
+            const card = btn.closest('.product-card') || btn.closest('.shop-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+            const price = card.dataset.price || '0.00';
+
+            cart.push({ name, price });
+            localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
+            updateCartUI();
+            showToast('Opening WhatsApp to order ' + name + '...');
+
+            // Open WhatsApp with product details
+            const message = encodeURIComponent(
+                `Hi! I'd like to buy *${name}* (₹${price}) from Bloom Cure. 🌿`
+            );
+            const whatsappURL = `https://wa.me/919742522357?text=${message}`;
+
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening...';
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Buy Now';
+            }, 500);
+        }
+
+        // Filter button toggle & logic
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Get filter category
+                const filter = btn.getAttribute('data-filter');
+
+                // Filter products
+                document.querySelectorAll('.product-card').forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = ''; // Revert to default display style
+                    } else {
+                        card.style.display = 'none'; // Hide non-matching products
+                    }
+                });
+            });
+        });
+
+        // Nav scroll shrink effect
+        const nav = document.getElementById('mainNav');
+        if (nav) {
+            document.addEventListener('scroll', () => {
+                nav.classList.toggle('scrolled', window.scrollY > 60);
+            });
+        }
+
+        // ═══════════════ SEARCH & MOBILE MENU LOGIC ═══════════════
+
+        const productsDB = [
+            { id: 1, name: "Rose Bloom", price: "449", img: "assets/product_rose.png", desc: "Soothing rose petals & shea butter" },
+            { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem" },
+            { id: 3, name: "Lavender Calm", price: "449", img: "assets/product_lavender.png", desc: "Calming French lavender" },
+            { id: 4, name: "Turmeric Glow", price: "399", img: "assets/product_turmeric.png", desc: "Brightening turmeric & raw honey" },
+            { id: 5, name: "Sandalwood & Turmeric", price: "499", img: "assets/product_sandalwood_turmeric.png", desc: "Luxurious sandalwood fusion" },
+            { id: 6, name: "Aloe Vera & Mint", price: "449", img: "assets/product_aloe_mint.png", desc: "Cooling aloe vera & peppermint" },
+            { id: 7, name: "Soap Nut Power", price: "349", img: "assets/product_soapnut.png", desc: "Ancient reetha cleanser" },
+            { id: 8, name: "Seegekai", price: "399", img: "assets/product_shikakai.png", desc: "Traditional shikakai-infused bar" },
+            { id: 9, name: "Besan", price: "299", img: "assets/product_besan.png", desc: "Traditional gram flour face & body bar" },
+            { id: 10, name: "Loofah Body Scrubber", price: "199", img: "assets/product_loofah.png", desc: "Natural exfoliating bath sponge" },
+            { id: 11, name: "Bamboo Toothbrush", price: "149", img: "assets/product_bamboo_toothbrush.png", desc: "Eco-friendly sustainable toothbrush" },
+            { id: 12, name: "Seegekai Powder", price: "249", img: "assets/product_seegekai_powder.png", desc: "Pure organic hair wash powder" },
+            { id: 13, name: "Hotel Soaps", price: "599", img: "assets/product_hotel_soaps.png", desc: "Luxury miniature botanical soap set" },
+            { id: 14, name: "Exfoliating Coffee Soap", price: "399", img: "assets/product_coffee_soap.png", desc: "Rich roasted coffee granules for deep exfoliation" }
+        ];
+
+        function toggleSearch(e) {
+            if (e) e.preventDefault();
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.classList.toggle('active');
+
+            if (searchOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => document.getElementById('searchInput').focus(), 100);
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            const emptyState = document.getElementById('searchEmpty');
+
+            if (query.length === 0) {
+                resultsContainer.innerHTML = '';
+                emptyState.style.display = 'none';
+                return;
+            }
+
+            const results = productsDB.filter(p =>
+                p.name.toLowerCase().includes(query) ||
+                p.desc.toLowerCase().includes(query)
+            );
+
+            resultsContainer.innerHTML = '';
+
+            if (results.length === 0) {
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                results.forEach(product => {
+                    const el = document.createElement('a');
+                    el.href = 'shop.html';
+                    el.className = 'search-result-item';
+                    el.innerHTML = `
+                        <img src="${product.img}" alt="${product.name}" class="search-result-img" onerror="this.src='assets/logo.jpg'">
+                        <div class="search-result-info">
+                            <span class="search-result-title">${product.name}</span>
+                            <span class="search-result-price">₹${product.price}</span>
+                        </div>
+                    `;
+                    resultsContainer.appendChild(el);
+                });
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menuOverlay = document.getElementById('mobileMenuOverlay');
+            menuOverlay.classList.toggle('active');
+            if (menuOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ═══════════════ SHARE PRODUCT ═══════════════
+
+        function shareProduct(btn) {
+            const card = btn.closest('.product-card') || btn.closest('.shop-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+            const price = card.dataset.price || '0';
+
+            const shareText = `🌿 Check out *${name}* (₹${price}) from Bloom Cure! Handcrafted botanical goodness.\n\nShop now: https://bloomcure.in/shop`;
+
+            // Use Web Share API if available (mobile)
+            if (navigator.share) {
+                navigator.share({
+                    title: `${name} — Bloom Cure`,
+                    text: `🌿 Check out ${name} (₹${price}) from Bloom Cure! Handcrafted botanical goodness.`,
+                    url: window.location.href
+                }).catch(() => { });
+            } else {
+                // Fallback: copy WhatsApp share link
+                const whatsappURL = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+                window.open(whatsappURL, '_blank');
+            }
+
+            // Button feedback
+            btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+            btn.style.color = '#25D366';
+            btn.style.borderColor = '#25D366';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-share-nodes"></i>';
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            }, 1500);
+        }
+
+        // Auto-inject share buttons into all product cards
+        document.querySelectorAll('.product-card__actions').forEach(actionsDiv => {
+            const shareBtn = document.createElement('button');
+            shareBtn.className = 'btn-share';
+            shareBtn.setAttribute('onclick', 'shareProduct(this)');
+            shareBtn.setAttribute('title', 'Share this product');
+            shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i>';
+            actionsDiv.appendChild(shareBtn);
+        });
+
+        // Initialize UI
+        updateCartUI();
+    </script>
+</body>
+
+</html>

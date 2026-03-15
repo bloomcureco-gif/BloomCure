@@ -1,0 +1,3513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Cure | Nature's Healing Touch for Your Skin</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta name="description"
+        content="Handcrafted botanical soaps made with natural ingredients, essential oils, and plant-based butters for pure, radiant skin.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           Index Page — Premium Enhancements
+           ═══════════════════════════════════════════ */
+
+        /* Hero Enhancements */
+        /* ═══════════════ PREMIUM HERO ═══════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--clr-dark-green);
+        }
+
+        /* ── Background slide (uses <img> for reliable full-bleed) ── */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 1.6s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+
+        /* Gradient overlay for readability */
+        .hero-slide__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg,
+                    rgba(26, 46, 32, 0.85) 0%,
+                    rgba(26, 46, 32, 0.55) 35%,
+                    rgba(26, 46, 32, 0.15) 60%,
+                    transparent 80%);
+            z-index: 2;
+        }
+
+        /* ── Content layer ── */
+        .hero-content-layer {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            opacity: 0;
+            transition: opacity 1.4s ease-in-out;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .hero-content-layer.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ── Slide 1 — editorial overlay card ── */
+        .hero-overlay-box {
+            max-width: 560px;
+            padding: 3.5rem 3.5rem 3rem;
+            background: rgba(26, 46, 32, 0.35);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 160, 40, 0.25);
+            border-radius: 6px;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+            text-align: left;
+            animation: heroCardIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        @keyframes heroCardIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--ff-body);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--clr-gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero__label::before {
+            content: '';
+            width: 24px;
+            height: 1.5px;
+            background: var(--clr-gold);
+        }
+
+        .hero__title {
+            font-size: 3.2rem;
+            font-family: var(--ff-heading);
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            letter-spacing: 0.5px;
+        }
+
+        .hero__title em {
+            font-style: italic;
+            color: var(--clr-gold);
+            font-weight: 400;
+        }
+
+        .hero__desc {
+            font-size: 1rem;
+            font-family: var(--ff-body);
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 2.2rem;
+            max-width: 440px;
+        }
+
+        .hero__actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 1rem 2.8rem;
+            background: var(--clr-gold);
+            color: var(--clr-dark-green);
+            text-decoration: none;
+            font-family: var(--ff-body);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 6px 20px rgba(197, 160, 40, 0.35);
+        }
+
+        .hero__btn:hover {
+            background: #fff;
+            color: var(--clr-dark-green);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .hero__btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 1rem 2.2rem;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-family: var(--ff-body);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            transition: all 0.4s ease;
+        }
+
+        .hero__btn-secondary:hover {
+            border-color: var(--clr-gold);
+            color: var(--clr-gold);
+            transform: translateY(-2px);
+        }
+
+        /* ── Slide 2 — left-aligned editorial ── */
+        .slide-2-content {
+            padding-left: 5%;
+        }
+
+        .slide-2-text-wrap {
+            max-width: 580px;
+        }
+
+        .slide-2-title {
+            font-family: var(--ff-heading);
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+            line-height: 1.05;
+            color: #fff;
+        }
+
+        .slide-2-subtitle {
+            font-family: var(--ff-body);
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .slide-2-btn {
+            display: inline-block;
+            padding: 1rem 3.5rem;
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            text-decoration: none;
+            font-family: var(--ff-body);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+            border-radius: 50px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: all 0.4s ease;
+        }
+
+        .slide-2-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--clr-gold);
+            color: var(--clr-gold);
+            transform: translateY(-2px);
+        }
+
+        .slide-2-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--clr-gold), transparent);
+            margin-bottom: 1.5rem;
+        }
+
+        .slide-2-small-text {
+            font-family: var(--ff-body);
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            color: var(--clr-gold);
+            font-weight: 600;
+        }
+
+        .slide-2-large-text {
+            font-family: var(--ff-heading);
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            color: #fff;
+        }
+
+        .slide-2-large-text em {
+            font-style: italic;
+            color: var(--clr-gold);
+        }
+
+        /* ── Slider controls ── */
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 20;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: all 0.4s ease;
+        }
+
+        .hero-arrow:hover {
+            color: #fff;
+            background: rgba(197, 160, 40, 0.15);
+            border-color: var(--clr-gold);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .hero-arrow-left {
+            left: 2.5rem;
+        }
+
+        .hero-arrow-right {
+            right: 2.5rem;
+        }
+
+        /* Dots → premium lines */
+        .hero-dots {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .hero-dots .dot {
+            width: 28px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .hero-dots .dot.active {
+            background: var(--clr-gold);
+            width: 52px;
+            box-shadow: 0 0 10px rgba(197, 160, 40, 0.4);
+        }
+
+        /* ── Floating decorative particles ── */
+        .hero-particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0;
+        }
+
+        .hero-slide.active .hero-particle {
+            opacity: 1;
+        }
+
+        .hero-particle--1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.08) 0%, transparent 70%);
+            top: 10%;
+            right: 5%;
+            animation: heroFloat 8s ease-in-out infinite;
+        }
+
+        .hero-particle--2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(123, 139, 79, 0.06) 0%, transparent 70%);
+            bottom: 15%;
+            left: 8%;
+            animation: heroFloat 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(15px, -20px);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 85vh;
+            }
+
+            .hero-slide__overlay {
+                background: linear-gradient(180deg,
+                        rgba(26, 46, 32, 0.85) 0%,
+                        rgba(26, 46, 32, 0.6) 50%,
+                        rgba(26, 46, 32, 0.3) 100%);
+            }
+
+            .hero-overlay-box {
+                padding: 2rem 1.8rem;
+                max-width: 100%;
+            }
+
+            .hero__title {
+                font-size: 2rem;
+            }
+
+            .hero__desc {
+                font-size: 0.9rem;
+            }
+
+            .hero__actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .slide-2-title {
+                font-size: 3rem;
+            }
+
+            .slide-2-large-text {
+                font-size: 2rem;
+            }
+
+            .hero-arrow {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .hero-arrow-left {
+                left: 1rem;
+            }
+
+            .hero-arrow-right {
+                right: 1rem;
+            }
+
+            .hero-particle {
+                display: none;
+            }
+        }
+
+        /* Section Labels */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--clr-sage);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.72rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 25px;
+            height: 1.5px;
+            background: var(--clr-gold);
+        }
+
+        .section-heading {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .section-heading em {
+            color: var(--clr-sage);
+            font-style: italic;
+        }
+
+        /* About Section Enhancement */
+        .about-section {
+            background-color: white;
+            position: relative;
+        }
+
+        .about-image-wrap {
+            position: relative;
+        }
+
+        .about-image-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--clr-gold);
+            border-radius: 0 0 30px 0;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .about-experience {
+            position: absolute;
+            bottom: 30px;
+            right: -20px;
+            background: var(--clr-dark-green);
+            color: var(--clr-cream);
+            padding: 1.5rem 1.8rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(26, 46, 32, 0.3);
+            z-index: 2;
+        }
+
+        .about-experience__number {
+            font-family: var(--ff-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--clr-gold);
+            display: block;
+            line-height: 1;
+        }
+
+        .about-experience__label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--clr-text);
+            font-weight: 500;
+        }
+
+        .about-feature-item i {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(123, 139, 79, 0.1);
+            color: var(--clr-sage);
+            border-radius: 50%;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        /* Ingredients Section Enhancement */
+        .ingredient-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ingredient-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--clr-sage), var(--clr-gold));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .ingredient-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .ingredient-card:hover::before {
+            opacity: 1;
+        }
+
+        .ingredient-card__icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .ingredient-card__icon--rose {
+            background: #FCE4EC;
+            color: #C62828;
+        }
+
+        .ingredient-card__icon--turmeric {
+            background: #FFF8E1;
+            color: #F57F17;
+        }
+
+        .ingredient-card__icon--shea {
+            background: #F3E5F5;
+            color: #6A1B9A;
+        }
+
+        .ingredient-card__icon--neem {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .ingredient-card__icon--lavender {
+            background: #EDE7F6;
+            color: #4527A0;
+        }
+
+        .ingredient-card__icon--aloe {
+            background: #E0F7FA;
+            color: #00695C;
+        }
+
+        /* Feature Cards Enhancement */
+        .feature-card-premium {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+
+        .feature-card-premium:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card-premium__icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, rgba(123, 139, 79, 0.12), rgba(197, 160, 40, 0.08));
+            color: var(--clr-sage);
+        }
+
+        /* Sustainability Section */
+        .sustainability-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sustainability-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(160deg, rgba(26, 46, 32, 0.03) 0%, transparent 50%, rgba(197, 160, 40, 0.03) 100%);
+            pointer-events: none;
+        }
+
+        .sustainability-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .sustainability-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--clr-text-light);
+        }
+
+        .sustainability-badge i {
+            color: var(--clr-sage);
+            font-size: 1rem;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            background: var(--clr-dark-green);
+            color: var(--clr-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(249, 247, 242, 0.06);
+            border: 1px solid rgba(249, 247, 242, 0.08);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(249, 247, 242, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-card__stars {
+            color: var(--clr-gold);
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 3px;
+        }
+
+        .testimonial-card__text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(249, 247, 242, 0.85);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial-card__avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .testimonial-card__name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card__product {
+            font-size: 0.75rem;
+            color: var(--clr-gold);
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--clr-sage), #5a7a35);
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-banner h2 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--clr-dark-green);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            background: var(--clr-cream);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero__title {
+                font-size: 3.2rem;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-experience {
+                position: relative;
+                right: 0;
+                bottom: 0;
+                margin-top: 1.5rem;
+                display: inline-block;
+            }
+
+            .sustainability-badges {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero__title {
+                font-size: 2.5rem;
+            }
+
+            .hero__actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ═══════════════ NEW ARRIVALS SPOTLIGHT ═══════════════ */
+
+        /* Highlighted product card glow */
+        .product-card--highlight {
+            border: 2px solid var(--clr-gold) !important;
+            box-shadow: 0 0 0 4px rgba(197, 160, 40, 0.1), 0 8px 30px rgba(197, 160, 40, 0.12) !important;
+            position: relative;
+        }
+
+        .product-card--highlight::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(197, 160, 40, 0.15), transparent, rgba(123, 139, 79, 0.15));
+            z-index: -1;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.01);
+            }
+        }
+
+        /* NEW ribbon badge */
+        .product-card__new-ribbon {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: linear-gradient(135deg, #C5A028, #DDB832);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+            z-index: 5;
+            box-shadow: 0 4px 12px rgba(197, 160, 40, 0.35);
+            animation: new-badge-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes new-badge-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 12px rgba(197, 160, 40, 0.35);
+            }
+
+            50% {
+                box-shadow: 0 4px 20px rgba(197, 160, 40, 0.6);
+            }
+        }
+
+        /* Spotlight banner */
+        .spotlight-banner {
+            background: linear-gradient(135deg, var(--clr-dark-green), #243d28);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spotlight-banner::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -50px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .spotlight-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -30px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(123, 139, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .spotlight-title {
+            color: var(--clr-cream);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .spotlight-title em {
+            color: var(--clr-gold);
+            font-style: italic;
+        }
+
+        .spotlight-subtitle {
+            text-align: center;
+            color: rgba(249, 247, 242, 0.7);
+            margin-bottom: 3.5rem;
+            font-size: 1.05rem;
+        }
+
+        .spotlight-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .spotlight-label span {
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--clr-gold);
+            background: linear-gradient(90deg, var(--clr-gold), #FFD700, var(--clr-gold));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .spotlight-label::before,
+        .spotlight-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--clr-gold));
+        }
+
+        .spotlight-label::after {
+            background: linear-gradient(90deg, var(--clr-gold), transparent);
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .spotlight-card {
+            background: rgba(249, 247, 242, 0.06);
+            border: 1px solid rgba(197, 160, 40, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(197, 160, 40, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .spotlight-card__image {
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .spotlight-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .spotlight-card:hover .spotlight-card__image img {
+            transform: scale(1.08);
+        }
+
+        .spotlight-card__image-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: linear-gradient(135deg, var(--clr-gold), #DDB832);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 50px;
+        }
+
+        .spotlight-card__body {
+            padding: 1.5rem;
+        }
+
+        .spotlight-card__name {
+            font-family: var(--ff-heading);
+            font-size: 1.4rem;
+            color: var(--clr-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .spotlight-card__desc {
+            color: rgba(249, 247, 242, 0.65);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .spotlight-card__price {
+            font-family: var(--ff-heading);
+            font-size: 1.5rem;
+            color: var(--clr-gold);
+            font-weight: 700;
+        }
+
+        .spotlight-card__rating {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-top: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .spotlight-card__rating i {
+            color: var(--clr-gold);
+            font-size: 0.7rem;
+        }
+
+        .spotlight-card__rating span {
+            font-size: 0.75rem;
+            color: rgba(249, 247, 242, 0.6);
+            margin-left: 4px;
+        }
+
+        .spotlight-card__actions {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .spotlight-card__actions .btn-add-cart,
+        .spotlight-card__actions .btn-buy-now {
+            flex: 1;
+        }
+
+        @media (max-width: 992px) {
+            .spotlight-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .spotlight-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ═══════════════ PREMIUM NAVIGATION ═══════════════ */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .premium-nav.scrolled {
+            background: linear-gradient(135deg, rgba(26, 46, 32, 0.96), rgba(20, 38, 25, 0.98));
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(197, 160, 40, 0.15);
+            border-bottom-color: rgba(197, 160, 40, 0.2);
+        }
+
+        .premium-nav__inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: padding 0.5s ease;
+        }
+
+        .premium-nav.scrolled .premium-nav__inner {
+            padding: 0.7rem 3rem;
+        }
+
+        /* Logo Area */
+        .premium-nav__logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .premium-nav__logo img {
+            height: 56px;
+            width: 56px;
+            border-radius: 50%;
+            border: 2.5px solid var(--clr-gold);
+            box-shadow: 0 0 0 4px rgba(197, 160, 40, 0.08), 0 0 25px rgba(197, 160, 40, 0.15);
+            object-fit: cover;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .premium-nav.scrolled .premium-nav__logo img {
+            height: 44px;
+            width: 44px;
+            box-shadow: 0 0 0 3px rgba(197, 160, 40, 0.1), 0 0 20px rgba(197, 160, 40, 0.2);
+        }
+
+        .premium-nav__logo:hover img {
+            box-shadow: 0 0 0 5px rgba(197, 160, 40, 0.12), 0 0 35px rgba(197, 160, 40, 0.3);
+            transform: scale(1.05);
+        }
+
+        .premium-nav__brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .premium-nav__brand-name {
+            font-family: var(--ff-heading);
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--clr-cream);
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .premium-nav__brand-tagline {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--clr-gold);
+            opacity: 0.9;
+            margin-top: 3px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Nav Links */
+        .premium-nav__links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .premium-nav__link {
+            position: relative;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: rgba(249, 247, 242, 0.85);
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            transition: all 0.35s ease;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .premium-nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--clr-gold);
+            transform: translateX(-50%);
+            transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 0 8px rgba(197, 160, 40, 0.3);
+        }
+
+        .premium-nav__link:hover {
+            color: #fff;
+            text-shadow: 0 0 15px rgba(197, 160, 40, 0.2);
+        }
+
+        .premium-nav__link.active {
+            color: var(--clr-gold);
+        }
+
+        .premium-nav__link:hover::after,
+        .premium-nav__link.active::after {
+            width: 60%;
+        }
+
+        /* Action Icons */
+        .premium-nav__actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .premium-nav__icon-btn {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: rgba(249, 247, 242, 0.85);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .premium-nav__icon-btn:hover {
+            color: var(--clr-gold);
+            background: rgba(197, 160, 40, 0.12);
+            border-color: rgba(197, 160, 40, 0.4);
+            box-shadow: 0 0 20px rgba(197, 160, 40, 0.15);
+            transform: scale(1.05);
+        }
+
+        .premium-nav__cart-btn {
+            position: relative;
+        }
+
+        .premium-nav__cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, var(--clr-gold), #DDB832);
+            color: var(--clr-dark-green);
+            font-size: 0.55rem;
+            font-weight: 800;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(26, 46, 32, 0.9);
+            box-shadow: 0 2px 8px rgba(197, 160, 40, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .premium-nav__links {
+                display: none;
+            }
+
+            .premium-nav__inner {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        /* ═══════════════ PREMIUM FOOTER ═══════════════ */
+        .premium-footer {
+            background: linear-gradient(rgba(26, 46, 32, 0.98), rgba(26, 46, 32, 1)),
+                url('assets/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--clr-cream);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 40, 0.3), transparent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.8fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand__logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .footer-brand__logo img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-gold);
+            background: white;
+            padding: 2px;
+        }
+
+        .footer-brand__name {
+            font-family: var(--ff-heading);
+            font-size: 2.2rem;
+            color: var(--clr-cream);
+            margin: 0;
+        }
+
+        .footer-brand__desc {
+            color: rgba(249, 247, 242, 0.7);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            max-width: 320px;
+        }
+
+        .footer-heading {
+            color: var(--clr-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(249, 247, 242, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a:hover {
+            color: var(--clr-gold);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter__desc {
+            font-size: 0.95rem;
+            color: rgba(249, 247, 242, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .footer-newsletter__form {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter__form:focus-within {
+            border-color: rgba(197, 160, 40, 0.4);
+            box-shadow: 0 0 20px rgba(197, 160, 40, 0.1);
+        }
+
+        .footer-newsletter__input {
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            flex: 1;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .footer-newsletter__btn {
+            background: var(--clr-gold);
+            color: var(--clr-dark-green);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter__btn:hover {
+            background: #DDB832;
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(197, 160, 40, 0.3);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(249, 247, 242, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(249, 247, 242, 0.5);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-socials a {
+            color: rgba(249, 247, 242, 0.6);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--clr-gold);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand__logo {
+                justify-content: center;
+            }
+
+            .footer-brand__desc {
+                margin: 0 auto 2rem;
+            }
+
+            .footer-newsletter__form {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* ═══════════════ RESPONSIVE GRIDS ═══════════════ */
+        .products-grid,
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .model-showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+
+            .products-grid,
+            .ingredients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .model-showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .products-grid,
+            .ingredients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ═══════════════ MOBILE MENU ═══════════════ */
+        .premium-nav__menu-btn {
+            display: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            .premium-nav__menu-btn {
+                display: flex;
+            }
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(170deg,
+                    rgba(18, 36, 24, 0.99) 0%,
+                    rgba(26, 46, 32, 0.98) 40%,
+                    rgba(20, 40, 28, 0.99) 100%);
+            backdrop-filter: blur(30px) saturate(1.2);
+            -webkit-backdrop-filter: blur(30px) saturate(1.2);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Decorative background glow */
+        .mobile-menu-overlay::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .mobile-menu-overlay::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(123, 139, 79, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu__inner {
+            text-align: center;
+            width: 100%;
+            padding: 2rem;
+            transform: translateY(40px);
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__inner {
+            transform: translateY(0);
+        }
+
+        /* Close button */
+        .mobile-menu__close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(197, 160, 40, 0.08);
+            border: 1.5px solid rgba(197, 160, 40, 0.3);
+            color: var(--clr-gold);
+            font-size: 1.3rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(197, 160, 40, 0.08);
+        }
+
+        .mobile-menu__close:hover {
+            background: rgba(197, 160, 40, 0.15);
+            transform: rotate(90deg) scale(1.08);
+            box-shadow: 0 0 30px rgba(197, 160, 40, 0.15);
+            border-color: var(--clr-gold);
+        }
+
+        /* Brand section */
+        .mobile-menu__brand {
+            margin-bottom: 3.5rem;
+        }
+
+        .mobile-menu__brand img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2.5px solid var(--clr-gold);
+            margin: 0 auto 1.2rem;
+            box-shadow: 0 0 0 6px rgba(197, 160, 40, 0.08), 0 0 40px rgba(197, 160, 40, 0.12);
+            object-fit: cover;
+        }
+
+        .mobile-menu__brand-name {
+            font-family: var(--ff-heading);
+            font-size: 2.8rem;
+            color: var(--clr-cream);
+            display: block;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Nav links with staggered animation */
+        .mobile-menu__links {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 3.5rem;
+        }
+
+        .mobile-menu__links li {
+            margin-bottom: 0;
+        }
+
+        .mobile-menu__links a {
+            font-family: var(--ff-heading);
+            font-size: 1.6rem;
+            color: rgba(249, 247, 242, 0.6);
+            text-decoration: none;
+            display: inline-block;
+            padding: 1rem 2rem;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .mobile-menu__links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1.5px;
+            background: var(--clr-gold);
+            transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 0 6px rgba(197, 160, 40, 0.3);
+        }
+
+        .mobile-menu__links a:hover,
+        .mobile-menu__links a.active {
+            color: var(--clr-gold);
+            transform: scale(1.05);
+        }
+
+        .mobile-menu__links a:hover::after,
+        .mobile-menu__links a.active::after {
+            width: 50%;
+        }
+
+        /* Staggered link reveal */
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(1) {
+            animation: menuLinkIn 0.5s 0.1s both;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(2) {
+            animation: menuLinkIn 0.5s 0.2s both;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(3) {
+            animation: menuLinkIn 0.5s 0.3s both;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(4) {
+            animation: menuLinkIn 0.5s 0.4s both;
+        }
+
+        @keyframes menuLinkIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer section */
+        .mobile-menu__footer {
+            position: relative;
+        }
+
+        .mobile-menu__footer::before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+            margin: 0 auto 2rem;
+        }
+
+        .mobile-menu__footer-tagline {
+            color: rgba(249, 247, 242, 0.4);
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .mobile-menu__socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+        }
+
+        .mobile-menu__socials a {
+            color: rgba(249, 247, 242, 0.45);
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-menu__socials a:hover {
+            color: var(--clr-gold);
+            border-color: rgba(197, 160, 40, 0.3);
+            background: rgba(197, 160, 40, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(197, 160, 40, 0.1);
+        }
+
+        /* ═══════════════ PREMIUM SEARCH OVERLAY ═══════════════ */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(170deg,
+                    rgba(18, 36, 24, 0.99) 0%,
+                    rgba(26, 46, 32, 0.98) 40%,
+                    rgba(20, 40, 28, 0.99) 100%);
+            backdrop-filter: blur(30px) saturate(1.2);
+            -webkit-backdrop-filter: blur(30px) saturate(1.2);
+            z-index: 2100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .search-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .search__close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(197, 160, 40, 0.08);
+            border: 1.5px solid rgba(197, 160, 40, 0.3);
+            color: var(--clr-gold);
+            font-size: 1.3rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(197, 160, 40, 0.08);
+        }
+
+        .search__close:hover {
+            background: rgba(197, 160, 40, 0.15);
+            transform: rotate(90deg) scale(1.08);
+            box-shadow: 0 0 30px rgba(197, 160, 40, 0.15);
+            border-color: var(--clr-gold);
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition-delay: 0.1s;
+        }
+
+        .search-overlay.active .search-container {
+            transform: translateY(0);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(249, 247, 242, 0.2);
+            padding: 1rem 3rem 1rem 0;
+            font-size: 3rem;
+            font-family: var(--ff-heading);
+            color: var(--clr-cream);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(249, 247, 242, 0.3);
+        }
+
+        .search-input:focus {
+            border-bottom-color: var(--clr-gold);
+        }
+
+        .search-icon-large {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--clr-gold);
+            font-size: 2rem;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Search Results styling */
+        .search-results {
+            width: 100%;
+            margin-top: 2rem;
+            max-height: 50vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .search-results::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .search-results::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .search-results::-webkit-scrollbar-thumb {
+            background: rgba(197, 160, 40, 0.5);
+            border-radius: 10px;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--clr-cream);
+            transition: all 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: rgba(197, 160, 40, 0.05);
+            border-color: rgba(197, 160, 40, 0.3);
+            transform: translateX(10px);
+        }
+
+        .search-result-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 160, 40, 0.2);
+        }
+
+        .search-result-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-result-title {
+            font-family: var(--ff-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--clr-cream);
+        }
+
+        .search-result-price {
+            color: var(--clr-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .search-empty {
+            text-align: center;
+            color: rgba(249, 247, 242, 0.5);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .search-input {
+                font-size: 2rem;
+            }
+
+            .search-icon-large {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="premium-nav" id="mainNav">
+        <div class="premium-nav__inner">
+            <a href="index.html" class="premium-nav__logo">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <div class="premium-nav__brand">
+                    <span class="premium-nav__brand-name">Bloom Cure</span>
+                    <span class="premium-nav__brand-tagline">Artisan Botanicals</span>
+                </div>
+            </a>
+            <ul class="premium-nav__links">
+                <li><a href="index.html" class="premium-nav__link active">Home</a></li>
+                <li><a href="shop.html" class="premium-nav__link">Shop</a></li>
+                <li><a href="#about" class="premium-nav__link">About</a></li>
+                <li><a href="#ingredients" class="premium-nav__link">Ingredients</a></li>
+            </ul>
+            <div class="premium-nav__actions">
+                <a href="#" class="premium-nav__icon-btn" title="Search" onclick="toggleSearch(event)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+                <a href="cart.html" class="premium-nav__icon-btn premium-nav__cart-btn" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count" class="premium-nav__cart-badge">0</span>
+                </a>
+                <button class="premium-nav__icon-btn premium-nav__menu-btn" title="Menu" onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ SEARCH OVERLAY ═══════════════ -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search__close" onclick="toggleSearch(event)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for pure luxury..."
+                    autocomplete="off" onkeyup="handleSearch()">
+                <i class="fa-solid fa-magnifying-glass search-icon-large"></i>
+            </div>
+
+            <div class="search-results" id="searchResults">
+                <!-- Search results will be injected here via JS -->
+            </div>
+            <div class="search-empty" id="searchEmpty">
+                No products found matching your search.
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MOBILE MENU OVERLAY ═══════════════ -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <button class="mobile-menu__close" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="mobile-menu__inner">
+            <div class="mobile-menu__brand">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <span class="mobile-menu__brand-name">Bloom Cure</span>
+            </div>
+            <ul class="mobile-menu__links">
+                <li><a href="index.html" class="active" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="shop.html" onclick="toggleMobileMenu()">Shop</a></li>
+                <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
+            </ul>
+            <div class="mobile-menu__footer">
+                <div class="mobile-menu__footer-tagline">Healing Skin, Blooming Confidence</div>
+                <div class="mobile-menu__socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════ HERO SECTION ═══════════════ -->
+    <section class="hero premium-nyassa-hero">
+
+        <!-- ── Slide 1 Background ── -->
+        <div class="hero-slide active">
+            <img class="hero-slide__img" src="assets/hero_new_1.jpg" alt="Bloom Cure luxury soaps">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-particle hero-particle--1"></div>
+            <div class="hero-particle hero-particle--2"></div>
+        </div>
+
+        <!-- ── Slide 2 Background ── -->
+        <div class="hero-slide inactive">
+            <img class="hero-slide__img" src="assets/hero_new_2.jpg" alt="Bloom Cure handmade soap">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-particle hero-particle--1"></div>
+            <div class="hero-particle hero-particle--2"></div>
+        </div>
+
+        <!-- ── Slide 3 Background ── -->
+        <div class="hero-slide inactive">
+            <img class="hero-slide__img" src="assets/hero_new_3.jpg" alt="Bloom Cure botanical skincare">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-particle hero-particle--1"></div>
+            <div class="hero-particle hero-particle--2"></div>
+        </div>
+
+        <!-- Slider Arrows -->
+        <div class="hero-arrow hero-arrow-left" onclick="prevHeroSlide()"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="hero-arrow hero-arrow-right" onclick="nextHeroSlide()"><i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+        <!-- ── Slide 1 Content ── -->
+        <div class="hero-content-layer active">
+            <div class="container" style="position: relative; z-index: 10; width: 100%;">
+                <div class="hero-overlay-box">
+                    <div class="hero__label">Artisan Botanicals</div>
+                    <h1 class="hero__title">Discover Pure<br><em>Luxury.</em></h1>
+                    <p class="hero__desc">Handcrafted botanical soaps made with nature's finest ingredients — for skin
+                        that feels alive.</p>
+                    <div class="hero__actions">
+                        <a href="shop.html" class="hero__btn">Shop Collection <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#about" class="hero__btn-secondary">Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Slide 2 Content ── -->
+        <div class="hero-content-layer inactive">
+            <div class="container slide-2-content" style="position: relative; z-index: 10; width: 100%;">
+                <div class="slide-2-text-wrap" style="text-align: left;">
+                    <h1 class="slide-2-title">BLOOM CURE</h1>
+                    <p class="slide-2-subtitle">Healing Skin, Blooming Confidence</p>
+                    <a href="shop.html" class="slide-2-btn">Explore Now <i class="fa-solid fa-arrow-right"
+                            style="margin-left:8px;font-size:0.7rem;"></i></a>
+                    <div>
+                        <div class="slide-2-divider"></div>
+                        <p class="slide-2-small-text">HANDCRAFTED WITH CARE</p>
+                        <h2 class="slide-2-large-text">Nourish Your<br>Skin <em>Naturally</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Slide 3 Content ── -->
+        <div class="hero-content-layer inactive">
+            <div class="container" style="position: relative; z-index: 10; width: 100%;">
+                <div class="hero-overlay-box">
+                    <div class="hero__label">Nature's Gift</div>
+                    <h1 class="hero__title">Pure Botanical<br><em>Skincare.</em></h1>
+                    <p class="hero__desc">Experience the power of Ayurvedic ingredients — crafted for your skin's
+                        deepest nourishment.</p>
+                    <div class="hero__actions">
+                        <a href="shop.html" class="hero__btn">Explore Products <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#ingredients" class="hero__btn-secondary">Ingredients</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Dots -->
+        <div class="hero-dots">
+            <span class="dot active" onclick="goToHeroSlide(0)"></span>
+            <span class="dot" onclick="goToHeroSlide(1)"></span>
+            <span class="dot" onclick="goToHeroSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- ═══════════════ NEW ARRIVALS SPOTLIGHT ═══════════════ -->
+    <section class="spotlight-banner">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="spotlight-label"><span>✦ New Arrivals ✦</span></div>
+            <h2 class="spotlight-title">Discover Our Latest <em>Treasures</em></h2>
+            <p class="spotlight-subtitle">Three powerful Ayurvedic formulations — freshly crafted for your skin's
+                deepest needs.</p>
+            <div class="spotlight-grid">
+                <!-- Soap Nut Power -->
+                <div class="spotlight-card" data-name="Soap Nut Power" data-price="100">
+                    <div class="spotlight-card__image">
+                        <span class="spotlight-card__image-badge">✦ New</span>
+                        <img src="assets/product_soapnut.png" alt="Soap Nut Power Soap">
+                    </div>
+                    <div class="spotlight-card__body">
+                        <h3 class="spotlight-card__name">Soap Nut Power</h3>
+                        <p class="spotlight-card__desc">Ancient reetha cleanser with natural saponins for gentle,
+                            chemical-free cleansing and silky smooth skin.</p>
+                        <span class="spotlight-card__price">₹100</span>
+                        <div class="spotlight-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5</span>
+                        </div>
+                        <div class="spotlight-card__actions">
+                            <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Seegekai -->
+                <div class="spotlight-card" data-name="Seegekai" data-price="100">
+                    <div class="spotlight-card__image">
+                        <span class="spotlight-card__image-badge">✦ New</span>
+                        <img src="assets/product_shikakai.png" alt="Seegekai Soap">
+                    </div>
+                    <div class="spotlight-card__body">
+                        <h3 class="spotlight-card__name">Seegekai</h3>
+                        <p class="spotlight-card__desc">Traditional shikakai infused bar for deep cleansing, scalp care,
+                            and a natural herbal luminous shine.</p>
+                        <span class="spotlight-card__price">₹100</span>
+                        <div class="spotlight-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-regular fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                        <div class="spotlight-card__actions">
+                            <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Besan -->
+                <div class="spotlight-card" data-name="Besan" data-price="100">
+                    <div class="spotlight-card__image">
+                        <span class="spotlight-card__image-badge">✦ New</span>
+                        <img src="assets/product_besan.png" alt="Besan Soap">
+                    </div>
+                    <div class="spotlight-card__body">
+                        <h3 class="spotlight-card__name">Besan</h3>
+                        <p class="spotlight-card__desc">Traditional gram flour face & body bar for a radiant complexion
+                            and smooth, naturally exfoliated skin.</p>
+                        <span class="spotlight-card__price">₹100</span>
+                        <div class="spotlight-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                        <div class="spotlight-card__actions">
+                            <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loofah Body Scrubber -->
+                <div class="spotlight-card" data-name="Loofah Body Scrubber" data-price="50">
+                    <div class="spotlight-card__image">
+                        <span class="spotlight-card__image-badge">✦ New</span>
+                        <img src="assets/product_loofah.png" alt="Loofah Body Scrubber">
+                    </div>
+                    <div class="spotlight-card__body">
+                        <h3 class="spotlight-card__name">Loofah Body Scrubber</h3>
+                        <p class="spotlight-card__desc">Natural exfoliating bath sponge for smooth, glowing skin. 100%
+                            biodegradable and sustainable.</p>
+                        <span class="spotlight-card__price">₹50</span>
+                        <div class="spotlight-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8</span>
+                        </div>
+                        <div class="spotlight-card__actions">
+                            <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bamboo Toothbrush -->
+                <div class="spotlight-card" data-name="Bamboo Toothbrush" data-price="70">
+                    <div class="spotlight-card__image">
+                        <span class="spotlight-card__image-badge">✦ New</span>
+                        <img src="assets/product_bamboo_toothbrush.png" alt="Bamboo Toothbrush">
+                    </div>
+                    <div class="spotlight-card__body">
+                        <h3 class="spotlight-card__name">Bamboo Toothbrush</h3>
+                        <p class="spotlight-card__desc">Eco-friendly sustainable toothbrush with charcoal-infused soft
+                            bristles for gentle cleaning.</p>
+                        <span class="spotlight-card__price">₹70</span>
+                        <div class="spotlight-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                        <div class="spotlight-card__actions">
+                            <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seegekai Powder -->
+                <div class="spotlight-card" data-name="Seegekai Powder" data-price="249">
+                    <div class="spotlight-card__image">
+                        <span class="spotlight-card__image-badge">✦ New</span>
+                        <img src="assets/product_seegekai_powder.png" alt="Seegekai Powder">
+                    </div>
+                    <div class="spotlight-card__body">
+                        <h3 class="spotlight-card__name">Seegekai Powder</h3>
+                        <p class="spotlight-card__desc">Pure organic hair wash powder for strong roots, reduced
+                            hairfall, and natural shine.</p>
+                        <span class="spotlight-card__price">₹100</span>
+                        <div class="spotlight-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.7</span>
+                        </div>
+                        <div class="spotlight-card__actions">
+                            <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                    class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                            <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ MODEL SHOWCASE ═══════════════ -->
+    <section class="section-padding" style="background: white; overflow: hidden;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-label">As Seen On</span>
+                <h2 class="section-heading">Healing Skin, Blooming <em>Confidence</em></h2>
+                <p style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0;">
+                    Real beauty, real ingredients, real results our products speak through radiant skin.
+                </p>
+            </div>
+            <div class="model-showcase-grid">
+                <!-- Model Photo 1 -->
+                <div
+                    style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+                    <img src="assets/model_1.png" alt="Bloom Cure Model - Radiant Skin"
+                        style="width: 100%; display: block; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                        onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <!-- Gradient overlay at bottom -->
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem 1.5rem;
+                        background: linear-gradient(transparent, rgba(26, 46, 32, 0.85));
+                        color: var(--clr-cream);">
+                        <p
+                            style="font-family: var(--ff-heading); font-size: 1.1rem; font-style: italic; margin-bottom: 0.3rem;">
+                            "Nature's touch, visible results"
+                        </p>
+                        <span
+                            style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--clr-gold);">
+                            Bloom Cure Essentials
+                        </span>
+                    </div>
+                </div>
+                <!-- Model Photo 2 -->
+                <div style="position: relative;">
+                    <div
+                        style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-top: 3rem;">
+                        <img src="assets/model_2.png" alt="Bloom Cure Model - Healing Confidence"
+                            style="width: 100%; display: block; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                            onmouseover="this.style.transform='scale(1.03)'"
+                            onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                    <!-- Floating quote card -->
+                    <div style="position: absolute; top: 0; left: -30px; background: white; padding: 1.5rem 1.8rem;
+                        border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+                        border-left: 3px solid var(--clr-gold); max-width: 260px; z-index: 2;">
+                        <p
+                            style="font-size: 0.88rem; color: var(--clr-text); line-height: 1.6; font-style: italic; margin-bottom: 0.5rem;">
+                            "My skin has never felt this radiant and healthy."
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <i class="fa-solid fa-star" style="color: var(--clr-gold); font-size: 0.6rem;"></i>
+                            <i class="fa-solid fa-star" style="color: var(--clr-gold); font-size: 0.6rem;"></i>
+                            <i class="fa-solid fa-star" style="color: var(--clr-gold); font-size: 0.6rem;"></i>
+                            <i class="fa-solid fa-star" style="color: var(--clr-gold); font-size: 0.6rem;"></i>
+                            <i class="fa-solid fa-star" style="color: var(--clr-gold); font-size: 0.6rem;"></i>
+                            <span style="font-size: 0.7rem; color: var(--clr-text-light); margin-left: 4px;">— Priya
+                                S.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Brand tagline bar -->
+            <div
+                style="text-align: center; margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid rgba(26, 46, 32, 0.06);">
+                <p
+                    style="font-family: var(--ff-heading); font-size: 1.6rem; color: var(--clr-dark-green); font-weight: 700;">
+                    BLOOM CURE<sup style="font-size: 0.5em; vertical-align: super;">®</sup>
+                </p>
+                <p
+                    style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 3px; color: var(--clr-text-light); margin-top: 0.3rem;">
+                    Healing Skin, Blooming Confidence
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ ABOUT SECTION ═══════════════ -->
+    <section id="about" class="section-padding about-section">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+            <div class="about-image-wrap" style="position: relative;">
+                <div
+                    style="width: 100%; height: 520px; background-color: var(--clr-beige); border-radius: 200px 200px 0 0; overflow: hidden;">
+                    <img src="assets/ingredients_botanical.png" alt="Botanical Ingredients"
+                        style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.1);">
+                </div>
+                <div class="about-experience">
+                    <span class="about-experience__number">5+</span>
+                    <span class="about-experience__label">Years of Craft</span>
+                </div>
+            </div>
+            <div class="about-text">
+                <span class="section-label">Our Philosophy</span>
+                <h2 class="section-heading">Born from the Earth,<br>Crafted with <em>Love</em></h2>
+                <p style="margin-bottom: 1.5rem; color: var(--clr-text-light); line-height: 1.8;">We believe in the
+                    blooming beauty of nature. Every Bloom Cure bar is handcrafted in small batches using ancient
+                    botanical wisdom and modern skin science. We use only the finest cold-pressed oils, organic herbs,
+                    and therapeutic-grade essential oils.</p>
+                <p style="margin-bottom: 2rem; color: var(--clr-text-light); line-height: 1.8;">No synthetics, no harsh
+                    chemicals just the healing touch of nature for your most radiant skin yet.</p>
+                <div class="about-features">
+                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Cold-pressed oils</div>
+                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Organic herbs</div>
+                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Cruelty-free</div>
+                    <div class="about-feature-item"><i class="fa-solid fa-check"></i> Plastic-free</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PRODUCTS SECTION ═══════════════ -->
+    <section class="section-padding container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <span class="section-label">Handpicked for You</span>
+            <h2 class="section-heading">The Curated <em>Collection</em></h2>
+            <p style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0;">Floating artisanal bars
+                designed for your specific skin needs.</p>
+        </div>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-name="Rose Bloom" data-price="449">
+                <div class="product-card__image" style="background-color: #F8F4ED;">
+                    <span class="product-card__badge">Bestseller</span>
+                    <img src="assets/product_rose.png" alt="Rose Bloom Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Rose Bloom</h3>
+                        <p class="product-card__desc">Soothing rose petals & shea butter</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card" data-name="Neem Purify" data-price="399">
+                <div class="product-card__image" style="background-color: #F2F5EF;">
+                    <span class="product-card__badge product-card__badge--green">Organic</span>
+                    <img src="assets/product_neem.png" alt="Neem Purify Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Neem Purify</h3>
+                        <p class="product-card__desc">Deep cleansing neem & tea tree</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹100</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-regular fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card" data-name="Lavender Calm" data-price="449">
+                <div class="product-card__image" style="background-color: #F5F1F8;">
+                    <span class="product-card__badge product-card__badge--purple">Popular</span>
+                    <img src="assets/product_lavender.png" alt="Lavender Calm Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Lavender Calm</h3>
+                        <p class="product-card__desc">Calming lavender & chamomile blend</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card" data-name="Turmeric Glow" data-price="399">
+                <div class="product-card__image" style="background-color: #F9F7EF;">
+                    <span class="product-card__badge product-card__badge--gold">Glow</span>
+                    <img src="assets/product_turmeric.png" alt="Turmeric Glow Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Turmeric Glow</h3>
+                        <p class="product-card__desc">Brightening turmeric & honey</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-card" data-name="Sandalwood & Turmeric" data-price="499">
+                <div class="product-card__image" style="background-color: #FBF9F2;">
+                    <span class="product-card__badge product-card__badge--gold">Premium</span>
+                    <img src="assets/product_sandalwood_turmeric.png" alt="Sandalwood & Turmeric Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Sandalwood & Turmeric</h3>
+                        <p class="product-card__desc">Luxurious sandalwood & turmeric fusion</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="product-card" data-name="Aloe Vera & Mint" data-price="449">
+                <div class="product-card__image" style="background-color: #F0F6F0;">
+                    <span class="product-card__badge product-card__badge--green">Fresh</span>
+                    <img src="assets/product_aloe_mint.png" alt="Aloe Vera & Mint Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Aloe Vera & Mint</h3>
+                        <p class="product-card__desc">Cooling aloe vera & peppermint</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹100</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-regular fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 7 -->
+            <div class="product-card product-card--highlight" data-name="Soap Nut Power" data-price="349">
+                <div class="product-card__image" style="background-color: #F5F0E6;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Ayurvedic</span>
+                    <img src="assets/product_soapnut.png" alt="Soap Nut Power Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Soap Nut Power</h3>
+                        <p class="product-card__desc">Natural reetha cleanser for silky skin</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹100</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 8 -->
+            <div class="product-card product-card--highlight" data-name="Seegekai" data-price="399">
+                <div class="product-card__image" style="background-color: #EBF2EB;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--green">Herbal</span>
+                    <img src="assets/product_shikakai.png" alt="Seegekai Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Seegekai</h3>
+                        <p class="product-card__desc">Shikakai-infused deep cleansing bar</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹149</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-regular fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 9 -->
+            <div class="product-card product-card--highlight" data-name="Besan" data-price="299">
+                <div class="product-card__image" style="background-color: #FDF8ED;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Glow</span>
+                    <img src="assets/product_besan.png" alt="Besan Soap">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Besan</h3>
+                        <p class="product-card__desc">Traditional gram flour face &amp; body bar</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹109</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                            Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- View All CTA -->
+        <div style="text-align: center; margin-top: 3.5rem;">
+            <a href="shop.html" class="btn-premium" style="padding: 1rem 3rem;">View All Products <i
+                    class="fa-solid fa-arrow-right" style="margin-left: 8px; font-size: 0.75rem;"></i></a>
+        </div>
+    </section>
+
+    <!-- ═══════════════ INGREDIENTS SECTION ═══════════════ -->
+    <section id="ingredients" class="section-padding" style="background-color: #F0EDE5;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-label">What Goes In</span>
+                <h2 class="section-heading">Nature's <em>Finest</em></h2>
+                <p style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0;">Pure, potent, and
+                    ethically sourced botanical ingredients in every bar.</p>
+            </div>
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <div class="ingredient-card__icon ingredient-card__icon--rose">
+                        <i class="fa-solid fa-fan"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 0.75rem;">Rose Petals</h4>
+                    <p style="font-size: 0.88rem; color: var(--clr-text-light); line-height: 1.6;">Soothes and
+                        hydrates, leaving skin soft and revitalized with a delicate floral scent.</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-card__icon ingredient-card__icon--turmeric">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 0.75rem;">Turmeric Root</h4>
+                    <p style="font-size: 0.88rem; color: var(--clr-text-light); line-height: 1.6;">Organic turmeric
+                        provides a natural glow and helps even out skin tone beautifully.</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-card__icon ingredient-card__icon--shea">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 0.75rem;">Shea Butter</h4>
+                    <p style="font-size: 0.88rem; color: var(--clr-text-light); line-height: 1.6;">Rich in vitamins and
+                        fatty acids, it's the ultimate natural moisturizer for deep nourishment.</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-card__icon ingredient-card__icon--neem">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 0.75rem;">Neem Extract</h4>
+                    <p style="font-size: 0.88rem; color: var(--clr-text-light); line-height: 1.6;">Nature's antiseptic
+                        that purifies skin and fights blemishes with centuries of Ayurvedic wisdom.</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-card__icon ingredient-card__icon--lavender">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 0.75rem;">French Lavender</h4>
+                    <p style="font-size: 0.88rem; color: var(--clr-text-light); line-height: 1.6;">Calming aromatherapy
+                        that reduces stress and soothes sensitive, irritated skin naturally.</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-card__icon ingredient-card__icon--aloe">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 0.75rem;">Aloe Vera</h4>
+                    <p style="font-size: 0.88rem; color: var(--clr-text-light); line-height: 1.6;">Deep cooling
+                        hydration that repairs sun damage and refreshes tired, dull skin instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ WHY BLOOM CURE ═══════════════ -->
+    <section class="section-padding">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-heading">The Bloom Cure <em>Difference</em></h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card-premium">
+                    <div class="feature-card-premium__icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">100% Natural</h4>
+                    <p style="font-size: 0.85rem; color: var(--clr-text-light); line-height: 1.6;">Only plant-based
+                        goodness. Zero synthetics, zero compromises.</p>
+                </div>
+                <div class="feature-card-premium">
+                    <div class="feature-card-premium__icon">
+                        <i class="fa-solid fa-hands"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Small Batches</h4>
+                    <p style="font-size: 0.85rem; color: var(--clr-text-light); line-height: 1.6;">Each bar is
+                        handcrafted with care, ensuring premium quality.</p>
+                </div>
+                <div class="feature-card-premium">
+                    <div class="feature-card-premium__icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Eco-Packaging</h4>
+                    <p style="font-size: 0.85rem; color: var(--clr-text-light); line-height: 1.6;">100% biodegradable
+                        and earth-friendly, from box to bar.</p>
+                </div>
+                <div class="feature-card-premium">
+                    <div class="feature-card-premium__icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Skin Friendly</h4>
+                    <p style="font-size: 0.85rem; color: var(--clr-text-light); line-height: 1.6;">Gentle for all skin
+                        types, including sensitive and baby skin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+    <section class="section-padding testimonial-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-label" style="color: var(--clr-gold);">Customer Love</span>
+                <h2 class="section-heading" style="color: var(--clr-cream);">What Our <em
+                        style="color: var(--clr-gold);">Community</em> Says</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-card__text">"okay so i was super skeptical at first cuz ive tried like a
+                        hundred 'natural' soaps before and they all dried out my skin. but this one?? my face actually
+                        feels nice after washing. been using it for 3 weeks now and even my mom noticed the difference
+                        lol"</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar" style="background: #E8D5C4; color: #8B6914;">A</div>
+                        <div>
+                            <div class="testimonial-card__name">Ananya R.</div>
+                            <div class="testimonial-card__product">Rose Bloom</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-card__text">"bought the turmeric one for my amma's birthday honestly just
+                        needed a last minute gift 😅 she called me next week asking where to buy more. now im ordering
+                        for myself too. the glow is real yall"</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar" style="background: #D5E8D5; color: #2d6b3f;">S</div>
+                        <div>
+                            <div class="testimonial-card__name">Sneha K.</div>
+                            <div class="testimonial-card__product">Turmeric Glow</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="testimonial-card__text">"the lavender one smells SO good like i literally dont wanna get
+                        out of the shower 😂 only thing is it runs out fast because i keep using too much haha. skin
+                        feels really smooth tho, way better than the dove soap i was using before"</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar" style="background: #D5D5E8; color: #6b4f8a;">M</div>
+                        <div>
+                            <div class="testimonial-card__name">Meera P.</div>
+                            <div class="testimonial-card__product">Lavender Calm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ USER FEEDBACK ═══════════════ -->
+    <section class="section-padding feedback-section" style="background-color: var(--clr-beige);">
+        <div class="container" style="max-width: 800px;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label" style="color: var(--clr-gold);">Your Experience</span>
+                <h2 class="section-heading" style="color: var(--clr-dark-green);">Share Your <em style="color: var(--clr-gold);">Thoughts</em></h2>
+                <p style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0; line-height: 1.6;">Have you tried our botanical soaps? We'd love to hear how your skin feels after experiencing Bloom Cure.</p>
+            </div>
+            
+            <div class="feedback-form-container">
+                <form id="feedbackForm" onsubmit="submitFeedback(event)" class="premium-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fbName">Your Name</label>
+                            <input type="text" id="fbName" required placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="fbProduct">Product Used</label>
+                            <select id="fbProduct" required>
+                                <option value="" disabled selected>Select a product</option>
+                                <option value="Rose Bloom">Rose Bloom</option>
+                                <option value="Turmeric Glow">Turmeric Glow</option>
+                                <option value="Lavender Calm">Lavender Calm</option>
+                                <option value="Seegekai">Seegekai</option>
+                                <option value="Besan">Besan</option>
+                                <option value="Soap Nut Power">Soap Nut Power</option>
+                                <option value="Aloe Vera & Mint">Aloe Vera & Mint</option>
+                                <option value="Neem Purify">Neem Purify</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Your Rating</label>
+                        <div class="rating-stars-input" id="ratingStars">
+                            <i class="fa-solid fa-star" data-value="1"></i>
+                            <i class="fa-solid fa-star" data-value="2"></i>
+                            <i class="fa-solid fa-star" data-value="3"></i>
+                            <i class="fa-solid fa-star" data-value="4"></i>
+                            <i class="fa-solid fa-star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="fbRating" value="5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fbMessage">Your Feedback</label>
+                        <textarea id="fbMessage" rows="5" required placeholder="Tell us how your skin feels..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-white" style="width: 100%; justify-content: center; margin-top: 1rem; background: var(--clr-dark-green); color: var(--clr-gold); border: 1px solid var(--clr-gold);">
+                        Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>
+                    </button>
+                    
+                    <div id="feedbackSuccess" class="feedback-success-msg" style="display: none;">
+                        <i class="fa-solid fa-heart" style="color: red; margin-right: 5px;"></i> Thank you! Your feedback has been gracefully received.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ SUSTAINABILITY ═══════════════ -->
+    <section class="section-padding sustainability-section"
+        style="background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('assets/hero_bg.png'); background-attachment: fixed; background-position: center; background-size: cover;">
+        <div class="container" style="max-width: 800px; text-align: center; position: relative; z-index: 2;">
+            <span class="section-label">Our Promise</span>
+            <h2 class="section-heading">A Lighter <em>Footprint</em></h2>
+            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--clr-text-light); margin-bottom: 2.5rem;">We
+                are committed to the planet that heals us. Our process is strictly cruelty-free, our energy is
+                renewable, and our packaging is 100% plastic-free.<br>Because beautiful skin shouldn't cost the Earth.
+            </p>
+            <div class="sustainability-badges">
+                <div class="sustainability-badge"><i class="fa-solid fa-paw"></i> Cruelty-Free</div>
+                <div class="sustainability-badge"><i class="fa-solid fa-recycle"></i> Zero Waste</div>
+                <div class="sustainability-badge"><i class="fa-solid fa-solar-panel"></i> Renewable Energy</div>
+                <div class="sustainability-badge"><i class="fa-solid fa-ban"></i> No Plastic</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CTA BANNER ═══════════════ -->
+    <section class="cta-banner">
+        <div class="container" style="position: relative; z-index: 2;">
+            <h2>Ready to Bloom?</h2>
+            <p>Start your journey to naturally radiant skin with our curated botanical collection.</p>
+            <a href="shop.html" class="btn-white">
+                Shop Now <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PREMIUM FOOTER ═══════════════ -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-brand__logo">
+                        <img src="assets/logo.jpg" alt="Bloom Cure">
+                        <h2 class="footer-brand__name">Bloom Cure</h2>
+                    </a>
+                    <p class="footer-brand__desc">Handcrafting nature's best to help your skin bloom with radiance and
+                        health. Artisan botanicals for a mindful ritual.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Soaps</a></li>
+                        <li><a href="#">Gift Bundles</a></li>
+                        <li><a href="#">Subscribers Ritual</a></li>
+                        <li><a href="#">Digital Cards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#">The Ethos</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p class="footer-newsletter__desc">Join our botanical circle for exclusive tips on natural skincare
+                        and early access to new arrivals.</p>
+                    <form class="footer-newsletter__form"
+                        onsubmit="event.preventDefault(); showToast('Welcome to the botanical circle! 🌿');">
+                        <input type="email" placeholder="Email Address" class="footer-newsletter__input" required>
+                        <button type="submit" class="footer-newsletter__btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu__inner">
+            <button class="mobile-menu__close" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu__brand">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <span class="mobile-menu__brand-name">Bloom Cure</span>
+            </div>
+            <ul class="mobile-menu__links">
+                <li><a href="index.html" class="active" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="shop.html" onclick="toggleMobileMenu()">Shop</a></li>
+                <li><a href="index.html#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
+            </ul>
+            <div class="mobile-menu__footer">
+                <p>Healing Skin, Blooming Confidence</p>
+                <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-toast" class="toast glass-toast" style="color: var(--clr-cream);">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Item added to your botanical ritual.</span>
+    </div>
+
+    <script>
+        // Intersection Observer for reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('bloom_cure_cart')) || [];
+        const cartCountEl = document.getElementById('cart-count');
+        const toastEl = document.getElementById('cart-toast');
+
+        function updateCartUI() {
+            const totalItems = cart.length;
+            if (cartCountEl) {
+                cartCountEl.textContent = totalItems;
+                if (totalItems > 0) {
+                    cartCountEl.classList.add('active');
+                } else {
+                    cartCountEl.classList.remove('active');
+                }
+            }
+        }
+
+        function showToast(message) {
+            if (toastEl) {
+                const toastSpan = toastEl.querySelector('span');
+                if (toastSpan) toastSpan.textContent = message;
+                toastEl.classList.add('active');
+                setTimeout(() => {
+                    toastEl.classList.remove('active');
+                }, 3000);
+            }
+        }
+
+        function addToCart(btn) {
+            const card = btn.closest('.product-card') || btn.closest('.shop-card') || btn.closest('.spotlight-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+
+            // Extract raw number price from dataset or text
+            const rawPrice = card.dataset.price || '0';
+            const priceMatch = String(rawPrice).match(/[\d,]+/);
+            const price = priceMatch ? priceMatch[0] : '0';
+
+            const img = card.querySelector('img')?.src || 'assets/logo.jpg';
+
+            // Check if item already exists
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+            } else {
+                cart.push({ name, price, img, quantity: 1 });
+            }
+
+            localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
+            updateCartUI();
+            showToast(name + ' added to your botanical ritual.');
+
+            // Button feedback
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Added!';
+            btn.classList.add('btn-success');
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('btn-success');
+            }, 1500);
+        }
+
+        function buyNow(btn) {
+            const card = btn.closest('.product-card') || btn.closest('.shop-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+            const price = card.dataset.price || '0.00';
+
+            cart.push({ name, price });
+            localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
+            updateCartUI();
+            showToast('Opening WhatsApp to order ' + name + '...');
+
+            // Open WhatsApp with product details
+            const message = encodeURIComponent(
+                `Hi! I'd like to buy *${name}* (₹${price}) from Bloom Cure. 🌿`
+            );
+            const whatsappURL = `https://wa.me/919742522357?text=${message}`;
+
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening...';
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Buy Now';
+            }, 500);
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Hero Slider logic
+        let currentHeroSlide = 0;
+        const totalHeroSlides = 3; // total slides
+        let heroSlideInterval;
+
+        function updateHeroSlider() {
+            const bgs = document.querySelectorAll('.hero-slide');
+            const contents = document.querySelectorAll('.hero-content-layer');
+            const dots = document.querySelectorAll('.hero-dots .dot');
+
+            bgs.forEach((bg, index) => {
+                bg.classList.toggle('active', index === currentHeroSlide);
+                bg.classList.toggle('inactive', index !== currentHeroSlide);
+            });
+
+            contents.forEach((content, index) => {
+                content.classList.toggle('active', index === currentHeroSlide);
+                content.classList.toggle('inactive', index !== currentHeroSlide);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentHeroSlide);
+            });
+        }
+
+        function nextHeroSlide() {
+            currentHeroSlide = (currentHeroSlide + 1) % totalHeroSlides;
+            updateHeroSlider();
+            resetHeroInterval();
+        }
+
+        function prevHeroSlide() {
+            currentHeroSlide = (currentHeroSlide - 1 + totalHeroSlides) % totalHeroSlides;
+            updateHeroSlider();
+            resetHeroInterval();
+        }
+
+        function goToHeroSlide(index) {
+            currentHeroSlide = index;
+            updateHeroSlider();
+            resetHeroInterval();
+        }
+
+        function resetHeroInterval() {
+            if (heroSlideInterval) clearInterval(heroSlideInterval);
+            heroSlideInterval = setInterval(nextHeroSlide, 5000); // 5 seconds
+        }
+
+        // Initialize auto slider
+        resetHeroInterval();
+
+        // Nav scroll shrink effect
+        const nav = document.getElementById('mainNav');
+        if (nav) {
+            document.addEventListener('scroll', () => {
+                nav.classList.toggle('scrolled', window.scrollY > 60);
+            });
+        }
+
+        // ═══════════════ SEARCH & MOBILE MENU LOGIC ═══════════════
+
+        const productsDB = [
+            { id: 1, name: "Rose Bloom", price: "449", img: "assets/product_rose.png", desc: "Soothing rose petals & shea butter" },
+            { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem" },
+            { id: 3, name: "Lavender Calm", price: "449", img: "assets/product_lavender.png", desc: "Calming French lavender" },
+            { id: 4, name: "Turmeric Glow", price: "399", img: "assets/product_turmeric.png", desc: "Brightening turmeric & raw honey" },
+            { id: 5, name: "Sandalwood & Turmeric", price: "499", img: "assets/product_sandalwood_turmeric.png", desc: "Luxurious sandalwood fusion" },
+            { id: 6, name: "Aloe Vera & Mint", price: "449", img: "assets/product_aloe_mint.png", desc: "Cooling aloe vera & peppermint" },
+            { id: 7, name: "Soap Nut Power", price: "349", img: "assets/product_soapnut.png", desc: "Ancient reetha cleanser" },
+            { id: 8, name: "Seegekai", price: "399", img: "assets/product_shikakai.png", desc: "Traditional shikakai-infused bar" },
+            { id: 9, name: "Besan", price: "299", img: "assets/product_besan.png", desc: "Traditional gram flour face & body bar" },
+            { id: 10, name: "Loofah Body Scrubber", price: "199", img: "assets/product_loofah.png", desc: "Natural exfoliating bath sponge" },
+            { id: 11, name: "Bamboo Toothbrush", price: "149", img: "assets/product_bamboo_toothbrush.png", desc: "Eco-friendly sustainable toothbrush" },
+            { id: 12, name: "Seegekai Powder", price: "249", img: "assets/product_seegekai_powder.png", desc: "Pure organic hair wash powder" },
+            { id: 13, name: "Hotel Soaps", price: "599", img: "assets/product_hotel_soaps.png", desc: "Luxury miniature botanical soap set" },
+            { id: 14, name: "Exfoliating Coffee Soap", price: "399", img: "assets/product_coffee_soap.png", desc: "Rich roasted coffee granules for deep exfoliation" }
+        ];
+
+        function toggleSearch(e) {
+            if (e) e.preventDefault();
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.classList.toggle('active');
+
+            if (searchOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => document.getElementById('searchInput').focus(), 100);
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            const emptyState = document.getElementById('searchEmpty');
+
+            if (query.length === 0) {
+                resultsContainer.innerHTML = '';
+                emptyState.style.display = 'none';
+                return;
+            }
+
+            const results = productsDB.filter(p =>
+                p.name.toLowerCase().includes(query) ||
+                p.desc.toLowerCase().includes(query)
+            );
+
+            resultsContainer.innerHTML = '';
+
+            if (results.length === 0) {
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                results.forEach(product => {
+                    const el = document.createElement('a');
+                    el.href = 'shop.html';
+                    el.className = 'search-result-item';
+                    el.innerHTML = `
+                        <img src="${product.img}" alt="${product.name}" class="search-result-img" onerror="this.src='assets/logo.jpg'">
+                        <div class="search-result-info">
+                            <span class="search-result-title">${product.name}</span>
+                            <span class="search-result-price">₹${product.price}</span>
+                        </div>
+                    `;
+                    resultsContainer.appendChild(el);
+                });
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menuOverlay = document.getElementById('mobileMenuOverlay');
+            menuOverlay.classList.toggle('active');
+            if (menuOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ═══════════════ SHARE PRODUCT ═══════════════
+
+        function shareProduct(btn) {
+            const card = btn.closest('.product-card') || btn.closest('.spotlight-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+            const price = card.dataset.price || '0';
+
+            const shareText = `🌿 Check out *${name}* (₹${price}) from Bloom Cure! Handcrafted botanical goodness.\n\nShop now: https://bloomcure.in/shop`;
+
+            // Use Web Share API if available (mobile)
+            if (navigator.share) {
+                navigator.share({
+                    title: `${name} — Bloom Cure`,
+                    text: `🌿 Check out ${name} (₹${price}) from Bloom Cure! Handcrafted botanical goodness.`,
+                    url: window.location.href
+                }).catch(() => { });
+            } else {
+                // Fallback: open WhatsApp share
+                const whatsappURL = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+                window.open(whatsappURL, '_blank');
+            }
+
+            // Button feedback
+            btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+            btn.style.color = '#25D366';
+            btn.style.borderColor = '#25D366';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-share-nodes"></i>';
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            }, 1500);
+        }
+
+        // Auto-inject share buttons into all product and spotlight cards
+        document.querySelectorAll('.product-card__actions, .spotlight-card__actions').forEach(actionsDiv => {
+            const shareBtn = document.createElement('button');
+            shareBtn.className = 'btn-share';
+            shareBtn.setAttribute('onclick', 'shareProduct(this)');
+            shareBtn.setAttribute('title', 'Share this product');
+            shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i>';
+            actionsDiv.appendChild(shareBtn);
+        });
+
+        // Initialize UI
+        updateCartUI();
+
+        // ═══════════════ FEEDBACK FORM LOGIC ═══════════════
+        const stars = document.querySelectorAll('#ratingStars i');
+        const ratingInput = document.getElementById('fbRating');
+
+        if (stars.length > 0) {
+            // Set default 5 stars active
+            stars.forEach((star) => {
+                star.classList.add('active');
+                
+                star.addEventListener('click', () => {
+                    const value = star.getAttribute('data-value');
+                    ratingInput.value = value;
+                    
+                    stars.forEach((s, i) => {
+                        if (i < value) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        function submitFeedback(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i> Sending Feedback...';
+            btn.style.opacity = '0.7';
+            
+            // Simulate processing the feedback (would normally be an API call here)
+            setTimeout(() => {
+                e.target.reset();
+                if(stars) stars.forEach(s => s.classList.add('active'));
+                if(ratingInput) ratingInput.value = '5';
+                
+                btn.innerHTML = 'Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>';
+                btn.style.opacity = '1';
+                
+                const successMsg = document.getElementById('feedbackSuccess');
+                successMsg.style.display = 'block';
+                
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+            }, 1200);
+        }
+    </script>
+</body>
+
+</html>
