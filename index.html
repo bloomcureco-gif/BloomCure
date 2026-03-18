@@ -457,8 +457,15 @@
 
             .hero__actions {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: stretch;
                 gap: 1rem;
+                width: 100%;
+            }
+
+            .hero__btn, .hero__btn-secondary, .slide-2-btn {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
             }
 
             .slide-2-title {
@@ -470,17 +477,22 @@
             }
 
             .hero-arrow {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
+                width: 44px;
+                height: 44px;
+                font-size: 1.1rem;
+                top: auto;
+                bottom: 2.5rem;
+                transform: translateY(50%);
+                background: rgba(26, 46, 32, 0.4);
+                border-color: rgba(197, 160, 40, 0.5);
             }
 
             .hero-arrow-left {
-                left: 1rem;
+                left: 1.5rem;
             }
 
             .hero-arrow-right {
-                right: 1rem;
+                right: 1.5rem;
             }
 
             .hero-particle {
@@ -518,6 +530,13 @@
         .section-heading em {
             color: var(--clr-sage);
             font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 2.2rem;
+                line-height: 1.3;
+            }
         }
 
         /* About Section Enhancement */
@@ -1332,7 +1351,7 @@
         /* ═══════════════ PREMIUM NAVIGATION ═══════════════ */
         .premium-nav {
             position: fixed;
-            top: 0;
+            top: 38px;
             left: 0;
             right: 0;
             z-index: 1000;
@@ -1344,6 +1363,7 @@
         }
 
         .premium-nav.scrolled {
+            top: 0;
             background: linear-gradient(135deg, rgba(26, 46, 32, 0.96), rgba(20, 38, 25, 0.98));
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
@@ -1722,7 +1742,13 @@
 
         @media (max-width: 600px) {
             .footer-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem 1rem;
+                text-align: left;
+            }
+
+            .footer-brand, .footer-newsletter {
+                grid-column: span 2;
                 text-align: center;
             }
 
@@ -1731,17 +1757,32 @@
             }
 
             .footer-brand__desc {
-                margin: 0 auto 2rem;
+                margin: 0 auto 1.5rem auto;
+            }
+
+            .footer-heading {
+                margin-bottom: 1.2rem;
+            }
+
+            .footer-links li {
+                margin-bottom: 0.8rem;
             }
 
             .footer-newsletter__form {
                 flex-direction: column;
+                max-width: 350px;
+                margin: 0 auto;
                 border-radius: 12px;
             }
 
             .footer-bottom {
                 flex-direction: column;
                 gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-socials {
+                justify-content: center;
             }
         }
 
@@ -2240,10 +2281,54 @@
                 font-size: 1.5rem;
             }
         }
+        
+        @media (max-width: 768px) {
+            .premium-nav__inner { padding: 0.5rem 1rem !important; }
+            .premium-nav__logo { gap: 6px !important; }
+            .premium-nav__logo img { height: 38px !important; width: 38px !important; border-width: 2px !important; }
+            .premium-nav.scrolled .premium-nav__logo img { height: 34px !important; width: 34px !important; }
+            .premium-nav__brand-name { font-size: 1.25rem !important; white-space: nowrap; }
+            .premium-nav__brand-tagline { font-size: 0.5rem !important; letter-spacing: 1.5px !important; }
+            .premium-nav__actions { gap: 0.3rem !important; }
+            .premium-nav__icon-btn { width: 34px !important; height: 34px !important; font-size: 0.8rem !important; border-width: 1px !important; }
+            .premium-nav__cart-badge { width: 16px !important; height: 16px !important; font-size: 0.5rem !important; top: -3px !important; right: -3px !important; }
+        }
+
+        .announcement-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 38px;
+            background-color: var(--clr-gold);
+            color: var(--clr-dark-green);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 1002;
+            white-space: nowrap;
+        }
+
+        .announcement-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
     </style>
 </head>
 
 <body>
+    <div class="announcement-bar">
+        <span class="announcement-text">Almost There! Get Free Delivery on Orders Above ₹999</span>
+    </div>
     <!-- Navigation -->
     <nav class="premium-nav" id="mainNav">
         <div class="premium-nav__inner">
@@ -2444,11 +2529,9 @@
                                 <span>4.5</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2471,11 +2554,9 @@
                                 <span>4.0</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2498,11 +2579,9 @@
                                 <span>5.0</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2525,11 +2604,9 @@
                                 <span>4.8</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2552,11 +2629,9 @@
                                 <span>4.9</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2578,11 +2653,9 @@
                                 <span>4.7</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2605,11 +2678,9 @@
                                 <span>4.8</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2632,11 +2703,9 @@
                                 <span>4.7</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2659,11 +2728,9 @@
                                 <span>4.9</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2686,11 +2753,9 @@
                                 <span>5.0</span>
                             </div>
                             <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy
-                                    Now</button>
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                             </div>
                         </div>
                     </div>
@@ -2848,10 +2913,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -2876,10 +2940,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -2904,10 +2967,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -2932,10 +2994,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -2960,10 +3021,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -2988,10 +3048,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -3017,10 +3076,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -3046,10 +3104,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -3075,14 +3132,13 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
-              <!-- Product 10 -->
+            <!-- Product 10 -->
             <div class="product-card product-card--highlight" data-name="Relaxing Bath Salts" data-price="199">
                 <div class="product-card__image" style="background-color: #F0F4F8;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
@@ -3104,10 +3160,9 @@
                         </div>
                     </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                            Buy Now</button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -3757,15 +3812,7 @@
             }, 1500);
         }
 
-        // Auto-inject share buttons into all product and spotlight cards
-        document.querySelectorAll('.product-card__actions, .spotlight-card__actions').forEach(actionsDiv => {
-            const shareBtn = document.createElement('button');
-            shareBtn.className = 'btn-share';
-            shareBtn.setAttribute('onclick', 'shareProduct(this)');
-            shareBtn.setAttribute('title', 'Share this product');
-            shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i>';
-            actionsDiv.appendChild(shareBtn);
-        });
+
 
         // Initialize UI
         updateCartUI();
