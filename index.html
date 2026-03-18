@@ -2160,52 +2160,103 @@
             transform: translateY(0);
         }
 
+        .search-heading {
+            font-family: var(--ff-heading);
+            color: var(--clr-gold);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            font-style: italic;
+        }
+
         .search-input-wrapper {
             position: relative;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(197, 160, 40, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input-wrapper:focus-within {
+            border-color: var(--clr-gold);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 10px 40px rgba(197, 160, 40, 0.15);
+            transform: translateY(-2px);
         }
 
         .search-input {
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 2px solid rgba(249, 247, 242, 0.2);
-            padding: 1rem 3rem 1rem 0;
-            font-size: 3rem;
+            padding: 1.5rem 4rem 1.5rem 2rem;
+            font-size: 1.8rem;
             font-family: var(--ff-heading);
             color: var(--clr-cream);
             outline: none;
-            transition: border-color 0.3s ease;
         }
 
         .search-input::placeholder {
-            color: rgba(249, 247, 242, 0.3);
-        }
-
-        .search-input:focus {
-            border-bottom-color: var(--clr-gold);
+            color: rgba(249, 247, 242, 0.4);
+            font-family: var(--ff-body);
+            font-size: 1.3rem;
+            font-weight: 300;
         }
 
         .search-icon-large {
             position: absolute;
-            right: 0;
+            right: 1.5rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--clr-gold);
-            font-size: 2rem;
-            opacity: 0.8;
+            font-size: 1.5rem;
             pointer-events: none;
         }
 
-        /* Search Results styling */
+        /* Quick Tags */
+        .search-quick-tags {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .search-tag {
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 1px solid rgba(197, 160, 40, 0.25);
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(249, 247, 242, 0.8);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-tag:hover {
+            background: rgba(197, 160, 40, 0.15);
+            color: var(--clr-gold);
+            border-color: var(--clr-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Search Results Grid Upgrade */
         .search-results {
             width: 100%;
-            margin-top: 2rem;
-            max-height: 50vh;
+            max-height: 55vh;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            padding-right: 10px;
+        }
+
+        @media (max-width: 650px) {
+            .search-results {
+                grid-template-columns: 1fr;
+            }
         }
 
         .search-results::-webkit-scrollbar {
@@ -2225,27 +2276,40 @@
         .search-result-item {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
             padding: 1rem;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            border-radius: 16px;
             text-decoration: none;
             color: var(--clr-cream);
             transition: all 0.3s ease;
+            animation: searchResultIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
 
+        @keyframes searchResultIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Stagger animations for first few items */
+        .search-result-item:nth-child(1) { animation-delay: 0.05s; }
+        .search-result-item:nth-child(2) { animation-delay: 0.1s; }
+        .search-result-item:nth-child(3) { animation-delay: 0.15s; }
+        .search-result-item:nth-child(4) { animation-delay: 0.2s; }
+
         .search-result-item:hover {
-            background: rgba(197, 160, 40, 0.05);
+            background: rgba(197, 160, 40, 0.08);
             border-color: rgba(197, 160, 40, 0.3);
-            transform: translateX(10px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .search-result-img {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 10px;
             border: 1px solid rgba(197, 160, 40, 0.2);
         }
 
@@ -2256,23 +2320,26 @@
 
         .search-result-title {
             font-family: var(--ff-heading);
-            font-size: 1.2rem;
-            margin-bottom: 0.2rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.3rem;
             color: var(--clr-cream);
+            line-height: 1.2;
         }
 
         .search-result-price {
             color: var(--clr-gold);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
         }
 
         .search-empty {
             text-align: center;
-            color: rgba(249, 247, 242, 0.5);
-            font-size: 1.2rem;
-            margin-top: 2rem;
+            color: rgba(249, 247, 242, 0.6);
+            font-size: 1.1rem;
+            margin-top: 3rem;
             display: none;
+            flex-direction: column;
+            align-items: center;
         }
 
         @media (max-width: 768px) {
@@ -2406,23 +2473,33 @@
         </div>
     </nav>
 
-    <!-- ═══════════════ SEARCH OVERLAY ═══════════════ -->
+    <!-- ═══════════════ PREMIUM SEARCH OVERLAY ═══════════════ -->
     <div class="search-overlay" id="searchOverlay">
         <button class="search__close" onclick="toggleSearch(event)">
             <i class="fa-solid fa-xmark"></i>
         </button>
         <div class="search-container">
+            <h2 class="search-heading">What are you looking for?</h2>
             <div class="search-input-wrapper">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search for pure luxury..."
+                <input type="text" class="search-input" id="searchInput" placeholder="Search soaps, body care..."
                     autocomplete="off" onkeyup="handleSearch()">
                 <i class="fa-solid fa-magnifying-glass search-icon-large"></i>
+            </div>
+
+            <!-- Quick Tags for faster discovery -->
+            <div class="search-quick-tags">
+                <span class="search-tag" onclick="setSearchQuery('Rose')">Rose</span>
+                <span class="search-tag" onclick="setSearchQuery('Turmeric')">Turmeric</span>
+                <span class="search-tag" onclick="setSearchQuery('Exfoliating')">Exfoliating</span>
+                <span class="search-tag" onclick="setSearchQuery('Neem')">Neem</span>
             </div>
 
             <div class="search-results" id="searchResults">
                 <!-- Search results will be injected here via JS -->
             </div>
             <div class="search-empty" id="searchEmpty">
-                No products found matching your search.
+                <i class="fa-regular fa-face-frown" style="font-size: 2.5rem; color: var(--clr-gold); margin-bottom: 1rem;"></i>
+                <br>No botanical products found matching your search.
             </div>
         </div>
     </div>
@@ -3850,6 +3927,14 @@
             }
         }
 
+        function setSearchQuery(query) {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = query;
+                handleSearch();
+            }
+        }
+
         function handleSearch() {
             const searchInput = document.getElementById('searchInput');
             if (!searchInput) return;
@@ -3861,8 +3946,7 @@
             if (query.length === 0) {
                 const suggestions = ["Rose Bloom", "Turmeric Glow", "Relaxing Bath Salts", "Rice Goat Milk Soap"];
                 const suggestedProducts = productsDB.filter(p => suggestions.includes(p.name));
-
-                resultsContainer.innerHTML = '<div style="color: var(--clr-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;">Suggested for you</div>';
+                resultsContainer.innerHTML = '<div style="grid-column: 1 / -1; color: var(--clr-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; margin-top: 0.5rem; font-weight: 600;">Suggested for you</div>';
 
                 suggestedProducts.forEach(product => {
                     const el = document.createElement('a');
@@ -3890,7 +3974,7 @@
             resultsContainer.innerHTML = '';
 
             if (results.length === 0) {
-                emptyState.style.display = 'block';
+                emptyState.style.display = 'flex';
             } else {
                 emptyState.style.display = 'none';
                 results.forEach(product => {
