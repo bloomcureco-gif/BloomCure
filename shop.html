@@ -1353,6 +1353,67 @@
 
         <!-- Product Grid — uses the same product-card system from index.css -->
         <div class="product-grid">
+            <!-- Product: Virgin Coconut Oil Soap -->
+            <div class="product-card product-card--highlight" data-name="Virgin Coconut Oil Soap" data-price="349" data-category="hydrating radiance">
+                <div class="product-card__image" style="background-color: #F8F5F0;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Handmade</span>
+                    <img src="assets/product_coconut.jpg" alt="Virgin Coconut Oil Soap" onerror="this.src='assets/logo.jpg'">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Virgin Coconut Oil Soap</h3>
+                        <p class="product-card__desc">Nourishing handmade soap with pure virgin coconut oil for deep hydration and a creamy, tropical lather.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹349</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product: Hand made Sandalwood Soap -->
+            <div class="product-card product-card--highlight" data-name="Hand made Sandalwood Soap" data-price="349" data-category="radiance calming">
+                <div class="product-card__image" style="background-color: #F8F5F0;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Handmade</span>
+                    <img src="assets/product_sandalwood_handmade.png" alt="Hand made Sandalwood Soap" onerror="this.src='assets/logo.jpg'">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Hand made Sandalwood Soap</h3>
+                        <p class="product-card__desc">Artisan handcrafted sandalwood soap with pure botanical oils for a divine, calming bath experience.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹349</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
+                    </div>
+                </div>
+            </div>
 
             <!-- Product: Red Sandalwood Herbal Bar -->
             <div class="product-card product-card--highlight" data-name="Red Sandalwood Herbal Bar" data-price="449"
@@ -2419,7 +2480,9 @@
         // ═══════════════ SEARCH & MOBILE MENU LOGIC ═══════════════
 
         const productsDB = [
-            { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.png", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion." },
+            { id: 23, name: "Virgin Coconut Oil Soap", price: "349", img: "assets/product_coconut.jpg", desc: "Nourishing handmade soap with pure virgin coconut oil for deep hydration.", category: "soap" },
+            { id: 22, name: "Hand made Sandalwood Soap", price: "349", img: "assets/product_sandalwood_handmade.png", desc: "Artisan handcrafted sandalwood soap with pure botanical oils.", category: "soap" },
+            { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.jpg", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion." },
             { id: 20, name: "Red Wine Soap", price: "399", img: "assets/product_red_wine.jpg", desc: "Rich in antioxidants from real red wine extract for youthful, glowing skin." },
             { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem" },
 
