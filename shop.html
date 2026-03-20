@@ -1041,15 +1041,33 @@
         }
 
         @keyframes searchResultIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Stagger animations for first few items */
-        .search-result-item:nth-child(1) { animation-delay: 0.05s; }
-        .search-result-item:nth-child(2) { animation-delay: 0.1s; }
-        .search-result-item:nth-child(3) { animation-delay: 0.15s; }
-        .search-result-item:nth-child(4) { animation-delay: 0.2s; }
+        .search-result-item:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .search-result-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .search-result-item:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .search-result-item:nth-child(4) {
+            animation-delay: 0.2s;
+        }
 
         .search-result-item:hover {
             background: rgba(197, 160, 40, 0.08);
@@ -1251,7 +1269,8 @@
                 <!-- Search results will be injected here via JS -->
             </div>
             <div class="search-empty" id="searchEmpty">
-                <i class="fa-regular fa-face-frown" style="font-size: 2.5rem; color: var(--clr-gold); margin-bottom: 1rem;"></i>
+                <i class="fa-regular fa-face-frown"
+                    style="font-size: 2.5rem; color: var(--clr-gold); margin-bottom: 1rem;"></i>
                 <br>No botanical products found matching your search.
             </div>
         </div>
@@ -1334,27 +1353,68 @@
 
         <!-- Product Grid — uses the same product-card system from index.css -->
         <div class="product-grid">
-            <!-- Product 1 -->
-            <div class="product-card" data-name="Rose Bloom" data-price="449" data-category="hydrating">
-                <div class="product-card__image" style="background-color: #F8F4ED;">
-                    <span class="product-card__badge">Bestseller</span>
-                    <img src="assets/product_rose.png" alt="Rose Bloom Soap">
+
+            <!-- Product: Red Sandalwood Herbal Bar -->
+            <div class="product-card product-card--highlight" data-name="Red Sandalwood Herbal Bar" data-price="449"
+                data-category="radiance">
+                <div class="product-card__image" style="background-color: #F8EDEA;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Premium</span>
+                    <img src="assets/product_red_sandalwood.png" alt="Bloom Cure Red Sandalwood Herbal Bar"
+                        onerror="this.src='assets/logo.jpg'">
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Rose Bloom</h3>
-                        <p class="product-card__desc">Soothing rose petals & shea butter for deep hydration and a
-                            natural glow.</p>
+                        <h3>Red Sandalwood Herbal Bar</h3>
+                        <p class="product-card__desc">Nature's premium skin healer with authentic red sandalwood extract
+                            for a refined, even complexion.</p>
                     </div>
                     <div class="product-card__price-row">
-                        <span class="product-card__price">₹149</span>
+                        <span class="product-card__price">₹449</span>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="product-card__actions">
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
+                            Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
+                                class="fa-solid fa-share-nodes"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product: Red Wine Soap -->
+            <div class="product-card product-card--highlight" data-name="Red Wine Soap" data-price="399"
+                data-category="radiance">
+                <div class="product-card__image" style="background-color: #F8E8EE;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--purple">Premium</span>
+                    <img src="assets/product_red_wine.png" alt="Bloom Cure Red Wine Soap"
+                        onerror="this.src='assets/logo.jpg'">
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__details">
+                        <h3>Red Wine Soap</h3>
+                        <p class="product-card__desc">Rich in antioxidants from real red wine extract for youthful,
+                            glowing skin.</p>
+                    </div>
+                    <div class="product-card__price-row">
+                        <span class="product-card__price">₹399</span>
                         <div class="product-card__rating">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.5</span>
+                            <span>4.8</span>
                         </div>
                     </div>
                     <div class="product-card__actions">
@@ -1402,141 +1462,8 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
-            <div class="product-card" data-name="Lavender Calm" data-price="449" data-category="calming">
-                <div class="product-card__image" style="background-color: #F5F1F8;">
-                    <span class="product-card__badge product-card__badge--purple">Popular</span>
-                    <img src="assets/product_lavender.png" alt="Lavender Calm Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Lavender Calm</h3>
-                        <p class="product-card__desc">Calming French lavender & chamomile for a spa-like bathing ritual.
-                        </p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹149</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Product 4 -->
-            <div class="product-card" data-name="Turmeric Glow" data-price="399" data-category="radiance">
-                <div class="product-card__image" style="background-color: #F9F7EF;">
-                    <span class="product-card__badge product-card__badge--gold">Glow</span>
-                    <img src="assets/product_turmeric.png" alt="Turmeric Glow Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Turmeric Glow</h3>
-                        <p class="product-card__desc">Brightening turmeric & raw honey to even skin tone and add
-                            radiance.</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹109</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.5</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Product 5 -->
-            <div class="product-card" data-name="Sandalwood & Turmeric" data-price="499" data-category="radiance">
-                <div class="product-card__image" style="background-color: #FBF9F2;">
-                    <span class="product-card__badge product-card__badge--gold">Premium</span>
-                    <img src="assets/product_sandalwood_turmeric.png" alt="Sandalwood & Turmeric Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Sandalwood & Turmeric</h3>
-                        <p class="product-card__desc">Luxurious sandalwood & turmeric fusion for a warm, radiant bathing
-                            experience.</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹109</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="product-card" data-name="Aloe Vera & Mint" data-price="449" data-category="calming">
-                <div class="product-card__image" style="background-color: #F0F6F0;">
-                    <span class="product-card__badge product-card__badge--green">Fresh</span>
-                    <img src="assets/product_aloe_mint.png" alt="Aloe Vera & Mint Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Aloe Vera & Mint</h3>
-                        <p class="product-card__desc">Cooling aloe vera & peppermint to refresh and revitalize tired
-                            skin.</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹109</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <span>4.0</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
 
             <!-- Product 7 -->
             <div class="product-card product-card--highlight" data-name="Soap Nut Power" data-price="349"
@@ -1968,43 +1895,7 @@
                 </div>
             </div>
 
-            <!-- Product 18: Oats & Honey Soap -->
-            <div class="product-card product-card--highlight" data-name="Oats & Honey Soap" data-price="349"
-                data-category="hydrating">
-                <div class="product-card__image" style="background-color: #FDF3E1;">
-                    <span class="product-card__new-ribbon">✦ NEW</span>
-                    <span class="product-card__badge product-card__badge--gold">Soothing</span>
-                    <img src="assets/product_oats_honey.png"
-                        alt="Bloom Cure Oats & Honey Soap - Handmade Soap For Face & Body"
-                        onerror="this.src='assets/logo.jpg'">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Oats & Honey Soap</h3>
-                        <p class="product-card__desc">Gentle handcrafted soap for face & body. Soothes inflammation
-                            while locking in moisture.</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹149</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <!-- Trust Banner -->
         <div class="trust-banner">
@@ -2102,7 +1993,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .premium-model-title em::after {
             content: '';
             position: absolute;
@@ -2129,12 +2020,12 @@
             border-radius: 24px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
             transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             aspect-ratio: 4/5;
             cursor: pointer;
         }
-        
+
         /* Editorial asymmetric layout */
         .premium-model-card:nth-child(2) {
             transform: translateY(80px);
@@ -2142,7 +2033,7 @@
 
         .premium-model-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
             z-index: 10;
         }
 
@@ -2247,24 +2138,29 @@
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
+
             .premium-model-card:nth-child(2) {
                 transform: none;
             }
+
             .premium-model-card:nth-child(2):hover {
                 transform: translateY(-10px);
             }
+
             .premium-brand-signature {
                 margin-top: 6rem;
             }
+
             .premium-model-title {
                 font-size: 2.8rem;
             }
         }
-        
+
         @media (max-width: 600px) {
             .premium-model-title {
                 font-size: 2.2rem;
             }
+
             .premium-model-quote {
                 font-size: 1.2rem;
             }
@@ -2277,7 +2173,7 @@
                 <span class="premium-model-subtitle">Real People, Real Glow</span>
                 <h2 class="premium-model-title">Healing Skin, <br>Blooming <em>Confidence</em></h2>
             </div>
-            
+
             <div class="premium-model-grid">
                 <div class="premium-model-card reveal" onclick="setSearchQuery('Rose')">
                     <img src="assets/model_1.png" alt="Bloom Cure Modern Routine" class="premium-model-img">
@@ -2286,8 +2182,9 @@
                         <button class="premium-model-btn">View Her Favs</button>
                     </div>
                 </div>
-                
-                <div class="premium-model-card reveal" style="animation-delay: 0.2s;" onclick="setSearchQuery('Turmeric')">
+
+                <div class="premium-model-card reveal" style="animation-delay: 0.2s;"
+                    onclick="setSearchQuery('Turmeric')">
                     <img src="assets/model_2.png" alt="Bloom Cure Radiant Glowing Skin" class="premium-model-img">
                     <div class="premium-model-overlay">
                         <p class="premium-model-quote">"Embracing my skin's <br>true healing potential."</p>
@@ -2522,12 +2419,10 @@
         // ═══════════════ SEARCH & MOBILE MENU LOGIC ═══════════════
 
         const productsDB = [
-            { id: 1, name: "Rose Bloom", price: "449", img: "assets/product_rose.png", desc: "Soothing rose petals & shea butter" },
+            { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.jpg", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion." },
+            { id: 20, name: "Red Wine Soap", price: "399", img: "assets/product_red_wine.jpg", desc: "Rich in antioxidants from real red wine extract for youthful, glowing skin." },
             { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem" },
-            { id: 3, name: "Lavender Calm", price: "449", img: "assets/product_lavender.png", desc: "Calming French lavender" },
-            { id: 4, name: "Turmeric Glow", price: "399", img: "assets/product_turmeric.png", desc: "Brightening turmeric & raw honey" },
-            { id: 5, name: "Sandalwood & Turmeric", price: "499", img: "assets/product_sandalwood_turmeric.png", desc: "Luxurious sandalwood fusion" },
-            { id: 6, name: "Aloe Vera & Mint", price: "449", img: "assets/product_aloe_mint.png", desc: "Cooling aloe vera & peppermint" },
+
             { id: 7, name: "Soap Nut Power", price: "349", img: "assets/product_soapnut.png", desc: "Ancient reetha cleanser" },
             { id: 8, name: "Seegekai", price: "399", img: "assets/product_shikakai.png", desc: "Traditional shikakai-infused bar" },
             { id: 9, name: "Besan", price: "299", img: "assets/product_besan.png", desc: "Traditional gram flour face & body bar" },
@@ -2539,7 +2434,6 @@
             { id: 15, name: "Rice Goat Milk Soap", price: "299", img: "assets/product_rice_goat_milk.png", desc: "Rich in vitamins and lactic acid to gently exfoliate" },
             { id: 16, name: "Multani Mitti Soap", price: "249", img: "assets/product_multani_mitti.png", desc: "Natural Fuller's Earth to absorb impurities and reduce acne" },
             { id: 17, name: "Activated Charcoal Soap", price: "299", img: "assets/product_charcoal.png", desc: "Deep pore detox for pollution protection" },
-            { id: 18, name: "Oats & Honey Soap", price: "349", img: "assets/product_oats_honey.png", desc: "Gentle handcrafted soap for face & body. Soothes inflammation" },
             { id: 19, name: "Relaxing Bath Salts", price: "199", img: "assets/relaxing_bath_salts.png", desc: "Epsom & Pink Salt bath soak for muscle recovery" }
         ];
 
@@ -2581,7 +2475,7 @@
             if (!resultsContainer || !emptyState) return;
 
             if (query.length === 0) {
-                const suggestions = ["Rose Bloom", "Turmeric Glow", "Relaxing Bath Salts", "Rice Goat Milk Soap"];
+                const suggestions = ["Relaxing Bath Salts", "Rice Goat Milk Soap"];
                 const suggestedProducts = productsDB.filter(p => suggestions.includes(p.name));
                 resultsContainer.innerHTML = '<div style="grid-column: 1 / -1; color: var(--clr-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; margin-top: 0.5rem; font-weight: 600;">Suggested for you</div>';
 
