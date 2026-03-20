@@ -2440,7 +2440,7 @@
 
 <body>
     <div class="announcement-bar">
-        <span class="announcement-text">Almost There! Get Free Delivery on Orders Above ₹999</span>
+        <span class="announcement-text">Almost There! Get Free Delivery on Orders Above ₹999 /-</span>
     </div>
     <!-- Navigation -->
     <nav class="premium-nav" id="mainNav">
@@ -2856,6 +2856,33 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Red Sandalwood Herbal Bar -->
+                    <div class="spotlight-card" data-name="Red Sandalwood Herbal Bar" data-price="449">
+                        <div class="spotlight-card__image">
+                            <span class="spotlight-card__image-badge">✦ New</span>
+                            <img src="assets/product_red_sandalwood.jpg" alt="Bloom Cure Red Sandalwood Herbal Bar"
+                                onerror="this.src='assets/logo.jpg'">
+                        </div>
+                        <div class="spotlight-card__body">
+                            <h3 class="spotlight-card__name">Red Sandalwood Herbal Bar</h3>
+                            <p class="spotlight-card__desc">Premium skin healer with authentic red sandalwood for a refined, even glow.</p>
+                            <span class="spotlight-card__price">₹449</span>
+                            <div class="spotlight-card__rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                            <div class="spotlight-card__actions">
+                                <button class="btn-add-cart" onclick="addToCart(this)"><i
+                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
+                                    Buy Now</button>
+                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
+                                        class="fa-solid fa-share-nodes"></i></button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Activated Charcoal Soap -->
                     <div class="spotlight-card" data-name="Activated Charcoal Soap" data-price="129">
                         <div class="spotlight-card__image">
@@ -2884,34 +2911,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Oats & Honey Soap -->
-                    <div class="spotlight-card" data-name="Oats &amp; Honey Soap" data-price="149">
-                        <div class="spotlight-card__image">
-                            <span class="spotlight-card__image-badge">✦ New</span>
-                            <img src="assets/product_oats_honey.png" alt="Bloom Cure Oats & Honey Soap"
-                                onerror="this.src='assets/logo.jpg'">
-                        </div>
-                        <div class="spotlight-card__body">
-                            <h3 class="spotlight-card__name">Oats &amp; Honey Soap</h3>
-                            <p class="spotlight-card__desc">Gentle handcrafted soap for face &amp; body. Soothes
-                                inflammation while locking in moisture.</p>
-                            <span class="spotlight-card__price">₹149</span>
-                            <div class="spotlight-card__rating">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i>
-                                <span>5.0</span>
-                            </div>
-                            <div class="spotlight-card__actions">
-                                <button class="btn-add-cart" onclick="addToCart(this)"><i
-                                        class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                                <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i>
-                                    Buy Now</button>
-                                <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                        class="fa-solid fa-share-nodes"></i></button>
-                            </div>
-                        </div>
-                    </div>
+
                 </div><!-- end track -->
                 <div class="spotlight-slider__progress" id="spotlightProgress"></div>
             </div><!-- end slider -->
@@ -3045,24 +3045,25 @@
                 designed for your specific skin needs.</p>
         </div>
         <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card" data-name="Rose Bloom" data-price="449">
-                <div class="product-card__image" style="background-color: #F8F4ED;">
-                    <span class="product-card__badge">Bestseller</span>
-                    <img src="assets/product_rose.png" alt="Rose Bloom Soap">
+            <!-- Product: Red Sandalwood Herbal Bar -->
+            <div class="product-card product-card--highlight" data-name="Red Sandalwood Herbal Bar" data-price="449">
+                <div class="product-card__image" style="background-color: #F8EDEA;">
+                    <span class="product-card__new-ribbon">✦ NEW</span>
+                    <span class="product-card__badge product-card__badge--gold">Premium</span>
+                    <img src="assets/product_red_sandalwood.jpg" alt="Bloom Cure Red Sandalwood Herbal Bar">
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Rose Bloom</h3>
-                        <p class="product-card__desc">Soothing rose petals & shea butter</p>
+                        <h3>Red Sandalwood Herbal Bar</h3>
+                        <p class="product-card__desc">Premium red sandalwood for refined skin</p>
                     </div>
                     <div class="product-card__price-row">
-                        <span class="product-card__price">₹149</span>
+                        <span class="product-card__price">₹449</span>
                         <div class="product-card__rating">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                 class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.5</span>
+                                class="fa-solid fa-star"></i>
+                            <span>5.0</span>
                         </div>
                     </div>
                     <div class="product-card__actions">
@@ -3105,126 +3106,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Product 3 -->
-            <div class="product-card" data-name="Lavender Calm" data-price="449">
-                <div class="product-card__image" style="background-color: #F5F1F8;">
-                    <span class="product-card__badge product-card__badge--purple">Popular</span>
-                    <img src="assets/product_lavender.png" alt="Lavender Calm Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Lavender Calm</h3>
-                        <p class="product-card__desc">Calming lavender & chamomile blend</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹149</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="product-card" data-name="Turmeric Glow" data-price="399">
-                <div class="product-card__image" style="background-color: #F9F7EF;">
-                    <span class="product-card__badge product-card__badge--gold">Glow</span>
-                    <img src="assets/product_turmeric.png" alt="Turmeric Glow Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Turmeric Glow</h3>
-                        <p class="product-card__desc">Brightening turmeric & honey</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹109</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.5</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 5 -->
-            <div class="product-card" data-name="Sandalwood & Turmeric" data-price="499">
-                <div class="product-card__image" style="background-color: #FBF9F2;">
-                    <span class="product-card__badge product-card__badge--gold">Premium</span>
-                    <img src="assets/product_sandalwood_turmeric.png" alt="Sandalwood & Turmeric Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Sandalwood & Turmeric</h3>
-                        <p class="product-card__desc">Luxurious sandalwood & turmeric fusion</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹109</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 6 -->
-            <div class="product-card" data-name="Aloe Vera & Mint" data-price="449">
-                <div class="product-card__image" style="background-color: #F0F6F0;">
-                    <span class="product-card__badge product-card__badge--green">Fresh</span>
-                    <img src="assets/product_aloe_mint.png" alt="Aloe Vera & Mint Soap">
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__details">
-                        <h3>Aloe Vera & Mint</h3>
-                        <p class="product-card__desc">Cooling aloe vera & peppermint</p>
-                    </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹100</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-regular fa-star"></i>
-                            <span>4.0</span>
-                        </div>
-                    </div>
-                    <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
-                    </div>
-                </div>
-            </div>
+
             <!-- Product 7 -->
             <div class="product-card product-card--highlight" data-name="Soap Nut Power" data-price="349">
                 <div class="product-card__image" style="background-color: #F5F0E6;">
@@ -3472,59 +3354,8 @@
                 <h2 class="section-heading" style="color: var(--clr-cream);">What Our <em
                         style="color: var(--clr-gold);">Community</em> Says</h2>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-card__stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-card__text">"okay so i was super skeptical at first cuz ive tried like a
-                        hundred 'natural' soaps before and they all dried out my skin. but this one?? my face actually
-                        feels nice after washing. been using it for 3 weeks now and even my mom noticed the difference
-                        lol"</p>
-                    <div class="testimonial-card__author">
-                        <div class="testimonial-card__avatar" style="background: #E8D5C4; color: #8B6914;">A</div>
-                        <div>
-                            <div class="testimonial-card__name">Ananya R.</div>
-                            <div class="testimonial-card__product">Rose Bloom</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-card__stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-card__text">"bought the turmeric one for my amma's birthday honestly just
-                        needed a last minute gift 😅 she called me next week asking where to buy more. now im ordering
-                        for myself too. the glow is real yall"</p>
-                    <div class="testimonial-card__author">
-                        <div class="testimonial-card__avatar" style="background: #D5E8D5; color: #2d6b3f;">S</div>
-                        <div>
-                            <div class="testimonial-card__name">Sneha K.</div>
-                            <div class="testimonial-card__product">Turmeric Glow</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-card__stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <p class="testimonial-card__text">"the lavender one smells SO good like i literally dont wanna get
-                        out of the shower 😂 only thing is it runs out fast because i keep using too much haha. skin
-                        feels really smooth tho, way better than the dove soap i was using before"</p>
-                    <div class="testimonial-card__author">
-                        <div class="testimonial-card__avatar" style="background: #D5D5E8; color: #6b4f8a;">M</div>
-                        <div>
-                            <div class="testimonial-card__name">Meera P.</div>
-                            <div class="testimonial-card__product">Lavender Calm</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="testimonial-grid" id="testimonialGrid">
+
             </div>
         </div>
     </section>
@@ -3552,13 +3383,11 @@
                             <label for="fbProduct">Product Used</label>
                             <select id="fbProduct" required>
                                 <option value="" disabled selected>Select a product</option>
-                                <option value="Rose Bloom">Rose Bloom</option>
-                                <option value="Turmeric Glow">Turmeric Glow</option>
-                                <option value="Lavender Calm">Lavender Calm</option>
+                                <option value="Red Sandalwood Herbal Bar">Red Sandalwood Herbal Bar</option>
+                                <option value="Red Wine Soap">Red Wine Soap</option>
                                 <option value="Seegekai">Seegekai</option>
                                 <option value="Besan">Besan</option>
                                 <option value="Soap Nut Power">Soap Nut Power</option>
-                                <option value="Aloe Vera & Mint">Aloe Vera & Mint</option>
                                 <option value="Neem Purify">Neem Purify</option>
                                 <option value="Other">Other</option>
                             </select>
@@ -3727,7 +3556,16 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // Cart Functionality
-        let cart = JSON.parse(localStorage.getItem('bloom_cure_cart')) || [];
+        let cart = [];
+        try {
+            const storedCart = localStorage.getItem('bloom_cure_cart');
+            if (storedCart) cart = JSON.parse(storedCart);
+        } catch(e) {
+            console.error("Cart parse error", e);
+            localStorage.removeItem('bloom_cure_cart');
+        }
+        if (!Array.isArray(cart)) cart = [];
+
         const cartCountEl = document.getElementById('cart-count');
         const toastEl = document.getElementById('cart-toast');
 
@@ -3885,12 +3723,9 @@
         // ═══════════════ SEARCH & MOBILE MENU LOGIC ═══════════════
 
         const productsDB = [
-            { id: 1, name: "Rose Bloom", price: "449", img: "assets/product_rose.png", desc: "Soothing rose petals & shea butter" },
+            { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.jpg", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion." },
+            { id: 20, name: "Red Wine Soap", price: "399", img: "assets/product_red_wine.jpg", desc: "Rich in antioxidants from real red wine extract for youthful, glowing skin." },
             { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem" },
-            { id: 3, name: "Lavender Calm", price: "449", img: "assets/product_lavender.png", desc: "Calming French lavender" },
-            { id: 4, name: "Turmeric Glow", price: "399", img: "assets/product_turmeric.png", desc: "Brightening turmeric & raw honey" },
-            { id: 5, name: "Sandalwood & Turmeric", price: "499", img: "assets/product_sandalwood_turmeric.png", desc: "Luxurious sandalwood fusion" },
-            { id: 6, name: "Aloe Vera & Mint", price: "449", img: "assets/product_aloe_mint.png", desc: "Cooling aloe vera & peppermint" },
             { id: 7, name: "Soap Nut Power", price: "349", img: "assets/product_soapnut.png", desc: "Ancient reetha cleanser" },
             { id: 8, name: "Seegekai", price: "399", img: "assets/product_shikakai.png", desc: "Traditional shikakai-infused bar" },
             { id: 9, name: "Besan", price: "299", img: "assets/product_besan.png", desc: "Traditional gram flour face & body bar" },
@@ -3902,7 +3737,7 @@
             { id: 15, name: "Rice Goat Milk Soap", price: "299", img: "assets/product_rice_goat_milk.png", desc: "Rich in vitamins and lactic acid to gently exfoliate" },
             { id: 16, name: "Multani Mitti Soap", price: "249", img: "assets/product_multani_mitti.png", desc: "Natural Fuller's Earth to absorb impurities and reduce acne" },
             { id: 17, name: "Activated Charcoal Soap", price: "299", img: "assets/product_charcoal.png", desc: "Deep pore detox for pollution protection" },
-            { id: 18, name: "Oats & Honey Soap", price: "349", img: "assets/product_oats_honey.png", desc: "Gentle handcrafted soap for face & body. Soothes inflammation" },
+
             { id: 19, name: "Relaxing Bath Salts", price: "199", img: "assets/relaxing_bath_salts.png", desc: "Epsom & Pink Salt bath soak for muscle recovery" }
         ];
 
@@ -3944,7 +3779,7 @@
             if (!resultsContainer || !emptyState) return;
 
             if (query.length === 0) {
-                const suggestions = ["Rose Bloom", "Turmeric Glow", "Relaxing Bath Salts", "Rice Goat Milk Soap"];
+                const suggestions = ["Red Sandalwood Herbal Bar", "Red Wine Soap", "Relaxing Bath Salts", "Rice Goat Milk Soap"];
                 const suggestedProducts = productsDB.filter(p => suggestions.includes(p.name));
                 resultsContainer.innerHTML = '<div style="grid-column: 1 / -1; color: var(--clr-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; margin-top: 0.5rem; font-weight: 600;">Suggested for you</div>';
 
@@ -4075,9 +3910,10 @@
 
         // Initialize UI
         updateCartUI();
+        loadTestimonials();
 
         // ═══════════════ FEEDBACK FORM LOGIC ═══════════════
-        const stars = document.querySelectorAll('#ratingStars i');
+        const stars = document.querySelectorAll('.rating-stars-input i');
         const ratingInput = document.getElementById('fbRating');
 
         if (stars.length > 0) {
@@ -4087,7 +3923,7 @@
 
                 star.addEventListener('click', () => {
                     const value = star.getAttribute('data-value');
-                    ratingInput.value = value;
+                    if (ratingInput) ratingInput.value = value;
 
                     stars.forEach((s, i) => {
                         if (i < value) {
@@ -4100,19 +3936,119 @@
             });
         }
 
+        function getInitials(name) {
+            return name ? name.charAt(0).toUpperCase() : 'U';
+        }
+        
+        const avatarColors = [
+            { bg: '#E8D5C4', text: '#8B6914' },
+            { bg: '#D5E8D5', text: '#2d6b3f' },
+            { bg: '#D5D5E8', text: '#6b4f8a' },
+            { bg: '#E8D5D5', text: '#8a4f4f' }
+        ];
+
+        function createTestimonialHTML(feedbackObj) {
+            const name = feedbackObj.name || 'Anonymous';
+            const product = feedbackObj.product || 'Bloom Cure Product';
+            const rating = parseInt(feedbackObj.rating) || 5;
+            const message = feedbackObj.message || '';
+            
+            let starsHTML = '';
+            for(let i=1; i<=5; i++) {
+                if(i <= rating) {
+                    starsHTML += '<i class="fa-solid fa-star"></i>';
+                } else {
+                    starsHTML += '<i class="fa-regular fa-star"></i>';
+                }
+            }
+            
+            const colorPair = avatarColors[name.length % avatarColors.length]; // Pseudo-random consistent color
+
+            return `
+                <div class="testimonial-card" style="animation: fadeIn 0.5s ease-out;">
+                    <div class="testimonial-card__stars">
+                        ${starsHTML}
+                    </div>
+                    <p class="testimonial-card__text">"${message}"</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar" style="background: ${colorPair.bg}; color: ${colorPair.text};">${getInitials(name)}</div>
+                        <div>
+                            <div class="testimonial-card__name">${name}</div>
+                            <div class="testimonial-card__product">${product}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadTestimonials() {
+            const grid = document.getElementById('testimonialGrid');
+            if(!grid) return;
+            
+            let savedFeedback = [];
+            try {
+                const stored = localStorage.getItem('bloom_cure_feedback');
+                if (stored) {
+                    savedFeedback = JSON.parse(stored);
+                }
+            } catch (e) {
+                console.error("Failed to parse stored feedback", e);
+                localStorage.removeItem('bloom_cure_feedback');
+            }
+            
+            if (!Array.isArray(savedFeedback)) savedFeedback = [];
+            
+            // Loop through saved feedback and add them to the top
+            savedFeedback.forEach(fb => {
+                if (fb && typeof fb === 'object') {
+                    grid.insertAdjacentHTML('afterbegin', createTestimonialHTML(fb));
+                }
+            });
+        }
+
         function submitFeedback(e) {
             e.preventDefault();
+            
+            // Capture values
+            const name = document.getElementById('fbName').value.trim();
+            const product = document.getElementById('fbProduct').value;
+            const message = document.getElementById('fbMessage').value.trim();
+            const rating = document.getElementById('fbRating').value || '5';
+
             const btn = e.target.querySelector('button[type="submit"]');
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i> Sending Feedback...';
             btn.style.opacity = '0.7';
 
-            // Simulate processing the feedback (would normally be an API call here)
             setTimeout(() => {
+                // Save to local storage
+                const newFeedback = { name, product, rating, message, timestamp: new Date().getTime() };
+                
+                let savedFeedback = [];
+                try {
+                    const stored = localStorage.getItem('bloom_cure_feedback');
+                    if (stored) {
+                        savedFeedback = JSON.parse(stored);
+                    }
+                } catch(e) {}
+                
+                if (!Array.isArray(savedFeedback)) savedFeedback = [];
+                savedFeedback.push(newFeedback);
+                localStorage.setItem('bloom_cure_feedback', JSON.stringify(savedFeedback));
+
+                // Update UI visually
+                const grid = document.getElementById('testimonialGrid');
+                if(grid) {
+                    grid.insertAdjacentHTML('afterbegin', createTestimonialHTML(newFeedback));
+                }
+
                 e.target.reset();
                 if (stars) stars.forEach(s => s.classList.add('active'));
                 if (ratingInput) ratingInput.value = '5';
 
-                btn.innerHTML = 'Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>';
+                btn.innerHTML = 'Submit Feedback <i class="fa-solid fa-check" style="margin-left:8px;"></i>';
+                btn.style.backgroundColor = 'var(--clr-gold)';
+                btn.style.color = 'var(--clr-dark-green)';
+                btn.style.border = '1px solid var(--clr-gold)';
                 btn.style.opacity = '1';
 
                 const successMsg = document.getElementById('feedbackSuccess');
@@ -4120,8 +4056,11 @@
 
                 setTimeout(() => {
                     successMsg.style.display = 'none';
+                    btn.innerHTML = 'Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>';
+                    btn.style.backgroundColor = 'var(--clr-dark-green)';
+                    btn.style.color = 'var(--clr-gold)';
                 }, 5000);
-            }, 1200);
+            }, 800);
         }
         // ═══════════════ SPOTLIGHT SLIDER ═══════════════
         (function () {
