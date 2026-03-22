@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KEF8NTVQC"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-5KEF8NTVQC');
+        gtag('config', 'G-5KEF8NTVQC');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
+    <meta name="keywords"
+        content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
     <title>Your Ritual | Bloom Cure</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <!-- Using existing CSS architecture from index.css -->
     <link rel="stylesheet" href="css/index.css">
     <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
     <style>
         /* ═══════════════ PREMIUM NAVIGATION ═══════════════ */
         .premium-nav {
             position: fixed;
-            top: 38px;
+            top: 40px;
             left: 0;
             right: 0;
             z-index: 1000;
@@ -218,8 +222,15 @@
         }
 
         @keyframes badgePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         @media (max-width: 992px) {
@@ -416,7 +427,8 @@
                 text-align: left;
             }
 
-            .footer-brand, .footer-newsletter {
+            .footer-brand,
+            .footer-newsletter {
                 grid-column: span 2;
                 text-align: center;
             }
@@ -474,12 +486,10 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(
-                170deg,
-                rgba(18, 36, 24, 0.99) 0%,
-                rgba(26, 46, 32, 0.98) 40%,
-                rgba(20, 40, 28, 0.99) 100%
-            );
+            background: linear-gradient(170deg,
+                    rgba(18, 36, 24, 0.99) 0%,
+                    rgba(26, 46, 32, 0.98) 40%,
+                    rgba(20, 40, 28, 0.99) 100%);
             backdrop-filter: blur(30px) saturate(1.2);
             -webkit-backdrop-filter: blur(30px) saturate(1.2);
             z-index: 2000;
@@ -628,14 +638,32 @@
             width: 50%;
         }
 
-        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(1) { animation: menuLinkIn 0.5s 0.1s both; }
-        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(2) { animation: menuLinkIn 0.5s 0.2s both; }
-        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(3) { animation: menuLinkIn 0.5s 0.3s both; }
-        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(4) { animation: menuLinkIn 0.5s 0.4s both; }
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(1) {
+            animation: menuLinkIn 0.5s 0.1s both;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(2) {
+            animation: menuLinkIn 0.5s 0.2s both;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(3) {
+            animation: menuLinkIn 0.5s 0.3s both;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu__links li:nth-child(4) {
+            animation: menuLinkIn 0.5s 0.4s both;
+        }
 
         @keyframes menuLinkIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .mobile-menu__footer {
@@ -694,13 +722,11 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(
-                170deg,
-                rgba(10, 22, 14, 0.99) 0%,
-                rgba(18, 36, 24, 0.98) 30%,
-                rgba(26, 46, 32, 0.97) 60%,
-                rgba(14, 28, 18, 0.99) 100%
-            );
+            background: linear-gradient(170deg,
+                    rgba(10, 22, 14, 0.99) 0%,
+                    rgba(18, 36, 24, 0.98) 30%,
+                    rgba(26, 46, 32, 0.97) 60%,
+                    rgba(14, 28, 18, 0.99) 100%);
             backdrop-filter: blur(40px) saturate(1.4);
             -webkit-backdrop-filter: blur(40px) saturate(1.4);
             z-index: 2100;
@@ -761,17 +787,43 @@
         }
 
         @keyframes searchFloat1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(-30px, 20px) scale(1.1); }
-            66% { transform: translate(15px, -25px) scale(0.95); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(-30px, 20px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(15px, -25px) scale(0.95);
+            }
         }
+
         @keyframes searchFloat2 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(25px, -30px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(25px, -30px) rotate(5deg);
+            }
         }
+
         @keyframes searchFloat3 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-20px, 15px) scale(1.15); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-20px, 15px) scale(1.15);
+            }
         }
 
         /* Title label */
@@ -798,6 +850,7 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--clr-gold));
         }
+
         .search-overlay__title::after {
             background: linear-gradient(90deg, var(--clr-gold), transparent);
         }
@@ -844,7 +897,7 @@
             transform: translateY(35px);
             opacity: 0;
             transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                        opacity 0.5s ease;
+                opacity 0.5s ease;
             transition-delay: 0.1s;
         }
 
@@ -865,9 +918,17 @@
         }
 
         @keyframes gradientBorder {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .search-input-wrapper__inner {
@@ -906,7 +967,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .search-input:focus ~ .search-icon-large,
+        .search-input:focus~.search-icon-large,
         .search-input-wrapper__inner:focus-within .search-icon-large {
             opacity: 1;
         }
@@ -972,12 +1033,12 @@
         .search-results::-webkit-scrollbar {
             width: 4px;
         }
-        
+
         .search-results::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.08); 
+            background: rgba(0, 0, 0, 0.08);
             border-radius: 10px;
         }
-        
+
         .search-results::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--clr-gold), rgba(197, 160, 40, 0.3));
             border-radius: 10px;
@@ -1095,8 +1156,17 @@
         }
 
         @keyframes emptyPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
         }
 
         .search-empty p {
@@ -1124,24 +1194,30 @@
             .search-input {
                 font-size: 1.5rem;
             }
+
             .search-icon-large {
                 font-size: 1.2rem;
             }
+
             .search-overlay__title {
                 font-size: 0.55rem;
                 letter-spacing: 3px;
             }
+
             .search-categories {
                 gap: 0.4rem;
             }
+
             .search-category-chip {
                 font-size: 0.65rem;
                 padding: 0.35rem 0.9rem;
             }
+
             .search-result-item {
                 padding: 0.8rem;
                 gap: 0.8rem;
             }
+
             .search-result-img {
                 width: 44px;
                 height: 44px;
@@ -1302,7 +1378,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(197, 160, 40, 0.1);
             position: sticky;
             top: 100px;
@@ -1404,6 +1480,7 @@
         .premium-nav__cart-btn.active-page {
             color: var(--clr-gold);
         }
+
         .premium-nav__cart-btn.active-page::after {
             content: '';
             position: absolute;
@@ -1417,50 +1494,78 @@
         }
 
         @media (max-width: 768px) {
-            .premium-nav__inner { padding: 0.5rem 1rem !important; }
-            .premium-nav__logo { gap: 6px !important; }
-            .premium-nav__logo img { height: 38px !important; width: 38px !important; border-width: 2px !important; }
-            .premium-nav.scrolled .premium-nav__logo img { height: 34px !important; width: 34px !important; }
-            .premium-nav__brand-name { font-size: 1.25rem !important; white-space: nowrap; }
-            .premium-nav__brand-tagline { font-size: 0.5rem !important; letter-spacing: 1.5px !important; }
-            .premium-nav__actions { gap: 0.3rem !important; }
-            .premium-nav__icon-btn { width: 34px !important; height: 34px !important; font-size: 0.8rem !important; border-width: 1px !important; }
-            .premium-nav__cart-badge { width: 16px !important; height: 16px !important; font-size: 0.5rem !important; top: -3px !important; right: -3px !important; }
-        }
+            .premium-nav__inner {
+                padding: 0.5rem 1rem !important;
+            }
 
-        .announcement-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 38px;
-            background-color: var(--clr-gold);
-            color: var(--clr-dark-green);
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            z-index: 1002;
-            white-space: nowrap;
-        }
+            .premium-nav__logo {
+                gap: 6px !important;
+            }
 
-        .announcement-text {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 15s linear infinite;
-        }
+            .premium-nav__logo img {
+                height: 38px !important;
+                width: 38px !important;
+                border-width: 2px !important;
+            }
 
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            .premium-nav.scrolled .premium-nav__logo img {
+                height: 34px !important;
+                width: 34px !important;
+            }
+
+            .premium-nav__brand-name {
+                font-size: 1.25rem !important;
+                white-space: nowrap;
+            }
+
+            .premium-nav__brand-tagline {
+                font-size: 0.5rem !important;
+                letter-spacing: 1.5px !important;
+            }
+
+            .premium-nav__actions {
+                gap: 0.3rem !important;
+            }
+
+            .premium-nav__icon-btn {
+                width: 34px !important;
+                height: 34px !important;
+                font-size: 0.8rem !important;
+                border-width: 1px !important;
+            }
+
+            .premium-nav__cart-badge {
+                width: 16px !important;
+                height: 16px !important;
+                font-size: 0.5rem !important;
+                top: -3px !important;
+                right: -3px !important;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="announcement-bar">
-        <span class="announcement-text">Almost There! Get Free Delivery on Orders Above ₹999</span>
+    <!-- Psychology Engine UI Elements -->
+    <div id="bc-dot"></div>
+    <div id="bc-ring"></div>
+    <div id="bc-bar"></div>
+    <!-- Luxury Announcement Ticker -->
+    <div class="bc-ticker" role="marquee" aria-label="Store announcements">
+        <div class="bc-ticker__wrap">
+            <span class="bc-ticker__item"><b>✦</b> Free shipping on orders above ₹999</span>
+            <span class="bc-ticker__item"><b>🌿</b> 100% Natural &amp; Handcrafted</span>
+            <span class="bc-ticker__item"><b>✦</b> New arrivals every week</span>
+            <span class="bc-ticker__item"><b>🌱</b> Zero plastic packaging</span>
+            <span class="bc-ticker__item"><b>✦</b> Cruelty-free &amp; Ayurvedic</span>
+            <span class="bc-ticker__item"><b>🧼</b> Small-batch artisan quality</span>
+            <span class="bc-ticker__item"><b>✦</b> Free shipping on orders above ₹999</span>
+            <span class="bc-ticker__item"><b>🌿</b> 100% Natural &amp; Handcrafted</span>
+            <span class="bc-ticker__item"><b>✦</b> New arrivals every week</span>
+            <span class="bc-ticker__item"><b>🌱</b> Zero plastic packaging</span>
+            <span class="bc-ticker__item"><b>✦</b> Cruelty-free &amp; Ayurvedic</span>
+            <span class="bc-ticker__item"><b>🧼</b> Small-batch artisan quality</span>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -1511,7 +1616,8 @@
             <div class="search-input-wrapper">
                 <div class="search-input-wrapper__inner">
                     <i class="fa-solid fa-magnifying-glass search-icon-large"></i>
-                    <input type="text" class="search-input" id="searchInput" placeholder="Search soaps, ingredients..." autocomplete="off" onkeyup="handleSearch()">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search soaps, ingredients..."
+                        autocomplete="off" onkeyup="handleSearch()">
                 </div>
             </div>
 
@@ -1531,7 +1637,7 @@
             </div>
 
             <div class="search-results-count" id="searchResultsCount"></div>
-            
+
             <div class="search-results" id="searchResults">
                 <!-- Search results will be injected here via JS -->
             </div>
@@ -1562,7 +1668,8 @@
             <div class="mobile-menu__footer">
                 <div class="mobile-menu__footer-tagline">Healing Skin, Blooming Confidence</div>
                 <div class="mobile-menu__socials">
-                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
@@ -1578,7 +1685,7 @@
 
     <!-- Cart Area -->
     <main class="container" style="margin-bottom: 6rem;">
-        
+
         <!-- Logic container that switches between filled and empty state -->
         <div id="cart-content-wrapper">
             <!-- Filled dynamically by JS -->
@@ -1630,9 +1737,11 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
                 <div class="footer-socials">
-                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank"
+                        aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
@@ -1742,10 +1851,10 @@
             orderText += `\n*Grand Total:* ₹${finalTotal}\n\nPlease let me know the payment details! ✨`;
 
             const whatsappURL = `https://wa.me/919742522357?text=${encodeURIComponent(orderText)}`;
-            
+
             const btn = document.getElementById('checkoutBtn');
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Preparing Order...';
-            
+
             setTimeout(() => {
                 window.open(whatsappURL, '_blank');
                 btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Finalize Order on WhatsApp';
@@ -1774,7 +1883,7 @@
                 const priceStr = String(item.price);
                 const priceMatch = priceStr.match(/[\d,]+/);
                 const priceVal = priceMatch ? parseInt(priceMatch[0].replace(/,/g, '')) : 0;
-                
+
                 const itemTotal = priceVal * qty;
                 subtotal += itemTotal;
 
@@ -1845,14 +1954,14 @@
             { id: 22, name: "Hand made Sandalwood Soap", price: "349", img: "assets/product_sandalwood_handmade.png", desc: "Artisan handcrafted sandalwood soap with pure botanical oils.", category: "soap" },
             { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.jpg", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion.", category: "soap" },
             { id: 20, name: "Red Wine Soap", price: "399", img: "assets/product_red_wine.jpg", desc: "Rich in antioxidants from real red wine extract for youthful, glowing skin.", category: "soap" },
-            { id: 2, name: "Neem Purify", price: "399",  img: "assets/product_neem.png",                  desc: "Deep cleansing antibacterial neem", category: "soap" },
-            { id: 7, name: "Soap Nut Power", price: "349",img: "assets/product_soapnut.png",              desc: "Ancient reetha cleanser", category: "soap" },
-            { id: 8, name: "Seegekai", price: "399",     img: "assets/product_shikakai.png",              desc: "Traditional shikakai-infused bar", category: "soap" },
-            { id: 9, name: "Besan", price: "299",        img: "assets/product_besan.png",                 desc: "Traditional gram flour face & body bar", category: "soap" },
-            { id: 10, name: "Loofah Body Scrubber", price: "199", img: "assets/product_loofah.png",                 desc: "Natural exfoliating bath sponge", category: "accessory" },
-            { id: 11, name: "Bamboo Toothbrush", price: "149", img: "assets/product_bamboo_toothbrush.png",                    desc: "Eco-friendly sustainable toothbrush", category: "accessory" },
-            { id: 12, name: "Seegekai Powder", price: "249", img: "assets/product_seegekai_powder.png",          desc: "Pure organic hair wash powder", category: "powder" },
-            { id: 13, name: "Hotel Soaps", price: "599", img: "assets/product_hotel_soaps.png",                desc: "Luxury miniature botanical soap set", category: "soap" },
+            { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem", category: "soap" },
+            { id: 7, name: "Soap Nut Power", price: "349", img: "assets/product_soapnut.png", desc: "Ancient reetha cleanser", category: "soap" },
+            { id: 8, name: "Seegekai", price: "399", img: "assets/product_shikakai.png", desc: "Traditional shikakai-infused bar", category: "soap" },
+            { id: 9, name: "Besan", price: "299", img: "assets/product_besan.png", desc: "Traditional gram flour face & body bar", category: "soap" },
+            { id: 10, name: "Loofah Body Scrubber", price: "199", img: "assets/product_loofah.png", desc: "Natural exfoliating bath sponge", category: "accessory" },
+            { id: 11, name: "Bamboo Toothbrush", price: "149", img: "assets/product_bamboo_toothbrush.png", desc: "Eco-friendly sustainable toothbrush", category: "accessory" },
+            { id: 12, name: "Seegekai Powder", price: "249", img: "assets/product_seegekai_powder.png", desc: "Pure organic hair wash powder", category: "powder" },
+            { id: 13, name: "Hotel Soaps", price: "599", img: "assets/product_hotel_soaps.png", desc: "Luxury miniature botanical soap set", category: "soap" },
             { id: 14, name: "Exfoliating Coffee Soap", price: "399", img: "assets/product_coffee_soap.png", desc: "Rich roasted coffee granules for deep exfoliation", category: "soap" }
         ];
 
@@ -1862,7 +1971,7 @@
             if (e) e.preventDefault();
             const searchOverlay = document.getElementById('searchOverlay');
             searchOverlay.classList.toggle('active');
-            
+
             if (searchOverlay.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
                 setTimeout(() => document.getElementById('searchInput').focus(), 300);
@@ -1900,16 +2009,16 @@
             const resultsContainer = document.getElementById('searchResults');
             const emptyState = document.getElementById('searchEmpty');
             const countEl = document.getElementById('searchResultsCount');
-            
+
             // Filter by category first
-            let filtered = activeCategory === 'all' 
-                ? productsDB 
+            let filtered = activeCategory === 'all'
+                ? productsDB
                 : productsDB.filter(p => p.category === activeCategory);
 
             // Then filter by search query
             if (query.length > 0) {
-                filtered = filtered.filter(p => 
-                    p.name.toLowerCase().includes(query) || 
+                filtered = filtered.filter(p =>
+                    p.name.toLowerCase().includes(query) ||
                     p.desc.toLowerCase().includes(query)
                 );
             }
@@ -1951,6 +2060,12 @@
             }
         }
     </script>
-</body>
-</html>
+    <button id="bc-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
+    <script src="js/bloom-psychology.js"></script>
+
+</body>
+
+</html>
