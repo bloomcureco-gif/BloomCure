@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KEF8NTVQC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-5KEF8NTVQC');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virgin Coconut Oil Soap | Bloom Cure</title>
+    <meta name="description"
+        content="Nourishing handmade soap with pure virgin coconut oil for deep hydration and a creamy, tropical lather. 100% natural, handcrafted in small batches.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/premium-layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/product-page.css">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           Product Detail Page  Premium Styles
+           ═══════════════════════════════════════════ */
+
+        .pdp-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(160deg, #F9F7F2 0%, #F0EDE5 100%);
+        }
+
+        .pdp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Image Section */
+        .pdp-image-wrap {
+            position: sticky;
+            top: 6rem;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+        }
+
+        .pdp-image-wrap img {
+            width: 100%;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .pdp-image-wrap:hover img {
+            transform: scale(1.05);
+        }
+
+        .pdp-image-badge {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            background: var(--clr-gold);
+            color: var(--clr-dark-green);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+        }
+
+        /* Info Section */
+        .pdp-info {
+            padding: 1rem 0;
+        }
+
+        .pdp-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            color: var(--clr-text-muted);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pdp-breadcrumb a {
+            color: var(--clr-text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .pdp-breadcrumb a:hover {
+            color: var(--clr-gold);
+        }
+
+        .pdp-category {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--clr-sage);
+            margin-bottom: 0.6rem;
+        }
+
+        .pdp-title {
+            font-family: var(--ff-heading);
+            font-size: 2.8rem;
+            color: var(--clr-dark-green);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .pdp-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background: rgba(197, 160, 40, 0.08);
+            border: 1px solid rgba(197, 160, 40, 0.15);
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 1.2rem;
+        }
+
+        .pdp-rating i {
+            color: var(--clr-gold);
+            font-size: 0.65rem;
+        }
+
+        .pdp-rating span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--clr-dark-green);
+            margin-left: 4px;
+        }
+
+        .pdp-price {
+            font-family: var(--ff-heading);
+            font-size: 2rem;
+            color: var(--clr-dark-green);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .pdp-price-note {
+            font-size: 0.72rem;
+            color: var(--clr-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .pdp-desc {
+            font-size: 0.92rem;
+            color: var(--clr-text-light);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+
+        .pdp-actions {
+            display: flex;
+            gap: 0.7rem;
+            margin-bottom: 2rem;
+        }
+
+        .pdp-actions .btn-add-cart,
+        .pdp-actions .btn-buy-now {
+            flex: 1;
+            padding: 0.9rem 1.5rem;
+            font-size: 0.72rem;
+        }
+
+        .pdp-trust-row {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .pdp-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.68rem;
+            color: var(--clr-text-muted);
+        }
+
+        .pdp-trust-item i {
+            color: var(--clr-sage);
+            font-size: 0.72rem;
+        }
+
+        /* ── Details Section ── */
+        .pdp-details {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .pdp-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pdp-section-heading {
+            font-family: var(--ff-heading);
+            font-size: 1.4rem;
+            color: var(--clr-dark-green);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pdp-section-heading i {
+            color: var(--clr-gold);
+            font-size: 1rem;
+        }
+
+        .pdp-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pdp-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--clr-text-light);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+            padding: 0.8rem 1rem;
+            background: rgba(123, 139, 79, 0.04);
+            border-radius: 12px;
+            border: 1px solid rgba(123, 139, 79, 0.08);
+        }
+
+        .pdp-benefits li i {
+            color: var(--clr-sage);
+            font-size: 0.7rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .pdp-ingredients-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pdp-ingredients-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .pdp-ingredients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pdp-ingredient-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            background: rgba(197, 160, 40, 0.08);
+            color: var(--clr-gold);
+        }
+
+        .pdp-ingredient-info strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--clr-dark-green);
+            margin-bottom: 2px;
+        }
+
+        .pdp-ingredient-info span {
+            font-size: 0.78rem;
+            color: var(--clr-text-muted);
+            line-height: 1.5;
+        }
+
+        /* ── How to Use & Specs ── */
+        .pdp-how-specs {
+            padding: 4rem 0;
+            background: linear-gradient(160deg, #1a2e20 0%, #0f1d14 100%);
+        }
+
+        .pdp-how-specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pdp-how-specs .pdp-section-heading {
+            color: var(--clr-cream);
+        }
+
+        .pdp-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: steps;
+        }
+
+        .pdp-steps li {
+            counter-increment: steps;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+            color: rgba(249, 247, 242, 0.7);
+            line-height: 1.65;
+        }
+
+        .pdp-steps li::before {
+            content: counter(steps);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(197, 160, 40, 0.12);
+            border: 1px solid rgba(197, 160, 40, 0.2);
+            color: var(--clr-gold);
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .pdp-specs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pdp-specs li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.82rem;
+        }
+
+        .pdp-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .pdp-specs-label {
+            color: rgba(249, 247, 242, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.68rem;
+            font-weight: 600;
+        }
+
+        .pdp-specs-value {
+            color: var(--clr-cream);
+            font-weight: 600;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .pdp-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .pdp-image-wrap {
+                position: relative;
+                top: 0;
+            }
+
+            .pdp-title {
+                font-size: 2rem;
+            }
+
+            .pdp-details-grid,
+            .pdp-how-specs-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .pdp-hero {
+                padding: 7rem 0 3rem;
+            }
+        }
+
+        /* Nav mobile styles  same as shop.html */
+        @media (max-width: 768px) {
+            .premium-nav__inner {
+                padding: 0.5rem 1rem !important;
+            }
+
+            .premium-nav__logo {
+                gap: 6px !important;
+            }
+
+            .premium-nav__logo img {
+                height: 38px !important;
+                width: 38px !important;
+                border-width: 2px !important;
+            }
+
+            .premium-nav.scrolled .premium-nav__logo img {
+                height: 34px !important;
+                width: 34px !important;
+            }
+
+            .premium-nav__brand-name {
+                font-size: 1.25rem !important;
+                white-space: nowrap;
+            }
+
+            .premium-nav__brand-tagline {
+                font-size: 0.5rem !important;
+                letter-spacing: 1.5px !important;
+            }
+
+            .premium-nav__actions {
+                gap: 0.3rem !important;
+            }
+
+            .premium-nav__icon-btn {
+                width: 34px !important;
+                height: 34px !important;
+                font-size: 0.8rem !important;
+                border-width: 1px !important;
+            }
+
+            .premium-nav__cart-badge {
+                width: 16px !important;
+                height: 16px !important;
+                font-size: 0.5rem !important;
+                top: -3px !important;
+                right: -3px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Psychology Engine UI -->
+    <div id="bc-dot"></div>
+    <div id="bc-ring"></div>
+    <div id="bc-bar"></div>
+
+    <!-- Ticker -->
+    <div class="bc-ticker" role="marquee" aria-label="Store announcements">
+        <div class="bc-ticker__wrap">
+            <span class="bc-ticker__item"><b>✦</b> Free shipping on orders above ₹999</span>
+            <span class="bc-ticker__item"><b>🌿</b> 100% Natural &amp; Handcrafted</span>
+            <span class="bc-ticker__item"><b>✦</b> New arrivals every week</span>
+            <span class="bc-ticker__item"><b>🌱</b> Zero plastic packaging</span>
+            <span class="bc-ticker__item"><b>✦</b> Cruelty-free &amp; Ayurvedic</span>
+            <span class="bc-ticker__item"><b>🧼</b> Small-batch artisan quality</span>
+            <span class="bc-ticker__item"><b>✦</b> Free shipping on orders above ₹999</span>
+            <span class="bc-ticker__item"><b>🌿</b> 100% Natural &amp; Handcrafted</span>
+            <span class="bc-ticker__item"><b>✦</b> New arrivals every week</span>
+            <span class="bc-ticker__item"><b>🌱</b> Zero plastic packaging</span>
+            <span class="bc-ticker__item"><b>✦</b> Cruelty-free &amp; Ayurvedic</span>
+            <span class="bc-ticker__item"><b>🧼</b> Small-batch artisan quality</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="premium-nav" id="mainNav">
+        <div class="premium-nav__inner">
+            <a href="index.html" class="premium-nav__logo">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <div class="premium-nav__brand">
+                    <span class="premium-nav__brand-name">Bloom Cure</span>
+                    <span class="premium-nav__brand-tagline">Artisan Botanicals</span>
+                </div>
+            </a>
+            <ul class="premium-nav__links">
+                <li><a href="index.html" class="premium-nav__link">Home</a></li>
+                <li><a href="shop.html" class="premium-nav__link active">Shop</a></li>
+                <li><a href="about.html" class="premium-nav__link">About</a></li>
+                <li><a href="index.html#ingredients" class="premium-nav__link">Ingredients</a></li>
+            </ul>
+            <div class="premium-nav__actions">
+                <a href="cart.html" class="premium-nav__icon-btn premium-nav__cart-btn" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count" class="premium-nav__cart-badge">0</span>
+                </a>
+                <button class="premium-nav__icon-btn premium-nav__menu-btn" title="Menu" onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ PRODUCT HERO ═══════════════ -->
+    <section class="pdp-hero">
+        <div class="container">
+            <div class="pdp-grid">
+                <!-- Product Image -->
+                <div class="pdp-image-wrap" style="position: relative;">
+                    <span class="pdp-image-badge">Handmade</span>
+                    <img src="assets/product_coconut.jpg" alt="Bloom Cure Virgin Coconut Oil Soap">
+                </div>
+
+                <!-- Product Info -->
+                <div class="pdp-info">
+                    <div class="pdp-breadcrumb">
+                        <a href="index.html">Home</a>
+                        <i class="fa-solid fa-chevron-right" style="font-size:0.5rem"></i>
+                        <a href="shop.html">Shop</a>
+                        <i class="fa-solid fa-chevron-right" style="font-size:0.5rem"></i>
+                        <span>Virgin Coconut Oil Soap</span>
+                    </div>
+
+                    <div class="pdp-category">Hydrating · Radiance</div>
+                    <h1 class="pdp-title">Virgin Coconut Oil Soap</h1>
+
+                    <div class="pdp-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>5.0</span>
+                    </div>
+
+                    <div class="pdp-price">₹349</div>
+                    <div class="pdp-price-note">Inclusive of all taxes · Free shipping over ₹999</div>
+
+                    <p class="pdp-desc">
+                        Nourishing handmade soap with pure virgin coconut oil for deep hydration and a creamy, tropical
+                        lather. Cold-pressed and handcrafted in small batches, this luxurious bar gently cleanses while
+                        locking in moisture, leaving your skin silky smooth and naturally radiant.
+                    </p>
+
+                    <div class="pdp-actions" data-name="Virgin Coconut Oil Soap" data-price="349">
+                        <button class="btn-add-cart" onclick="addToCartPDP(this)">
+                            <i class="fa-solid fa-bag-shopping"></i> Add to Cart
+                        </button>
+                        <button class="btn-buy-now" onclick="buyNowPDP(this)">
+                            <i class="fa-brands fa-whatsapp"></i> Buy Now
+                        </button>
+                        <button class="btn-share" onclick="shareProductPDP(this)" aria-label="Share Product" title="Share">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                    </div>
+
+                    <div class="pdp-trust-row">
+                        <div class="pdp-trust-item">
+                            <i class="fa-solid fa-leaf"></i> 90% Natural
+                        </div>
+                        <div class="pdp-trust-item">
+                            <i class="fa-solid fa-hand-sparkles"></i> Handcrafted
+                        </div>
+                        <div class="pdp-trust-item">
+                            <i class="fa-solid fa-shield-halved"></i> Dermatologist Tested
+                        </div>
+                        <div class="pdp-trust-item">
+                            <i class="fa-solid fa-box-open"></i> Eco Packaging
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ BENEFITS & INGREDIENTS ═══════════════ -->
+    <section class="pdp-details">
+        <div class="container">
+            <div class="pdp-details-grid">
+                <!-- Benefits -->
+                <div>
+                    <h2 class="pdp-section-heading">
+                        <i class="fa-solid fa-sparkles"></i> Key Benefits
+                    </h2>
+                    <ul class="pdp-benefits">
+                        <li><i class="fa-solid fa-check"></i> Deep hydration with pure virgin coconut oil that locks in
+                            moisture all day</li>
+                        <li><i class="fa-solid fa-check"></i> Rich, creamy tropical lather that gently cleanses without
+                            stripping natural oils</li>
+                        <li><i class="fa-solid fa-check"></i> Natural antibacterial and antifungal properties for
+                            healthy, clear skin</li>
+                        <li><i class="fa-solid fa-check"></i> Cold-pressed formula preserves all nutrients and vitamins
+                            for maximum benefit</li>
+                    </ul>
+                </div>
+
+                <!-- Ingredients -->
+                <div>
+                    <h2 class="pdp-section-heading">
+                        <i class="fa-solid fa-seedling"></i> Key Ingredients
+                    </h2>
+                    <ul class="pdp-ingredients-list">
+                        <li>
+                            <div class="pdp-ingredient-icon"><i class="fa-solid fa-droplet"></i></div>
+                            <div class="pdp-ingredient-info">
+                                <strong>Virgin Coconut Oil</strong>
+                                <span>Cold-pressed for deep moisture and a protective skin barrier</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pdp-ingredient-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <div class="pdp-ingredient-info">
+                                <strong>Glycerin</strong>
+                                <span>Natural humectant that draws moisture to the skin</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pdp-ingredient-icon"><i class="fa-solid fa-spa"></i></div>
+                            <div class="pdp-ingredient-info">
+                                <strong>Coconut Milk</strong>
+                                <span>Rich in vitamins C and E for skin nourishment</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pdp-ingredient-icon"><i class="fa-solid fa-sun"></i></div>
+                            <div class="pdp-ingredient-info">
+                                <strong>Vitamin E</strong>
+                                <span>Powerful antioxidant that protects against free radicals</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ HOW TO USE & SPECS ═══════════════ -->
+    <section class="pdp-how-specs">
+        <div class="container">
+            <div class="pdp-how-specs-grid">
+                <!-- How to Use -->
+                <div>
+                    <h2 class="pdp-section-heading">
+                        <i class="fa-solid fa-hand-holding-droplet"></i> How to Use
+                    </h2>
+                    <ol class="pdp-steps">
+                        <li>Wet your hands and the soap bar with warm water</li>
+                        <li>Lather generously between your palms until a rich, creamy foam forms</li>
+                        <li>Apply the lather to your face and body in gentle circular motions</li>
+                        <li>Rinse thoroughly with water and pat dry with a soft towel</li>
+                        <li>Use twice daily — morning and evening — for best results</li> morning and evening  for best results</li>
+                    </ol>
+                </div>
+
+                <!-- Specifications -->
+                <div>
+                    <h2 class="pdp-section-heading">
+                        <i class="fa-solid fa-clipboard-list"></i> Specifications
+                    </h2>
+                    <ul class="pdp-specs">
+                        <li>
+                            <span class="pdp-specs-label">Weight</span>
+                            <span class="pdp-specs-value">100g</span>
+                        </li>
+                        <li>
+                            <span class="pdp-specs-label">Skin Type</span>
+                            <span class="pdp-specs-value">All Skin Types</span>
+                        </li>
+                        <li>
+                            <span class="pdp-specs-label">Shelf Life</span>
+                            <span class="pdp-specs-value">12 Months</span>
+                        </li>
+                        <li>
+                            <span class="pdp-specs-label">Made In</span>
+                            <span class="pdp-specs-value">India</span>
+                        </li>
+                        <li>
+                            <span class="pdp-specs-label">Paraben Free</span>
+                            <span class="pdp-specs-value">Yes</span>
+                        </li>
+                        <li>
+                            <span class="pdp-specs-label">Sulphate Free</span>
+                            <span class="pdp-specs-value">Yes</span>
+                        </li>
+                        <li>
+                            <span class="pdp-specs-label">Cruelty Free</span>
+                            <span class="pdp-specs-value">Yes</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <section class="pdp-suggestions" id="productSuggestions">
+        <div class="container">
+            <h2 class="pdp-section-heading"><i class="fa-solid fa-wand-magic-sparkles"></i> You May Also Like</h2>
+            <div class="pdp-suggestions-grid" id="product-suggestions-grid"></div>
+        </div>
+    </section>
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-brand__logo">
+                        <img src="assets/logo.jpg" alt="Bloom Cure">
+                        <h2 class="footer-brand__name">Bloom Cure</h2>
+                    </a>
+                    <p class="footer-brand__desc">Handcrafting nature's best to help your skin bloom with radiance and
+                        health. Artisan botanicals for a mindful ritual.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Soaps</a></li>
+                        <li><a href="#">Gift Bundles</a></li>
+                        <li><a href="#">Subscribers Ritual</a></li>
+                        <li><a href="#">Digital Cards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="#">The Ethos</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p class="footer-newsletter__desc">Join our botanical circle for exclusive tips on natural skincare
+                        and early access to new arrivals.</p>
+                    <form class="footer-newsletter__form" action="https://api.web3forms.com/submit" method="POST"
+                        onsubmit="submitNewsletter(event)">
+                        <input type="hidden" name="access_key" value="3968ade5-1b45-45e8-ac7d-3ce09bcc4fa7">
+                        <input type="hidden" name="subject" value="New Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Email Address" class="footer-newsletter__input"
+                            required>
+                        <button type="submit" class="footer-newsletter__btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank"
+                        aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu__inner">
+            <button class="mobile-menu__close" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu__brand">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <span class="mobile-menu__brand-name">Bloom Cure</span>
+            </div>
+            <ul class="mobile-menu__links">
+                <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="shop.html" class="active" onclick="toggleMobileMenu()">Shop</a></li>
+                <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
+            </ul>
+            <div class="mobile-menu__footer">
+                <p>Healing Skin, Blooming Confidence</p>
+                <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="cart-toast" class="toast glass-toast" style="color: var(--clr-cream);">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Item added to your botanical ritual.</span>
+    </div>
+
+    <script src="js/product-page.js"></script>
+
+    <button id="bc-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="js/bloom-psychology.js"></script>
+</body>
+
+</html>
