@@ -31,12 +31,12 @@
     <link rel="stylesheet" href="css/index.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ═══════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            Shop Page — Premium Styles
-           ═══════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
         /* Hero Header */
         .shop-hero {
@@ -332,10 +332,10 @@
             }
         }
 
-        /* ═══════════════ PREMIUM NAVIGATION ═══════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PREMIUM NAVIGATION â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .premium-nav {
             position: fixed;
-            top: 38px;
+            top: 40px;
             left: 0;
             right: 0;
             z-index: 1000;
@@ -516,7 +516,7 @@
             }
         }
 
-        /* ═══════════════ PREMIUM FOOTER ═══════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PREMIUM FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .premium-footer {
             background: linear-gradient(rgba(26, 46, 32, 0.98), rgba(26, 46, 32, 1)), url('assets/hero_bg.png');
             background-size: cover;
@@ -729,7 +729,7 @@
             }
         }
 
-        /* ═══════════════ MOBILE MENU ═══════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• MOBILE MENU â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .premium-nav__menu-btn {
             display: none;
             background: transparent;
@@ -845,7 +845,7 @@
             box-shadow: 0 6px 20px rgba(197, 160, 40, 0.1);
         }
 
-        /* ═══════════════ PREMIUM SEARCH OVERLAY ═══════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PREMIUM SEARCH OVERLAY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .search-overlay {
             position: fixed;
             top: 0;
@@ -1172,48 +1172,32 @@
                 right: -3px !important;
             }
         }
-
-        .announcement-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 38px;
-            background-color: var(--clr-gold);
-            color: var(--clr-dark-green);
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            z-index: 1002;
-            white-space: nowrap;
-        }
-
-        .announcement-text {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 15s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
     </style>
 </head>
 
 <body>
-    <div class="announcement-bar">
-        <span class="announcement-text">Almost There! Get Free Delivery on Orders Above ₹999</span>
+    <!-- Psychology Engine UI Elements -->
+    <div id="bc-dot"></div>
+    <div id="bc-ring"></div>
+    <div id="bc-bar"></div>
+    <!-- Luxury Announcement Ticker -->
+    <div class="bc-ticker" role="marquee" aria-label="Store announcements">
+        <div class="bc-ticker__wrap">
+            <span class="bc-ticker__item"><b>✦</b> Free shipping on orders above ₹999</span>
+            <span class="bc-ticker__item"><b>🌿</b> 100% Natural &amp; Handcrafted</span>
+            <span class="bc-ticker__item"><b>✦</b> New arrivals every week</span>
+            <span class="bc-ticker__item"><b>🌱</b> Zero plastic packaging</span>
+            <span class="bc-ticker__item"><b>✦</b> Cruelty-free &amp; Ayurvedic</span>
+            <span class="bc-ticker__item"><b>🧼</b> Small-batch artisan quality</span>
+            <span class="bc-ticker__item"><b>✦</b> Free shipping on orders above ₹999</span>
+            <span class="bc-ticker__item"><b>🌿</b> 100% Natural &amp; Handcrafted</span>
+            <span class="bc-ticker__item"><b>✦</b> New arrivals every week</span>
+            <span class="bc-ticker__item"><b>🌱</b> Zero plastic packaging</span>
+            <span class="bc-ticker__item"><b>✦</b> Cruelty-free &amp; Ayurvedic</span>
+            <span class="bc-ticker__item"><b>🧼</b> Small-batch artisan quality</span>
+        </div>
     </div>
-    <!-- Navigation -->
+    <!-- Premium Navigation -->
     <nav class="premium-nav" id="mainNav">
         <div class="premium-nav__inner">
             <a href="index.html" class="premium-nav__logo">
@@ -1227,6 +1211,7 @@
                 <li><a href="index.html" class="premium-nav__link">Home</a></li>
                 <li><a href="shop.html" class="premium-nav__link active">Shop</a></li>
                 <li><a href="about.html" class="premium-nav__link">About</a></li>
+                <li><a href="contact.html" class="premium-nav__link">Contact</a></li>
                 <li><a href="index.html#ingredients" class="premium-nav__link">Ingredients</a></li>
             </ul>
             <div class="premium-nav__actions">
@@ -1244,7 +1229,7 @@
         </div>
     </nav>
 
-    <!-- ═══════════════ PREMIUM SEARCH OVERLAY ═══════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PREMIUM SEARCH OVERLAY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <div class="search-overlay" id="searchOverlay">
         <button class="search__close" onclick="toggleSearch(event)">
             <i class="fa-solid fa-xmark"></i>
@@ -1276,33 +1261,8 @@
         </div>
     </div>
 
-    <!-- ═══════════════ MOBILE MENU OVERLAY ═══════════════ -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-        <button class="mobile-menu__close" onclick="toggleMobileMenu()">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="mobile-menu__inner">
-            <div class="mobile-menu__brand">
-                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
-                <span class="mobile-menu__brand-name">Bloom Cure</span>
-            </div>
-            <ul class="mobile-menu__links">
-                <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
-                <li><a href="shop.html" class="active" onclick="toggleMobileMenu()">Shop</a></li>
-                <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
-                <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
-            </ul>
-            <div class="mobile-menu__footer">
-                <div class="mobile-menu__footer-tagline">Healing Skin, Blooming Confidence</div>
-                <div class="mobile-menu__socials">
-                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• MOBILE MENU OVERLAY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+
 
     <!-- Premium Shop Hero -->
     <header class="shop-hero">
@@ -1354,62 +1314,86 @@
         <!-- Product Grid — uses the same product-card system from index.css -->
         <div class="product-grid">
             <!-- Product: Virgin Coconut Oil Soap -->
-            <div class="product-card product-card--highlight" data-name="Virgin Coconut Oil Soap" data-price="349" data-category="hydrating radiance">
+            <div class="product-card product-card--highlight" data-name="Virgin Coconut Oil Soap" data-price="349"
+                data-category="hydrating radiance">
                 <div class="product-card__image" style="background-color: #F8F5F0;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Handmade</span>
-                    <img src="assets/product_coconut.png" alt="Virgin Coconut Oil Soap" onerror="this.src='assets/logo.jpg'">
+                    <a href="product-coconut.html"><img src="assets/product_coconut.jpg" alt="Virgin Coconut Oil Soap"
+                            onerror="this.src='assets/logo.jpg'"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Virgin Coconut Oil Soap</h3>
-                        <p class="product-card__desc">Nourishing handmade soap with pure virgin coconut oil for deep hydration and a creamy, tropical lather.</p>
+                        <a href="product-coconut.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Virgin Coconut Oil Soap</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Pure virgin coconut oil for deep hydration and a creamy lather.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Virgin Coconut Oil • Organic Herbs • Cold-Pressed Oils</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Fresh tropical aroma</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹349</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="349">₹349</span>
                         </div>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(92 reviews)</span></span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
                     </div>
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
 
             <!-- Product: Hand made Sandalwood Soap -->
-            <div class="product-card product-card--highlight" data-name="Hand made Sandalwood Soap" data-price="349" data-category="radiance calming">
+            <div class="product-card product-card--highlight" data-name="Hand made Sandalwood Soap" data-price="349"
+                data-category="radiance calming">
                 <div class="product-card__image" style="background-color: #F8F5F0;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Handmade</span>
-                    <img src="assets/product_sandalwood_handmade.png" alt="Hand made Sandalwood Soap" onerror="this.src='assets/logo.jpg'">
+                    <a href="product-sandalwood.html"><img src="assets/product_sandalwood_handmade.png"
+                            alt="Hand made Sandalwood Soap" onerror="this.src='assets/logo.jpg'"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Hand made Sandalwood Soap</h3>
-                        <p class="product-card__desc">Artisan handcrafted sandalwood soap with pure botanical oils for a divine, calming bath experience.</p>
+                        <a href="product-sandalwood.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Hand made Sandalwood Soap</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Pure botanical oils for a divine, calming bath experience.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Pure Sandalwood • Cold-Pressed Oils • Herbal Extracts</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Calming woody aroma</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹349</span>
-                        <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="349">₹349</span>
                         </div>
+                        <div class="product-card__rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(118 reviews)</span></span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
                     </div>
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
@@ -1421,33 +1405,39 @@
                 <div class="product-card__image" style="background-color: #F8EDEA;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Premium</span>
-                    <img src="assets/product_red_sandalwood.png" alt="Bloom Cure Red Sandalwood Herbal Bar"
-                        onerror="this.src='assets/logo.jpg'">
+                    <a href="product-red-sandalwood.html"><img src="assets/product_red_sandalwood.png"
+                            alt="Bloom Cure Red Sandalwood Herbal Bar" onerror="this.src='assets/logo.jpg'"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Red Sandalwood Herbal Bar</h3>
-                        <p class="product-card__desc">Nature's premium skin healer with authentic red sandalwood extract
-                            for a refined, even complexion.</p>
+                        <a href="product-red-sandalwood.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Red Sandalwood Herbal Bar</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Premium red sandalwood for refined, radiant skin.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Pure Sandalwood • Cold-Pressed Oils • Saffron</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Woody & earthy aroma</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹449</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="449">₹449</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(128 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1458,33 +1448,39 @@
                 <div class="product-card__image" style="background-color: #F8E8EE;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--purple">Premium</span>
-                    <img src="assets/product_red_wine.png" alt="Bloom Cure Red Wine Soap"
-                        onerror="this.src='assets/logo.jpg'">
+                    <a href="product-red-wine.html"><img src="assets/product_red_wine.png"
+                            alt="Bloom Cure Red Wine Soap" onerror="this.src='assets/logo.jpg'"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Red Wine Soap</h3>
-                        <p class="product-card__desc">Rich in antioxidants from real red wine extract for youthful,
-                            glowing skin.</p>
+                        <a href="product-red-wine.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Red Wine Soap</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Rich in antioxidants for youthful, glowing skin.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Real Red Wine Extract • Essential Oils • Vitamins</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Luxurious fruity aroma</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹399</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="399">₹399</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.8</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(87 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1493,32 +1489,38 @@
             <div class="product-card" data-name="Neem Purify" data-price="399" data-category="healing">
                 <div class="product-card__image" style="background-color: #F2F5EF;">
                     <span class="product-card__badge product-card__badge--green">Organic</span>
-                    <img src="assets/product_neem.png" alt="Neem Purify Soap">
+                    <a href="product-neem.html"><img src="assets/product_neem.png" alt="Neem Purify Soap"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Neem Purify</h3>
-                        <p class="product-card__desc">Deep cleansing antibacterial neem & tea tree oil for problem skin.
-                        </p>
+                        <a href="product-neem.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Neem Purify</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Deep cleansing antibacterial neem & tea tree oil.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Organic Neem • Tea Tree • Aloe Vera</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Crisp herbal aroma</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹399</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="399">₹399</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <span>4.0</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-regular fa-star"></i>
+                            <span>4.0 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(96 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1532,32 +1534,38 @@
                 <div class="product-card__image" style="background-color: #F5F0E6;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Ayurvedic</span>
-                    <img src="assets/product_soapnut.png" alt="Soap Nut Power Soap">
+                    <a href="product-soapnut.html"><img src="assets/product_soapnut.png" alt="Soap Nut Power Soap"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Soap Nut Power</h3>
-                        <p class="product-card__desc">Ancient reetha cleanser with natural saponins for gentle,
-                            chemical-free cleansing and silky skin.</p>
+                        <a href="product-soapnut.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                            <h3 style="margin-bottom: 0.2rem;">Soap Nut Power</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Ancient reetha cleanser with natural saponins for gentle, chemical-free cleansing and silky skin.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Botanical Oils • Natural Extracts</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-leaf" style="margin-right:4px;"></i>Gentle Ayurvedic cleansing</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹100</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="100">₹100</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.5</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.5 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(120 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1568,32 +1576,38 @@
                 <div class="product-card__image" style="background-color: #EBF2EB;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--green">Herbal</span>
-                    <img src="assets/product_shikakai.png" alt="Seegekai Soap">
+                    <a href="product-seegekai.html"><img src="assets/product_shikakai.png" alt="Seegekai Soap"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Seegekai</h3>
-                        <p class="product-card__desc">Traditional shikakai-infused bar for deep cleansing, scalp care,
-                            and a natural herbal shine.</p>
+                        <a href="product-seegekai.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                            <h3 style="margin-bottom: 0.2rem;">Seegekai</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Traditional shikakai-infused bar for deep cleansing, scalp care, and a natural herbal shine.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Botanical Oils • Natural Extracts</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-leaf" style="margin-right:4px;"></i>Luminous herbal shine</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹399</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="399">₹399</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <span>4.0</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-regular fa-star"></i>
+                            <span>4.0 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(120 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1604,32 +1618,38 @@
                 <div class="product-card__image" style="background-color: #FDF8ED;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Glow</span>
-                    <img src="assets/product_besan.png" alt="Besan Soap">
+                    <a href="product-besan.html"><img src="assets/product_besan.png" alt="Besan Soap"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Besan</h3>
-                        <p class="product-card__desc">Traditional gram flour face & body bar for a radiant complexion
-                            and smooth, exfoliated skin.</p>
+                        <a href="product-besan.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                            <h3 style="margin-bottom: 0.2rem;">Besan</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Traditional gram flour face & body bar for a radiant complexion and smooth, naturally exfoliated skin.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Botanical Oils • Natural Extracts</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-leaf" style="margin-right:4px;"></i>Natural glow & exfoliation</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹109</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="109">₹109</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(120 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1638,32 +1658,39 @@
             <div class="product-card" data-name="Relaxing Bath Salts" data-price="199" data-category="calming">
                 <div class="product-card__image" style="background-color: #F0F4F8;">
                     <span class="product-card__badge product-card__badge--purple">Calming</span>
-                    <img src="assets/relaxing_bath_salts.png" alt="Bloom Cure Relaxing Bath Salts">
+                    <a href="product-bath-salts.html"><img src="assets/relaxing_bath_salts.png"
+                            alt="Bloom Cure Relaxing Bath Salts"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Relaxing Bath Salts</h3>
-                        <p class="product-card__desc">Epsom &amp; Pink Salt | Muscle Recovery, Stress Relief &amp;
-                            Better Sleep Bath Soak</p>
+                        <a href="product-bath-salts.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Relaxing Bath Salts</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Premium Botanical Bath Soak</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Muscle Recovery, Stress Relief & Better Sleep</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Epsom Salt • Pink Salt • Essential Oils</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Calming lavender scent</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹199</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="199">₹199</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>5.0</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>5.0 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(203 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1672,32 +1699,38 @@
             <div class="product-card" data-name="Loofah Body Scrubber" data-price="199" data-category="radiance">
                 <div class="product-card__image" style="background-color: #F8F5EE;">
                     <span class="product-card__badge product-card__badge--green">Eco</span>
-                    <img src="assets/product_loofah.png" alt="Loofah Body Scrubber">
+                    <a href="product-loofah.html"><img src="assets/product_loofah.png" alt="Loofah Body Scrubber"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Loofah Body Scrubber</h3>
-                        <p class="product-card__desc">Natural exfoliating bath sponge for smooth, glowing skin. 100%
-                            biodegradable.</p>
+                        <a href="product-loofah.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Loofah Body Scrubber</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Eco-Friendly Bath Accessory</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Natural exfoliating sponge for smooth, glowing skin.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">100% Biodegradable • Natural Fibers • Gentle</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-leaf" style="margin-right:4px;"></i>Earthy & natural texture</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹50</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="50">₹50</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.8</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(145 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1706,32 +1739,39 @@
             <div class="product-card" data-name="Bamboo Toothbrush" data-price="149" data-category="healing">
                 <div class="product-card__image" style="background-color: #EBF2EB;">
                     <span class="product-card__badge product-card__badge--green">Eco</span>
-                    <img src="assets/product_bamboo_toothbrush.png" alt="Bamboo Toothbrush">
+                    <a href="product-bamboo-toothbrush.html"><img src="assets/product_bamboo_toothbrush.png"
+                            alt="Bamboo Toothbrush"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Bamboo Toothbrush</h3>
-                        <p class="product-card__desc">Eco-friendly sustainable toothbrush with charcoal infused soft
-                            bristles.</p>
+                        <a href="product-bamboo-toothbrush.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Bamboo Toothbrush</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Eco-Friendly Oral Care</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Sustainable toothbrush with charcoal-infused soft bristles.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Bamboo Handle • Charcoal Bristles • Zero Plastic</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-leaf" style="margin-right:4px;"></i>Natural organic finish</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹70</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="70">₹70</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>4.9</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>4.9 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(201 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1742,32 +1782,39 @@
                 <div class="product-card__image" style="background-color: #FAF5ED;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Ayurvedic</span>
-                    <img src="assets/product_seegekai_powder.png" alt="Seegekai Powder">
+                    <a href="product-seegekai-powder.html"><img src="assets/product_seegekai_powder.png"
+                            alt="Seegekai Powder"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Seegekai Powder</h3>
-                        <p class="product-card__desc">Pure organic hair wash powder for strong roots, reduced hairfall,
-                            and natural shine.</p>
+                        <a href="product-seegekai-powder.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Seegekai Powder</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Authentic Ayurvedic Hair Wash</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Pure organic powder for strong roots and natural shine.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Shikakai • Amla Herbs • Hibiscus Extracts</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Traditional earthy scent</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹249</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="249">₹249</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.7</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.7 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(88 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1778,32 +1825,39 @@
                 <div class="product-card__image" style="background-color: #F5F3ED;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Premium</span>
-                    <img src="assets/product_hotel_soaps.png" alt="Bloom Cure Hotel Soaps">
+                    <a href="product-hotel-soaps.html"><img src="assets/product_hotel_soaps.png"
+                            alt="Bloom Cure Hotel Soaps"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Hotel Soaps</h3>
-                        <p class="product-card__desc">Luxury miniature botanical soap set, perfect for hotels, resorts &
-                            gifting. Eco-friendly packaging.</p>
+                        <a href="product-hotel-soaps.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Hotel Soaps</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Premium Assorted Miniature Soap Set</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Luxury botanical soaps for hospitality and gifting.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Assorted Flavors • Eco-Friendly Packaging • SLS-Free</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Mixed signature aromas</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹599</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="599">₹599</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>4.9</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>4.9 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(42 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1814,32 +1868,39 @@
                 <div class="product-card__image" style="background-color: #EFEBE5;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Exfoliating</span>
-                    <img src="assets/product_coffee_soap.png" alt="Exfoliating Coffee Soap">
+                    <a href="product-coffee.html"><img src="assets/product_coffee_soap.png"
+                            alt="Exfoliating Coffee Soap"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Exfoliating Coffee Soap</h3>
-                        <p class="product-card__desc">Rich roasted coffee granules for deep exfoliation and cellulite
-                            reduction. Leaves skin smooth and energized.</p>
+                        <a href="product-coffee.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Exfoliating Coffee Soap</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Rich roasted coffee for deep exfoliation and cellulite reduction.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Roasted Coffee Beans • Cocoa Butter • Vanilla Extract</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Warm espresso scent</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹149</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="149">₹149</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.8</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(105 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1850,33 +1911,39 @@
                 <div class="product-card__image" style="background-color: #F8F9FA;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Premium</span>
-                    <img src="assets/product_rice_goat_milk.png" alt="Bloom Cure Rice Goat Milk Soap"
-                        onerror="this.src='assets/logo.jpg'">
+                    <a href="product-rice-goat-milk.html"><img src="assets/product_rice_goat_milk.png"
+                            alt="Bloom Cure Rice Goat Milk Soap" onerror="this.src='assets/logo.jpg'"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Rice Goat Milk Soap</h3>
-                        <p class="product-card__desc">Rich in vitamins and lactic acid to gently exfoliate and deeply
-                            moisturize for glass like glowing skin.</p>
+                        <a href="product-rice-goat-milk.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Rice Goat Milk Soap</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Deep hydration and gentle exfoliation for glass-like skin.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Fresh Goat Milk • Rice Extract • Shea Butter</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Creamy & subtle sweet aroma</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹149</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="149">₹149</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.8</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.8 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(162 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1887,33 +1954,39 @@
                 <div class="product-card__image" style="background-color: #F4EBE1;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--green">Purifying</span>
-                    <img src="assets/product_multani_mitti.png" alt="Bloom Cure Multani Mitti Soap"
-                        onerror="this.src='assets/logo.jpg'">
+                    <a href="product-multani-mitti.html"><img src="assets/product_multani_mitti.png"
+                            alt="Bloom Cure Multani Mitti Soap" onerror="this.src='assets/logo.jpg'"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Multani Mitti Soap</h3>
-                        <p class="product-card__desc">Natural Fuller's Earth to absorb impurities, reduce acne, and
-                            leave skin fresh and oil-free.</p>
+                        <a href="product-multani-mitti.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                            <h3 style="margin-bottom: 0.2rem;">Multani Mitti Soap</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Natural Fuller's Earth to absorb impurities, reduce acne, and leave skin fresh and oil-free.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Botanical Oils • Natural Extracts</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-leaf" style="margin-right:4px;"></i>Deep purifying action</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹109</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="109">₹109</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>4.7</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                            <span>4.7 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(120 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1924,34 +1997,40 @@
                 <div class="product-card__image" style="background-color: #EAEAEA;">
                     <span class="product-card__new-ribbon">✦ NEW</span>
                     <span class="product-card__badge product-card__badge--gold">Anti-Pollution</span>
-                    <img src="assets/product_charcoal.png"
-                        alt="Bloom Cure Activated Charcoal Soap for Pollution Protection"
-                        onerror="this.src='assets/logo.jpg'">
+                    <a href="product-charcoal.html"><img src="assets/product_charcoal.png"
+                            alt="Bloom Cure Activated Charcoal Soap for Pollution Protection"
+                            onerror="this.src='assets/logo.jpg'"></a>
                 </div>
                 <div class="product-card__info">
                     <div class="product-card__details">
-                        <h3>Activated Charcoal Soap</h3>
-                        <p class="product-card__desc">Deep pore detox for pollution protection. Draws out toxins and
-                            unclogs pores for clear, healthy skin.</p>
+                        <a href="product-charcoal.html"
+                            style="text-decoration:none; color:inherit; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--clr-sage)'" onmouseout="this.style.color='inherit'">
+                                <h3 style="margin-bottom: 0.2rem;">Activated Charcoal Soap</h3>
+                        </a>
+                        <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-gold); margin-bottom: 0.5rem; font-weight: 700;">Handcrafted Premium Cold-Processed Soap</p>
+                        <p class="product-card__desc" style="font-weight: 500; color: var(--clr-text); margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4;">Deep pore detox for clear, healthy, and pollution-free skin.</p>
+                        <p style="font-size: 0.8rem; color: var(--clr-text-light); margin-bottom: 0.4rem;">Bamboo Charcoal • Tea Tree Oil • Aloe Vera</p>
+                        <p style="font-size: 0.75rem; color: var(--clr-sage); font-style: italic; margin-bottom: 1rem;"><i class="fa-solid fa-spa" style="margin-right:4px;"></i>Crisp & purifying scent</p>
                     </div>
-                    <div class="product-card__price-row">
-                        <span class="product-card__price">₹129</span>
+                    <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
+                        <div>
+                            <span class="product-card__price price" data-price="129">₹129</span>
+                        </div>
                         <div class="product-card__rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>4.9</span>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                            <span>4.9 <span style="font-size: 0.65rem; color: var(--clr-text-light); font-weight: normal;">(203 reviews)</span></span>
                         </div>
                     </div>
+                    <div style="text-align: center; margin-bottom: 1rem; border-top: 1px dashed rgba(26, 46, 32, 0.1); border-bottom: 1px dashed rgba(26, 46, 32, 0.1); padding: 0.4rem 0;">
+                        <span style="font-size: 0.65rem; color: var(--clr-dark-green); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Small Batch • Limited Availability</span>
+                    </div>
                     <div class="product-card__actions">
-                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
-                            Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
-                            Now</button>
-                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
-                                class="fa-solid fa-share-nodes"></i></button>
+                        <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                        <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i class="fa-solid fa-share-nodes"></i></button>
                     </div>
                 </div>
             </div>
@@ -1979,7 +2058,7 @@
         </div>
     </main>
 
-    <!-- ═══════════════ PREMIUM MODEL SHOWCASE ═══════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PREMIUM MODEL SHOWCASE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <style>
         .premium-model-showcase {
             padding: 8rem 0;
@@ -2255,13 +2334,13 @@
             </div>
 
             <div class="premium-brand-signature reveal">
-                <h3>BLOOM CURE<sup style="font-size: 0.5em;">®</sup></h3>
+                <h3>BLOOM CURE<sup style="font-size: 0.5em;">Â®</sup></h3>
                 <p>Artisan Botanicals</p>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════ PREMIUM FOOTER ═══════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PREMIUM FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <footer class="premium-footer">
         <div class="container">
             <div class="footer-grid">
@@ -2288,16 +2367,19 @@
                         <li><a href="about.html">Our Story</a></li>
                         <li><a href="#">The Ethos</a></li>
                         <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
                     <h4 class="footer-heading">Newsletter</h4>
                     <p class="footer-newsletter__desc">Join our botanical circle for exclusive tips on natural skincare
                         and early access to new arrivals.</p>
-                    <form class="footer-newsletter__form"
-                        onsubmit="event.preventDefault(); showToast('Welcome to the botanical circle! 🌿');">
-                        <input type="email" placeholder="Email Address" class="footer-newsletter__input" required>
+                    <form class="footer-newsletter__form" action="https://api.web3forms.com/submit" method="POST"
+                        onsubmit="submitNewsletter(event)">
+                        <input type="hidden" name="access_key" value="3968ade5-1b45-45e8-ac7d-3ce09bcc4fa7">
+                        <input type="hidden" name="subject" value="New Newsletter Subscription">
+                        <input type="email" name="email" placeholder="Email Address" class="footer-newsletter__input"
+                            required>
                         <button type="submit" class="footer-newsletter__btn">Join</button>
                     </form>
                 </div>
@@ -2329,6 +2411,7 @@
                 <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
                 <li><a href="shop.html" class="active" onclick="toggleMobileMenu()">Shop</a></li>
                 <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="contact.html" onclick="toggleMobileMenu()">Contact</a></li>
                 <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
             </ul>
             <div class="mobile-menu__footer">
@@ -2443,7 +2526,7 @@
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening...';
             setTimeout(() => {
                 window.open(whatsappURL, '_blank');
-                btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Buy Now';
+                btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Order on WhatsApp';
             }, 500);
         }
 
@@ -2477,10 +2560,10 @@
             });
         }
 
-        // ═══════════════ SEARCH & MOBILE MENU LOGIC ═══════════════
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• SEARCH & MOBILE MENU LOGIC â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
         const productsDB = [
-            { id: 23, name: "Virgin Coconut Oil Soap", price: "349", img: "assets/product_coconut.png", desc: "Nourishing handmade soap with pure virgin coconut oil for deep hydration.", category: "soap" },
+            { id: 23, name: "Virgin Coconut Oil Soap", price: "349", img: "assets/product_coconut.jpg", desc: "Nourishing handmade soap with pure virgin coconut oil for deep hydration.", category: "soap" },
             { id: 22, name: "Hand made Sandalwood Soap", price: "349", img: "assets/product_sandalwood_handmade.png", desc: "Artisan handcrafted sandalwood soap with pure botanical oils.", category: "soap" },
             { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.jpg", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion." },
             { id: 20, name: "Red Wine Soap", price: "399", img: "assets/product_red_wine.jpg", desc: "Rich in antioxidants from real red wine extract for youthful, glowing skin." },
@@ -2499,6 +2582,8 @@
             { id: 17, name: "Activated Charcoal Soap", price: "299", img: "assets/product_charcoal.png", desc: "Deep pore detox for pollution protection" },
             { id: 19, name: "Relaxing Bath Salts", price: "199", img: "assets/relaxing_bath_salts.png", desc: "Epsom & Pink Salt bath soak for muscle recovery" }
         ];
+
+        // ═══════════════ SEARCH & MOBILE MENU LOGIC ═══════════════
 
         function toggleSearch(e) {
             if (e) e.preventDefault();
@@ -2538,7 +2623,7 @@
             if (!resultsContainer || !emptyState) return;
 
             if (query.length === 0) {
-                const suggestions = ["Relaxing Bath Salts", "Rice Goat Milk Soap"];
+                const suggestions = ["Red Sandalwood Herbal Bar", "Red Wine Soap", "Relaxing Bath Salts", "Rice Goat Milk Soap"];
                 const suggestedProducts = productsDB.filter(p => suggestions.includes(p.name));
                 resultsContainer.innerHTML = '<div style="grid-column: 1 / -1; color: var(--clr-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; margin-top: 0.5rem; font-weight: 600;">Suggested for you</div>';
 
@@ -2587,9 +2672,7 @@
             }
         }
 
-        // Mobile menu toggle
-        function toggleMobileMenu(e) {
-            if (e) e.preventDefault();
+        function toggleMobileMenu() {
             const menuOverlay = document.getElementById('mobileMenuOverlay') || document.getElementById('mobileMenu');
             if (!menuOverlay) return;
             menuOverlay.classList.toggle('active');
@@ -2610,7 +2693,42 @@
             }
         });
 
-        // ═══════════════ SHARE PRODUCT ═══════════════
+        async function submitNewsletter(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
+
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData(e.target);
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Welcome to the botanical circle! 🌿');
+                    e.target.reset();
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.disabled = false;
+                    }, 5000);
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (err) {
+                console.error("Newsletter error", err);
+                showToast("Something went wrong. Please try again.");
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }
+        }
+
+        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• SHARE PRODUCT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
         function shareProduct(btn) {
             const card = btn.closest('.product-card') || btn.closest('.spotlight-card') || btn.closest('.shop-card');
@@ -2676,6 +2794,12 @@
         // Initialize UI
         updateCartUI();
     </script>
+    <button id="bc-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="js/bloom-psychology.js"></script>
+
 </body>
 
 </html>
