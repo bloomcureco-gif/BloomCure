@@ -237,17 +237,19 @@ body::after {
     gap: var(--sp-3); flex:1;
 }
 .product-card__details h3 {
-    font-size: 1.12rem;
+    font-size: 1.15rem;
     margin-bottom: var(--sp-1);
     transition: color var(--dur-base) ease;
-    color: var(--clr-dark-green);
+    color: #1a2e20; /* deep rich forest green */
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 .product-card:hover .product-card__details h3 { color: var(--clr-sage); }
 
 .product-card__desc {
-    font-size: .8rem;
-    color: var(--clr-text-light);
-    line-height: 1.5; margin:0;
+    font-size: .82rem;
+    color: #4a5c45; /* warm medium botanical green */
+    line-height: 1.6; margin:0;
 }
 
 /* Price Row */
@@ -259,10 +261,10 @@ body::after {
 }
 .product-card__price {
     font-family: var(--ff-heading);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--clr-dark-green);
-    letter-spacing: -.01em;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #1a2e20;
+    letter-spacing: -.02em;
 }
 /* Gold shimmer applied by JS layer */
 .product-card__price.shimmer,
@@ -278,8 +280,8 @@ body::after {
 
 /* Ratings */
 .product-card__rating { display:flex; align-items:center; gap:2px; }
-.product-card__rating i { font-size:.68rem; color:var(--clr-gold); }
-.product-card__rating span { font-size:.73rem; font-weight:600; color:var(--clr-text-muted); margin-left:4px; }
+.product-card__rating i { font-size:.72rem; color: #c5a028; /* rich gold */ }
+.product-card__rating span { font-size:.76rem; font-weight:700; color: #3d5235; margin-left:4px; } /* darker, more legible */
 
 /* Actions */
 .product-card__actions { display:flex; gap:var(--sp-2); margin-top:var(--sp-3); }
@@ -514,7 +516,7 @@ body::after {
     font-family: var(--ff-heading);
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--clr-dark-green);
+    color: var(--clr-gold); /* Fix: was dark-green on dark-green bg */
     display: block;
     line-height: 1;
 }
@@ -607,6 +609,7 @@ body::after {
 @media (max-width: 640px) {
     .bc-trust-row {
         gap: .6rem .8rem;
+        flex-wrap: wrap; /* Fix for mobile to avoid cutoffs */
     }
     .bc-trust-item {
         font-size: .5rem;
@@ -1088,15 +1091,16 @@ body::after {
     text-transform:uppercase; letter-spacing:1.5px;
 }
 .premium-form input, .premium-form select, .premium-form textarea {
-    width:100%; padding:.9rem 1.15rem;
-    border:1.5px solid rgba(123,139,79,.18);
-    border-radius:var(--r-md);
-    font-size:var(--fs-base);
-    color:var(--clr-text); background:#FAFAF8;
+    width: 100%; padding: .9rem 1.15rem;
+    border: 1.5px solid rgba(123, 139, 79, .18);
+    border-radius: var(--r-md);
+    font-size: var(--fs-base);
+    color: var(--clr-text); background: #FAFAF8;
     transition: border-color var(--dur-base) ease,
                 box-shadow var(--dur-base) ease,
                 background var(--dur-base) ease;
-    outline:none; appearance:none; -webkit-appearance:none;
+    outline: none; appearance: none; -webkit-appearance: none;
+    box-sizing: border-box; /* Mobile limit fix */
 }
 .premium-form input:focus, .premium-form select:focus, .premium-form textarea:focus {
     border-color:rgba(197,160,40,.55); background:var(--clr-white);
@@ -1159,16 +1163,17 @@ body::after {
 .wildlife-title em { color:var(--clr-gold); font-style:italic; font-weight:300; }
 .wildlife-desc { font-size:1.1rem; color:rgba(249,247,242,.78); line-height:1.82; }
 .wildlife-stats {
-    display:flex; justify-content:center; gap:5rem;
-    margin-top:var(--sp-12);
+    display:flex; justify-content:flex-start; gap:3rem;
+    margin-top:var(--sp-8);
     border-top:1px solid rgba(255,255,255,.07);
-    padding-top:var(--sp-12);
+    padding-top:var(--sp-8);
     position:relative; z-index:1;
+    flex-wrap: wrap;
 }
 .wildlife-stat-item { display:flex; flex-direction:column; align-items:center; }
 .wildlife-stat-number {
     font-family:var(--ff-heading);
-    font-size:clamp(2.8rem,5vw,4rem);
+    font-size:clamp(2.2rem,4vw,3.2rem);
     color:var(--clr-gold); line-height:1; margin-bottom:var(--sp-3);
     text-shadow:0 8px 26px rgba(197,160,40,.18); font-weight:300;
 }
@@ -1178,7 +1183,7 @@ body::after {
 }
 @media(max-width:768px){
     .wildlife-section{padding:4.5rem var(--sp-6);}
-    .wildlife-stats{flex-direction:column;gap:var(--sp-12);padding-top:var(--sp-8);margin-top:var(--sp-8);}
+    .wildlife-stats{flex-direction:column;gap:var(--sp-8);padding-top:var(--sp-6);margin-top:var(--sp-6);}
 }
 
 
@@ -1780,4 +1785,50 @@ body::after {
     .premium-nav__brand-name { font-size: 1.25rem !important; }
     .premium-nav__brand-tagline { font-size: 0.5rem !important; letter-spacing: 1.5px !important; }
     .premium-nav__icon-btn { width: 34px !important; height: 34px !important; font-size: 0.8rem !important; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   PREMIUM PRODUCT CARD TYPOGRAPHY ENHANCEMENTS
+────────────────────────────────────────────────────────────────────── */
+
+/* Product subtitle gold label (e.g., "HANDCRAFTED PREMIUM COLD-PROCESSED SOAP") */
+.product-card__info p[style*="clr-gold"],
+.product-card__info p[style*="var(--clr-gold)"] {
+    color: #b8941a !important;  /* darker, richer gold — more refined */
+    letter-spacing: 1.2px;
+}
+
+/* Ingredient / secondary text line (e.g., "Botanical Oils · Natural Extracts") */
+.product-card__info p[style*="clr-text-light"],
+.product-card__info p[style*="var(--clr-text-light)"] {
+    color: #5c6b50 !important; /* warm sage-toned dark */
+}
+
+/* Aroma / italic hint line (e.g., "Fresh tropical aroma") */
+.product-card__info p[style*="clr-sage"],
+.product-card__info p[style*="var(--clr-sage)"] {
+    color: #4d6e3a !important; /* deep sage, readable italic */
+    font-style: italic;
+}
+
+/* "Small Batch · Limited Availability" divider text */
+.product-card__info span[style*="clr-dark-green"],
+.product-card__info span[style*="var(--clr-dark-green)"] {
+    color: #2c4a1e !important;
+    letter-spacing: 2px;
+}
+
+/* Batch note line injected by JS */
+.bc-batch-note {
+    font-size: .72rem;
+    color: #6b7c5a;
+    font-style: italic;
+    padding: .4rem .6rem;
+    border-radius: 6px;
+    background: rgba(123, 139, 79, 0.07);
+    border-left: 2px solid rgba(197, 160, 40, 0.25);
+}
+.bc-batch-note i {
+    color: var(--clr-gold);
+    margin-right: 4px;
 }
