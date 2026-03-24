@@ -726,8 +726,9 @@
         .sustainability-badges {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 3rem;
+            flex-wrap: wrap;
         }
 
         .sustainability-badge {
@@ -3411,34 +3412,400 @@
         </div>
     </section>
 
-    <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â WILDLIFE CONSERVATION Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
-    <section class="wildlife-section">
+    <!-- Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â  WILDLIFE CONSERVATION Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â  -->
+    <section class="wildlife-section modern-luxury"
+        style="position:relative; overflow:hidden; background: linear-gradient(145deg, #132217 0%, #080d0a 100%); padding: 8rem 0; color: #f9f7f2;">
+
+        <!-- Ambient lighting -->
+        <div
+            style="position: absolute; top: 0; left: 20%; width: 60%; height: 50%; background: radial-gradient(ellipse at top, rgba(197, 160, 40, 0.04), transparent 70%); pointer-events: none;">
+        </div>
+
+        <!-- Particles -->
+        <div style="position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;"
+            aria-hidden="true">
+            <span
+                style="position: absolute; top: 80%; left: 10%; color: rgba(255,255,255,0.08); font-size: 14px; animation: floatParticles 18s linear infinite;">✦</span>
+            <span
+                style="position: absolute; top: 90%; left: 30%; color: rgba(197,160,40,0.1); font-size: 18px; animation: floatParticles 25s linear infinite 2s;">✺</span>
+            <span
+                style="position: absolute; top: 75%; left: 75%; color: rgba(255,255,255,0.06); font-size: 12px; animation: floatParticles 20s linear infinite 5s;">✦</span>
+            <span
+                style="position: absolute; top: 85%; left: 85%; color: rgba(197,160,40,0.08); font-size: 20px; animation: floatParticles 22s linear infinite 1s;">✧</span>
+            <span
+                style="position: absolute; top: 20%; left: 15%; color: rgba(197,160,40,0.05); font-size: 16px; animation: floatParticles 19s linear infinite 4s;">✦</span>
+        </div>
+
+        <style>
+            @keyframes floatCard {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+                }
+
+                50% {
+                    transform: translateY(-15px);
+                    box-shadow: 0 35px 60px rgba(0, 0, 0, 0.5);
+                }
+            }
+
+            @keyframes floatParticles {
+                0% {
+                    transform: translateY(10vh) rotate(0deg);
+                    opacity: 0;
+                }
+
+                20% {
+                    opacity: 0.15;
+                }
+
+                80% {
+                    opacity: 0.15;
+                }
+
+                100% {
+                    transform: translateY(-30vh) rotate(45deg);
+                    opacity: 0;
+                }
+            }
+
+            .wl-modern-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6rem;
+                align-items: center;
+                position: relative;
+                z-index: 10;
+            }
+
+            @media (max-width: 900px) {
+                .wl-modern-grid {
+                    grid-template-columns: 1fr;
+                    gap: 5rem;
+                }
+            }
+
+            .wl-image-comp {
+                position: relative;
+                border-radius: 12px;
+                background: #ffffff;
+                padding: 1.5rem;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+                animation: floatCard 7s ease-in-out infinite;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .wl-image-comp img {
+                width: 100%;
+                display: block;
+                border-radius: 8px;
+            }
+
+            .wl-stats-glass {
+                position: absolute;
+                bottom: -30px;
+                right: -40px;
+                background: rgba(18, 30, 20, 0.85);
+                /* Increased opacity for legibility */
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border: 1px solid rgba(197, 160, 40, 0.2);
+                border-radius: 12px;
+                padding: 2rem 1.8rem;
+                text-align: center;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+                animation: floatCard 8s ease-in-out infinite 0.5s reverse;
+                max-width: 200px;
+                z-index: 2;
+            }
+
+            @media (max-width: 900px) {
+                .wl-stats-glass {
+                    right: -10px;
+                    bottom: -30px;
+                    padding: 1.5rem 1.2rem;
+                }
+            }
+
+            .wl-stats-glass h4 {
+                color: var(--clr-gold);
+                font-size: 2rem;
+                font-family: var(--ff-heading);
+                font-weight: 300;
+                margin: 0;
+                line-height: 1;
+            }
+
+            .wl-stats-glass p {
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: rgba(255, 255, 255, 0.8);
+                margin: 0.8rem 0;
+                line-height: 1.5;
+            }
+
+            .wl-text-comp {
+                max-width: 500px;
+            }
+
+            @media (max-width: 900px) {
+                .wl-text-comp {
+                    margin: 0 auto;
+                    text-align: center;
+                }
+            }
+
+            .wl-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 0.5rem 1.2rem;
+                border-radius: 30px;
+                border: 1px solid rgba(197, 160, 40, 0.3);
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--clr-gold);
+                margin-bottom: 2rem;
+                font-weight: 600;
+            }
+
+            .wl-text-comp h2 {
+                font-size: 3.5rem;
+                font-family: var(--ff-heading);
+                font-weight: 300;
+                line-height: 1.1;
+                margin-bottom: 1.2rem;
+                color: #ffffff;
+            }
+
+            @media (max-width: 900px) {
+                .wl-text-comp h2 {
+                    font-size: 2.8rem;
+                }
+            }
+
+            .wl-text-comp h2 em {
+                font-style: italic;
+                color: var(--clr-gold);
+            }
+
+            .wl-divider-luxury {
+                height: 1px;
+                width: 60px;
+                background: linear-gradient(90deg, var(--clr-gold), transparent);
+                margin-bottom: 2rem;
+            }
+
+            @media (max-width: 900px) {
+                .wl-divider-luxury {
+                    margin: 0 auto 2rem;
+                    background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+                }
+            }
+
+            .wl-text-comp>p {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.95rem;
+                line-height: 1.8;
+                margin-bottom: 3rem;
+                font-weight: 300;
+            }
+
+            .wl-list {
+                display: flex;
+                flex-direction: column;
+                gap: 1.8rem;
+                margin-bottom: 4rem;
+            }
+
+            @media (max-width: 900px) {
+                .wl-list {
+                    text-align: left;
+                    width: 100%;
+                    max-width: 400px;
+                    margin: 0 auto 4rem;
+                }
+            }
+
+            .wl-item {
+                display: flex;
+                align-items: center;
+                gap: 1.2rem;
+            }
+
+            .wl-item-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                background: rgba(197, 160, 40, 0.08);
+                border: 1px solid rgba(197, 160, 40, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--clr-gold);
+                font-size: 1.1rem;
+                flex-shrink: 0;
+            }
+
+            .wl-item-text h5 {
+                font-size: 0.95rem;
+                font-weight: 500;
+                color: #ffffff;
+                margin: 0 0 0.4rem 0;
+                letter-spacing: 0.5px;
+            }
+
+            .wl-item-text p {
+                font-size: 0.8rem;
+                color: rgba(255, 255, 255, 0.5);
+                margin: 0;
+                font-weight: 300;
+                line-height: 1.4;
+            }
+
+            .wl-bottom-stats {
+                display: flex;
+                gap: 3.5rem;
+                align-items: flex-end;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                padding-top: 2.5rem;
+            }
+
+            @media (max-width: 900px) {
+                .wl-bottom-stats {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 2.5rem;
+                }
+            }
+
+            .wl-stat-block {
+                text-align: center;
+            }
+
+            .wl-stat-value {
+                font-family: var(--ff-heading);
+                font-size: 2.8rem;
+                color: var(--clr-gold);
+                line-height: 1;
+                margin-bottom: 0.8rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                font-weight: 300;
+            }
+
+            .wl-stat-value i {
+                display: block;
+                font-size: 2.4rem;
+            }
+
+            .wl-stat-label {
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: rgba(255, 255, 255, 0.6);
+                font-weight: 500;
+            }
+
+            .stat-icon-color {
+                color: #7bb862;
+                font-size: 2.4rem;
+                text-shadow: 0 0 20px rgba(123, 184, 98, 0.4);
+            }
+        </style>
+
         <div class="container">
-            <div class="wildlife-content reveal">
-                <div class="wildlife-badge">
-                    <i class="fa-solid fa-leaf"></i> Our Promise
-                </div>
-                <h2 class="wildlife-title">Giving Back to <em>Nature</em></h2>
-                <p class="wildlife-desc">
-                    We believe in protecting the very source of our ingredients. That's why we proudly pledge
-                    <strong>15% of our share</strong> to wildlife conservation and protecting natural habitats. By
-                    choosing Bloom Cure, you're not just nourishing your skin you're helping to preserve the Earth's
-                    precious ecosystems and the wild creatures that call it home.
-                </p>
-                <div class="wildlife-stats">
-                    <div class="wildlife-stat-item">
-                        <span class="wildlife-stat-number">15%</span>
-                        <span class="wildlife-stat-label">Share Donated</span>
+            <div class="wl-modern-grid">
+
+                <div class="wl-image-area" style="position: relative;">
+                    <div class="wl-image-comp">
+                        <img src="assets/wildlife_deer_leaf.png" alt="Wildlife Conservation - Reforestation"
+                            loading="lazy">
                     </div>
-                    <div class="wildlife-stat-item">
-                        <span class="wildlife-stat-number"><i class="fa-solid fa-paw"
-                                style="font-size: 3.2rem; transform: translateY(-5px);"></i></span>
-                        <span class="wildlife-stat-label">For Wildlife</span>
+
+                    <div class="wl-stats-glass">
+                        <h4>15%</h4>
+                        <p>Of every purchase funds reforestation</p>
+                        <i class="fa-solid fa-seedling" style="color: var(--clr-sage);"></i>
                     </div>
                 </div>
+
+                <div class="wl-text-comp">
+                    <div class="wl-badge">
+                        <i class="fa-solid fa-leaf"></i> Our Promise
+                    </div>
+
+                    <h2>Giving Back to <em>Nature</em></h2>
+                    <div class="wl-divider-luxury"></div>
+
+                    <p>
+                        We believe in protecting the very source of our ingredients. That's why
+                        we proudly pledge <strong>15% of our share</strong> to wildlife conservation and
+                        protecting natural habitats. By choosing Bloom Cure, you're not just
+                        nourishing your skin you're helping preserve the Earth's precious
+                        ecosystems and the wild creatures that call it home.
+                    </p>
+
+                    <div class="wl-list">
+                        <div class="wl-item">
+                            <div class="wl-item-icon">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div class="wl-item-text">
+                                <h5>Reforestation</h5>
+                                <p>Funding tree planting in depleted habitats across India</p>
+                            </div>
+                        </div>
+
+                        <div class="wl-item">
+                            <div class="wl-item-icon">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+                            <div class="wl-item-text">
+                                <h5>Wildlife Shelters</h5>
+                                <p>Supporting sanctuaries protecting endangered species</p>
+                            </div>
+                        </div>
+
+                        <div class="wl-item">
+                            <div class="wl-item-icon">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+                            <div class="wl-item-text">
+                                <h5>Clean Water</h5>
+                                <p>Zero chemical runoff our production protects waterways</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wl-bottom-stats">
+                        <div class="wl-stat-block">
+                            <div class="wl-stat-value">15</div>
+                            <div class="wl-stat-label">Share Donated</div>
+                        </div>
+                        <div class="wl-stat-block">
+                            <div class="wl-stat-value"><i class="fa-solid fa-paw"></i></div>
+                            <div class="wl-stat-label">For Wildlife</div>
+                        </div>
+                        <div class="wl-stat-block">
+                            <div class="wl-stat-value"><i class="fa-solid fa-seedling stat-icon-color"></i></div>
+                            <div class="wl-stat-label">Zero Plastic</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
 
     <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â PRODUCTS SECTION Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
@@ -4153,7 +4520,7 @@
                             class="fa-solid fa-star"></i>
                     </div>
                     <p class="testimonial-card__text">"oops i was a skeptic but the red sandalwood bar is basically
-                        magic? its been a week and my husband actually asked what i was using lol... the glow is so
+                        magic? its been a week and my husband actually asked what i was using lol..... the glow is so
                         real!"</p>
                     <div class="testimonial-card__author">
                         <div class="testimonial-card__avatar" style="background: #E8D5C4; color: #8B6914;">A</div>
