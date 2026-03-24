@@ -220,3 +220,70 @@ function renderProductSuggestions() {
 
 // Auto-render suggestions on page load
 document.addEventListener('DOMContentLoaded', renderProductSuggestions);
+
+// ═══════════════════════════════════════════
+// PDP Sticky Mobile CTA & Auto Image Gallery
+// ═══════════════════════════════════════════
+
+let galleryInterval;
+
+// Start Auto Gallery Rotation
+function startAutoGallery() {
+    const thumbs = Array.from(document.querySelectorAll('.pdp-thumb-btn'));
+    if (thumbs.length <= 1) return;
+
+    galleryInterval = setInterval(() => {
+        let activeIdx = thumbs.findIndex(b => b.classList.contains('active'));
+        let nextIdx = (activeIdx + 1) % thumbs.length;
+        
+        const nextBtn = thumbs[nextIdx];
+        const nextSrc = nextBtn.querySelector('img').src;
+        
+        window.changeImage(nextSrc, nextBtn, true);
+    }, 3500); // 3.5 seconds
+}
+
+// Gallery Image Switcher
+window.changeImage = function(src, btn, isAuto = false) {
+    const mainImg = document.getElementById('main-product-image');
+    if (mainImg) {
+        mainImg.style.opacity = 0;
+        setTimeout(() => {
+            mainImg.src = src;
+            mainImg.style.opacity = 1;
+        }, 200);
+    }
+    
+    // Update active thumb state
+    document.querySelectorAll('.pdp-thumb-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    // Reset timer on manual click
+    if (!isAuto && galleryInterval) {
+        clearInterval(galleryInterval);
+        startAutoGallery();
+    }
+};
+
+// Sticky CTA Scroll Logic
+document.addEventListener('DOMContentLoaded', () => {
+    startAutoGallery();
+    
+    const stickyCta = document.getElementById('stickyMobileCta');
+    const mainAddToCart = document.querySelector('.btn-add-cart');
+
+    if (stickyCta && mainAddToCart) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Determine if we scrolled past the button
+                if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0 });
+
+        observer.observe(mainAddToCart);
+    }
+});
