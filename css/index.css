@@ -958,14 +958,44 @@ body::after {
 .btn-add-cart:active { transform:scale(.96); }
 
 .btn-buy-now {
-    background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);
-    color:#fff; border:1px solid transparent;
+    background: linear-gradient(135deg, #222 0%, #000 100%);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-buy-now::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    z-index: 2;
+    transition: none;
 }
 .btn-buy-now:hover {
-    background:linear-gradient(135deg,#1ebe59 0%,#0d7a6e 100%);
-    box-shadow:0 6px 20px rgba(37,211,102,.32); transform:translateY(-2px);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 2px 2px rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #333 0%, #111 100%);
 }
-.btn-buy-now:active { transform:scale(.96); }
+.btn-buy-now:hover::before {
+    animation: btnShine 1s ease-out forwards;
+}
+.btn-buy-now:active {
+    transform: translateY(-1px) scale(0.97);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes btnShine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
 
 .btn-share {
     background:transparent; color:var(--clr-gold);
@@ -1832,3 +1862,38 @@ body::after {
     color: var(--clr-gold);
     margin-right: 4px;
 }
+
+/* ── Spotlight Card Minimal Overrides ─────────────────────── */
+/* Hide the dashed 'Small Batch' divider for cleaner look */
+.spotlight-card__body > div[style*="border-top: 1px dashed"] {
+    display: none !important;
+}
+
+/* Hide the italic 'Botanical Oils • Natural Extracts' line */
+.spotlight-card__body > p[style*="font-style: italic"] {
+    display: none !important;
+}
+
+/* Restyle the gold category label to muted subtitle */
+.spotlight-card__body > p[style*="color: var(--clr-gold)"] {
+    color: #7a8a72 !important;
+    font-weight: 500 !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 0.6rem !important;
+}
+
+/* Clean up description inline styles */
+.spotlight-card__body .spotlight-card__desc {
+    color: #7a8a72 !important;
+    font-weight: 400 !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+}
+
+/* Refine price/rating row layout */
+.spotlight-card__body > div[style*="display: flex"][style*="flex-end"] {
+    margin-bottom: 0 !important;
+}
+/* ═══════════════════════════════════════════════════════════ */
