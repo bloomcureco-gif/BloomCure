@@ -536,7 +536,129 @@
   }
 
 
+  
+
   /* ─────────────────────────────────────────────────────────
+     21. PREMIUM COOKIE CONSENT
+     Why: Legal compliance + Transparency builds trust.
+  ──────────────────────────────────────────────────────────── */
+  function createCookieBanner() {
+    if (localStorage.getItem('bc_cookie_consent')) return;
+
+    const banner = document.createElement('div');
+    banner.className = 'bc-cookie-banner';
+    // Injecting scoped styles for the banner to ensure it works globally
+    banner.innerHTML = `
+      <style>
+        .bc-cookie-banner {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          max-width: 380px;
+          background: rgba(20, 30, 20, 0.95);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(197, 160, 40, 0.15);
+          border-radius: 12px;
+          padding: 1.5rem;
+          color: #F8F5F0;
+          z-index: 99999;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+          transform: translateY(150%);
+          transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+          font-family: var(--ff-body, 'Jost', sans-serif);
+        }
+        .bc-cookie-banner.show {
+          transform: translateY(0);
+        }
+        .bc-cookie__header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--clr-gold, #C5A028);
+          font-weight: 600;
+          font-size: 0.9rem;
+          margin-bottom: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
+        .bc-cookie__text {
+          font-size: 0.9rem;
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+          color: rgba(255,255,255,0.85);
+          font-weight: 300;
+        }
+        .bc-cookie__actions {
+          display: flex;
+          gap: 12px;
+        }
+        .bc-cookie-btn {
+          flex: 1;
+          padding: 0.8rem 0;
+          border: none;
+          background: linear-gradient(135deg, var(--clr-gold, #C5A028) 0%, #E8C85E 100%);
+          color: var(--clr-dark-green, #1A2E20);
+          font-weight: 600;
+          cursor: pointer;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          box-shadow: 0 5px 15px rgba(197, 160, 40, 0.2);
+        }
+        .bc-cookie-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(197, 160, 40, 0.3);
+        }
+        .bc-cookie-btn--alt {
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.2);
+          color: white;
+          box-shadow: none;
+        }
+        .bc-cookie-btn--alt:hover {
+          background: rgba(255,255,255,0.05);
+          border-color: var(--clr-gold, #C5A028);
+          color: var(--clr-gold, #C5A028);
+          box-shadow: none;
+        }
+        @media (max-width: 480px) {
+          .bc-cookie-banner { bottom: 16px; left: 16px; right: 16px; max-width: none; padding: 1.2rem; }
+          .bc-cookie__actions { flex-direction: column; }
+        }
+      </style>
+      <div class="bc-cookie__header">
+        <i class="fa-solid fa-cookie-bite"></i> Privacy & Cookies
+      </div>
+      <div class="bc-cookie__text">
+        We use essential cookies to ensure you get the best experience on our website, and optional cookies to tailor our botanical recommendations to your needs.
+      </div>
+      <div class="bc-cookie__actions">
+        <button class="bc-cookie-btn bc-acc">Accept All</button>
+        <button class="bc-cookie-btn bc-cookie-btn--alt bc-dec">Essential Only</button>
+      </div>
+    `;
+
+    document.body.appendChild(banner);
+
+    // Trigger slide up after a short delay
+    setTimeout(() => banner.classList.add('show'), 2000);
+
+    const closeBanner = (type) => {
+      banner.classList.remove('show');
+      localStorage.setItem('bc_cookie_consent', type);
+      setTimeout(() => banner.remove(), 600);
+    };
+
+    banner.querySelector('.bc-acc').addEventListener('click', () => closeBanner('all'));
+    banner.querySelector('.bc-dec').addEventListener('click', () => closeBanner('essential'));
+  }
+
+  setTimeout(createCookieBanner, 1500);
+
+/* ─────────────────────────────────────────────────────────
      INIT COMPLETE
   ──────────────────────────────────────────────────────────── */
   console.log('[Bloom Cure] Psychology engine loaded — 20 triggers active');
