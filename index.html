@@ -29,6 +29,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/antigravity-carousel.css">
 
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -52,12 +53,27 @@
 
         /* Continuous float animation for depth */
         @keyframes agFloatSlow {
-            0%, 100% { transform: translate3d(0, 0, 0); }
-            50% { transform: translate3d(0, -1.5%, 0); }
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: translate3d(0, -1.5%, 0);
+            }
         }
+
         @keyframes agFloatMedium {
-            0%, 100% { transform: translate3d(0, 0, 0); }
-            50% { transform: translate3d(0, -3%, 0); }
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: translate3d(0, -3%, 0);
+            }
         }
 
         /* Slide Layers */
@@ -94,7 +110,8 @@
         }
 
         .ag-grain-overlay {
-            display: none; /* Removed grain overlay to preserve image clarity */
+            display: none;
+            /* Removed grain overlay to preserve image clarity */
         }
 
         /* Dynamic Particles floating around - MUCH softer */
@@ -114,24 +131,30 @@
 
         .ag-particle--gold {
             background: var(--clr-gold);
-            width: 450px; height: 450px;
-            top: 10%; right: 5%;
+            width: 450px;
+            height: 450px;
+            top: 10%;
+            right: 5%;
             animation: agFloatMedium 14s ease-in-out infinite alternate;
             opacity: 0.15;
         }
-        
+
         .ag-particle--sage {
             background: var(--clr-sage);
-            width: 500px; height: 500px;
-            bottom: -10%; left: 0%;
+            width: 500px;
+            height: 500px;
+            bottom: -10%;
+            left: 0%;
             animation: agFloatSlow 18s ease-in-out infinite alternate-reverse;
             opacity: 0.2;
         }
-        
+
         .ag-particle--rose {
             background: #E8A8A8;
-            width: 400px; height: 400px;
-            top: 40%; left: 20%;
+            width: 400px;
+            height: 400px;
+            top: 40%;
+            left: 20%;
             animation: agFloatMedium 12s ease-in-out infinite alternate;
             opacity: 0.12;
             filter: blur(140px);
@@ -177,7 +200,8 @@
             transform: translateZ(30px);
             will-change: transform;
             text-align: left !important;
-            background: transparent;  /* Removed obtrusive box styling */
+            background: transparent;
+            /* Removed obtrusive box styling */
             border: none;
             box-shadow: none;
             backdrop-filter: none;
@@ -196,10 +220,21 @@
             transform: translateY(0);
         }
 
-        .ag-delay-1 { transition-delay: 0.1s; }
-        .ag-delay-2 { transition-delay: 0.3s; }
-        .ag-delay-3 { transition-delay: 0.5s; }
-        .ag-delay-4 { transition-delay: 0.7s; }
+        .ag-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .ag-delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        .ag-delay-3 {
+            transition-delay: 0.5s;
+        }
+
+        .ag-delay-4 {
+            transition-delay: 0.7s;
+        }
 
         /* Typography */
         .ag-label {
@@ -215,7 +250,11 @@
             margin-bottom: 1.2rem;
             opacity: 0.9;
         }
-        .ag-label i { color: var(--clr-gold); font-size: 0.6rem; }
+
+        .ag-label i {
+            color: var(--clr-gold);
+            font-size: 0.6rem;
+        }
 
         .ag-title {
             font-size: 4rem;
@@ -268,7 +307,7 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             box-shadow: 0 8px 20px rgba(197, 160, 40, 0.2);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .ag-btn::before {
@@ -283,9 +322,9 @@
 
         .ag-btn:hover {
             transform: translateY(-4px);
-            box-shadow: 
-                0 15px 30px rgba(197, 160, 40, 0.3), 
-                0 0 15px rgba(255,255,255,0.3);
+            box-shadow:
+                0 15px 30px rgba(197, 160, 40, 0.3),
+                0 0 15px rgba(255, 255, 255, 0.3);
             color: var(--clr-dark-green);
         }
 
@@ -312,11 +351,11 @@
         }
 
         .ag-btn-secondary:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-color: var(--clr-gold);
             color: var(--clr-gold);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         /* Navigation Arrows */
@@ -327,10 +366,10 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
@@ -341,11 +380,16 @@
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .ag-arrow-left { left: 3%; }
-        .ag-arrow-right { right: 3%; }
+        .ag-arrow-left {
+            left: 3%;
+        }
+
+        .ag-arrow-right {
+            right: 3%;
+        }
 
         .ag-arrow:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             border-color: var(--clr-gold);
             color: var(--clr-gold);
             transform: translateY(-50%) scale(1.08);
@@ -366,7 +410,7 @@
         .ag-dot {
             width: 30px;
             height: 2px;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
@@ -385,31 +429,92 @@
         }
 
         @media (max-width: 992px) {
-            .ag-parallax-wrap { padding-left: 0; justify-content: center; }
-            .ag-title { font-size: 3rem; }
-            .ag-glass-card { padding: 0; max-width: 580px; text-align: center !important; margin: 0 auto; }
-            .ag-actions { justify-content: center; }
-            .ag-label { width: 100%; justify-content: center; }
-            .ag-desc { margin: 0 auto 2.5rem; }
+            .ag-parallax-wrap {
+                padding-left: 0;
+                justify-content: center;
+            }
+
+            .ag-title {
+                font-size: 3rem;
+            }
+
+            .ag-glass-card {
+                padding: 0;
+                max-width: 580px;
+                text-align: center !important;
+                margin: 0 auto;
+            }
+
+            .ag-actions {
+                justify-content: center;
+            }
+
+            .ag-label {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .ag-desc {
+                margin: 0 auto 2.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .ag-hero { min-height: 85vh; }
-            .ag-content-layer { align-items: flex-end; padding-bottom: 6rem; }
-            .ag-title { font-size: 2.6rem; }
-            .ag-desc { font-size: 0.95rem; margin: 0 auto 2rem; }
-            .ag-label { padding-left: 0; }
-            .ag-glass-card { padding: 0 1.5rem; max-width: 100%; text-align: center !important; margin: 0 auto; }
-            .ag-actions { flex-direction: column; width: 100%; gap: 1rem; }
-            .ag-btn, .ag-btn-secondary { width: 100%; justify-content: center; }
-            .ag-arrow { display: none; }
-            .ag-particle { display: none; }
+            .ag-hero {
+                min-height: 85vh;
+            }
+
+            .ag-content-layer {
+                align-items: flex-end;
+                padding-bottom: 6rem;
+            }
+
+            .ag-title {
+                font-size: 2.6rem;
+            }
+
+            .ag-desc {
+                font-size: 0.95rem;
+                margin: 0 auto 2rem;
+            }
+
+            .ag-label {
+                padding-left: 0;
+            }
+
+            .ag-glass-card {
+                padding: 0 1.5rem;
+                max-width: 100%;
+                text-align: center !important;
+                margin: 0 auto;
+            }
+
+            .ag-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 1rem;
+            }
+
+            .ag-btn,
+            .ag-btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .ag-arrow {
+                display: none;
+            }
+
+            .ag-particle {
+                display: none;
+            }
+
             .ag-cinematic-layer {
                 /* Vertical gradient perfectly masking the bottom half of the screen for absolute text readability */
                 background: linear-gradient(180deg, rgba(15, 25, 18, 0) 0%, rgba(15, 25, 18, 0.4) 40%, rgba(15, 25, 18, 0.95) 100%) !important;
             }
         }
-        
+
         /* Section Labels */
         .section-label {
             display: inline-flex;
@@ -920,330 +1025,9 @@
             }
         }
 
-        /* ═══════════════ SPOTLIGHT — PREMIUM MINIMAL ═══════════════ */
-        .spotlight-banner {
-            background: #faf9f6;
-            padding: 6rem 0 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .spotlight-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 5%, rgba(26,46,32,0.08) 50%, transparent 95%);
-        }
-
-        .spotlight-banner::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 5%, rgba(26,46,32,0.08) 50%, transparent 95%);
-        }
-
-        .spotlight-title {
-            color: #1a2e20;
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 0.6rem;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-        }
-
-        .spotlight-title em {
-            color: #1a2e20;
-            font-style: italic;
-            font-weight: 400;
-        }
-
-        .spotlight-subtitle {
-            text-align: center;
-            color: #7a8a72;
-            margin-bottom: 3.5rem;
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.01em;
-        }
-
-        .spotlight-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            margin-bottom: 1rem;
-        }
-
-        .spotlight-label span {
-            font-weight: 500;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #7a8a72;
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-            -webkit-text-fill-color: #7a8a72;
-            animation: none;
-        }
-
-        @keyframes shimmer {
-            to { background-position: 200% center; }
-        }
-
-        .spotlight-label::before,
-        .spotlight-label::after {
-            content: '';
-            width: 48px;
-            height: 1px;
-            background: rgba(26,46,32,0.15);
-        }
-
-        .spotlight-label::after {
-            background: rgba(26,46,32,0.15);
-        }
-
-        /* Slider wrapper */
-        .spotlight-slider {
-            position: relative;
-            overflow: hidden;
-            margin: 0 -1rem;
-            padding: 0 1rem;
-        }
-
-        .spotlight-slider__track {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-            cursor: grab;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .spotlight-slider__track.is-dragging {
-            cursor: grabbing;
-            transition: none;
-        }
-
-        .spotlight-card {
-            min-width: calc(33.333% - 1.34rem);
-            max-width: calc(33.333% - 1.34rem);
-            flex-shrink: 0;
-            background: #fff;
-            border: none;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-        }
-
-        .spotlight-card:hover {
-            transform: translateY(-6px);
-            border-color: transparent;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .spotlight-card__image {
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-            background: #f3f1ec;
-        }
-
-        .spotlight-card__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .spotlight-card:hover .spotlight-card__image img {
-            transform: scale(1.05);
-        }
-
-        .spotlight-card__image-badge {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background: #1a2e20;
-            color: #fff;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 4px;
-        }
-
-        .spotlight-card__body {
-            padding: 1.6rem 1.5rem 1.5rem;
-        }
-
-        .spotlight-card__name {
-            font-family: var(--ff-heading);
-            font-size: 1.3rem;
-            color: #1a2e20;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .spotlight-card__desc {
-            color: #7a8a72;
-            font-size: 0.85rem;
-            line-height: 1.55;
-            margin-bottom: 1rem;
-        }
-
-        .spotlight-card__price {
-            font-family: var(--ff-heading);
-            font-size: 1.4rem;
-            color: #1a2e20;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .spotlight-card__rating {
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-            margin-top: 0.5rem;
-            margin-bottom: 1rem;
-            background: transparent;
-            border: none;
-            padding: 0;
-            border-radius: 0;
-        }
-
-        .spotlight-card__rating i {
-            color: #c5a028;
-            font-size: 0.58rem;
-            filter: none;
-        }
-
-        .spotlight-card__rating span {
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: #4a5c45;
-            margin-left: 5px;
-            letter-spacing: 0;
-        }
-
-        .spotlight-card__actions {
-            display: flex;
-            gap: 0.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(26,46,32,0.06);
-        }
-
-        .spotlight-card__actions .btn-add-cart,
-        .spotlight-card__actions .btn-buy-now {
-            flex: 1;
-        }
-
-        /* Slider Navigation Arrows */
-        .spotlight-slider__nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .spotlight-slider__arrow {
-            display: none !important;
-        }
-
-        /* Slider Dots */
-        .spotlight-slider__dots {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .spotlight-slider__dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(26,46,32,0.15);
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            padding: 0;
-        }
-
-        .spotlight-slider__dot.active {
-            width: 28px;
-            border-radius: 3px;
-            background: #1a2e20;
-            box-shadow: none;
-        }
-
-        .spotlight-slider__dot:hover:not(.active) {
-            background: rgba(26,46,32,0.35);
-            transform: scale(1.3);
-        }
-
-        /* Progress bar */
-        .spotlight-slider__progress {
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            height: 2px;
-            background: #1a2e20;
-            border-radius: 2px;
-            transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: none;
-        }
-
-        @media (max-width: 992px) {
-            .spotlight-card {
-                min-width: calc(50% - 1rem);
-                max-width: calc(50% - 1rem);
-            }
-
-            .spotlight-title {
-                font-size: 2.2rem;
-            }
-
-            .spotlight-slider__arrow {
-                width: 44px;
-                height: 44px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .spotlight-card {
-                min-width: 85%;
-                max-width: 85%;
-            }
-
-            .spotlight-slider {
-                margin: 0 -0.5rem;
-                padding: 0 0.5rem;
-            }
-
-            .spotlight-slider__arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 0.85rem;
-            }
-
-            .spotlight-slider__nav {
-                gap: 1rem;
-            }
-
-            .spotlight-banner {
-                padding: 4rem 0 3rem;
-            }
-
-            .spotlight-title {
-                font-size: 1.8rem;
-            }
-        }
+        /* ═══════════════ SPOTLIGHT STYLES ═══════════════
+           Migrated to css/antigravity-carousel.css
+           ═══════════════════════════════════════════════ */
 
         /* Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â PREMIUM NAVIGATION Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â */
         .premium-nav {
@@ -2472,7 +2256,8 @@
                 <div class="ag-glass-card">
                     <div class="ag-label ag-reveal ag-delay-1"><i class="fa-solid fa-star"></i> Artisan Botanicals</div>
                     <h1 class="ag-title ag-reveal ag-delay-2">Discover Pure<br><em>Luxury.</em></h1>
-                    <p class="ag-desc ag-reveal ag-delay-3">Handcrafted botanical soaps made with nature's finest ingredients for skin that feels alive and weightless.</p>
+                    <p class="ag-desc ag-reveal ag-delay-3">Handcrafted botanical soaps made with nature's finest
+                        ingredients for skin that feels alive and weightless.</p>
                     <div class="ag-actions ag-reveal ag-delay-4">
                         <a href="shop.html" class="ag-btn">Shop Collection <i class="fa-solid fa-arrow-right"></i></a>
                         <a href="#about" class="ag-btn-secondary">Our Story</a>
@@ -2487,7 +2272,8 @@
                 <div class="ag-glass-card">
                     <div class="ag-label ag-reveal ag-delay-1"><i class="fa-solid fa-leaf"></i> Bloom Cure</div>
                     <h1 class="ag-title ag-reveal ag-delay-2">Nourish Skin<br><em>Naturally.</em></h1>
-                    <p class="ag-desc ag-reveal ag-delay-3">Traditional Ayurvedic wisdom reimagined as modern luxury. Healing skin and blooming confidence.</p>
+                    <p class="ag-desc ag-reveal ag-delay-3">Traditional Ayurvedic wisdom reimagined as modern luxury.
+                        Healing skin and blooming confidence.</p>
                     <div class="ag-actions ag-reveal ag-delay-4">
                         <a href="shop.html" class="ag-btn">Explore Now <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
@@ -2501,7 +2287,8 @@
                 <div class="ag-glass-card">
                     <div class="ag-label ag-reveal ag-delay-1"><i class="fa-solid fa-droplet"></i> Nature's Gift</div>
                     <h1 class="ag-title ag-reveal ag-delay-2">Pure Botanical<br><em>Skincare.</em></h1>
-                    <p class="ag-desc ag-reveal ag-delay-3">Experience the power of Ayurvedic ingredients deeply crafted for absolute nourishment and glowing health.</p>
+                    <p class="ag-desc ag-reveal ag-delay-3">Experience the power of Ayurvedic ingredients deeply crafted
+                        for absolute nourishment and glowing health.</p>
                     <div class="ag-actions ag-reveal ag-delay-4">
                         <a href="shop.html" class="ag-btn">View Products <i class="fa-solid fa-arrow-right"></i></a>
                         <a href="#ingredients" class="ag-btn-secondary">Ingredients</a>
@@ -2516,6 +2303,159 @@
             <span class="ag-dot" onclick="goToAgSlide(1)"></span>
             <span class="ag-dot" onclick="goToAgSlide(2)"></span>
         </div>
+    </section>
+
+    <!-- ═══════════════ ANTI-GRAVITY CAROUSEL · NEW ARRIVALS ═══════════════ -->
+    <section class="ag-carousel-section" aria-label="New Arrivals">
+        <!-- Radial Spotlight -->
+        <div class="ag-carousel-section__spotlight"></div>
+
+        <!-- Header -->
+        <div class="ag-carousel-header">
+            <div class="ag-carousel-label bc-r">
+                <span>NEW ARRIVALS</span>
+            </div>
+            <h2 class="ag-carousel-title bc-r">Spring <em>Spotlight</em></h2>
+            <p class="ag-carousel-subtitle bc-r">Our newest botanical creations, handcrafted for your ritual.</p>
+        </div>
+
+        <!-- Carousel Viewport -->
+        <div class="ag-carousel-viewport">
+            <div class="ag-carousel-track">
+
+                <!-- Card 1: Red Sandalwood -->
+                <div class="ag-card">
+                    <div class="ag-card__inner">
+                        <div class="ag-card__specular"></div>
+                        <div class="ag-card__image">
+                            <span class="ag-card__badge">Premium</span>
+                            <img src="assets/product_red_sandalwood.png" alt="Red Sandalwood Herbal Bar" loading="lazy">
+                        </div>
+                        <div class="ag-card__body">
+                            <h3 class="ag-card__name">Red Sandalwood</h3>
+                            <p class="ag-card__desc">Premium red sandalwood for refined, radiant, and luminous skin.</p>
+                            <div class="ag-card__price" data-price="449">₹449</div>
+                            <div class="ag-card__actions" data-name="Red Sandalwood Herbal Bar" data-price="449">
+                                <button class="ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Shop Now</button>
+                                <button class="ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Red Wine -->
+                <div class="ag-card">
+                    <div class="ag-card__inner">
+                        <div class="ag-card__specular"></div>
+                        <div class="ag-card__image">
+                            <span class="ag-card__badge">Premium</span>
+                            <img src="assets/product_red_wine.png" alt="Red Wine Soap" loading="lazy">
+                        </div>
+                        <div class="ag-card__body">
+                            <h3 class="ag-card__name">Red Wine Soap</h3>
+                            <p class="ag-card__desc">Rich in antioxidants from real red wine extract for youthful glow.</p>
+                            <div class="ag-card__price" data-price="399">₹399</div>
+                            <div class="ag-card__actions" data-name="Red Wine Soap" data-price="399">
+                                <button class="ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Shop Now</button>
+                                <button class="ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Soap Nut -->
+                <div class="ag-card">
+                    <div class="ag-card__inner">
+                        <div class="ag-card__specular"></div>
+                        <div class="ag-card__image">
+                            <span class="ag-card__badge">Ayurvedic</span>
+                            <img src="assets/product_soapnut.png" alt="Soap Nut Power" loading="lazy">
+                        </div>
+                        <div class="ag-card__body">
+                            <h3 class="ag-card__name">Soap Nut Power</h3>
+                            <p class="ag-card__desc">Ancient reetha cleanser with natural saponins for gentle cleansing.</p>
+                            <div class="ag-card__price" data-price="100">₹100</div>
+                            <div class="ag-card__actions" data-name="Soap Nut Power" data-price="100">
+                                <button class="ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Shop Now</button>
+                                <button class="ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Seegekai -->
+                <div class="ag-card">
+                    <div class="ag-card__inner">
+                        <div class="ag-card__specular"></div>
+                        <div class="ag-card__image">
+                            <span class="ag-card__badge">Herbal</span>
+                            <img src="assets/product_shikakai.png" alt="Seegekai" loading="lazy">
+                        </div>
+                        <div class="ag-card__body">
+                            <h3 class="ag-card__name">Seegekai</h3>
+                            <p class="ag-card__desc">Traditional shikakai-infused bar for deep cleansing and hair shine.</p>
+                            <div class="ag-card__price" data-price="399">₹399</div>
+                            <div class="ag-card__actions" data-name="Seegekai" data-price="399">
+                                <button class="ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Shop Now</button>
+                                <button class="ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Bamboo Toothbrush -->
+                <div class="ag-card">
+                    <div class="ag-card__inner">
+                        <div class="ag-card__specular"></div>
+                        <div class="ag-card__image">
+                            <span class="ag-card__badge">Eco</span>
+                            <img src="assets/product_bamboo_toothbrush.png" alt="Bamboo Toothbrush" loading="lazy">
+                        </div>
+                        <div class="ag-card__body">
+                            <h3 class="ag-card__name">Bamboo Toothbrush</h3>
+                            <p class="ag-card__desc">Eco-friendly sustainable toothbrush with charcoal-infused soft bristles.</p>
+                            <div class="ag-card__price" data-price="70">₹70</div>
+                            <div class="ag-card__actions" data-name="Bamboo Toothbrush" data-price="70">
+                                <button class="ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Shop Now</button>
+                                <button class="ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Relaxing Bath Salts -->
+                <div class="ag-card">
+                    <div class="ag-card__inner">
+                        <div class="ag-card__specular"></div>
+                        <div class="ag-card__image">
+                            <span class="ag-card__badge">Calming</span>
+                            <img src="assets/relaxing_bath_salts.png" alt="Relaxing Bath Salts" loading="lazy">
+                        </div>
+                        <div class="ag-card__body">
+                            <h3 class="ag-card__name">Relaxing Bath Salts</h3>
+                            <p class="ag-card__desc">Epsom and Pink Salt bath soak for muscle recovery and stress relief.</p>
+                            <div class="ag-card__price" data-price="199">₹199</div>
+                            <div class="ag-card__actions" data-name="Relaxing Bath Salts" data-price="199">
+                                <button class="ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Shop Now</button>
+                                <button class="ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="ag-carousel-nav" aria-label="Carousel navigation"></div>
+
+        <!-- Progress Bar -->
+        <div class="ag-carousel-progress-wrap">
+            <div class="ag-carousel-progress"></div>
+        </div>
+
+        <!-- Custom Cursor Glow -->
+        <div class="ag-carousel-cursor"></div>
     </section>
 
     <!-- Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â  WILDLIFE CONSERVATION Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â Ã¢•Â  -->
@@ -2973,7 +2913,8 @@
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
                             Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
                                 class="fa-solid fa-share-nodes"></i></button>
                     </div>
@@ -3006,7 +2947,7 @@
                     </div>
                     <div class="product-card__price-row" style="align-items: flex-end; margin-bottom: 0.8rem;">
                         <div>
-                            <span class="product-card__price price" data-price="100">₹100</span>
+                            <span class="product-card__price price" data-price="399">₹399</span>
                         </div>
                         <div class="product-card__rating">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
@@ -3026,7 +2967,8 @@
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
                             Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
                                 class="fa-solid fa-share-nodes"></i></button>
                     </div>
@@ -3082,7 +3024,8 @@
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
                             Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
                                 class="fa-solid fa-share-nodes"></i></button>
                     </div>
@@ -3137,7 +3080,8 @@
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
                             Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
                                 class="fa-solid fa-share-nodes"></i></button>
                     </div>
@@ -3191,7 +3135,8 @@
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
                             Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
                                 class="fa-solid fa-share-nodes"></i></button>
                     </div>
@@ -3246,7 +3191,8 @@
                     <div class="product-card__actions">
                         <button class="btn-add-cart" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i>
                             Add to Cart</button>
-                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                        <button class="btn-buy-now" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i> Buy
+                            Now</button>
                         <button class="btn-share" onclick="shareProduct(this)" title="Share Product"><i
                                 class="fa-solid fa-share-nodes"></i></button>
                     </div>
@@ -4009,13 +3955,13 @@
                 if (index === currentAgSlide) {
                     content.classList.add('active');
                     content.classList.remove('inactive');
-                    
+
                     // Re-trigger text reveal animations
                     const reveals = content.querySelectorAll('.ag-reveal');
                     reveals.forEach(el => {
                         el.style.animation = 'none';
                         el.offsetHeight; /* trigger reflow */
-                        el.style.animation = null; 
+                        el.style.animation = null;
                     });
                 } else {
                     content.classList.remove('active');
@@ -4063,16 +4009,16 @@
 
         if (heroSection) {
             heroSection.addEventListener('mousemove', (e) => {
-                if(window.innerWidth <= 768) return; // Disable on mobile
-                
+                if (window.innerWidth <= 768) return; // Disable on mobile
+
                 const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
                 const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
 
                 parallaxWraps.forEach(wrap => {
                     wrap.style.transform = `translate3d(${xAxis}px, ${yAxis}px, 0)`;
                 });
-                
-                if(particlesLayer) {
+
+                if (particlesLayer) {
                     particlesLayer.style.transform = `translate3d(${xAxis * 1.5}px, ${yAxis * 1.5}px, 0)`;
                 }
             });
@@ -4081,12 +4027,12 @@
                 parallaxWraps.forEach(wrap => {
                     wrap.style.transform = `translate3d(0, 0, 0)`;
                 });
-                if(particlesLayer) {
+                if (particlesLayer) {
                     particlesLayer.style.transform = `translate3d(0, 0, 0)`;
                 }
             });
         }
-        
+
 
         // Nav scroll shrink effect
         const nav = document.getElementById('mainNav');
@@ -4270,7 +4216,7 @@
                             showToast('âœ¨ Product link copied to clipboard!');
                         } else {
                             alert('Product link copied to clipboard!');
-                        }
+                        } @Purush0th @mr0607
                     }).catch(() => {
                         // 3. Ultimate Fallback: WhatsApp intent
                         window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
@@ -4320,7 +4266,7 @@
         function getInitials(name) {
             return name ? name.charAt(0).toUpperCase() : 'U';
         }
-
+        @Purush0th @mr0607
         const avatarColors = [
             { bg: '#E8D5C4', text: '#8B6914' },
             { bg: '#D5E8D5', text: '#2d6b3f' },
@@ -4349,7 +4295,7 @@
                 <div class="testimonial-card" style="animation: fadeIn 0.5s ease-out;">
                     <div class="testimonial-card__stars">
                         ${starsHTML}
-                    </div>
+                    </div>@Purush0th@mr0607
                     <p class="testimonial-card__text">"${message}"</p>
                     <div class="testimonial-card__author">
                         <div class="testimonial-card__avatar" style="background: ${colorPair.bg}; color: ${colorPair.text};">${getInitials(name)}</div>
@@ -4514,198 +4460,9 @@
                 btn.disabled = false;
             }
         }
-        // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SPOTLIGHT SLIDER Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
-        (function () {
-            const track = document.getElementById('spotlightTrack');
-            const slider = document.getElementById('spotlightSlider');
-            const dotsContainer = document.getElementById('spotlightDots');
-            const progressBar = document.getElementById('spotlightProgress');
-            if (!track || !slider) return;
-
-            const cards = track.querySelectorAll('.spotlight-card');
-            const totalCards = cards.length;
-            let currentIndex = 0;
-            let slidesPerView = 3;
-            let autoplayTimer;
-            const AUTOPLAY_DELAY = 4000;
-
-            function getSlidesPerView() {
-                if (window.innerWidth <= 600) return 1;
-                if (window.innerWidth <= 992) return 2;
-                return 3;
-            }
-
-            function getMaxIndex() {
-                return Math.max(0, totalCards - slidesPerView);
-            }
-
-            function getTotalPages() {
-                return getMaxIndex() + 1;
-            }
-
-            function buildDots() {
-                dotsContainer.innerHTML = '';
-                const pages = getTotalPages();
-                for (let i = 0; i < pages; i++) {
-                    const dot = document.createElement('button');
-                    dot.className = 'spotlight-slider__dot' + (i === currentIndex ? ' active' : '');
-                    dot.addEventListener('click', () => goToSlide(i));
-                    dotsContainer.appendChild(dot);
-                }
-            }
-
-            function updateDots() {
-                const dots = dotsContainer.querySelectorAll('.spotlight-slider__dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentIndex);
-                });
-            }
-
-            function updateProgress() {
-                const maxIdx = getMaxIndex();
-                const pct = maxIdx === 0 ? 100 : ((currentIndex / maxIdx) * 100);
-                progressBar.style.width = pct + '%';
-            }
-
-            function updateArrows() {
-                // Looping is enabled, so arrows are always active
-                // unless we wanted to hide them if totalCards <= slidesPerView
-            }
-
-            function moveToSlide(index, smooth) {
-                currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
-                const card = cards[0];
-                if (!card) return;
-                const gap = parseFloat(getComputedStyle(track).gap) || 0;
-                const cardWidth = card.offsetWidth + gap;
-                track.style.transition = smooth !== false ? 'transform 0.7s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
-                track.style.transform = 'translateX(' + (-currentIndex * cardWidth) + 'px)';
-                updateDots();
-                updateProgress();
-                updateArrows();
-            }
-
-            function goToSlide(index) {
-                moveToSlide(index);
-                resetAutoplay();
-            }
-
-            window.spotlightNext = function () {
-                if (currentIndex >= getMaxIndex()) {
-                    goToSlide(0);
-                } else {
-                    goToSlide(currentIndex + 1);
-                }
-            };
-
-            window.spotlightPrev = function () {
-                if (currentIndex <= 0) {
-                    goToSlide(getMaxIndex());
-                } else {
-                    goToSlide(currentIndex - 1);
-                }
-            };
-
-            function startAutoplay() {
-                stopAutoplay();
-                autoplayTimer = setInterval(() => {
-                    window.spotlightNext();
-                }, AUTOPLAY_DELAY);
-            }
-
-            function stopAutoplay() {
-                if (autoplayTimer) clearInterval(autoplayTimer);
-            }
-
-            function resetAutoplay() {
-                stopAutoplay();
-                startAutoplay();
-            }
-
-            // Pause on hover
-            slider.addEventListener('mouseenter', stopAutoplay);
-            slider.addEventListener('mouseleave', startAutoplay);
-
-            // Drag / swipe support
-            let isDragging = false;
-            let startX = 0;
-            let currentTranslate = 0;
-            let prevTranslate = 0;
-
-            function getPositionX(e) {
-                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-            }
-
-            function dragStart(e) {
-                isDragging = true;
-                startX = getPositionX(e);
-                const card = cards[0];
-                const gap = parseFloat(getComputedStyle(track).gap) || 0;
-                prevTranslate = -currentIndex * (card.offsetWidth + gap);
-                track.classList.add('is-dragging');
-                if (e.type === 'mousedown') e.preventDefault();
-            }
-
-            function dragMove(e) {
-                if (!isDragging) return;
-                const currentX = getPositionX(e);
-                const diff = currentX - startX;
-                currentTranslate = prevTranslate + diff;
-                track.style.transform = 'translateX(' + currentTranslate + 'px)';
-            }
-
-            function dragEnd() {
-                if (!isDragging) return;
-                isDragging = false;
-                track.classList.remove('is-dragging');
-                const moved = currentTranslate - prevTranslate;
-                const threshold = cards[0].offsetWidth * 0.2;
-                if (moved < -threshold) {
-                    window.spotlightNext();
-                } else if (moved > threshold) {
-                    window.spotlightPrev();
-                } else {
-                    moveToSlide(currentIndex);
-                }
-            }
-
-            track.addEventListener('mousedown', dragStart);
-            track.addEventListener('mousemove', dragMove);
-            track.addEventListener('mouseup', dragEnd);
-            track.addEventListener('mouseleave', () => { if (isDragging) dragEnd(); });
-            track.addEventListener('touchstart', dragStart, { passive: true });
-            track.addEventListener('touchmove', dragMove, { passive: true });
-            track.addEventListener('touchend', dragEnd);
-
-            // Prevent click on links during drag
-            track.addEventListener('click', (e) => {
-                if (Math.abs(currentTranslate - prevTranslate) > 5) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            }, true);
-
-            // Responsive resize
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    const newSPV = getSlidesPerView();
-                    if (newSPV !== slidesPerView) {
-                        slidesPerView = newSPV;
-                        if (currentIndex > getMaxIndex()) currentIndex = getMaxIndex();
-                        buildDots();
-                    }
-                    moveToSlide(currentIndex, false);
-                }, 150);
-            });
-
-            // Init
-            slidesPerView = getSlidesPerView();
-            buildDots();
-            moveToSlide(0, false);
-            startAutoplay();
-        })();
+        // ═══════════════ ANTI-GRAVITY CAROUSEL ENGINE ═══════════════
+        // Loaded from external modular script
+        // See js/antigravity-carousel.js
     </script>
 
     <button id="bc-top" aria-label="Back to top">
@@ -4713,6 +4470,7 @@
     </button>
 
     <script src="js/bloom-psychology.js"></script>
+    <script src="js/antigravity-carousel.js"></script>
 
 </body>
 
