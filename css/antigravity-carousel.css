@@ -1,0 +1,556 @@
+/* ══════════════════════════════════════════════════════════════════════
+   ANTI-GRAVITY CAROUSEL · New Arrivals
+   Cinematic, weightless interaction model — luxury editorial aesthetic
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ─── SECTION CONTAINER ─── */
+.ag-carousel-section {
+    position: relative;
+    padding: 7rem 0 6rem;
+    background: radial-gradient(ellipse at 50% 40%, #131613 0%, #0a0c0a 50%, #060706 100%);
+    overflow: hidden;
+    cursor: none;
+    isolation: isolate;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Ultra-subtle grain texture */
+.ag-carousel-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.028;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Radial spotlight behind active card — positioned by JS */
+.ag-carousel-section__spotlight {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197,160,40,0.045) 0%, rgba(197,160,40,0.015) 35%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease;
+    will-change: transform;
+}
+
+/* ─── HEADER ─── */
+.ag-carousel-header {
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    padding: 0 2rem;
+    margin-bottom: 4rem;
+}
+
+.ag-carousel-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.ag-carousel-label span {
+    font-family: var(--ff-body);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--clr-gold);
+    text-shadow: 0 0 20px rgba(197,160,40,0.25);
+}
+
+.ag-carousel-label::before,
+.ag-carousel-label::after {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197,160,40,0.5), transparent);
+}
+
+.ag-carousel-title {
+    font-family: var(--ff-heading);
+    color: #fff;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.ag-carousel-title em {
+    color: var(--clr-gold);
+    font-style: italic;
+    font-weight: 300;
+}
+
+.ag-carousel-subtitle {
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 1.05rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+/* ─── CAROUSEL TRACK SYSTEM ─── */
+.ag-carousel-viewport {
+    position: relative;
+    z-index: 3;
+    overflow: visible;
+    padding: 3rem 0 2rem;
+}
+
+.ag-carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    /* No CSS transition — handled by JS inertia system */
+    will-change: transform;
+    padding: 0 5%;
+}
+
+.ag-carousel-track.is-dragging {
+    cursor: grabbing;
+}
+
+
+/* ─── CARD ─── */
+.ag-card {
+    min-width: 420px;
+    max-width: 420px;
+    flex-shrink: 0;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1200px;
+    will-change: transform, opacity, filter;
+    /* Defaults — overridden by JS interpolation */
+    opacity: 0.45;
+    transform: scale(0.92);
+    filter: blur(1.5px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ag-card__inner {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+    transform-style: preserve-3d;
+    transition: box-shadow 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.8s ease,
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+/* Active card enhancements */
+.ag-card.is-active {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.ag-card.is-active .ag-card__inner {
+    box-shadow: 0 40px 120px rgba(0,0,0,0.5),
+                0 0 30px rgba(197,160,40,0.06);
+    border-color: rgba(197,160,40,0.15);
+}
+
+
+/* ─── SPECULAR HIGHLIGHT LAYER ─── */
+.ag-card__specular {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0%, transparent 55%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 15;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 22px;
+    mix-blend-mode: overlay;
+}
+
+.ag-card.is-active:hover .ag-card__specular {
+    opacity: 1;
+}
+
+
+/* ─── CARD IMAGE (Parallax Layer) ─── */
+.ag-card__image {
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(145deg, #0d0f0d, #080a08);
+}
+
+.ag-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: opacity 0.6s ease;
+    will-change: transform;
+    /* GPU acceleration */
+    transform: translate3d(0,0,0) scale(1);
+}
+
+.ag-card.is-active .ag-card__image img {
+    opacity: 1;
+}
+
+/* Image badge */
+.ag-card__badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--clr-gold);
+    color: #000;
+    font-family: var(--ff-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 4px;
+    z-index: 5;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+
+/* ─── CARD BODY (Parallax Layer) ─── */
+.ag-card__body {
+    padding: 2rem 2.2rem 2.4rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.015), rgba(255,255,255,0.035));
+    position: relative;
+    will-change: transform;
+    transform: translate3d(0,0,0);
+}
+
+.ag-card__name {
+    font-family: var(--ff-heading);
+    font-size: 1.85rem;
+    color: #fff;
+    margin-bottom: 0.4rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.ag-card__desc {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+}
+
+.ag-card__price {
+    font-family: var(--ff-heading);
+    font-size: 1.85rem;
+    color: var(--clr-gold);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.ag-card__actions {
+    display: flex;
+    gap: 0.8rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 1.5rem;
+}
+
+.ag-card__btn {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 10px;
+    font-family: var(--ff-body);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    outline: none;
+}
+
+.ag-card__btn--primary {
+    background: var(--clr-gold);
+    color: #000;
+}
+
+.ag-card__btn--primary:hover {
+    background: #d4af37;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(197,160,40,0.3);
+}
+
+.ag-card__btn--secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.ag-card__btn--secondary:hover {
+    border-color: rgba(197,160,40,0.4);
+    color: var(--clr-gold);
+    transform: translateY(-2px);
+}
+
+
+/* ─── NAVIGATION DOTS ─── */
+.ag-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 5;
+}
+
+.ag-carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+}
+
+.ag-carousel-dot::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    /* Larger hit area */
+}
+
+.ag-carousel-dot.active {
+    width: 32px;
+    border-radius: 3px;
+    background: var(--clr-gold);
+    box-shadow: 0 0 12px rgba(197,160,40,0.3);
+}
+
+.ag-carousel-dot:hover:not(.active) {
+    background: rgba(255,255,255,0.35);
+    transform: scale(1.4);
+}
+
+
+/* ─── PROGRESS BAR ─── */
+.ag-carousel-progress-wrap {
+    position: relative;
+    height: 1px;
+    width: 240px;
+    margin: 2rem auto 0;
+    background: rgba(255,255,255,0.04);
+    border-radius: 1px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.ag-carousel-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--clr-gold);
+    border-radius: 1px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ─── CUSTOM CURSOR ─── */
+.ag-carousel-cursor {
+    position: fixed;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(197,160,40,0.06) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate3d(-50%, -50%, 0);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    will-change: transform;
+}
+
+.ag-carousel-section:hover .ag-carousel-cursor {
+    opacity: 1;
+}
+
+
+/* ─── FLOATING ANIMATION ─── */
+@keyframes agcFloat {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50%      { transform: translate3d(0, -6px, 0); }
+}
+
+
+/* ─── ACCESSIBILITY: REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+    .ag-card,
+    .ag-card__inner,
+    .ag-card__image img,
+    .ag-card__body,
+    .ag-carousel-cursor,
+    .ag-carousel-section__spotlight {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .ag-card__inner {
+        transform: none !important;
+    }
+}
+
+/* ─── KEYBOARD FOCUS ─── */
+.ag-card:focus-visible .ag-card__inner {
+    outline: 2px solid var(--clr-gold);
+    outline-offset: 4px;
+}
+
+.ag-card__btn:focus-visible {
+    outline: 2px solid var(--clr-gold);
+    outline-offset: 2px;
+}
+
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1200px) {
+    .ag-card {
+        min-width: 380px;
+        max-width: 380px;
+    }
+
+    .ag-card__image {
+        height: 340px;
+    }
+}
+
+@media (max-width: 992px) {
+    .ag-carousel-section {
+        padding: 5rem 0 4rem;
+    }
+
+    .ag-carousel-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .ag-card {
+        min-width: 350px;
+        max-width: 350px;
+    }
+
+    .ag-card__image {
+        height: 320px;
+    }
+
+    .ag-card__name {
+        font-size: 1.6rem;
+    }
+
+    .ag-card__body {
+        padding: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ag-carousel-section {
+        padding: 4rem 0 3rem;
+        cursor: auto;
+    }
+
+    .ag-carousel-header {
+        margin-bottom: 2rem;
+    }
+
+    .ag-card {
+        min-width: 85vw;
+        max-width: 85vw;
+    }
+
+    .ag-card__image {
+        height: 280px;
+    }
+
+    .ag-card__name {
+        font-size: 1.5rem;
+    }
+
+    .ag-card__price {
+        font-size: 1.5rem;
+    }
+
+    .ag-card__body {
+        padding: 1.5rem;
+    }
+
+    .ag-card__btn {
+        font-size: 0.72rem;
+        padding: 0.9rem;
+    }
+
+    .ag-carousel-cursor {
+        display: none;
+    }
+
+    .ag-carousel-track {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ag-carousel-section {
+        padding: 3rem 0 2.5rem;
+    }
+
+    .ag-card {
+        min-width: 88vw;
+        max-width: 88vw;
+    }
+
+    .ag-card__image {
+        height: 250px;
+    }
+
+    .ag-card__actions {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .ag-carousel-label span {
+        font-size: 0.6rem;
+        letter-spacing: 4px;
+    }
+
+    .ag-carousel-label::before,
+    .ag-carousel-label::after {
+        width: 30px;
+    }
+}
