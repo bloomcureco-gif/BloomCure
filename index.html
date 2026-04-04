@@ -2729,6 +2729,68 @@
                 right: -3px !important;
             }
         }
+        /* ═══════════════ ANTI-GRAVITY TICKER ═══════════════ */
+        .ag-ticker-container {
+            background: #06100a;
+            color: #f9f7f2;
+            overflow: hidden;
+            position: relative;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(197, 160, 40, 0.2);
+            /* Soft aurora glow top */
+            box-shadow: inset 0 10px 20px -10px rgba(197, 160, 40, 0.15);
+        }
+        
+        .ag-ticker-track {
+            display: flex;
+            white-space: nowrap;
+            width: max-content;
+            animation: agTickerScroll 35s linear infinite;
+            will-change: transform;
+            /* Anti-gravity subtle easing on hover */
+            transition: animation-play-state 0.3s ease-out;
+        }
+
+        .ag-ticker-container:hover .ag-ticker-track,
+        .ag-ticker-container:focus-within .ag-ticker-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes agTickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ag-ticker-item {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            padding: 0 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: rgba(249, 247, 242, 0.85);
+            user-select: none;
+            /* smooth text rendering */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .ag-ticker-item span {
+            color: #c5a028;
+            font-size: 0.85rem;
+            filter: drop-shadow(0 0 8px rgba(197,160,40,0.4));
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ag-ticker-track {
+                animation: none;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .ag-ticker-item { padding: 0.5rem 1rem; }
+        }
     </style>
 </head>
 
@@ -2750,6 +2812,15 @@
             <div class="ag-ticker-item"><span>🍃</span> Dermatologist tested</div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.querySelector('#agTicker .ag-ticker-track');
+            if (track) {
+                // Clone the track HTML once for seamless scrolling
+                track.innerHTML += track.innerHTML;
+            }
+        });
+    </script>
     <!-- Navigation -->
     <nav class="premium-nav" id="mainNav">
         <div class="premium-nav__inner">
