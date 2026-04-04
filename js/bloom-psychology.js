@@ -63,27 +63,15 @@
      Why: Primes visitors with positive brand values (natural,
      free shipping, cruelty-free) before they start browsing.
   ──────────────────────────────────────────────────────────── */
-  if (!$('.bc-ticker')) {
-    const ticker = document.createElement('div');
-    ticker.className = 'bc-ticker';
-    ticker.setAttribute('aria-hidden', 'true');
+  function initTicker() {
+    return; // Tickers are now hardcoded in HTML pages.
+  }
 
-    const items = [
-      '<b>✦</b> Free shipping on orders above ₹999',
-      '<b>🌿</b> 100% Natural &amp; Handcrafted',
-      '<b>✦</b> New arrivals every week',
-      '<b>🌱</b> Zero plastic packaging',
-      '<b>✦</b> Cruelty-free &amp; Ayurvedic',
-      '<b>🧼</b> Small-batch artisan quality',
-      '<b>✦</b> 30-day happiness guarantee',
-      '<b>🍃</b> Dermatologist tested',
-    ];
-
-    const all = [...items, ...items]; // duplicate for infinite loop
-    ticker.innerHTML = `<div class="bc-ticker__wrap">${all.map(t => `<span class="bc-ticker__item">${t}</span>`).join('')
-      }</div>`;
-
-    document.body.insertAdjacentElement('afterbegin', ticker);
+  // Run after a short delay to ensure high-fidelity tickers are already parsed
+  if (document.readyState === 'loading') {
+    on(document, 'DOMContentLoaded', initTicker);
+  } else {
+    setTimeout(initTicker, 100);
   }
 
 
