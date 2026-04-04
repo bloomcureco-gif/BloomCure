@@ -881,7 +881,12 @@ body::after {
 .ag-ticker-track {
     display: flex;
     white-space: nowrap;
+    width: max-content;
     will-change: transform;
+}
+
+body:has(.ag-ticker-container) .bc-ticker {
+    display: none !important;
 }
 
 .ag-ticker-item {
