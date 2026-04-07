@@ -59,9 +59,7 @@
            Index Page — Premium Enhancements
            Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â */
 
-        /* =========================================================
-           ANTI-GRAVITY HERO · ADVANCED EDITION
-           ========================================================= */
+       
 
         /* ───────────────────────────────────────────────────────────────────
            CORE SHELL
@@ -2780,6 +2778,158 @@
                 right: -3px !important;
             }
         }
+
+        /* ───────────────────────────────────────────────────────────────────
+           AI ASSISTANT WIDGET
+        ─────────────────────────────────────────────────────────────────── */
+        .ai-widget-wrapper {
+            position: fixed;
+            bottom: 30px;
+            right: 100px; /* Offset to not overlap with back-to-top which is right:2rem (32px) */
+            z-index: 1000;
+        }
+
+        .ai-suggestion-bubble {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1a2e20;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(197, 160, 40, 0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-family: var(--ff-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.5s forwards, subtleBounce 4s ease-in-out infinite 3.3s;
+        }
+
+        .ai-suggestion-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 48px;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            border-right: 1px solid rgba(197, 160, 40, 0.4);
+            border-bottom: 1px solid rgba(197, 160, 40, 0.4);
+            transform: rotate(45deg);
+        }
+
+        .ai-suggestion-bubble span {
+            color: #c5a028;
+        }
+
+        @keyframes popIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes subtleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .ai-widget-btn {
+            background: linear-gradient(135deg, rgba(26,46,32,0.95), rgba(0,0,0,0.9));
+            border: 1px solid rgba(197, 160, 40, 0.4);
+            color: #f9f7f2;
+            padding: 10px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            font-family: var(--ff-body);
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        .ai-widget-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(197, 160, 40, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .ai-widget-btn:hover {
+            transform: translateY(-5px);
+            border-color: rgba(197, 160, 40, 0.8);
+            box-shadow: 0 15px 50px rgba(197, 160, 40, 0.2);
+            color: #c5a028;
+        }
+
+        .ai-widget-btn:hover::before {
+            opacity: 1;
+        }
+
+        .ai-widget-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(197, 160, 40, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c5a028;
+            font-size: 1.1rem;
+            box-shadow: 0 0 15px rgba(197, 160, 40, 0.2);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+
+        .ai-widget-btn:hover .ai-widget-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .ai-widget-text {
+            position: relative;
+            z-index: 1;
+            margin-right: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .ai-widget-wrapper {
+                bottom: 20px;
+                right: 80px; 
+            }
+            .ai-suggestion-bubble {
+                margin-bottom: 12px;
+                right: -10px;
+            }
+            .ai-suggestion-bubble::after {
+                right: 25px;
+            }
+            .ai-widget-btn {
+                padding: 8px;
+                border-radius: 50%;
+            }
+            .ai-widget-text {
+                display: none;
+            }
+            .ai-widget-icon {
+                margin: 0;
+            }
+            .ai-widget-btn {
+                gap: 0;
+            }
+        }
     </style>
 </head>
 
@@ -3041,7 +3191,7 @@
         <!-- Bottom stats strip -->
         <div class="ag-stats-strip" aria-hidden="true">
             <div class="ag-stat">
-                <span class="ag-stat__num">100%</span>
+                <span class="ag-stat__num">98%</span>
                 <span class="ag-stat__label">Natural Ingredients</span>
             </div>
             <div class="ag-stat">
@@ -5269,835 +5419,930 @@
     </section>
 
 
-            <!-- ═══════════════ USER FEEDBACK ═══════════════ -->
-            <section class="section-padding feedback-section" style="background-color: var(--clr-beige);">
-                <div class="container" style="max-width: 800px;">
-                    <div style="text-align: center; margin-bottom: 3rem;">
-                        <span class="section-label" style="color: var(--clr-gold);">Your Experience</span>
-                        <h2 class="section-heading" style="color: var(--clr-dark-green);">Share Your <em
-                                style="color: var(--clr-gold);">Thoughts</em></h2>
-                        <p
-                            style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0; line-height: 1.6;">
-                            Have
-                            you tried our botanical soaps? We'd love to hear how your skin feels after experiencing
-                            Bloom Cure.
-                        </p>
-                    </div>
+    <!-- ═══════════════ USER FEEDBACK ═══════════════ -->
+    <section class="section-padding feedback-section" style="background-color: var(--clr-beige);">
+        <div class="container" style="max-width: 800px;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label" style="color: var(--clr-gold);">Your Experience</span>
+                <h2 class="section-heading" style="color: var(--clr-dark-green);">Share Your <em
+                        style="color: var(--clr-gold);">Thoughts</em></h2>
+                <p style="color: var(--clr-text-light); max-width: 500px; margin: 0.5rem auto 0; line-height: 1.6;">
+                    Have
+                    you tried our botanical soaps? We'd love to hear how your skin feels after experiencing
+                    Bloom Cure.
+                </p>
+            </div>
 
-                    <div class="feedback-form-container">
-                        <form id="feedbackForm" onsubmit="submitFeedback(event)" class="premium-form"
-                            action="https://api.web3forms.com/submit" method="POST">
-                            <!-- Web3Forms Access Key -->
-                            <input type="hidden" name="access_key" value="3968ade5-1b45-45e8-ac7d-3ce09bcc4fa7">
+            <div class="feedback-form-container">
+                <form id="feedbackForm" onsubmit="submitFeedback(event)" class="premium-form"
+                    action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="3968ade5-1b45-45e8-ac7d-3ce09bcc4fa7">
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="fbName">Your Name</label>
-                                    <input type="text" id="fbName" name="name" required
-                                        placeholder="Hey Cutie add Your Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="fbEmail">Your Email</label>
-                                    <input type="email" id="fbEmail" name="email" required
-                                        placeholder="yourname@example.com">
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="fbProduct">Product Used</label>
-                                    <select id="fbProduct" name="product" required>
-                                        <option value="" disabled selected>Select a product</option>
-                                        <option value="Red Sandalwood Herbal Bar">Red Sandalwood Herbal Bar</option>
-                                        <option value="Red Wine Soap">Red Wine Soap</option>
-                                        <option value="Seegekai">Seegekai</option>
-                                        <option value="Besan">Besan</option>
-                                        <option value="Soap Nut Power">Soap Nut Power</option>
-                                        <option value="Neem Purify">Neem Purify</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Your Rating</label>
-                                    <div class="rating-stars-input" id="ratingStars" style="margin-top: 5px;">
-                                        <i class="fa-solid fa-star" data-value="1"></i>
-                                        <i class="fa-solid fa-star" data-value="2"></i>
-                                        <i class="fa-solid fa-star" data-value="3"></i>
-                                        <i class="fa-solid fa-star" data-value="4"></i>
-                                        <i class="fa-solid fa-star" data-value="5"></i>
-                                    </div>
-                                    <input type="hidden" id="fbRating" name="rating" value="5">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="fbMessage">Your Feedback</label>
-                                <textarea id="fbMessage" name="message" rows="5" required
-                                    placeholder="Tell us how your skin feels..."></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-white"
-                                style="width: 100%; justify-content: center; margin-top: 1rem; background: var(--clr-dark-green); color: var(--clr-gold); border: 1px solid var(--clr-gold);">
-                                Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>
-                            </button>
-
-                            <div id="feedbackSuccess" class="feedback-success-msg" style="display: none;">
-                                <i class="fa-solid fa-heart" style="color: red; margin-right: 5px;"></i> Thank you! Your
-                                feedback has been gracefully received.
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SUSTAINABILITY Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
-            <section class="section-padding sustainability-section"
-                style="background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('assets/hero_bg.png'); background-attachment: fixed; background-position: center; background-size: cover;">
-                <div class="container" style="max-width: 800px; text-align: center; position: relative; z-index: 2;">
-                    <span class="section-label">Our Promise</span>
-                    <h2 class="section-heading">A Lighter <em>Footprint</em></h2>
-                    <p
-                        style="font-size: 1.15rem; line-height: 1.8; color: var(--clr-text-light); margin-bottom: 2.5rem;">
-                        We
-                        are committed to the planet that heals us. Our process is strictly cruelty free, our energy is
-                        renewable, and our packaging is 100% plastic-free.<br>Because beautiful skin shouldn't cost the
-                        Earth.
-                    </p>
-                    <div class="sustainability-badges">
-                        <div class="sustainability-badge"><i class="fa-solid fa-paw"></i> Cruelty-Free</div>
-                        <div class="sustainability-badge"><i class="fa-solid fa-recycle"></i> Zero Waste</div>
-                        <div class="sustainability-badge"><i class="fa-solid fa-solar-panel"></i> Renewable Energy</div>
-                        <div class="sustainability-badge"><i class="fa-solid fa-ban"></i> No Plastic</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â CTA BANNER Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
-            <section class="cta-banner">
-                <div class="container" style="position: relative; z-index: 2;">
-                    <h2>Ready to Bloom?</h2>
-                    <p>Start your journey to naturally radiant skin with our curated botanical collection.</p>
-                    <a href="shop.html" class="btn-white">
-                        Shop Now <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â PREMIUM FOOTER Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
-            <footer class="premium-footer">
-                
-                <!-- ── MARQUEE TRUST STRIP ── -->
-                <div class="footer-marquee-wrap" aria-hidden="true">
-                    <div class="footer-marquee">
-                        <span class="footer-marquee__item"><i class="fa-solid fa-leaf"></i> 100% Botanical Artisanal Scents</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-hands-holding-circle"></i> Hand-Poured in Bangalore</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-seedling"></i> Earth Positive Packaging</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-dharmachakra"></i> Rooted in Ayurveda</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-leaf"></i> 100% Botanical Artisanal Scents</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-hands-holding-circle"></i> Hand-Poured in Bangalore</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-seedling"></i> Earth Positive Packaging</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-dharmachakra"></i> Rooted in Ayurveda</span>
-                        <span class="footer-marquee__item"><i class="fa-solid fa-leaf"></i> 100% Botanical Artisanal Scents</span>
-                    </div>
-                </div>
-
-                <!-- ── MAIN GRID ── -->
-                <div class="footer-main">
-                    <div class="container">
-                        <div class="footer-grid">
-                            
-                            <!-- brand col -->
-                            <div class="footer-brand">
-                                <a href="index.html" class="footer-brand__logo">
-                                    <img src="assets/logo.jpg" alt="Bloom Cure">
-                                    <h2 class="footer-brand__name">Bloom Cure</h2>
-                                </a>
-                                <div class="footer-brand__tagline">
-                                    <span>Artisan Botanicals</span>
-                                </div>
-                                <p class="footer-brand__desc">
-                                    Handcrafting nature's best to help your skin bloom with radiance and health. A mindful ritual crafted for modern living.
-                                </p>
-                                <!-- social pills -->
-                                <div class="footer-socials-row">
-                                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" class="footer-social-pill" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#" class="footer-social-pill" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
-                                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank" class="footer-social-pill" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- shop nav -->
-                            <div>
-                                <h4 class="footer-heading">Shop</h4>
-                                <ul class="footer-links">
-                                    <li><a href="shop.html">All Soaps</a></li>
-                                    <li><a href="#">Gift Bundles</a></li>
-                                    <li><a href="#">Subscribers Ritual</a></li>
-                                    <li><a href="#">Digital Cards</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- company nav -->
-                            <div>
-                                <h4 class="footer-heading">Company</h4>
-                                <ul class="footer-links">
-                                    <li><a href="about.html">Our Story</a></li>
-                                    <li><a href="#">The Ethos</a></li>
-                                    <li><a href="#">Sustainability</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- newsletter -->
-                            <div class="footer-newsletter">
-                                <h4 class="footer-heading">Newsletter</h4>
-                                <p class="footer-newsletter__desc">Join our botanical circle for exclusive tips on natural skincare and early access to new arrivals.</p>
-                                <form class="footer-newsletter__form" action="https://api.web3forms.com/submit" method="POST" onsubmit="submitNewsletter(event)">
-                                    <input type="hidden" name="access_key" value="3968ade5-1b45-45e8-ac7d-3ce09bcc4fa7">
-                                    <input type="hidden" name="subject" value="New Newsletter Subscription">
-                                    <input type="email" name="email" placeholder="Email Address" class="footer-newsletter__input" required>
-                                    <button type="submit" class="footer-newsletter__btn">Join</button>
-                                </form>
-                                <div class="footer-certs">
-                                    <span class="footer-cert-tag"><i class="fa-solid fa-leaf"></i> VEGAN</span>
-                                    <span class="footer-cert-tag"><i class="fa-solid fa-paw"></i> CRUELTY FREE</span>
-                                </div>
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fbName">Your Name</label>
+                            <input type="text" id="fbName" name="name" required placeholder="Hey Cutie add Your Name">
                         </div>
-
-                        <!-- bottom bar -->
-                        <div class="footer-bottom">
-                            <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
-                            <div class="footer-bottom__links">
-                                <a href="privacy.html" style="color: inherit; text-decoration: none; transition: color 0.3s ease;">Privacy Policy</a>
-                                <a href="terms.html" style="color: inherit; text-decoration: none; transition: color 0.3s ease;">Terms of Service</a>
-                            </div>
+                        <div class="form-group">
+                            <label for="fbEmail">Your Email</label>
+                            <input type="email" id="fbEmail" name="email" required placeholder="yourname@example.com">
                         </div>
                     </div>
-                </div>
-            </footer>
 
-            <!-- Mobile Menu Overlay -->
-            <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-                <div class="mobile-menu__inner">
-                    <button class="mobile-menu__close" onclick="toggleMobileMenu()">
-                        <i class="fa-solid fa-xmark"></i>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fbProduct">Product Used</label>
+                            <select id="fbProduct" name="product" required>
+                                <option value="" disabled selected>Select a product</option>
+                                <option value="Red Sandalwood Herbal Bar">Red Sandalwood Herbal Bar</option>
+                                <option value="Red Wine Soap">Red Wine Soap</option>
+                                <option value="Seegekai">Seegekai</option>
+                                <option value="Besan">Besan</option>
+                                <option value="Soap Nut Power">Soap Nut Power</option>
+                                <option value="Neem Purify">Neem Purify</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Rating</label>
+                            <div class="rating-stars-input" id="ratingStars" style="margin-top: 5px;">
+                                <i class="fa-solid fa-star" data-value="1"></i>
+                                <i class="fa-solid fa-star" data-value="2"></i>
+                                <i class="fa-solid fa-star" data-value="3"></i>
+                                <i class="fa-solid fa-star" data-value="4"></i>
+                                <i class="fa-solid fa-star" data-value="5"></i>
+                            </div>
+                            <input type="hidden" id="fbRating" name="rating" value="5">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fbMessage">Your Feedback</label>
+                        <textarea id="fbMessage" name="message" rows="5" required
+                            placeholder="Tell us how your skin feels..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-white"
+                        style="width: 100%; justify-content: center; margin-top: 1rem; background: var(--clr-dark-green); color: var(--clr-gold); border: 1px solid var(--clr-gold);">
+                        Submit Feedback <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>
                     </button>
-                    <div class="mobile-menu__brand">
-                        <img src="assets/logo.jpg" alt="Bloom Cure Logo">
-                        <span class="mobile-menu__brand-name">Bloom Cure</span>
+
+                    <div id="feedbackSuccess" class="feedback-success-msg" style="display: none;">
+                        <i class="fa-solid fa-heart" style="color: red; margin-right: 5px;"></i> Thank you! Your
+                        feedback has been gracefully received.
                     </div>
-                    <ul class="mobile-menu__links">
-                        <li><a href="index.html" class="active" onclick="toggleMobileMenu()">Home</a></li>
-                        <li><a href="shop.html" onclick="toggleMobileMenu()">Shop</a></li>
-                        <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
-                        <li><a href="contact.html" onclick="toggleMobileMenu()">Contact</a></li>
-                        <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
-                    </ul>
-                    <div class="mobile-menu__footer">
-                        <p>Healing Skin, Blooming Confidence</p>
-                        <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
-                            <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SUSTAINABILITY Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
+    <section class="section-padding sustainability-section"
+        style="background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('assets/hero_bg.png'); background-attachment: fixed; background-position: center; background-size: cover;">
+        <div class="container" style="max-width: 800px; text-align: center; position: relative; z-index: 2;">
+            <span class="section-label">Our Promise</span>
+            <h2 class="section-heading">A Lighter <em>Footprint</em></h2>
+            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--clr-text-light); margin-bottom: 2.5rem;">
+                We
+                are committed to the planet that heals us. Our process is strictly cruelty free, our energy is
+                renewable, and our packaging is 100% plastic-free.<br>Because beautiful skin shouldn't cost the
+                Earth.
+            </p>
+            <div class="sustainability-badges">
+                <div class="sustainability-badge"><i class="fa-solid fa-paw"></i> Cruelty-Free</div>
+                <div class="sustainability-badge"><i class="fa-solid fa-recycle"></i> Zero Waste</div>
+                <div class="sustainability-badge"><i class="fa-solid fa-solar-panel"></i> Renewable Energy</div>
+                <div class="sustainability-badge"><i class="fa-solid fa-ban"></i> No Plastic</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â CTA BANNER Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
+    <section class="cta-banner">
+        <canvas id="ctaCanvas"></canvas>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="cta-eyebrow"><i class="fa-solid fa-wand-magic-sparkles" style="color: #c5a028;"></i> Personalized Care</div>
+            <h2>Find Your <em>Botanical Match</em></h2>
+            <div class="cta-gold-rule"></div>
+            <p>Our expert AI assistant cross-references your unique skin profile against our artisan ingredient matrix to prescribe your perfect ritual.</p>
+            <div class="cta-actions">
+                <a href="assistant.html" class="cta-btn-primary">
+                    Start Assessment <i class="fa-solid fa-sparkles"></i>
+                </a>
+                <a href="shop.html" class="cta-btn-secondary">
+                    Browse All <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="cta-trust">
+                <div class="cta-trust-item"><i class="fa-solid fa-circle-check"></i> 100% Plant Based</div>
+                <div class="cta-trust-item"><i class="fa-solid fa-paw"></i> Cruelty Free</div>
+                <div class="cta-trust-item"><i class="fa-solid fa-leaf"></i> Plastic Free</div>
+            </div>
+        </div>
+        
+        <script>
+            (function initCtaCanvas() {
+                const canvas = document.getElementById('ctaCanvas');
+                if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const ctx = canvas.getContext('2d');
+                let w, h, particles = [];
+
+                function resize() {
+                    w = canvas.width = canvas.offsetWidth;
+                    h = canvas.height = canvas.offsetHeight;
+                }
+                resize();
+                window.addEventListener('resize', resize);
+
+                const colors = ['rgba(197,160,40,', 'rgba(92,184,104,', 'rgba(255,255,255,'];
+
+                function createParticle() {
+                    return {
+                        x: Math.random() * w,
+                        y: Math.random() * h,
+                        r: 1 + Math.random() * 2,
+                        vx: (Math.random() - 0.5) * 0.4,
+                        vy: -(0.1 + Math.random() * 0.3),
+                        alpha: 0.1 + Math.random() * 0.3,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        life: 0,
+                        maxLife: 150 + Math.random() * 200
+                    };
+                }
+
+                for (let i = 0; i < 40; i++) particles.push(createParticle());
+
+                let animFrame;
+                function tick() {
+                    ctx.clearRect(0, 0, w, h);
+                    particles.forEach((p, idx) => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.life++;
+                        const progress = p.life / p.maxLife;
+                        const fade = progress < 0.2 ? progress / 0.2 : progress > 0.8 ? (1 - progress) / 0.2 : 1;
+                        
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = p.color + (p.alpha * fade) + ')';
+                        ctx.fill();
+                        
+                        if (p.life >= p.maxLife || p.y < -10 || p.x < -10 || p.x > w + 10) {
+                            particles[idx] = createParticle();
+                            particles[idx].y = h + 10;
+                        }
+                    });
+                    animFrame = requestAnimationFrame(tick);
+                }
+
+                let observing = false;
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        if (!observing) { tick(); observing = true; }
+                    } else {
+                        cancelAnimationFrame(animFrame);
+                        observing = false;
+                    }
+                }, { threshold: 0.1 });
+                observer.observe(canvas.parentElement);
+            })();
+        </script>
+    </section>
+
+    <!-- Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â PREMIUM FOOTER Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â -->
+    <footer class="premium-footer">
+
+        <!-- ── MARQUEE TRUST STRIP ── -->
+        <div class="footer-marquee-wrap" aria-hidden="true">
+            <div class="footer-marquee">
+                <span class="footer-marquee__item"><i class="fa-solid fa-leaf"></i> 100% Botanical Artisanal
+                    Scents</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-hands-holding-circle"></i> Hand-Poured in
+                    Bangalore</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-seedling"></i> Earth Positive Packaging</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-dharmachakra"></i> Rooted in Ayurveda</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-leaf"></i> 100% Botanical Artisanal
+                    Scents</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-hands-holding-circle"></i> Hand-Poured in
+                    Bangalore</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-seedling"></i> Earth Positive Packaging</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-dharmachakra"></i> Rooted in Ayurveda</span>
+                <span class="footer-marquee__item"><i class="fa-solid fa-leaf"></i> 100% Botanical Artisanal
+                    Scents</span>
+            </div>
+        </div>
+
+        <!-- ── MAIN GRID ── -->
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+
+                    <!-- brand col -->
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-brand__logo">
+                            <img src="assets/logo.jpg" alt="Bloom Cure">
+                            <h2 class="footer-brand__name">Bloom Cure</h2>
+                        </a>
+                        <div class="footer-brand__tagline">
+                            <span>Artisan Botanicals</span>
+                        </div>
+                        <p class="footer-brand__desc">
+                            Handcrafting nature's best to help your skin bloom with radiance and health. A mindful
+                            ritual crafted for modern living.
+                        </p>
+                        <!-- social pills -->
+                        <div class="footer-socials-row">
+                            <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"
+                                class="footer-social-pill" aria-label="Instagram"><i
                                     class="fa-brands fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="footer-social-pill" aria-label="Pinterest"><i
+                                    class="fa-brands fa-pinterest"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank"
+                                class="footer-social-pill" aria-label="Facebook"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- shop nav -->
+                    <div>
+                        <h4 class="footer-heading">Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="shop.html">All Soaps</a></li>
+                            <li><a href="#">Gift Bundles</a></li>
+                            <li><a href="#">Subscribers Ritual</a></li>
+                            <li><a href="#">Digital Cards</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- company nav -->
+                    <div>
+                        <h4 class="footer-heading">Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">Our Story</a></li>
+                            <li><a href="#">The Ethos</a></li>
+                            <li><a href="#">Sustainability</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- newsletter -->
+                    <div class="footer-newsletter">
+                        <h4 class="footer-heading">Newsletter</h4>
+                        <p class="footer-newsletter__desc">Join our botanical circle for exclusive tips on natural
+                            skincare and early access to new arrivals.</p>
+                        <form class="footer-newsletter__form" action="https://api.web3forms.com/submit" method="POST"
+                            onsubmit="submitNewsletter(event)">
+                            <input type="hidden" name="access_key" value="3968ade5-1b45-45e8-ac7d-3ce09bcc4fa7">
+                            <input type="hidden" name="subject" value="New Newsletter Subscription">
+                            <input type="email" name="email" placeholder="Email Address"
+                                class="footer-newsletter__input" required>
+                            <button type="submit" class="footer-newsletter__btn">Join</button>
+                        </form>
+                        <div class="footer-certs">
+                            <span class="footer-cert-tag"><i class="fa-solid fa-leaf"></i> VEGAN</span>
+                            <span class="footer-cert-tag"><i class="fa-solid fa-paw"></i> CRUELTY FREE</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- bottom bar -->
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
+                    <div class="footer-bottom__links">
+                        <a href="privacy.html"
+                            style="color: inherit; text-decoration: none; transition: color 0.3s ease;">Privacy
+                            Policy</a>
+                        <a href="terms.html"
+                            style="color: inherit; text-decoration: none; transition: color 0.3s ease;">Terms of
+                            Service</a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </footer>
 
-            <div id="cart-toast" class="toast glass-toast" style="color: var(--clr-cream);">
-                <i class="fa-solid fa-circle-check"></i>
-                <span>Item added to your botanical ritual.</span>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu__inner">
+            <button class="mobile-menu__close" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu__brand">
+                <img src="assets/logo.jpg" alt="Bloom Cure Logo">
+                <span class="mobile-menu__brand-name">Bloom Cure</span>
             </div>
+            <ul class="mobile-menu__links">
+                <li><a href="index.html" class="active" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="shop.html" onclick="toggleMobileMenu()">Shop</a></li>
+                <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="contact.html" onclick="toggleMobileMenu()">Contact</a></li>
+                <li><a href="index.html#ingredients" onclick="toggleMobileMenu()">Ingredients</a></li>
+            </ul>
+            <div class="mobile-menu__footer">
+                <p>Healing Skin, Blooming Confidence</p>
+                <div class="footer-socials" style="justify-content: center; margin-top: 1rem;">
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <script>
-                // Intersection Observer for reveal animations
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                        }
+    <div id="cart-toast" class="toast glass-toast" style="color: var(--clr-cream);">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Item added to your botanical ritual.</span>
+    </div>
+
+    <script>
+        // Intersection Observer for reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Cart Functionality
+        let cart = [];
+        try {
+            const storedCart = localStorage.getItem('bloom_cure_cart');
+            if (storedCart) cart = JSON.parse(storedCart);
+        } catch (e) {
+            console.error("Cart parse error", e);
+            localStorage.removeItem('bloom_cure_cart');
+        }
+        if (!Array.isArray(cart)) cart = [];
+
+        const cartCountEl = document.getElementById('cart-count');
+        const toastEl = document.getElementById('cart-toast');
+
+        function updateCartUI() {
+            const totalItems = cart.length;
+            if (cartCountEl) {
+                cartCountEl.textContent = totalItems;
+                if (totalItems > 0) {
+                    cartCountEl.classList.add('active');
+                } else {
+                    cartCountEl.classList.remove('active');
+                }
+            }
+        }
+
+        function showToast(message) {
+            if (toastEl) {
+                const toastSpan = toastEl.querySelector('span');
+                if (toastSpan) toastSpan.textContent = message;
+                toastEl.classList.add('active');
+                setTimeout(() => {
+                    toastEl.classList.remove('active');
+                }, 3000);
+            }
+        }
+
+        function addToCart(btn) {
+            const card = btn.closest('[data-name]') || btn.closest('.product-card') || btn.closest('.shop-card') || btn.closest('.ag-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+
+            // Extract raw number price from dataset or text
+            const rawPrice = card.dataset.price || '0';
+            const priceMatch = String(rawPrice).match(/[\d,]+/);
+            const price = priceMatch ? priceMatch[0] : '0';
+
+            const img = card.querySelector('img')?.src || 'assets/logo.jpg';
+
+            // Check if item already exists
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+            } else {
+                cart.push({ name, price, img, quantity: 1 });
+            }
+
+            localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
+            updateCartUI();
+            showToast(name + ' added to your botanical ritual.');
+
+            // Button feedback
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Added!';
+            btn.classList.add('btn-success');
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('btn-success');
+            }, 1500);
+        }
+
+        function buyNow(btn) {
+            const card = btn.closest('[data-name]') || btn.closest('.product-card') || btn.closest('.shop-card') || btn.closest('.ag-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+            const price = card.dataset.price || '0.00';
+
+            cart.push({ name, price });
+            localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
+            updateCartUI();
+            showToast('Opening WhatsApp to order ' + name + '...');
+
+            // Open WhatsApp with product details
+            const message = encodeURIComponent(
+                `Hi! I'd like to buy *${name}* (₹${price}) from Bloom Cure. 🌿`
+            );
+            const whatsappURL = `https://wa.me/919742522357?text=${message}`;
+
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening...';
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Buy Now';
+            }, 500);
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ═══════════════════════════════════════════════════════
+        //  ANTI-GRAVITY HERO · ADVANCED ENGINE
+        // ═══════════════════════════════════════════════════════
+
+        // ── Slide State ──────────────────────────────────────────
+        let currentAgSlide = 0;
+        const totalAgSlides = 3;
+        let agSlideInterval;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function updateAgSlider() {
+            const bgs = document.querySelectorAll('.ag-slide');
+            const contents = document.querySelectorAll('.ag-content-layer');
+            const dots = document.querySelectorAll('.ag-dots .ag-dot');
+            const counter = document.getElementById('agCounterCurrent');
+
+            bgs.forEach((bg, i) => {
+                bg.classList.toggle('active', i === currentAgSlide);
+            });
+
+            contents.forEach((content, i) => {
+                if (i === currentAgSlide) {
+                    content.classList.add('active');
+                    content.classList.remove('inactive');
+                    // Re-trigger clip-path and reveal transitions
+                    content.querySelectorAll('.ag-clip-text span, .ag-reveal, .ag-divider').forEach(el => {
+                        el.style.transition = 'none';
+                        el.offsetHeight; // force reflow
+                        el.style.transition = '';
                     });
-                }, { threshold: 0.1 });
-
-                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-                // Cart Functionality
-                let cart = [];
-                try {
-                    const storedCart = localStorage.getItem('bloom_cure_cart');
-                    if (storedCart) cart = JSON.parse(storedCart);
-                } catch (e) {
-                    console.error("Cart parse error", e);
-                    localStorage.removeItem('bloom_cure_cart');
+                } else {
+                    content.classList.remove('active');
+                    content.classList.add('inactive');
                 }
-                if (!Array.isArray(cart)) cart = [];
+            });
 
-                const cartCountEl = document.getElementById('cart-count');
-                const toastEl = document.getElementById('cart-toast');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentAgSlide);
+                dot.setAttribute('aria-selected', i === currentAgSlide ? 'true' : 'false');
+            });
 
-                function updateCartUI() {
-                    const totalItems = cart.length;
-                    if (cartCountEl) {
-                        cartCountEl.textContent = totalItems;
-                        if (totalItems > 0) {
-                            cartCountEl.classList.add('active');
-                        } else {
-                            cartCountEl.classList.remove('active');
-                        }
+            // Update counter
+            if (counter) {
+                const num = String(currentAgSlide + 1).padStart(2, '0');
+                counter.setAttribute('data-counter', num);
+                counter.textContent = num;
+            }
+        }
+
+        function nextAgSlide() {
+            currentAgSlide = (currentAgSlide + 1) % totalAgSlides;
+            updateAgSlider();
+            resetAgInterval();
+        }
+        function prevAgSlide() {
+            currentAgSlide = (currentAgSlide - 1 + totalAgSlides) % totalAgSlides;
+            updateAgSlider();
+            resetAgInterval();
+        }
+        function goToAgSlide(index) {
+            currentAgSlide = index;
+            updateAgSlider();
+            resetAgInterval();
+        }
+
+        // ── Progress Bar ─────────────────────────────────────────
+        const agProgressBar = document.getElementById('agProgressBar');
+        function startProgressBar() {
+            if (!agProgressBar) return;
+            agProgressBar.classList.remove('running');
+            agProgressBar.style.transition = 'none';
+            agProgressBar.style.width = '0%';
+            agProgressBar.offsetHeight; // reflow
+            agProgressBar.style.transition = '';
+            agProgressBar.classList.add('running');
+        }
+        function resetAgInterval() {
+            if (agSlideInterval) clearInterval(agSlideInterval);
+            if (!prefersReducedMotion) {
+                startProgressBar();
+                agSlideInterval = setInterval(nextAgSlide, 6000);
+            }
+        }
+
+        // Init
+        updateAgSlider();
+        resetAgInterval();
+
+        // ── Canvas Botanical Particle Engine ─────────────────────
+        (function initCanvas() {
+            const canvas = document.getElementById('agCanvas');
+            if (!canvas || prefersReducedMotion) return;
+            const ctx = canvas.getContext('2d');
+            let W, H, particles = [];
+
+            function resize() {
+                W = canvas.width = canvas.offsetWidth;
+                H = canvas.height = canvas.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const COLORS = [
+                'rgba(197,160,40,',
+                'rgba(123,139,79,',
+                'rgba(255,255,255,',
+                'rgba(232,168,168,'
+            ];
+
+            function createParticle() {
+                return {
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    r: 1 + Math.random() * 2.5,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: -(0.2 + Math.random() * 0.5),
+                    alpha: 0.05 + Math.random() * 0.25,
+                    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                    life: 0,
+                    maxLife: 180 + Math.random() * 240
+                };
+            }
+
+            for (let i = 0; i < 55; i++) particles.push(createParticle());
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                particles.forEach((p, idx) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.life++;
+                    const progress = p.life / p.maxLife;
+                    const fade = progress < 0.15
+                        ? progress / 0.15
+                        : progress > 0.75
+                            ? (1 - progress) / 0.25
+                            : 1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color + (p.alpha * fade) + ')';
+                    ctx.fill();
+                    if (p.life >= p.maxLife || p.y < -20 || p.x < -20 || p.x > W + 20) {
+                        particles[idx] = createParticle();
+                        particles[idx].y = H + 10; // enter from bottom
                     }
-                }
-
-                function showToast(message) {
-                    if (toastEl) {
-                        const toastSpan = toastEl.querySelector('span');
-                        if (toastSpan) toastSpan.textContent = message;
-                        toastEl.classList.add('active');
-                        setTimeout(() => {
-                            toastEl.classList.remove('active');
-                        }, 3000);
-                    }
-                }
-
-                function addToCart(btn) {
-                    const card = btn.closest('[data-name]') || btn.closest('.product-card') || btn.closest('.shop-card') || btn.closest('.ag-card');
-                    if (!card) return;
-                    const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
-
-                    // Extract raw number price from dataset or text
-                    const rawPrice = card.dataset.price || '0';
-                    const priceMatch = String(rawPrice).match(/[\d,]+/);
-                    const price = priceMatch ? priceMatch[0] : '0';
-
-                    const img = card.querySelector('img')?.src || 'assets/logo.jpg';
-
-                    // Check if item already exists
-                    const existingItemIndex = cart.findIndex(item => item.name === name);
-                    if (existingItemIndex > -1) {
-                        cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
-                    } else {
-                        cart.push({ name, price, img, quantity: 1 });
-                    }
-
-                    localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
-                    updateCartUI();
-                    showToast(name + ' added to your botanical ritual.');
-
-                    // Button feedback
-                    const originalHTML = btn.innerHTML;
-                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Added!';
-                    btn.classList.add('btn-success');
-                    setTimeout(() => {
-                        btn.innerHTML = originalHTML;
-                        btn.classList.remove('btn-success');
-                    }, 1500);
-                }
-
-                function buyNow(btn) {
-                    const card = btn.closest('[data-name]') || btn.closest('.product-card') || btn.closest('.shop-card') || btn.closest('.ag-card');
-                    if (!card) return;
-                    const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
-                    const price = card.dataset.price || '0.00';
-
-                    cart.push({ name, price });
-                    localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
-                    updateCartUI();
-                    showToast('Opening WhatsApp to order ' + name + '...');
-
-                    // Open WhatsApp with product details
-                    const message = encodeURIComponent(
-                        `Hi! I'd like to buy *${name}* (₹${price}) from Bloom Cure. 🌿`
-                    );
-                    const whatsappURL = `https://wa.me/919742522357?text=${message}`;
-
-                    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening...';
-                    setTimeout(() => {
-                        window.open(whatsappURL, '_blank');
-                        btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Buy Now';
-                    }, 500);
-                }
-
-                // Smooth scroll for nav links
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                    });
                 });
+                requestAnimationFrame(tick);
+            }
+            tick();
+        })();
 
-                // ═══════════════════════════════════════════════════════
-                //  ANTI-GRAVITY HERO · ADVANCED ENGINE
-                // ═══════════════════════════════════════════════════════
+        // ── Magnetic Cursor Orb ──────────────────────────────────
+        (function initCursorOrb() {
+            const orb = document.getElementById('agCursorOrb');
+            if (!orb || prefersReducedMotion || window.innerWidth <= 768) return;
 
-                // ── Slide State ──────────────────────────────────────────
-                let currentAgSlide = 0;
-                const totalAgSlides = 3;
-                let agSlideInterval;
-                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let mx = -200, my = -200; // start off-screen
+            let ox = -200, oy = -200;
 
-                function updateAgSlider() {
-                    const bgs = document.querySelectorAll('.ag-slide');
-                    const contents = document.querySelectorAll('.ag-content-layer');
-                    const dots = document.querySelectorAll('.ag-dots .ag-dot');
-                    const counter = document.getElementById('agCounterCurrent');
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
-                    bgs.forEach((bg, i) => {
-                        bg.classList.toggle('active', i === currentAgSlide);
-                    });
+            // Spring physics loop
+            const spring = 0.12;
+            (function orbLoop() {
+                ox += (mx - ox) * spring;
+                oy += (my - oy) * spring;
+                orb.style.transform = `translate(calc(${ox}px - 50%), calc(${oy}px - 50%))`;
+                requestAnimationFrame(orbLoop);
+            })();
 
-                    contents.forEach((content, i) => {
-                        if (i === currentAgSlide) {
-                            content.classList.add('active');
-                            content.classList.remove('inactive');
-                            // Re-trigger clip-path and reveal transitions
-                            content.querySelectorAll('.ag-clip-text span, .ag-reveal, .ag-divider').forEach(el => {
-                                el.style.transition = 'none';
-                                el.offsetHeight; // force reflow
-                                el.style.transition = '';
-                            });
-                        } else {
-                            content.classList.remove('active');
-                            content.classList.add('inactive');
-                        }
-                    });
+            // Size pulse on hovering interactive elements
+            document.querySelectorAll('.ag-btn, .ag-btn-secondary, .ag-arrow, .ag-dot').forEach(el => {
+                el.addEventListener('mouseenter', () => orb.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => orb.classList.remove('hovering'));
+            });
+        })();
 
-                    dots.forEach((dot, i) => {
-                        dot.classList.toggle('active', i === currentAgSlide);
-                        dot.setAttribute('aria-selected', i === currentAgSlide ? 'true' : 'false');
-                    });
+        // ── Parallax Mouse Move ──────────────────────────────────
+        const heroSection = document.getElementById('agHero');
+        const parallaxWraps = document.querySelectorAll('.ag-parallax-wrap');
+        const particlesLayer = document.getElementById('agParticles');
 
-                    // Update counter
-                    if (counter) {
-                        const num = String(currentAgSlide + 1).padStart(2, '0');
-                        counter.setAttribute('data-counter', num);
-                        counter.textContent = num;
-                    }
+        if (heroSection && !prefersReducedMotion) {
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+
+            heroSection.addEventListener('mousemove', e => {
+                if (window.innerWidth <= 768) return;
+                targetX = (window.innerWidth / 2 - e.clientX) / 30;
+                targetY = (window.innerHeight / 2 - e.clientY) / 30;
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                targetX = 0; targetY = 0;
+            });
+
+            (function parallaxLoop() {
+                currentX += (targetX - currentX) * 0.06;
+                currentY += (targetY - currentY) * 0.06;
+                parallaxWraps.forEach(w => {
+                    w.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                });
+                if (particlesLayer) {
+                    particlesLayer.style.transform = `translate3d(${currentX * 1.8}px, ${currentY * 1.8}px, 0)`;
                 }
-
-                function nextAgSlide() {
-                    currentAgSlide = (currentAgSlide + 1) % totalAgSlides;
-                    updateAgSlider();
-                    resetAgInterval();
-                }
-                function prevAgSlide() {
-                    currentAgSlide = (currentAgSlide - 1 + totalAgSlides) % totalAgSlides;
-                    updateAgSlider();
-                    resetAgInterval();
-                }
-                function goToAgSlide(index) {
-                    currentAgSlide = index;
-                    updateAgSlider();
-                    resetAgInterval();
-                }
-
-                // ── Progress Bar ─────────────────────────────────────────
-                const agProgressBar = document.getElementById('agProgressBar');
-                function startProgressBar() {
-                    if (!agProgressBar) return;
-                    agProgressBar.classList.remove('running');
-                    agProgressBar.style.transition = 'none';
-                    agProgressBar.style.width = '0%';
-                    agProgressBar.offsetHeight; // reflow
-                    agProgressBar.style.transition = '';
-                    agProgressBar.classList.add('running');
-                }
-                function resetAgInterval() {
-                    if (agSlideInterval) clearInterval(agSlideInterval);
-                    if (!prefersReducedMotion) {
-                        startProgressBar();
-                        agSlideInterval = setInterval(nextAgSlide, 6000);
-                    }
-                }
-
-                // Init
-                updateAgSlider();
-                resetAgInterval();
-
-                // ── Canvas Botanical Particle Engine ─────────────────────
-                (function initCanvas() {
-                    const canvas = document.getElementById('agCanvas');
-                    if (!canvas || prefersReducedMotion) return;
-                    const ctx = canvas.getContext('2d');
-                    let W, H, particles = [];
-
-                    function resize() {
-                        W = canvas.width = canvas.offsetWidth;
-                        H = canvas.height = canvas.offsetHeight;
-                    }
-                    resize();
-                    window.addEventListener('resize', resize);
-
-                    const COLORS = [
-                        'rgba(197,160,40,',
-                        'rgba(123,139,79,',
-                        'rgba(255,255,255,',
-                        'rgba(232,168,168,'
-                    ];
-
-                    function createParticle() {
-                        return {
-                            x: Math.random() * W,
-                            y: Math.random() * H,
-                            r: 1 + Math.random() * 2.5,
-                            vx: (Math.random() - 0.5) * 0.3,
-                            vy: -(0.2 + Math.random() * 0.5),
-                            alpha: 0.05 + Math.random() * 0.25,
-                            color: COLORS[Math.floor(Math.random() * COLORS.length)],
-                            life: 0,
-                            maxLife: 180 + Math.random() * 240
-                        };
-                    }
-
-                    for (let i = 0; i < 55; i++) particles.push(createParticle());
-
-                    function tick() {
-                        ctx.clearRect(0, 0, W, H);
-                        particles.forEach((p, idx) => {
-                            p.x += p.vx;
-                            p.y += p.vy;
-                            p.life++;
-                            const progress = p.life / p.maxLife;
-                            const fade = progress < 0.15
-                                ? progress / 0.15
-                                : progress > 0.75
-                                    ? (1 - progress) / 0.25
-                                    : 1;
-                            ctx.beginPath();
-                            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                            ctx.fillStyle = p.color + (p.alpha * fade) + ')';
-                            ctx.fill();
-                            if (p.life >= p.maxLife || p.y < -20 || p.x < -20 || p.x > W + 20) {
-                                particles[idx] = createParticle();
-                                particles[idx].y = H + 10; // enter from bottom
-                            }
-                        });
-                        requestAnimationFrame(tick);
-                    }
-                    tick();
-                })();
-
-                // ── Magnetic Cursor Orb ──────────────────────────────────
-                (function initCursorOrb() {
-                    const orb = document.getElementById('agCursorOrb');
-                    if (!orb || prefersReducedMotion || window.innerWidth <= 768) return;
-
-                    let mx = -200, my = -200; // start off-screen
-                    let ox = -200, oy = -200;
-
-                    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-                    // Spring physics loop
-                    const spring = 0.12;
-                    (function orbLoop() {
-                        ox += (mx - ox) * spring;
-                        oy += (my - oy) * spring;
-                        orb.style.transform = `translate(calc(${ox}px - 50%), calc(${oy}px - 50%))`;
-                        requestAnimationFrame(orbLoop);
-                    })();
-
-                    // Size pulse on hovering interactive elements
-                    document.querySelectorAll('.ag-btn, .ag-btn-secondary, .ag-arrow, .ag-dot').forEach(el => {
-                        el.addEventListener('mouseenter', () => orb.classList.add('hovering'));
-                        el.addEventListener('mouseleave', () => orb.classList.remove('hovering'));
-                    });
-                })();
-
-                // ── Parallax Mouse Move ──────────────────────────────────
-                const heroSection = document.getElementById('agHero');
-                const parallaxWraps = document.querySelectorAll('.ag-parallax-wrap');
-                const particlesLayer = document.getElementById('agParticles');
-
-                if (heroSection && !prefersReducedMotion) {
-                    let targetX = 0, targetY = 0;
-                    let currentX = 0, currentY = 0;
-
-                    heroSection.addEventListener('mousemove', e => {
-                        if (window.innerWidth <= 768) return;
-                        targetX = (window.innerWidth / 2 - e.clientX) / 30;
-                        targetY = (window.innerHeight / 2 - e.clientY) / 30;
-                    });
-
-                    heroSection.addEventListener('mouseleave', () => {
-                        targetX = 0; targetY = 0;
-                    });
-
-                    (function parallaxLoop() {
-                        currentX += (targetX - currentX) * 0.06;
-                        currentY += (targetY - currentY) * 0.06;
-                        parallaxWraps.forEach(w => {
-                            w.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
-                        });
-                        if (particlesLayer) {
-                            particlesLayer.style.transform = `translate3d(${currentX * 1.8}px, ${currentY * 1.8}px, 0)`;
-                        }
-                        requestAnimationFrame(parallaxLoop);
-                    })();
-                }
+                requestAnimationFrame(parallaxLoop);
+            })();
+        }
 
 
-                // Nav scroll shrink effect
-                const nav = document.getElementById('mainNav');
-                if (nav) {
-                    document.addEventListener('scroll', () => {
-                        nav.classList.toggle('scrolled', window.scrollY > 60);
-                    });
-                }
+        // Nav scroll shrink effect
+        const nav = document.getElementById('mainNav');
+        if (nav) {
+            document.addEventListener('scroll', () => {
+                nav.classList.toggle('scrolled', window.scrollY > 60);
+            });
+        }
 
 
-                // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SEARCH & MOBILE MENU LOGIC Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
+        // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SEARCH & MOBILE MENU LOGIC Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
 
-                const productsDB = [
-                    { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.jpg", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion." },
-                    { id: 20, name: "Red Wine Soap", price: "399", img: "assets/product_red_wine.jpg", desc: "Rich in antioxidants from real red wine extract for youthful, glowing skin." },
-                    { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem" },
-                    { id: 7, name: "Soap Nut Power", price: "349", img: "assets/product_soapnut.png", desc: "Ancient reetha cleanser" },
-                    { id: 8, name: "Seegekai", price: "399", img: "assets/product_shikakai.png", desc: "Traditional shikakai-infused bar" },
-                    { id: 9, name: "Besan", price: "299", img: "assets/product_besan.png", desc: "Traditional gram flour face & body bar" },
-                    { id: 10, name: "Loofah Body Scrubber", price: "199", img: "assets/product_loofah.png", desc: "Natural exfoliating bath sponge" },
-                    { id: 11, name: "Bamboo Toothbrush", price: "149", img: "assets/product_bamboo_toothbrush.png", desc: "Eco-friendly sustainable toothbrush" },
-                    { id: 12, name: "Seegekai Powder", price: "249", img: "assets/product_seegekai_powder.png", desc: "Pure organic hair wash powder" },
-                    { id: 13, name: "Hotel Soaps", price: "599", img: "assets/product_hotel_soaps.png", desc: "Luxury miniature botanical soap set" },
-                    { id: 14, name: "Exfoliating Coffee Soap", price: "399", img: "assets/product_coffee_soap.png", desc: "Rich roasted coffee granules for deep exfoliation" },
-                    { id: 15, name: "Rice Goat Milk Soap", price: "299", img: "assets/product_rice_goat_milk.png", desc: "Rich in vitamins and lactic acid to gently exfoliate" },
-                    { id: 16, name: "Multani Mitti Soap", price: "249", img: "assets/product_multani_mitti.png", desc: "Natural Fuller's Earth to absorb impurities and reduce acne" },
-                    { id: 17, name: "Activated Charcoal Soap", price: "299", img: "assets/product_charcoal.png", desc: "Deep pore detox for pollution protection" },
+        const productsDB = [
+            { id: 21, name: "Red Sandalwood Herbal Bar", price: "449", img: "assets/product_red_sandalwood.jpg", desc: "Nature's premium skin healer with authentic red sandalwood extract for a refined, even complexion." },
+            { id: 20, name: "Red Wine Soap", price: "399", img: "assets/product_red_wine.jpg", desc: "Rich in antioxidants from real red wine extract for youthful, glowing skin." },
+            { id: 2, name: "Neem Purify", price: "399", img: "assets/product_neem.png", desc: "Deep cleansing antibacterial neem" },
+            { id: 7, name: "Soap Nut Power", price: "349", img: "assets/product_soapnut.png", desc: "Ancient reetha cleanser" },
+            { id: 8, name: "Seegekai", price: "399", img: "assets/product_shikakai.png", desc: "Traditional shikakai-infused bar" },
+            { id: 9, name: "Besan", price: "299", img: "assets/product_besan.png", desc: "Traditional gram flour face & body bar" },
+            { id: 10, name: "Loofah Body Scrubber", price: "199", img: "assets/product_loofah.png", desc: "Natural exfoliating bath sponge" },
+            { id: 11, name: "Bamboo Toothbrush", price: "149", img: "assets/product_bamboo_toothbrush.png", desc: "Eco-friendly sustainable toothbrush" },
+            { id: 12, name: "Seegekai Powder", price: "249", img: "assets/product_seegekai_powder.png", desc: "Pure organic hair wash powder" },
+            { id: 13, name: "Hotel Soaps", price: "599", img: "assets/product_hotel_soaps.png", desc: "Luxury miniature botanical soap set" },
+            { id: 14, name: "Exfoliating Coffee Soap", price: "399", img: "assets/product_coffee_soap.png", desc: "Rich roasted coffee granules for deep exfoliation" },
+            { id: 15, name: "Rice Goat Milk Soap", price: "299", img: "assets/product_rice_goat_milk.png", desc: "Rich in vitamins and lactic acid to gently exfoliate" },
+            { id: 16, name: "Multani Mitti Soap", price: "249", img: "assets/product_multani_mitti.png", desc: "Natural Fuller's Earth to absorb impurities and reduce acne" },
+            { id: 17, name: "Activated Charcoal Soap", price: "299", img: "assets/product_charcoal.png", desc: "Deep pore detox for pollution protection" },
 
-                    { id: 19, name: "Relaxing Bath Salts", price: "199", img: "assets/relaxing_bath_salts.png", desc: "Epsom & Pink Salt bath soak for muscle recovery" }
-                ];
+            { id: 19, name: "Relaxing Bath Salts", price: "199", img: "assets/relaxing_bath_salts.png", desc: "Epsom & Pink Salt bath soak for muscle recovery" }
+        ];
 
-                function toggleSearch(e) {
-                    if (e) e.preventDefault();
-                    const searchOverlay = document.getElementById('searchOverlay');
-                    if (!searchOverlay) return;
-                    searchOverlay.classList.toggle('active');
+        function toggleSearch(e) {
+            if (e) e.preventDefault();
+            const searchOverlay = document.getElementById('searchOverlay');
+            if (!searchOverlay) return;
+            searchOverlay.classList.toggle('active');
 
-                    if (searchOverlay.classList.contains('active')) {
-                        document.body.style.overflow = 'hidden';
-                        setTimeout(() => {
-                            const searchInput = document.getElementById('searchInput');
-                            if (searchInput) {
-                                searchInput.value = '';
-                                searchInput.focus();
-                                handleSearch();
-                            }
-                        }, 100);
-                    } else {
-                        document.body.style.overflow = '';
-                    }
-                }
-
-                function setSearchQuery(query) {
+            if (searchOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
                     const searchInput = document.getElementById('searchInput');
                     if (searchInput) {
-                        searchInput.value = query;
+                        searchInput.value = '';
+                        searchInput.focus();
                         handleSearch();
                     }
-                }
+                }, 100);
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
 
-                function handleSearch() {
-                    const searchInput = document.getElementById('searchInput');
-                    if (!searchInput) return;
-                    const query = searchInput.value.toLowerCase().trim();
-                    const resultsContainer = document.getElementById('searchResults');
-                    const emptyState = document.getElementById('searchEmpty');
-                    if (!resultsContainer || !emptyState) return;
+        function setSearchQuery(query) {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = query;
+                handleSearch();
+            }
+        }
 
-                    if (query.length === 0) {
-                        const suggestions = ["Red Sandalwood Herbal Bar", "Red Wine Soap", "Relaxing Bath Salts", "Rice Goat Milk Soap"];
-                        const suggestedProducts = productsDB.filter(p => suggestions.includes(p.name));
-                        resultsContainer.innerHTML = '<div style="grid-column: 1 / -1; color: var(--clr-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; margin-top: 0.5rem; font-weight: 600;">Suggested for you</div>';
+        function handleSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+            const query = searchInput.value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            const emptyState = document.getElementById('searchEmpty');
+            if (!resultsContainer || !emptyState) return;
 
-                        suggestedProducts.forEach(product => {
-                            const el = document.createElement('a');
-                            el.href = 'shop.html';
-                            el.className = 'search-result-item';
-                            el.innerHTML = `
+            if (query.length === 0) {
+                const suggestions = ["Red Sandalwood Herbal Bar", "Red Wine Soap", "Relaxing Bath Salts", "Rice Goat Milk Soap"];
+                const suggestedProducts = productsDB.filter(p => suggestions.includes(p.name));
+                resultsContainer.innerHTML = '<div style="grid-column: 1 / -1; color: var(--clr-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; margin-top: 0.5rem; font-weight: 600;">Suggested for you</div>';
+
+                suggestedProducts.forEach(product => {
+                    const el = document.createElement('a');
+                    el.href = 'shop.html';
+                    el.className = 'search-result-item';
+                    el.innerHTML = `
                         <img src="${product.img}" alt="${product.name}" class="search-result-img" onerror="this.src='assets/logo.jpg'">
                         <div class="search-result-info">
                             <span class="search-result-title">${product.name}</span>
                             <span class="search-result-price">₹${product.price}</span>
                         </div>
                     `;
-                            resultsContainer.appendChild(el);
-                        });
-
-                        emptyState.style.display = 'none';
-                        return;
-                    }
-
-                    const results = productsDB.filter(p =>
-                        p.name.toLowerCase().includes(query) ||
-                        p.desc.toLowerCase().includes(query)
-                    );
-
-                    resultsContainer.innerHTML = '';
-
-                    if (results.length === 0) {
-                        emptyState.style.display = 'flex';
-                    } else {
-                        emptyState.style.display = 'none';
-                        results.forEach(product => {
-                            const el = document.createElement('a');
-                            el.href = 'shop.html';
-                            el.className = 'search-result-item';
-                            el.innerHTML = `
-                        <img src="${product.img}" alt="${product.name}" class="search-result-img" onerror="this.src='assets/logo.jpg'">
-                        <div class="search-result-info">
-                            <span class="search-result-title">${product.name}</span>
-                            <span class="search-result-price">₹${product.price}</span>
-                        </div>
-                    `;
-                            resultsContainer.appendChild(el);
-                        });
-                    }
-                }
-
-                function toggleMobileMenu() {
-                    const menuOverlay = document.getElementById('mobileMenuOverlay') || document.getElementById('mobileMenu');
-                    if (!menuOverlay) return;
-                    menuOverlay.classList.toggle('active');
-                    if (menuOverlay.classList.contains('active')) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = '';
-                    }
-                }
-
-                // Close overlays on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        const searchOverlay = document.getElementById('searchOverlay');
-                        const menuOverlay = document.getElementById('mobileMenuOverlay') || document.getElementById('mobileMenu');
-                        if (searchOverlay && searchOverlay.classList.contains('active')) toggleSearch();
-                        if (menuOverlay && menuOverlay.classList.contains('active')) toggleMobileMenu();
-                    }
+                    resultsContainer.appendChild(el);
                 });
 
-                // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SHARE PRODUCT Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
+                emptyState.style.display = 'none';
+                return;
+            }
 
-                function shareProduct(btn) {
-                    const card = btn.closest('.product-card') || btn.closest('.spotlight-card') || btn.closest('.shop-card');
-                    if (!card) return;
-                    const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
-                    const price = card.dataset.price || '0';
+            const results = productsDB.filter(p =>
+                p.name.toLowerCase().includes(query) ||
+                p.desc.toLowerCase().includes(query)
+            );
 
-                    const shareText = `🌿 Check out *${name}* (₹${price}) from Bloom Cure! Handcrafted botanical goodness.\n\nShop now: https://bloomcure.bloomcure-co.workers.dev/shop`;
-                    const shareUrl = window.location.href.split('#')[0] + '#shop';
+            resultsContainer.innerHTML = '';
 
-                    // Button feedback UI
-                    const originalHTML = btn.innerHTML;
-                    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-                    btn.style.color = '#25D366';
-                    btn.style.borderColor = '#25D366';
-                    setTimeout(() => {
-                        btn.innerHTML = originalHTML || '<i class="fa-solid fa-share-nodes"></i>';
-                        btn.style.color = '';
-                        btn.style.borderColor = '';
-                    }, 2000);
+            if (results.length === 0) {
+                emptyState.style.display = 'flex';
+            } else {
+                emptyState.style.display = 'none';
+                results.forEach(product => {
+                    const el = document.createElement('a');
+                    el.href = 'shop.html';
+                    el.className = 'search-result-item';
+                    el.innerHTML = `
+                        <img src="${product.img}" alt="${product.name}" class="search-result-img" onerror="this.src='assets/logo.jpg'">
+                        <div class="search-result-info">
+                            <span class="search-result-title">${product.name}</span>
+                            <span class="search-result-price">₹${product.price}</span>
+                        </div>
+                    `;
+                    resultsContainer.appendChild(el);
+                });
+            }
+        }
 
-                    // 1. Try modern Web Share API (native sheet on mobile/desktop)
-                    if (navigator.share && window.isSecureContext) {
-                        navigator.share({
-                            title: `${name} — Bloom Cure`,
-                            text: `🌿 Check out ${name} (₹${price}) from Bloom Cure!`,
-                            url: shareUrl
-                        }).catch((error) => {
-                            if (error.name !== 'AbortError') {
-                                executeFallbackShare(shareText);
-                            }
-                        });
-                    } else {
+        function toggleMobileMenu() {
+            const menuOverlay = document.getElementById('mobileMenuOverlay') || document.getElementById('mobileMenu');
+            if (!menuOverlay) return;
+            menuOverlay.classList.toggle('active');
+            if (menuOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close overlays on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const searchOverlay = document.getElementById('searchOverlay');
+                const menuOverlay = document.getElementById('mobileMenuOverlay') || document.getElementById('mobileMenu');
+                if (searchOverlay && searchOverlay.classList.contains('active')) toggleSearch();
+                if (menuOverlay && menuOverlay.classList.contains('active')) toggleMobileMenu();
+            }
+        });
+
+        // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SHARE PRODUCT Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
+
+        function shareProduct(btn) {
+            const card = btn.closest('.product-card') || btn.closest('.spotlight-card') || btn.closest('.shop-card');
+            if (!card) return;
+            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
+            const price = card.dataset.price || '0';
+
+            const shareText = `🌿 Check out *${name}* (₹${price}) from Bloom Cure! Handcrafted botanical goodness.\n\nShop now: https://bloomcure.bloomcure-co.workers.dev/shop`;
+            const shareUrl = window.location.href.split('#')[0] + '#shop';
+
+            // Button feedback UI
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+            btn.style.color = '#25D366';
+            btn.style.borderColor = '#25D366';
+            setTimeout(() => {
+                btn.innerHTML = originalHTML || '<i class="fa-solid fa-share-nodes"></i>';
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            }, 2000);
+
+            // 1. Try modern Web Share API (native sheet on mobile/desktop)
+            if (navigator.share && window.isSecureContext) {
+                navigator.share({
+                    title: `${name} — Bloom Cure`,
+                    text: `🌿 Check out ${name} (₹${price}) from Bloom Cure!`,
+                    url: shareUrl
+                }).catch((error) => {
+                    if (error.name !== 'AbortError') {
                         executeFallbackShare(shareText);
                     }
+                });
+            } else {
+                executeFallbackShare(shareText);
+            }
 
-                    function executeFallbackShare(text) {
-                        // 2. Try Clipboard API as primary fallback
-                        if (navigator.clipboard) {
-                            navigator.clipboard.writeText(text).then(() => {
-                                if (typeof showToast === 'function') {
-                                    showToast('✨ Product link copied to clipboard!');
-                                } else {
-                                    alert('Product link copied to clipboard!');
-                                }
-                            }).catch(() => {
-                                // 3. Ultimate Fallback: WhatsApp intent
-                                window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                            });
+            function executeFallbackShare(text) {
+                // 2. Try Clipboard API as primary fallback
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        if (typeof showToast === 'function') {
+                            showToast('✨ Product link copied to clipboard!');
                         } else {
-                            // 3. Ultimate Fallback: WhatsApp intent
-                            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                            alert('Product link copied to clipboard!');
                         }
-                    }
+                    }).catch(() => {
+                        // 3. Ultimate Fallback: WhatsApp intent
+                        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                    });
+                } else {
+                    // 3. Ultimate Fallback: WhatsApp intent
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
                 }
+            }
+        }
 
 
 
-                // Initialize UI
-                updateCartUI();
-                loadTestimonials();
+        // Initialize UI
+        updateCartUI();
+        loadTestimonials();
 
-                // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â FEEDBACK FORM LOGIC Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
-                function initRatingStars() {
-                    const stars = document.querySelectorAll('.rating-stars-input i');
-                    const ratingInput = document.getElementById('fbRating');
+        // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â FEEDBACK FORM LOGIC Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
+        function initRatingStars() {
+            const stars = document.querySelectorAll('.rating-stars-input i');
+            const ratingInput = document.getElementById('fbRating');
 
-                    if (stars.length > 0) {
-                        // Set default 5 stars active
-                        stars.forEach((star) => {
-                            star.classList.add('active');
+            if (stars.length > 0) {
+                // Set default 5 stars active
+                stars.forEach((star) => {
+                    star.classList.add('active');
 
-                            star.addEventListener('click', () => {
-                                const value = star.getAttribute('data-value');
-                                if (ratingInput) ratingInput.value = value;
+                    star.addEventListener('click', () => {
+                        const value = star.getAttribute('data-value');
+                        if (ratingInput) ratingInput.value = value;
 
-                                stars.forEach((s, i) => {
-                                    if (i < value) {
-                                        s.classList.add('active');
-                                    } else {
-                                        s.classList.remove('active');
-                                    }
-                                });
-                            });
+                        stars.forEach((s, i) => {
+                            if (i < value) {
+                                s.classList.add('active');
+                            } else {
+                                s.classList.remove('active');
+                            }
                         });
-                    }
+                    });
+                });
+            }
+        }
+
+        // Run on load
+        initRatingStars();
+
+        function getInitials(name) {
+            return name ? name.charAt(0).toUpperCase() : 'U';
+        }
+
+        const avatarColors = [
+            { bg: '#E8D5C4', text: '#8B6914' },
+            { bg: '#D5E8D5', text: '#2d6b3f' },
+            { bg: '#D5D5E8', text: '#6b4f8a' },
+            { bg: '#E8D5D5', text: '#8a4f4f' }
+        ];
+
+        function createTestimonialHTML(feedbackObj) {
+            const name = feedbackObj.name || 'Anonymous';
+            const product = feedbackObj.product || 'Bloom Cure Product';
+            const rating = parseInt(feedbackObj.rating) || 5;
+            const message = feedbackObj.message || '';
+
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    starsHTML += '<i class="fa-solid fa-star"></i>';
+                } else {
+                    starsHTML += '<i class="fa-regular fa-star"></i>';
                 }
+            }
 
-                // Run on load
-                initRatingStars();
+            const colorPair = avatarColors[name.length % avatarColors.length]; // Pseudo-random consistent color
 
-                function getInitials(name) {
-                    return name ? name.charAt(0).toUpperCase() : 'U';
-                }
-
-                const avatarColors = [
-                    { bg: '#E8D5C4', text: '#8B6914' },
-                    { bg: '#D5E8D5', text: '#2d6b3f' },
-                    { bg: '#D5D5E8', text: '#6b4f8a' },
-                    { bg: '#E8D5D5', text: '#8a4f4f' }
-                ];
-
-                function createTestimonialHTML(feedbackObj) {
-                    const name = feedbackObj.name || 'Anonymous';
-                    const product = feedbackObj.product || 'Bloom Cure Product';
-                    const rating = parseInt(feedbackObj.rating) || 5;
-                    const message = feedbackObj.message || '';
-
-                    let starsHTML = '';
-                    for (let i = 1; i <= 5; i++) {
-                        if (i <= rating) {
-                            starsHTML += '<i class="fa-solid fa-star"></i>';
-                        } else {
-                            starsHTML += '<i class="fa-regular fa-star"></i>';
-                        }
-                    }
-
-                    const colorPair = avatarColors[name.length % avatarColors.length]; // Pseudo-random consistent color
-
-                    return `
+            return `
                 <div class="testimonial-card" style="animation: fadeIn 0.5s ease-out;">
                     <div class="testimonial-card__stars">
                         ${starsHTML}
@@ -6112,11 +6357,63 @@
                     </div>
                 </div>
             `;
-                }
+        }
 
-                function loadTestimonials() {
-                    const grid = document.getElementById('testimonialGrid');
-                    if (!grid) return;
+        function loadTestimonials() {
+            const grid = document.getElementById('testimonialGrid');
+            if (!grid) return;
+
+            let savedFeedback = [];
+            try {
+                const stored = localStorage.getItem('bloom_cure_feedback');
+                if (stored) {
+                    savedFeedback = JSON.parse(stored);
+                }
+            } catch (e) {
+                console.error("Failed to parse stored feedback", e);
+                localStorage.removeItem('bloom_cure_feedback');
+            }
+
+            if (!Array.isArray(savedFeedback)) savedFeedback = [];
+
+            // Loop through saved feedback and add them to the top
+            savedFeedback.forEach(fb => {
+                if (fb && typeof fb === 'object') {
+                    grid.insertAdjacentHTML('afterbegin', createTestimonialHTML(fb));
+                }
+            });
+        }
+
+        async function submitFeedback(e) {
+            e.preventDefault();
+
+            // Capture values
+            const name = document.getElementById('fbName').value.trim();
+            const email = document.getElementById('fbEmail').value.trim();
+            const product = document.getElementById('fbProduct').value;
+            const message = document.getElementById('fbMessage').value.trim();
+            const rating = document.getElementById('fbRating').value || '5';
+
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i> Sending Feedback...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            try {
+                // Prepare form data for Web3Forms
+                const formData = new FormData(e.target);
+
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Save to local storage for persistent visual on the user's browser
+                    const newFeedback = { name, product, rating, message, timestamp: new Date().getTime() };
 
                     let savedFeedback = [];
                     try {
@@ -6124,160 +6421,121 @@
                         if (stored) {
                             savedFeedback = JSON.parse(stored);
                         }
-                    } catch (e) {
-                        console.error("Failed to parse stored feedback", e);
-                        localStorage.removeItem('bloom_cure_feedback');
-                    }
+                    } catch (err) { }
 
                     if (!Array.isArray(savedFeedback)) savedFeedback = [];
+                    savedFeedback.push(newFeedback);
+                    localStorage.setItem('bloom_cure_feedback', JSON.stringify(savedFeedback));
 
-                    // Loop through saved feedback and add them to the top
-                    savedFeedback.forEach(fb => {
-                        if (fb && typeof fb === 'object') {
-                            grid.insertAdjacentHTML('afterbegin', createTestimonialHTML(fb));
-                        }
-                    });
-                }
-
-                async function submitFeedback(e) {
-                    e.preventDefault();
-
-                    // Capture values
-                    const name = document.getElementById('fbName').value.trim();
-                    const email = document.getElementById('fbEmail').value.trim();
-                    const product = document.getElementById('fbProduct').value;
-                    const message = document.getElementById('fbMessage').value.trim();
-                    const rating = document.getElementById('fbRating').value || '5';
-
-                    const btn = e.target.querySelector('button[type="submit"]');
-                    const originalHTML = btn.innerHTML;
-                    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i> Sending Feedback...';
-                    btn.style.opacity = '0.7';
-                    btn.disabled = true;
-
-                    try {
-                        // Prepare form data for Web3Forms
-                        const formData = new FormData(e.target);
-
-                        const response = await fetch('https://api.web3forms.com/submit', {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        const result = await response.json();
-
-                        if (result.success) {
-                            // Save to local storage for persistent visual on the user's browser
-                            const newFeedback = { name, product, rating, message, timestamp: new Date().getTime() };
-
-                            let savedFeedback = [];
-                            try {
-                                const stored = localStorage.getItem('bloom_cure_feedback');
-                                if (stored) {
-                                    savedFeedback = JSON.parse(stored);
-                                }
-                            } catch (err) { }
-
-                            if (!Array.isArray(savedFeedback)) savedFeedback = [];
-                            savedFeedback.push(newFeedback);
-                            localStorage.setItem('bloom_cure_feedback', JSON.stringify(savedFeedback));
-
-                            // Update UI visually
-                            const grid = document.getElementById('testimonialGrid');
-                            if (grid) {
-                                grid.insertAdjacentHTML('afterbegin', createTestimonialHTML(newFeedback));
-                            }
-
-                            e.target.reset();
-
-                            // Reset stars visually
-                            const stars = document.querySelectorAll('.rating-stars-input i');
-                            const ratingInput = document.getElementById('fbRating');
-                            if (stars) stars.forEach(s => s.classList.add('active'));
-                            if (ratingInput) ratingInput.value = '5';
-
-                            btn.innerHTML = 'Sent Successfully <i class="fa-solid fa-check" style="margin-left:8px;"></i>';
-                            btn.style.backgroundColor = 'var(--clr-gold)';
-                            btn.style.color = 'var(--clr-dark-green)';
-                            btn.style.border = '1px solid var(--clr-gold)';
-                            btn.style.opacity = '1';
-
-                            const successMsg = document.getElementById('feedbackSuccess');
-                            successMsg.style.display = 'block';
-
-                            setTimeout(() => {
-                                successMsg.style.display = 'none';
-                                btn.innerHTML = originalHTML;
-                                btn.style.backgroundColor = 'var(--clr-dark-green)';
-                                btn.style.color = 'var(--clr-gold)';
-                                btn.disabled = false;
-                            }, 5000);
-                        } else {
-                            throw new Error(result.message || 'Something went wrong');
-                        }
-                    } catch (err) {
-                        console.error("Submission error", err);
-                        btn.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Error. Try Again';
-                        btn.style.backgroundColor = '#ffcdd2';
-                        btn.style.color = '#b71c1c';
-                        btn.style.borderColor = '#b71c1c';
-                        btn.disabled = false;
-
-                        setTimeout(() => {
-                            btn.innerHTML = originalHTML;
-                            btn.style.backgroundColor = 'var(--clr-dark-green)';
-                            btn.style.color = 'var(--clr-gold)';
-                            btn.style.borderColor = 'var(--clr-gold)';
-                        }, 3000);
+                    // Update UI visually
+                    const grid = document.getElementById('testimonialGrid');
+                    if (grid) {
+                        grid.insertAdjacentHTML('afterbegin', createTestimonialHTML(newFeedback));
                     }
+
+                    e.target.reset();
+
+                    // Reset stars visually
+                    const stars = document.querySelectorAll('.rating-stars-input i');
+                    const ratingInput = document.getElementById('fbRating');
+                    if (stars) stars.forEach(s => s.classList.add('active'));
+                    if (ratingInput) ratingInput.value = '5';
+
+                    btn.innerHTML = 'Sent Successfully <i class="fa-solid fa-check" style="margin-left:8px;"></i>';
+                    btn.style.backgroundColor = 'var(--clr-gold)';
+                    btn.style.color = 'var(--clr-dark-green)';
+                    btn.style.border = '1px solid var(--clr-gold)';
+                    btn.style.opacity = '1';
+
+                    const successMsg = document.getElementById('feedbackSuccess');
+                    successMsg.style.display = 'block';
+
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                        btn.innerHTML = originalHTML;
+                        btn.style.backgroundColor = 'var(--clr-dark-green)';
+                        btn.style.color = 'var(--clr-gold)';
+                        btn.disabled = false;
+                    }, 5000);
+                } else {
+                    throw new Error(result.message || 'Something went wrong');
                 }
+            } catch (err) {
+                console.error("Submission error", err);
+                btn.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Error. Try Again';
+                btn.style.backgroundColor = '#ffcdd2';
+                btn.style.color = '#b71c1c';
+                btn.style.borderColor = '#b71c1c';
+                btn.disabled = false;
 
-                async function submitNewsletter(e) {
-                    e.preventDefault();
-                    const btn = e.target.querySelector('button[type="submit"]');
-                    const originalHTML = btn.innerHTML;
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.backgroundColor = 'var(--clr-dark-green)';
+                    btn.style.color = 'var(--clr-gold)';
+                    btn.style.borderColor = 'var(--clr-gold)';
+                }, 3000);
+            }
+        }
 
-                    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
-                    btn.disabled = true;
+        async function submitNewsletter(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
 
-                    try {
-                        const formData = new FormData(e.target);
-                        const response = await fetch('https://api.web3forms.com/submit', {
-                            method: 'POST',
-                            body: formData
-                        });
-                        const result = await response.json();
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.disabled = true;
 
-                        if (result.success) {
-                            showToast('Welcome to the botanical circle! 🌿');
-                            e.target.reset();
-                            btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-                            setTimeout(() => {
-                                btn.innerHTML = originalHTML;
-                                btn.disabled = false;
-                            }, 5000);
-                        } else {
-                            throw new Error(result.message);
-                        }
-                    } catch (err) {
-                        console.error("Newsletter error", err);
-                        showToast("Something went wrong. Please try again.");
+            try {
+                const formData = new FormData(e.target);
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Welcome to the botanical circle! 🌿');
+                    e.target.reset();
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    setTimeout(() => {
                         btn.innerHTML = originalHTML;
                         btn.disabled = false;
-                    }
+                    }, 5000);
+                } else {
+                    throw new Error(result.message);
                 }
-                // ═══════════════ ANTI-GRAVITY CAROUSEL ENGINE ═══════════════
-                // Loaded from external modular script
-                // See js/antigravity-carousel.js
-            </script>
+            } catch (err) {
+                console.error("Newsletter error", err);
+                showToast("Something went wrong. Please try again.");
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }
+        }
+        
+        // Loaded from external modular script
+        // See js/antigravity-carousel.js
+    </script>
 
-            <button id="bc-top" aria-label="Back to top">
-                <i class="fa-solid fa-arrow-up"></i>
-            </button>
+    <!-- Bloomi AI Floating Widget -->
+    <div class="ai-widget-wrapper">
+        <div class="ai-suggestion-bubble">
+            Need advice? <span>Ask Bloomi</span> ✨
+        </div>
+        <a href="assistant.html" class="ai-widget-btn" aria-label="Open Bloomi Skincare Assistant">
+            <div class="ai-widget-icon">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <span class="ai-widget-text">Bloomi</span>
+        </a>
+    </div>
 
-            <script src="js/bloom-psychology.js"></script>
-            <script src="js/antigravity-carousel.js"></script>
-            <script src="js/anti-gravity-ticker.js"></script>
+    <button id="bc-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="js/bloom-psychology.js"></script>
+    <script src="js/antigravity-carousel.js"></script>
+    <script src="js/anti-gravity-ticker.js"></script>
 
 </body>
 
