@@ -24,14 +24,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <style>
         /* ═══════════════════════════════════════════
@@ -41,9 +41,9 @@
 
         .contact-hero {
             position: relative;
-            padding: 16rem 0 10rem;
+            padding: 18rem 0 10rem;
             text-align: center;
-            background: linear-gradient(rgba(26, 46, 32, 0.82), rgba(26, 46, 32, 0.94)), url('assets/ingredients_botanical.png');
+            background: linear-gradient(160deg, rgba(8, 19, 11, 0.9) 0%, rgba(5, 13, 7, 0.95) 100%), url('assets/hero_bg.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -106,13 +106,14 @@
         }
 
         .contact-hero h1 {
-            font-family: var(--ff-heading);
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 400;
+            font-family: var(--ff-heading, 'Cormorant Garamond', serif);
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            font-weight: 300;
             color: white;
             margin-bottom: 1.5rem;
             line-height: 1.1;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .contact-hero h1 em {
@@ -122,168 +123,166 @@
         }
 
         .contact-hero p {
+            font-family: 'Outfit', sans-serif;
             font-size: 1.25rem;
             line-height: 1.8;
             color: rgba(248, 246, 240, 0.88);
             max-width: 650px;
             margin: 0 auto;
+            font-weight: 300;
         }
 
-        /* Info Cards - Premium Upgrade */
-        .contact-info-section {
-            padding: 10rem 0 5rem;
-            background-color: var(--clr-cream);
-            position: relative;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 4.5rem 2.5rem 4rem;
-            border-radius: 24px;
-            text-align: center;
-            transition: all 0.6s var(--ease-out);
-            border: 1px solid rgba(123, 139, 79, 0.08);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* ═══════════════ LUXURY CONTACT SPLIT ═══════════════ */
+        .contact-content-wrapper {
+            background: #030704;
+            padding: 8rem 0 10rem;
             position: relative;
             overflow: hidden;
         }
 
-        /* Gold Line Accent */
-        .contact-card::before {
+        .contact-content-wrapper::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--clr-sage), var(--clr-gold), var(--clr-sage));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-12px);
-            border-color: rgba(197, 160, 40, 0.2);
-            box-shadow: 0 25px 60px rgba(26, 46, 32, 0.08);
-        }
-
-        .contact-card:hover::before {
-            opacity: 1;
-        }
-
-        .contact-card__icon {
-            width: 76px;
-            height: 76px;
-            background: linear-gradient(135deg, rgba(123, 139, 79, 0.1), rgba(197, 160, 40, 0.05));
+            top: -20%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.05) 0%, transparent 60%);
             border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contact-content-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(123, 139, 79, 0.06) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contact-split {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 6rem;
+            align-items: start;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Left Side: Minimal Info */
+        .contact-info-col {
+            padding-top: 1rem;
+        }
+
+        .contact-info-col h2 {
+            font-family: var(--ff-heading, 'Cormorant Garamond', serif);
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            color: var(--clr-gold);
+            margin-bottom: 3.5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.8rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .info-item::after {
+            content: '';
+            position: absolute;
+            bottom: -1.75rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent);
+        }
+
+        .info-item:last-child::after {
+            display: none;
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(197, 160, 40, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 2.2rem;
-            color: var(--clr-sage);
-            font-size: 1.8rem;
-            transition: all 0.5s var(--ease-spring);
-            border: 1px solid rgba(123, 139, 79, 0.05);
+            color: var(--clr-gold);
+            font-size: 1.2rem;
+            background: rgba(197, 160, 40, 0.03);
+            flex-shrink: 0;
+            transition: all 0.4s ease;
         }
 
-        .contact-card:hover .contact-card__icon {
+        .info-item:hover .info-icon {
             background: var(--clr-gold);
-            color: white;
-            transform: scale(1.1) rotateY(360deg);
-            box-shadow: 0 10px 25px rgba(197, 160, 40, 0.25);
-        }
-
-        .contact-card h3 {
-            font-family: var(--ff-heading);
-            font-size: 2rem;
-            color: var(--clr-dark-green);
-            margin-bottom: 1.2rem;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-card p {
-            color: var(--clr-text-light);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
-
-        .contact-card__link {
-            color: var(--clr-sage);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            padding: 0.6rem 1.4rem;
-            border: 1.5px solid rgba(123, 139, 79, 0.15);
-            border-radius: 50px;
-        }
-
-        .contact-card__link:hover {
-            background: var(--clr-gold);
-            color: white;
-            border-color: var(--clr-gold);
+            color: #030704;
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(197, 160, 40, 0.2);
         }
 
-        /* Form Section */
-        .contact-form-section {
-            padding: 4rem 0 10rem;
-            background-color: var(--clr-cream);
+        .info-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
         }
 
+        .info-content p,
+        .info-content a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--clr-cream);
+            text-decoration: none;
+            line-height: 1.3;
+            font-style: italic;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
 
-        /* --- Form Container --- */
-        .contact-form-container {
-            max-width: 950px;
-            margin: 0 auto;
-            background: white;
-            padding: 6rem 5rem;
-            border-radius: 30px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.06);
+        .info-content a:hover {
+            color: var(--clr-gold);
+        }
+
+        /* Right Side: Form Container */
+        .contact-form-box {
+            background: linear-gradient(160deg, rgba(20, 35, 25, 0.6), rgba(5, 10, 7, 0.8));
+            backdrop-filter: blur(40px) saturate(1.5);
+            -webkit-backdrop-filter: blur(40px) saturate(1.5);
+            border: 1px solid rgba(197, 160, 40, 0.12);
+            border-radius: 32px;
+            padding: 5rem 4rem;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.05);
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(123, 139, 79, 0.1);
         }
 
-        .contact-form-container::before {
+        .contact-form-box::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--clr-sage), var(--clr-gold), var(--clr-sage));
+            top: 0; left: 0; right: 0; height: 1.5px;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 40, 0.4), transparent);
+            border-radius: 32px 32px 0 0;
         }
 
-        .form-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .form-header h2 {
-            font-family: var(--ff-heading);
-            font-size: 3.2rem;
-            color: var(--clr-dark-green);
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .form-header p {
-            color: var(--clr-text-light);
-            font-size: 1.05rem;
+        .contact-form-box p.form-desc {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(248, 246, 240, 0.7);
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
             letter-spacing: 0.5px;
         }
 
@@ -296,81 +295,82 @@
 
         .premium-form .form-group {
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .premium-form label {
             display: block;
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--clr-sage);
+            letter-spacing: 2.5px;
+            color: var(--clr-gold);
             margin-bottom: 0.8rem;
+            font-weight: 600;
         }
 
         .premium-form input,
         .premium-form textarea {
             width: 100%;
-            padding: 1.25rem 1.6rem;
-            background: #FAFAF8;
-            border: 1.5px solid rgba(123, 139, 79, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(197, 160, 40, 0.15);
             border-radius: 16px;
-            font-size: 1rem;
-            color: var(--clr-text);
+            padding: 1.3rem 1.6rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            color: var(--clr-cream);
             transition: all 0.4s var(--ease-out);
             outline: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .premium-form input::placeholder,
+        .premium-form textarea::placeholder {
+            color: rgba(248, 246, 240, 0.25);
         }
 
         .premium-form input:focus,
         .premium-form textarea:focus {
-            background: white;
+            background: rgba(255, 255, 255, 0.08);
             border-color: var(--clr-gold);
-            box-shadow: 0 10px 30px rgba(197, 160, 40, 0.1);
-        }
-
-        .premium-form textarea {
-            min-height: 200px;
-            resize: vertical;
-        }
-
-        .submit-wrap {
-            text-align: center;
-            margin-top: 3.5rem;
+            box-shadow: 0 10px 30px rgba(197, 160, 40, 0.2);
+            transform: translateY(-2px);
         }
 
         .btn-submit {
-            background: var(--clr-dark-green);
-            color: var(--clr-gold);
-            border: 1px solid var(--clr-gold);
-            padding: 1.3rem 4.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--clr-gold);
+            color: #030704;
+            border: none;
+            padding: 1.3rem 3rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
             cursor: pointer;
-            transition: all 0.5s var(--ease-spring);
-            box-shadow: 0 15px 35px rgba(26, 46, 32, 0.25);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.4s var(--ease-out);
+            width: 100%;
+            margin-top: 1rem;
         }
 
         .btn-submit:hover {
-            background: var(--clr-gold);
-            color: var(--clr-dark-green);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(197, 160, 40, 0.35);
+            background: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.15);
         }
 
         @media (max-width: 992px) {
-            .contact-grid {
+            .contact-split {
                 grid-template-columns: 1fr;
-                max-width: 500px;
-                margin: 0 auto;
+                gap: 5rem;
             }
 
-            .contact-form-container {
-                padding: 4rem 2rem;
+            .contact-form-box {
+                padding: 3.5rem 2.5rem;
             }
 
             .premium-form .form-row {
@@ -380,10 +380,21 @@
         }
 
         @media (max-width: 768px) {
-            .contact-hero { padding: 12rem 0 6rem; }
-            .contact-hero h1 { font-size: 2.8rem; }
-            .form-header h2 { font-size: 2.2rem; }
-            .contact-info-section { padding: 6rem 0 3rem; }
+            .contact-hero {
+                padding: 12rem 0 6rem;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .form-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-info-section {
+                padding: 6rem 0 3rem;
+            }
         }
     </style>
 </head>
@@ -398,7 +409,7 @@
     <div class="bc-ticker" role="marquee" aria-label="Store announcements">
         <div class="bc-ticker__wrap">
             <span class="bc-ticker__item"><b>✦</b> Free shipping on orders above ₹999</span>
-            <span class="bc-ticker__item"><b>🌿</b> 100% Natural &amp; Handcrafted</span>
+            <span class="bc-ticker__item"><b>🌿</b> 98% Natural &amp; Handcrafted</span>
             <span class="bc-ticker__item"><b>✦</b> New arrivals every week</span>
             <span class="bc-ticker__item"><b>🌱</b> Zero plastic packaging</span>
             <span class="bc-ticker__item"><b>✦</b> Cruelty-free &amp; Ayurvedic</span>
@@ -476,83 +487,80 @@
             <div class="contact-hero__content reveal">
                 <span class="contact-hero__label">Connect With Us</span>
                 <h1>We’d Love to<br>Hear from <em>You</em></h1>
-                <p>Have a question about Bloom Cure? We’re currently building our platform for the future. While we don’t have branches yet, our team is here to support you and will keep you updated every step of the way.</p>
+                <p>Have a question about our botanical rituals? Our artisan team is here to assist you in your journey
+                    to radiance.</p>
             </div>
         </div>
     </header>
 
-    <!-- Info Section -->
-    <section class="contact-info-section">
+    <!-- Luxury Contact Split Layout -->
+    <section class="contact-content-wrapper">
         <div class="container">
-            <div class="contact-grid">
-                <!-- Card 1: Email -->
-                <div class="contact-card reveal">
-                    <div class="contact-card__icon"><i class="fa-solid fa-envelope"></i></div>
-                    <h3>Email Us</h3>
-                    <p>For support, batch inquiries, or order status.</p>
-                    <a href="mailto:bloomcure.co@gmail.com" class="contact-card__link">bloomcure.co@gmail.com</a>
-                </div>
+            <div class="contact-split">
 
-                <!-- Card 2: Phone -->
-                <div class="contact-card reveal" style="transition-delay: 0.1s;">
-                    <div class="contact-card__icon"><i class="fa-solid fa-phone"></i></div>
-                    <h3>Call Us</h3>
-                    <p>Monday - Friday, 10 AM - 6 PM IST</p>
-                    <a href="tel:+919876543210" class="contact-card__link">+91 98765 43210</a>
-                </div>
+                <!-- Left: Minimalist Info -->
+                <div class="contact-info-col reveal">
+                    <h2>Reach out to our<br>Artisan Studio</h2>
 
-                <!-- Card 3: Visit -->
-                <div class="contact-card reveal" style="transition-delay: 0.2s;">
-                    <div class="contact-card__icon"><i class="fa-solid fa-location-dot"></i></div>
-                    <h3>Our Studio</h3>
-                    <p>‘Bloom Cure is currently in development. We don’t have branches yet, but we’re building for the future and will keep you updated.</p>
-                    <a href="https://maps.google.com" target="_blank" class="contact-card__link">View on Map</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Form Section -->
-    <section class="contact-form-section">
-        <div class="container">
-            <div class="contact-form-container reveal">
-                <div class="form-header">
-                    <h2>Send a Message</h2>
-                    <p>We usually respond within 24 hours.</p>
-                </div>
-
-                <form action="https://api.web3forms.com/submit" method="POST" class="premium-form" id="contactForm">
-                    <input type="hidden" name="access_key" value="86570077-b592-486a-908e-318539950911">
-                    <input type="hidden" name="from_name" value="Bloom Cure Contact Form">
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" name="name" id="name" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" name="email" id="email" placeholder="john@example.com" required>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h3>Email Us</h3>
+                            <a href="mailto:hello@bloomcure.in">hello@bloomcure.in</a>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" name="subject" id="subject" placeholder="Question about Sandalwood Soap"
-                            required>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="info-content">
+                            <h3>Call Us</h3>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea name="message" id="message" placeholder="Tell us how we can help..."
-                            required></textarea>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-content">
+                            <h3>Our Studio</h3>
+                            <p>Artisan Workshop No. 12,<br>Botanical Haven, Bangalore</p>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="submit-wrap">
-                        <button type="submit" class="btn-submit" id="submitBtn">Send Ritual Message</button>
-                    </div>
-                </form>
+                <!-- Right: Form Box -->
+                <div class="contact-form-box reveal" style="transition-delay: 0.15s;">
+                    <p class="form-desc">We usually respond within 24 hours.</p>
+
+                    <form action="https://api.web3forms.com/submit" method="POST" class="premium-form" id="contactForm">
+                        <input type="hidden" name="access_key" value="86570077-b592-486a-908e-318539950911">
+                        <input type="hidden" name="from_name" value="Bloom Cure Contact Form">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" name="name" id="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" name="email" id="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" name="subject" id="subject" placeholder="Question about Sandalwood Soap..." required>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 2rem;">
+                            <label for="message">Your Message</label>
+                            <textarea name="message" id="message" placeholder="Tell us how we can help..." required style="min-height: 140px;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </section>
@@ -585,6 +593,8 @@
                         <li><a href="#">The Ethos</a></li>
                         <li><a href="#">Sustainability</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
