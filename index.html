@@ -1102,84 +1102,135 @@
 
         /* Testimonial Section */
         .testimonial-section {
-            background: var(--clr-dark-green);
+            background: linear-gradient(135deg, #050b07 0%, #08130b 100%);
             color: var(--clr-cream);
             position: relative;
             overflow: hidden;
+            padding: 8rem 0;
+        }
+
+        .testimonial-section::before,
+        .testimonial-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .testimonial-section::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(197, 160, 40, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
+            top: -10%;
+            left: -5%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.12) 0%, transparent 60%);
+        }
+
+        .testimonial-section::after {
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(82, 168, 94, 0.08) 0%, transparent 65%);
         }
 
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 2.2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .testimonial-card {
-            background: rgba(249, 247, 242, 0.06);
-            border: 1px solid rgba(249, 247, 242, 0.08);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.4s ease;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 2.5rem;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 40, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .testimonial-card:hover::after {
+            opacity: 1;
         }
 
         .testimonial-card:hover {
-            background: rgba(249, 247, 242, 0.1);
-            transform: translateY(-4px);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(197, 160, 40, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .testimonial-card__stars {
             color: var(--clr-gold);
-            font-size: 0.75rem;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            margin-bottom: 1.4rem;
             display: flex;
-            gap: 3px;
+            gap: 4px;
         }
 
         .testimonial-card__text {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(249, 247, 242, 0.85);
-            margin-bottom: 1.5rem;
+            font-family: var(--ff-heading, 'Cormorant Garamond', serif);
+            font-size: 1.35rem;
+            line-height: 1.5;
+            color: #f9f7f2;
+            margin-bottom: 2rem;
+            font-weight: 500;
             font-style: italic;
         }
 
         .testimonial-card__author {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 1.5rem;
         }
 
         .testimonial-card__avatar {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 1rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
         }
 
         .testimonial-card__name {
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(249, 247, 242, 0.9);
+            margin-bottom: 0.2rem;
         }
 
         .testimonial-card__product {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--clr-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* CTA Banner */
@@ -3936,7 +3987,7 @@
                 position: relative;
                 overflow: hidden;
                 padding: 8rem 0;
-                background: radial-gradient(ellipse 120% 80% at 50% -10%, #0d1f12 0%, #050d07 60%);
+                background: linear-gradient(160deg, #0d1f12 0%, #132217 45%, #0a1a0e 100%);
             }
 
             /* subtle noise texture */
@@ -3946,9 +3997,10 @@
                 inset: 0;
                 z-index: 0;
                 pointer-events: none;
-                opacity: .35;
+                opacity: .03;
                 background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
                 background-size: 180px;
+                mix-blend-mode: overlay;
             }
 
             #ing2-canvas {
@@ -4192,18 +4244,24 @@
                 }
             }
 
-            .ing2-card__emoji {
-                font-size: 2.8rem;
-                line-height: 1;
-                margin-bottom: .65rem;
+            .ing2-card__img {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-bottom: .85rem;
                 display: block;
-                transition: transform .35s cubic-bezier(.25, 1, .5, 1);
-                filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .4));
+                margin-left: auto;
+                margin-right: auto;
+                transition: transform .35s cubic-bezier(.25, 1, .5, 1), border-color .35s;
+                filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .4));
+                border: 2px solid rgba(255, 255, 255, 0.05);
             }
 
-            .ing2-card:hover .ing2-card__emoji,
-            .ing2-card.active .ing2-card__emoji {
+            .ing2-card:hover .ing2-card__img,
+            .ing2-card.active .ing2-card__img {
                 transform: scale(1.12) translateY(-2px);
+                border-color: rgba(255, 255, 255, 0.25);
             }
 
             .ing2-card__name {
@@ -4493,7 +4551,7 @@
                 </div>
                 <h2 class="ing2-title">Nature's <em>Finest</em> Arsenal</h2>
                 <span class="ing2-rule"></span>
-                <p class="ing2-sub">Each ingredient ethically sourced, cold-pressed &amp; scientifically validated —
+                <p class="ing2-sub">Each ingredient ethically sourced, cold-pressed &amp; scientifically validated 
                     explore the power within.</p>
             </div>
 
@@ -4523,42 +4581,42 @@
             (function () {
                 var ING = [
                     {
-                        emoji: "🌹", label: "Rose Petals", origin: "Rajasthan, India", color: "#e8748a",
+                        img: "assets/ing_rose.png", label: "Rose Petals", origin: "Rajasthan, India", color: "#e8748a",
                         tag: "✿ Hydrating", tagBg: "rgba(232,116,138,.14)", tagBorder: "rgba(232,116,138,.35)",
                         desc: "Steam-distilled Bulgarian rose extract delivers deep hydration. Rich in flavonoids, it softens and revitalises even the most parched skin with silky luminosity.",
                         bars: [{ l: "Hydration", v: 95 }, { l: "Antioxidants", v: 82 }, { l: "Soothing", v: 88 }],
                         compounds: ["Rosa Damascena", "Citronellol", "Geraniol", "Vitamin C"]
                     },
                     {
-                        emoji: "🌿", label: "Turmeric Root", origin: "Kerala, India", color: "#e8a828",
+                        img: "assets/ing_turmeric.png", label: "Turmeric Root", origin: "Kerala, India", color: "#e8a828",
                         tag: "☀ Brightening", tagBg: "rgba(232,168,40,.14)", tagBorder: "rgba(232,168,40,.35)",
                         desc: "Organic Curcuma longa, cold-pressed to preserve curcuminoids. Clinically proven to reduce melanin synthesis, even skin tone and combat oxidative stress.",
                         bars: [{ l: "Brightening", v: 93 }, { l: "Anti-Inflammatory", v: 90 }, { l: "Antioxidants", v: 87 }],
                         compounds: ["Curcumin", "Bisdemethoxycurcumin", "Turmerone", "Vitamin E"]
                     },
                     {
-                        emoji: "💜", label: "Shea Butter", origin: "Ghana, West Africa", color: "#a07cc8",
+                        img: "assets/ing_shea.png", label: "Shea Butter", origin: "Ghana, West Africa", color: "#a07cc8",
                         tag: "◈ Nourishing", tagBg: "rgba(160,124,200,.14)", tagBorder: "rgba(160,124,200,.35)",
                         desc: "Unrefined Grade-A shea, hand-pressed. 60% fatty-acid richness creates a lipid barrier that locks in moisture for up to 16 hours.",
                         bars: [{ l: "Moisturising", v: 98 }, { l: "Barrier Repair", v: 92 }, { l: "Elasticity", v: 85 }],
                         compounds: ["Stearic Acid", "Oleic Acid", "Linoleic Acid", "Vitamin A", "Triterpenes"]
                     },
                     {
-                        emoji: "🌱", label: "Neem Extract", origin: "Tamil Nadu, India", color: "#5cb868",
+                        img: "assets/ing_neem.png", label: "Neem Extract", origin: "Tamil Nadu, India", color: "#5cb868",
                         tag: "⊕ Purifying", tagBg: "rgba(92,184,104,.14)", tagBorder: "rgba(92,184,104,.35)",
                         desc: "Cold-pressed Azadirachta indica, revered in Ayurveda for 4,000 years. Nimbidin delivers antibacterial action, clearing pores without stripping the skin microbiome.",
                         bars: [{ l: "Antibacterial", v: 96 }, { l: "Pore Clarity", v: 89 }, { l: "Sebum Control", v: 84 }],
                         compounds: ["Nimbin", "Nimbidin", "Quercetin", "Gedunin", "Fatty Acids"]
                     },
                     {
-                        emoji: "🪷", label: "French Lavender", origin: "Provence, France", color: "#9a88d0",
+                        img: "assets/ing_lavender.png", label: "French Lavender", origin: "Provence, France", color: "#9a88d0",
                         tag: "✦ Calming", tagBg: "rgba(154,136,208,.14)", tagBorder: "rgba(154,136,208,.35)",
                         desc: "High-altitude Lavandula angustifolia, steam-distilled at peak bloom. Linalool lowers cortisol while soothing redness and accelerating skin repair.",
                         bars: [{ l: "Calming", v: 97 }, { l: "Skin Repair", v: 80 }, { l: "Aromatherapy", v: 99 }],
                         compounds: ["Linalool", "Linalyl Acetate", "Ocimene", "Terpinen-4-ol", "Camphor"]
                     },
                     {
-                        emoji: "🌵", label: "Aloe Vera", origin: "Rajasthan, India", color: "#48c8a8",
+                        img: "assets/ing_aloe.png", label: "Aloe Vera", origin: "Rajasthan, India", color: "#48c8a8",
                         tag: "❄ Cooling", tagBg: "rgba(72,200,168,.14)", tagBorder: "rgba(72,200,168,.35)",
                         desc: "99.7% pure Aloe barbadensis leaf juice, cold-stabilised within hours of harvest. Acemannan polysaccharides deliver instant cooling and cellular regeneration.",
                         bars: [{ l: "Cooling", v: 96 }, { l: "Regeneration", v: 88 }, { l: "Deep Hydration", v: 91 }],
@@ -4594,7 +4652,7 @@
                         '<div class="ing2-card__num">' + num + '</div>' +
                         '<div class="ing2-card__sonar" style="border-color:' + d.color + '40"></div>' +
                         '<div class="ing2-card__sonar ing2-card__sonar--2" style="border-color:' + d.color + '25"></div>' +
-                        '<span class="ing2-card__emoji">' + d.emoji + '</span>' +
+                        '<img class="ing2-card__img" src="' + d.img + '" alt="' + d.label + '">' +
                         '<div class="ing2-card__name">' + d.label + '</div>';
                     gridEl.appendChild(card);
                 });
@@ -5079,7 +5137,7 @@
                     <div class="wbc-card">
                         <div class="wbc-card__num">01</div>
                         <div class="wbc-card__icon"><i class="fa-solid fa-leaf"></i></div>
-                        <div class="wbc-card__title">100% Natural</div>
+                        <div class="wbc-card__title">98% Natural</div>
                         <p class="wbc-card__body">Only plant-based goodness. Zero synthetics, zero compromises ever.
                         </p>
                     </div>
@@ -5094,7 +5152,7 @@
                         <div class="wbc-card__num">03</div>
                         <div class="wbc-card__icon"><i class="fa-solid fa-box-open"></i></div>
                         <div class="wbc-card__title">Eco-Packaging</div>
-                        <p class="wbc-card__body">100% biodegradable and earth-friendly packaging from box to bar.</p>
+                        <p class="wbc-card__body">95% biodegradable and earth-friendly packaging from box to bar.</p>
                     </div>
                     <div class="wbc-card">
                         <div class="wbc-card__num">04</div>
@@ -5209,79 +5267,6 @@
             </div>
         </div>
     </section>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KEF8NTVQC"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-
-            gtag('config', 'G-5KEF8NTVQC');
-        </script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords"
-            content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
-        <title>Bloom Cure | Nature's Healing Touch for Your Skin</title>
-        <link rel="icon" type="image/png" href="assets/favicon.png">
-        <meta name="description"
-            content="Handcrafted botanical soaps made with natural ingredients, essential oils, and plant-based butters for pure, radiant skin.">
-
-        <!-- Google Fonts -->
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-            <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KEF8NTVQC"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag() { dataLayer.push(arguments); }
-                gtag('js', new Date());
-
-                gtag('config', 'G-5KEF8NTVQC');
-            </script>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="keywords"
-                content="botanical soap, handmade soap, natural ingredients, organic skincare, essential oils, plant-based butters, artisan soap, vegan soap, bloom cure">
-            <title>Bloom Cure | Nature's Healing Touch for Your Skin</title>
-            <link rel="icon" type="image/png" href="assets/favicon.png">
-            <meta name="description"
-                content="Handcrafted botanical soaps made with natural ingredients, essential oils, and plant-based butters for pure, radiant skin.">
-
-            <!-- Google Fonts -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
-                rel="stylesheet">
-
-            <!-- CSS -->
-            <link rel="stylesheet" href="css/index.css">
-            <link rel="stylesheet" href="css/antigravity-carousel.css">
-
-            <!-- Font Awesome for social icons -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
-                rel="stylesheet">
-
-            <!-- CSS -->
-            <link rel="stylesheet" href="css/index.css">
-            <link rel="stylesheet" href="css/antigravity-carousel.css">
-
-            <!-- Font Awesome for social icons -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 
 
             <!-- ═══════════════ USER FEEDBACK ═══════════════ -->
