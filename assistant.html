@@ -3,1244 +3,2479 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloomi - Skincare AI | Bloom Cure</title>
+    <title>Bloomi AI — Skincare Intelligence | Bloom Cure</title>
+    <meta name="description" content="Bloomi, your advanced botanical AI skincare consultant by Bloom Cure. Get a personalised ritual prescription powered by our ingredient intelligence engine.">
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/index.css">
-    
+
     <style>
+        /* ══════════════════════════════════════════════════════════
+           DESIGN TOKENS — APOTHECARY NOIR
+        ══════════════════════════════════════════════════════════ */
         :root {
-            --bg-color: #0b1a10;
-            --chat-bg: rgba(26, 46, 32, 0.4);
-            --user-msg: rgba(197, 160, 40, 0.15);
-            --border-glow: rgba(197, 160, 40, 0.2);
-            --ff-heading: 'Cormorant Garamond', serif;
-            --ff-body: 'Outfit', sans-serif;
-            --clr-success: #5cb868;
+            --bg:        #09090B;
+            --bg-surface:#0F1014;
+            --bg-card:   rgba(15, 16, 20, 0.96);
+            --bg-input:  rgba(18, 19, 24, 0.98);
+
+            --gold:        #C9A84C;
+            --gold-bright: #DFC06A;
+            --gold-muted:  #A8883C;
+            --gold-pale:   rgba(201, 168, 76, 0.07);
+            --gold-glow:   rgba(201, 168, 76, 0.16);
+            --gold-border: rgba(201, 168, 76, 0.18);
+            --gold-border-hi: rgba(201, 168, 76, 0.42);
+
+            --sage:        #8BA888;
+            --sage-pale:   rgba(139, 168, 136, 0.1);
+            --sage-border: rgba(139, 168, 136, 0.22);
+
+            --green:       #4CAF7C;
+            --green-pale:  rgba(76, 175, 124, 0.08);
+            --green-border:rgba(76, 175, 124, 0.24);
+
+            --text:        #F5F0E8;
+            --text-bright: #FDFAF4;
+            --text-muted:  rgba(245, 240, 232, 0.48);
+            --text-dim:    rgba(245, 240, 232, 0.24);
+
+            --border:      rgba(255, 255, 255, 0.055);
+            --border-hi:   rgba(255, 255, 255, 0.1);
+
+            --ff-h:   'Playfair Display', serif;
+            --ff-b:   'DM Sans', sans-serif;
+            --ff-m:   'IBM Plex Mono', monospace;
+
+            --r-xl: 20px;
+            --r-lg: 14px;
+            --r-md: 10px;
+            --r-sm:  6px;
+
+            --spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* ══════════════════════════════════════════════════════════
+           RESET & BASE
+        ══════════════════════════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
 
         body {
-            background-color: var(--bg-color);
-            color: #f9f7f2;
-            font-family: var(--ff-body);
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            background-image: radial-gradient(circle at 10% 10%, rgba(92, 184, 104, 0.15), transparent 40%),
-                              radial-gradient(circle at 90% 90%, rgba(197, 160, 40, 0.12), transparent 50%);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--ff-b);
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Glass Nav Bar */
-        .assistant-nav {
-            padding: 1.2rem 3rem;
+        /* ── Scrollbars hidden everywhere ── */
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { display: none; }
+
+        /* ══════════════════════════════════════════════════════════
+           AMBIENT BACKGROUND — single subtle radial
+        ══════════════════════════════════════════════════════════ */
+        .bg-glow {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 70% 55% at 50% -10%, rgba(201,168,76,0.055) 0%, transparent 100%),
+                radial-gradient(ellipse 50% 40% at 85% 80%, rgba(139,168,136,0.04) 0%, transparent 100%);
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           APP WRAPPER
+        ══════════════════════════════════════════════════════════ */
+        .app-wrapper {
+            position: relative;
+            z-index: 2;
             display: flex;
+            flex-direction: column;
+            height: 100vh;
+            min-height: 600px;
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           NAVIGATION
+        ══════════════════════════════════════════════════════════ */
+        .ai-nav {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            z-index: 10;
+            padding: 0 2rem;
+            height: 60px;
+            background: rgba(9, 9, 11, 0.94);
+            backdrop-filter: blur(40px) saturate(1.4);
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
         }
-        .assistant-nav-brand a {
+        .ai-nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,168,76,0.38) 40%, rgba(139,168,136,0.18) 60%, transparent);
+            pointer-events: none;
+        }
+
+        .ai-nav__left {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 12px;
             text-decoration: none;
-            color: #f9f7f2;
+            color: var(--text);
         }
-        .assistant-nav-brand img {
-            width: 40px;
-            height: 40px;
+        .nav-logo-wrap {
+            width: 34px; height: 34px;
             border-radius: 50%;
-            border: 1px solid var(--clr-gold);
-            box-shadow: 0 0 10px rgba(197, 160, 40, 0.3);
+            overflow: hidden;
+            border: 1px solid var(--gold-border-hi);
+            flex-shrink: 0;
         }
-        .assistant-nav-brand h1 {
-            font-family: var(--ff-heading);
-            font-size: 1.4rem;
-            margin: 0;
+        .nav-logo {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .nav-wordmark {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .nav-name {
+            font-family: var(--ff-h);
+            font-size: 1.1rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.02em;
+            color: var(--text-bright);
+            line-height: 1;
         }
-        .assistant-nav-close {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            width: 40px;
-            height: 40px;
+        .nav-sub {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--ff-m);
+            font-size: 0.56rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .status-dot {
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+            animation: sPulse 2.8s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes sPulse {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0.35; }
+        }
+
+        .ai-nav__center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .mode-pill {
+            display: flex;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-hi);
+            border-radius: 50px;
+            padding: 3px;
+            gap: 1px;
+        }
+        .mode-btn {
+            padding: 0.32rem 1rem;
+            font-family: var(--ff-b);
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.28s var(--spring);
+            border-radius: 50px;
+        }
+        .mode-btn.active {
+            background: rgba(201, 168, 76, 0.14);
+            color: var(--gold-bright);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .nav-btn {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.78rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            border: 1px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.22s var(--smooth);
         }
-        .assistant-nav-close:hover {
-            color: #c5a028;
-            border-color: rgba(197, 160, 40, 0.3);
-            background: rgba(197, 160, 40, 0.1);
-            transform: rotate(90deg);
+        .nav-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold-border);
+            background: var(--gold-pale);
         }
 
-        /* Chat Layout */
-        .chat-container {
+        /* ══════════════════════════════════════════════════════════
+           PROGRESS HUD — minimal numbered steps
+        ══════════════════════════════════════════════════════════ */
+        .progress-hud {
+            position: relative;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            height: 48px;
+            background: rgba(9,9,11,0.8);
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .hud-step {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            opacity: 0.25;
+            transition: opacity 0.45s var(--spring);
+        }
+        .hud-step.done   { opacity: 0.5; }
+        .hud-step.active { opacity: 1; }
+
+        .hud-node {
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            border: 1px solid rgba(201,168,76,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.58rem;
+            font-weight: 600;
+            font-family: var(--ff-m);
+            color: var(--text-dim);
+            transition: all 0.4s var(--spring);
+            flex-shrink: 0;
+        }
+        .hud-step.active .hud-node {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #09090B;
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+        }
+        .hud-step.done .hud-node {
+            background: transparent;
+            border-color: rgba(201,168,76,0.5);
+            color: var(--gold);
+        }
+        .hud-step.done .hud-num { display: none; }
+        .hud-step.done .hud-node::after { content: '✓'; font-size: 0.6rem; color: var(--gold); }
+
+        .hud-label {
+            font-size: 0.6rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            white-space: nowrap;
+            font-family: var(--ff-b);
+            color: var(--text-dim);
+        }
+        .hud-step.active .hud-label { color: var(--gold); }
+        .hud-step.done   .hud-label { color: rgba(201,168,76,0.5); }
+
+        .hud-sep {
+            width: 20px; height: 1px;
+            background: var(--border);
+            flex-shrink: 0;
+            margin: 0 2px;
+        }
+
+        .hud-right {
+            margin-left: auto;
+            padding-left: 1.5rem;
+            flex-shrink: 0;
+        }
+        .hud-pct {
+            font-family: var(--ff-m);
+            font-size: 0.65rem;
+            color: var(--gold-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           MAIN LAYOUT
+        ══════════════════════════════════════════════════════════ */
+        .ai-main {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           LEFT SIDEBAR
+        ══════════════════════════════════════════════════════════ */
+        .sidebar-left {
+            width: 240px;
+            flex-shrink: 0;
+            background: rgba(9,9,11,0.6);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* Avatar block */
+        .bloomi-avatar {
+            padding: 2rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .avatar-ring {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-border-hi);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+            position: relative;
+        }
+        .avatar-ring::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+        }
+        .avatar-ring i {
+            font-size: 1.4rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+        .av-name {
+            font-family: var(--ff-h);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            text-align: center;
+        }
+        .av-tagline {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-align: center;
+            letter-spacing: 1.5px;
+            line-height: 1.7;
+            text-transform: uppercase;
+            font-family: var(--ff-m);
+        }
+
+        /* Sidebar sections */
+        .sb-section {
+            padding: 1.2rem 1.4rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .sb-section:last-child { border-bottom: none; }
+
+        .sb-label {
+            font-size: 0.55rem;
+            letter-spacing: 2.8px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: var(--ff-m);
+        }
+
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.44rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .profile-row:last-child { border-bottom: none; }
+        .profile-key {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+        .profile-val {
+            color: var(--gold-bright);
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-align: right;
+            max-width: 55%;
+            line-height: 1.3;
+        }
+
+        /* Insight card */
+        .insight-card {
+            background: transparent;
+            border-left: 2px solid var(--gold-border-hi);
+            padding: 0.9rem 1rem;
+            position: relative;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .insight-icon {
+            font-size: 0.8rem;
+            color: var(--gold-muted);
+            margin-bottom: 0.5rem;
+        }
+        .insight-text {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .insight-source {
+            font-size: 0.55rem;
+            color: rgba(201,168,76,0.35);
+            margin-top: 0.6rem;
+            font-family: var(--ff-m);
+            letter-spacing: 1px;
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           CHAT COLUMN
+        ══════════════════════════════════════════════════════════ */
+        .chat-column {
             flex: 1;
             display: flex;
             flex-direction: column;
-            max-width: 900px;
-            width: 100%;
-            margin: 0 auto;
-            position: relative;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .chat-scroll {
+            flex: 1;
             overflow-y: auto;
-            padding: 2.5rem 2rem;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(197, 160, 40, 0.3) transparent;
+            padding: 2.5rem 3rem;
         }
 
-        .chat-container::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-container::-webkit-scrollbar-thumb {
-            background: rgba(197, 160, 40, 0.3);
-            border-radius: 10px;
-        }
-
-        .message-wrapper {
+        /* Messages */
+        .msg-wrap {
             display: flex;
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
+            animation: msgIn 0.5s var(--spring) forwards;
             opacity: 0;
-            filter: blur(4px);
-            transform: translateY(20px);
-            animation: advancedFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
-        @keyframes advancedFadeIn {
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
+        .msg-wrap.ai-msg   { justify-content: flex-start; }
+        .msg-wrap.user-msg { justify-content: flex-end; }
 
-        .sys-msg { justify-content: flex-start; }
-        .user-msg { justify-content: flex-end; }
-
-        .avatar {
-            width: 42px;
-            height: 42px;
+        .msg-avatar {
+            width: 30px; height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 1.2rem;
-            font-size: 1.1rem;
+            font-size: 0.7rem;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            align-self: flex-end;
         }
-        .sys-avatar {
-            background: linear-gradient(135deg, rgba(197, 160, 40, 0.2), rgba(123, 139, 79, 0.2));
-            color: #c5a028;
-            border: 1px solid rgba(197, 160, 40, 0.4);
+        .ai-msg .msg-avatar {
+            background: var(--gold-pale);
+            border: 1px solid var(--gold-border);
+            color: var(--gold);
+            margin-right: 0.9rem;
         }
-        .user-avatar {
-            background: rgba(92, 184, 104, 0.15);
-            color: #5cb868;
-            border: 1px solid rgba(92, 184, 104, 0.3);
+        .user-msg .msg-avatar {
+            background: rgba(76,175,124,0.07);
+            border: 1px solid var(--green-border);
+            color: var(--green);
+            margin-left: 0.9rem;
         }
 
-        .message-bubble {
-            max-width: 80%;
-            padding: 1.8rem;
-            border-radius: 20px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            backdrop-filter: blur(12px);
+        .bubble {
+            max-width: 74%;
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--r-xl);
+            font-size: 0.92rem;
+            line-height: 1.85;
             position: relative;
         }
-
-        .sys-msg .message-bubble {
-            background: var(--chat-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top-left-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        .ai-msg .bubble {
+            background: var(--bg-card);
+            border: 1px solid var(--border-hi);
+            border-bottom-left-radius: 4px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 6px 28px rgba(0,0,0,0.28);
         }
-
-        .user-msg .message-bubble {
-            background: var(--user-msg);
-            border: 1px solid rgba(197, 160, 40, 0.15);
-            border-top-right-radius: 4px;
-            color: #f9f7f2;
-            box-shadow: 0 10px 30px rgba(197, 160, 40, 0.08);
+        .user-msg .bubble {
+            background: rgba(201,168,76,0.06);
+            border: 1px solid rgba(201,168,76,0.12);
+            border-bottom-right-radius: 4px;
         }
-
-        .message-bubble p { margin: 0 0 1rem 0; }
-        .message-bubble p:last-child { margin: 0; }
-        
-        .message-bubble h3 {
-            font-family: var(--ff-heading);
-            color: #c5a028;
-            font-size: 1.8rem;
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-            letter-spacing: -0.5px;
-        }
-
-        .message-bubble h4 {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.1rem;
-            margin: 1.8rem 0 0.8rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Options grid */
-        .options-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1.2rem;
-        }
-
-        .option-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #f9f7f2;
-            padding: 1rem 1.8rem;
-            border-radius: 50px;
-            font-family: var(--ff-body);
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .option-btn:hover {
-            background: rgba(197, 160, 40, 0.1);
-            border-color: rgba(197, 160, 40, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(197, 160, 40, 0.1);
-        }
-
-        .option-btn.selected {
-            background: linear-gradient(135deg, rgba(197, 160, 40, 0.2), rgba(197, 160, 40, 0.4));
-            border-color: #c5a028;
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(197, 160, 40, 0.2);
-        }
-
-        /* Action layout */
-        .chat-action-bar {
-            padding: 1.5rem 3rem 2.5rem;
-            background: linear-gradient(transparent, rgba(11, 26, 16, 0.98) 40%);
-            display: flex;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .confirm-btn {
-            background: linear-gradient(135deg, #c5a028, #e8c040);
-            color: #0d1f12;
-            border: none;
-            padding: 1.2rem 3.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing: 1.5px;
-            font-family: var(--ff-body);
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(197, 160, 40, 0.3);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            display: none;
-        }
-        
-        .confirm-btn.visible {
-            display: block;
-            animation: advancedFadeIn 0.5s ease forwards;
-        }
-
-        .confirm-btn:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(197, 160, 40, 0.5);
-        }
-        
-        /* Advanced Indicator */
-        .typing-indicator {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-            padding: 0.8rem 0;
-        }
-        .typing-indicator span {
-            width: 6px;
-            height: 6px;
-            background: #c5a028;
-            border-radius: 50%;
-            animation: pulse-op 1.4s infinite ease-in-out both;
-        }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
-        
-        @keyframes pulse-op {
-            0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
-            40% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px #c5a028; }
-        }
-
-        /* Scanners and Progress */
-        .analysis-progress {
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 1.5rem 0;
-            position: relative;
-        }
-        .analysis-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #c5a028, #e8c040);
-            transition: width 3s ease-in-out;
-            box-shadow: 0 0 10px #c5a028;
-            position: relative;
-        }
-        .analysis-bar::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-            animation: sweep 1.5s infinite linear;
-        }
-        @keyframes sweep {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Result Advanced Card */
-        .product-result-card {
-            background: rgba(0,0,0,0.25);
-            border: 1px solid rgba(197, 160, 40, 0.4);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 1.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        .product-result-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 100%;
-            background: radial-gradient(circle at top right, rgba(197, 160, 40, 0.1), transparent 50%);
-            pointer-events: none;
-        }
-
-        .prc-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 1rem;
-        }
-        .prc-title {
-            font-family: var(--ff-heading);
-            font-size: 2.2rem;
-            color: #fff;
-            margin: 0;
+        .bubble p { margin: 0 0 0.65rem; }
+        .bubble p:last-child { margin: 0; }
+        .bubble h3 {
+            font-family: var(--ff-h);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 0.4rem;
             line-height: 1.1;
         }
-        .prc-subtitle {
-            color: #c5a028;
-            font-size: 0.85rem;
+        .bubble h4 {
+            font-size: 0.6rem;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+            margin: 1.5rem 0 0.7rem;
+            font-family: var(--ff-m);
         }
-        .prc-match {
-            background: rgba(92, 184, 104, 0.15);
-            color: #5cb868;
-            padding: 8px 16px;
-            border-radius: 50px;
-            border: 1px solid rgba(92, 184, 104, 0.3);
-            font-size: 0.8rem;
-            font-weight: 700;
+
+        /* Typing indicator — horizontal bar pulse */
+        .typing-bubble {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            padding: 0.6rem 0.2rem;
+        }
+        .typing-dot {
+            width: 5px; height: 5px;
+            background: var(--gold-muted);
+            border-radius: 50%;
+            animation: typingPulse 1.3s ease-in-out infinite;
+        }
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.16s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.32s; }
+        @keyframes typingPulse {
+            0%,60%,100% { transform: translateY(0); opacity: 0.25; }
+            30% { transform: translateY(-5px); opacity: 1; }
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           OPTION BUTTONS — rectangular minimal cards
+        ══════════════════════════════════════════════════════════ */
+        .options-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .opt-btn {
             display: flex;
             align-items: center;
             gap: 8px;
+            padding: 0.65rem 1.2rem;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid var(--border-hi);
+            border-radius: var(--r-md);
+            color: var(--text-muted);
+            font-family: var(--ff-b);
+            font-size: 0.84rem;
+            cursor: pointer;
+            transition: all 0.24s var(--spring);
+            backdrop-filter: blur(10px);
+            letter-spacing: 0.01em;
         }
-        .prc-body .ben-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1.5rem;
+        .opt-btn i {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            transition: color 0.22s;
         }
-        .ben-item {
-            background: rgba(255,255,255,0.03);
-            padding: 1rem;
+        .opt-btn:hover {
+            background: var(--gold-pale);
+            border-color: var(--gold-border-hi);
+            color: var(--text-bright);
+            transform: translateY(-1px);
+        }
+        .opt-btn:hover i { color: var(--gold); }
+        .opt-btn.selected {
+            background: rgba(201,168,76,0.1);
+            border-color: var(--gold);
+            color: var(--text-bright);
+        }
+        .opt-btn.selected i { color: var(--gold-bright); }
+
+        /* ══════════════════════════════════════════════════════════
+           ANALYSIS SEQUENCE
+        ══════════════════════════════════════════════════════════ */
+        .analysis-wrap { margin-top: 1.2rem; }
+        .analysis-track {
+            width: 100%; height: 1px;
+            background: var(--border-hi);
             border-radius: 10px;
-            border-left: 3px solid #c5a028;
+            overflow: hidden;
+            margin-bottom: 0.8rem;
         }
-        .ben-item strong {
-            display: block;
-            color: #fff;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+        .analysis-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--sage), var(--gold-bright));
+            border-radius: 10px;
+            transition: width 0.7s var(--smooth);
         }
-        .ben-item span {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
+        .analysis-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: var(--ff-m);
+        }
+        .analysis-phase {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            font-size: 0.65rem;
+            color: var(--gold-muted);
+            font-family: var(--ff-m);
+            margin-top: 0.4rem;
+        }
+        .analysis-phase i { animation: spinSlow 1.6s linear infinite; font-size: 0.6rem; }
+        @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+        /* ══════════════════════════════════════════════════════════
+           SKIN SCORE BARS
+        ══════════════════════════════════════════════════════════ */
+        .radar-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+        .radar-stat { display: flex; align-items: center; gap: 0.75rem; }
+        .radar-stat__label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            width: 80px;
+            flex-shrink: 0;
+            font-family: var(--ff-b);
+        }
+        .radar-stat__bar-wrap {
+            flex: 1;
+            height: 2px;
+            background: var(--border-hi);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .radar-stat__bar {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--sage), var(--gold));
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 1.4s var(--spring);
+        }
+        .radar-stat__val {
+            font-size: 0.65rem;
+            font-family: var(--ff-m);
+            color: var(--gold-bright);
+            width: 24px;
+            text-align: right;
+            flex-shrink: 0;
         }
 
-        .prc-actions {
+        /* ══════════════════════════════════════════════════════════
+           RITUAL CARDS — editorial magazine style
+        ══════════════════════════════════════════════════════════ */
+        .ritual-header {
             display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 2rem;
             gap: 1rem;
-            margin-top: 1rem;
             flex-wrap: wrap;
         }
-        
-        .add-to-ritual-btn {
-            background: var(--clr-success);
-            color: #fff;
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
+        .match-pct {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: var(--green-pale);
+            border: 1px solid var(--green-border);
+            border-radius: 4px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--green);
+            flex-shrink: 0;
+            font-family: var(--ff-m);
+            letter-spacing: 0.5px;
+        }
+        .ritual-steps {
             display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-top: 0.5rem;
+        }
+        .ritual-card {
+            border-radius: 0;
+            padding: 1.8rem 2rem;
+            position: relative;
+            display: flex;
+            gap: 1.8rem;
+            align-items: flex-start;
+            transition: background 0.3s ease;
+            background: rgba(15,16,20,0.6);
+            border: 1px solid var(--border);
+            border-bottom: none;
+        }
+        .ritual-card:first-child { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+        .ritual-card:last-child  { border-bottom: 1px solid var(--border); border-radius: 0 0 var(--r-lg) var(--r-lg); }
+        .ritual-card:hover { background: rgba(201,168,76,0.03); }
+
+        .ritual-step-num {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--gold-border-hi);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--ff-m);
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .ritual-card-body { flex: 1; }
+        .ritual-card-step-label {
+            font-size: 0.55rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            font-family: var(--ff-m);
+        }
+        .ritual-card-name {
+            font-family: var(--ff-h);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            line-height: 1.2;
+            margin-bottom: 0.55rem;
+        }
+        .ritual-card-reason {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+        .ritual-card-synergy {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            background: var(--sage-pale);
+            border: 1px solid var(--sage-border);
+            border-radius: 4px;
+            font-size: 0.6rem;
+            color: var(--sage);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            font-family: var(--ff-m);
+        }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+        .benefit-item {
+            background: transparent;
+            padding: 0.7rem 0.9rem;
+            border-radius: var(--r-sm);
+            border: 1px solid var(--border);
+        }
+        .benefit-item strong {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--text-bright);
+            margin-bottom: 3px;
+            line-height: 1.3;
+            font-weight: 600;
+        }
+        .benefit-item span {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .tip-card {
+            margin-top: 1rem;
+            padding: 0.85rem 1rem;
+            background: var(--gold-pale);
+            border-left: 2px solid var(--gold-muted);
+            border-radius: 0 var(--r-sm) var(--r-sm) 0;
+        }
+        .tip-label {
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            font-family: var(--ff-m);
+        }
+        .tip-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+        .ritual-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.2rem;
+        }
+        .ritual-card-price {
+            font-family: var(--ff-h);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+        .ritual-add-btn {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 0.52rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--gold-border-hi);
+            border-radius: var(--r-sm);
+            color: var(--gold-bright);
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.26s var(--spring);
+            font-family: var(--ff-b);
+        }
+        .ritual-add-btn:hover {
+            background: var(--gold-pale);
+            border-color: var(--gold);
+            transform: translateY(-1px);
+        }
+        .ritual-add-btn.added {
+            background: var(--green-pale);
+            border-color: var(--green-border);
+            color: var(--green);
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           CONFIRM ZONE
+        ══════════════════════════════════════════════════════════ */
+        .confirm-zone {
+            flex-shrink: 0;
+            padding: 0.6rem 3rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        .confirm-btn {
+            display: none;
             align-items: center;
             gap: 10px;
-            transition: all 0.3s ease;
+            padding: 0.82rem 2.5rem;
+            background: var(--gold);
+            color: #09090B;
+            border: none;
+            border-radius: var(--r-sm);
+            font-family: var(--ff-b);
+            font-weight: 700;
+            font-size: 0.74rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(201,168,76,0.22);
+            transition: all 0.28s var(--spring);
+            animation: confirmPop 0.4s var(--spring) forwards;
         }
-        .add-to-ritual-btn:hover {
-            box-shadow: 0 5px 20px rgba(92, 184, 104, 0.4);
+        .confirm-btn.visible { display: flex; }
+        .confirm-btn:hover {
+            background: var(--gold-bright);
             transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201,168,76,0.35);
+        }
+        @keyframes confirmPop {
+            from { opacity: 0; transform: scale(0.92) translateY(6px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Toast Popup */
-        #toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, rgba(26,46,32,0.95), rgba(0,0,0,0.9));
-            border: 1px solid rgba(197, 160, 40, 0.4);
-            color: #f9f7f2;
-            padding: 1rem 2rem;
-            border-radius: 12px;
+        /* ══════════════════════════════════════════════════════════
+           INPUT BAR
+        ══════════════════════════════════════════════════════════ */
+        .chat-input-bar {
+            flex-shrink: 0;
+            padding: 0.8rem 3rem 1.6rem;
+            background: linear-gradient(transparent, rgba(9,9,11,0.98) 50%);
+        }
+        .chat-input-wrap {
             display: flex;
             align-items: center;
-            gap: 15px;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: 2000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            gap: 0.6rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-hi);
+            border-radius: var(--r-lg);
+            padding: 0.5rem 0.5rem 0.5rem 1.4rem;
+            backdrop-filter: blur(24px);
+            transition: border-color 0.28s;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.3);
         }
-        #toast.active {
-            transform: translateY(0);
-            opacity: 1;
+        .chat-input-wrap:focus-within {
+            border-color: var(--gold-border-hi);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.3), 0 0 0 3px rgba(201,168,76,0.06);
+        }
+        .chat-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-family: var(--ff-b);
+            font-size: 0.9rem;
+            outline: none;
+            padding: 0.45rem 0;
+        }
+        .chat-input::placeholder { color: var(--text-dim); font-size: 0.88rem; }
+        .chat-send-btn {
+            width: 38px; height: 38px;
+            border-radius: var(--r-sm);
+            background: var(--gold);
+            border: none;
+            color: #09090B;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.26s var(--spring);
+            flex-shrink: 0;
+        }
+        .chat-send-btn:hover {
+            background: var(--gold-bright);
+            transform: translateY(-1px);
         }
 
-        #botCanvas {
+        /* ══════════════════════════════════════════════════════════
+           RIGHT SIDEBAR
+        ══════════════════════════════════════════════════════════ */
+        .sidebar-right {
+            width: 220px;
+            flex-shrink: 0;
+            background: rgba(9,9,11,0.6);
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 1.4rem;
+            gap: 0.8rem;
+        }
+        .ritual-tracker-empty {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            text-align: center;
+        }
+        .tracker-empty-orb {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--border-hi);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+        .ritual-tracker-empty p {
+            font-size: 0.73rem;
+            color: var(--text-dim);
+            line-height: 1.65;
+        }
+
+        .ritual-tracker-items { display: flex; flex-direction: column; gap: 0.4rem; }
+        .tracker-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 0.8rem;
+            background: var(--gold-pale);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--r-sm);
+            font-size: 0.74rem;
+            animation: msgIn 0.4s var(--spring) forwards;
+        }
+        .tracker-item i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0; }
+        .tracker-item-name { flex: 1; color: var(--text); line-height: 1.3; font-size: 0.7rem; }
+        .tracker-item-price { color: var(--gold-bright); font-family: var(--ff-h); font-size: 0.9rem; flex-shrink: 0; }
+
+        .ritual-total {
+            padding: 0.7rem 0.9rem;
+            background: transparent;
+            border: 1px solid var(--border-hi);
+            border-radius: var(--r-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ritual-total-label { color: var(--text-muted); font-weight: 500; font-size: 0.72rem; }
+        .ritual-total-val { color: var(--gold-bright); font-family: var(--ff-h); font-size: 1.1rem; }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--gold);
+            color: #09090B;
+            border: none;
+            border-radius: var(--r-sm);
+            font-family: var(--ff-b);
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.26s var(--spring);
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        .checkout-btn:hover {
+            background: var(--gold-bright);
+            transform: translateY(-1px);
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           TOAST
+        ══════════════════════════════════════════════════════════ */
+        #toast {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-hi);
+            color: var(--text);
+            padding: 0.9rem 1.3rem;
+            border-radius: var(--r-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(70px) scale(0.96);
+            opacity: 0;
+            transition: all 0.45s var(--spring);
+            z-index: 9999;
+            backdrop-filter: blur(32px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            min-width: 240px;
+        }
+        #toast.show { transform: translateY(0) scale(1); opacity: 1; }
+        .toast-icon {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: var(--green-pale);
+            border: 1px solid var(--green-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .toast-title { font-size: 0.8rem; font-weight: 600; margin-bottom: 2px; }
+        .toast-sub   { font-size: 0.68rem; color: var(--text-muted); }
+
+        /* ══════════════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════════════ */
+        .ai-footer {
+            background: rgba(7,7,9,0.99);
+            border-top: 1px solid var(--border);
+            color: var(--text);
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-footer::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+        }
+        .ai-footer .container { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.8fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand__logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+        .footer-brand__logo img {
+            height: 40px; width: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-border-hi);
+            object-fit: cover;
+        }
+        .footer-brand__name {
+            font-family: var(--ff-h);
+            font-size: 1.5rem;
+            color: var(--text-bright);
+            margin: 0;
+            font-weight: 600;
+        }
+        .footer-brand__desc { color: var(--text-muted); font-size: 0.84rem; line-height: 1.8; max-width: 280px; }
+        .footer-heading {
+            color: var(--gold-muted);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            font-family: var(--ff-m);
+        }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: all 0.22s ease;
+            display: inline-block;
+        }
+        .footer-links a:hover { color: var(--text-bright); padding-left: 4px; }
+        .footer-newsletter__desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.7; }
+        .footer-newsletter__form {
+            display: flex;
+            gap: 6px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-hi);
+            border-radius: var(--r-sm);
+            padding: 4px;
+        }
+        .footer-newsletter__form:focus-within {
+            border-color: var(--gold-border-hi);
+        }
+        .footer-newsletter__input {
+            background: transparent;
+            border: none;
+            padding: 0.55rem 0.9rem;
+            color: var(--text);
+            font-family: var(--ff-b);
+            font-size: 0.83rem;
+            outline: none;
+            flex: 1;
+            min-width: 0;
+        }
+        .footer-newsletter__input::placeholder { color: var(--text-dim); }
+        .footer-newsletter__btn {
+            background: var(--gold);
+            color: #09090B;
+            border: none;
+            padding: 0.55rem 1.1rem;
+            border-radius: var(--r-sm);
+            font-weight: 700;
+            font-size: 0.67rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            font-family: var(--ff-b);
+            flex-shrink: 0;
+        }
+        .footer-newsletter__btn:hover { background: var(--gold-bright); }
+        .footer-bloomi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 10px;
+            background: var(--gold-pale);
+            border: 1px solid var(--gold-border);
+            border-radius: 4px;
+            font-size: 0.58rem;
+            color: var(--gold-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: var(--ff-m);
+        }
+        .footer-bottom {
+            padding-top: 1.8rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.76rem;
+            color: var(--text-dim);
+        }
+        .footer-socials { display: flex; gap: 0.75rem; }
+        .footer-socials a {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.76rem;
+            text-decoration: none;
+            transition: all 0.22s ease;
+        }
+        .footer-socials a:hover {
+            color: var(--gold);
+            border-color: var(--gold-border-hi);
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════════════════ */
+        @media (max-width: 1100px) { .sidebar-right { display: none; } }
+        @media (max-width: 820px) {
+            .sidebar-left  { display: none; }
+            .ai-nav__center { display: none; }
+            .chat-scroll   { padding: 1.5rem 1.2rem; }
+            .chat-input-bar { padding: 0.7rem 1.2rem 1.1rem; }
+            .confirm-zone  { padding: 0.5rem 1.2rem 0; }
+            .bubble        { max-width: 92%; }
+        }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+        @media (max-width: 600px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1rem; }
+            .footer-brand, .footer-newsletter { grid-column: span 2; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+            .footer-socials { justify-content: center; }
+            .ai-footer .container { padding: 0 1.2rem; }
+            .footer-newsletter__form { flex-direction: column; border-radius: var(--r-md); }
+            .footer-newsletter__btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="botCanvas"></canvas>
+    <!-- Ambient background -->
+    <div class="bg-glow"></div>
 
-    <nav class="assistant-nav">
-        <div class="assistant-nav-brand">
-            <a href="index.html">
-                <img src="assets/logo.jpg" alt="Bloom Cure">
-                <h1>Bloomi AI</h1>
+    <!-- ══════════════════════════════════════════════
+         APP WRAPPER
+    ══════════════════════════════════════════════ -->
+    <div class="app-wrapper">
+
+    <!-- NAV -->
+    <nav class="ai-nav">
+        <a href="index.html" class="ai-nav__left">
+            <div class="nav-logo-wrap">
+                <img src="assets/logo.jpg" alt="Bloom Cure" class="nav-logo">
+            </div>
+            <div class="nav-wordmark">
+                <span class="nav-name">Bloomi AI</span>
+                <span class="nav-sub">
+                    <span class="status-dot"></span>Intelligence Online
+                </span>
+            </div>
+        </a>
+
+        <div class="ai-nav__center">
+            <div class="mode-pill">
+                <button class="mode-btn active" id="modeGuided" onclick="switchMode('guided')">Guided</button>
+                <button class="mode-btn" id="modeFree" onclick="switchMode('free')">Free Chat</button>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <button class="nav-btn" title="Restart Assessment" onclick="restartAssessment()">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+            <button class="nav-btn" title="Copy Ritual Summary" onclick="copyRitual()">
+                <i class="fa-regular fa-copy"></i>
+            </button>
+            <a href="index.html" class="nav-btn" title="Exit">
+                <i class="fa-solid fa-xmark"></i>
             </a>
         </div>
-        <a href="index.html" class="assistant-nav-close" title="Exit Consultation">
-            <i class="fa-solid fa-xmark"></i>
-        </a>
     </nav>
 
-    <div class="chat-container" id="chatContainer"></div>
-
-    <div class="chat-action-bar">
-        <button id="confirmBtn" class="confirm-btn">Continue</button>
+    <!-- PROGRESS HUD -->
+    <div class="progress-hud" id="progressHud">
+        <div class="hud-step active" id="hud-0">
+            <div class="hud-node"><span class="hud-num">01</span></div>
+            <div class="hud-label">Welcome</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-step" id="hud-1">
+            <div class="hud-node"><span class="hud-num">02</span></div>
+            <div class="hud-label">Skin Type</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-step" id="hud-2">
+            <div class="hud-node"><span class="hud-num">03</span></div>
+            <div class="hud-label">Sensitivity</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-step" id="hud-3">
+            <div class="hud-node"><span class="hud-num">04</span></div>
+            <div class="hud-label">Environment</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-step" id="hud-4">
+            <div class="hud-node"><span class="hud-num">05</span></div>
+            <div class="hud-label">Concerns</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-step" id="hud-5">
+            <div class="hud-node"><span class="hud-num">06</span></div>
+            <div class="hud-label">Ritual</div>
+        </div>
+        <div class="hud-right">
+            <span class="hud-pct" id="hudCompletion">0%</span>
+        </div>
     </div>
 
-    <!-- Toast UI -->
+    <!-- MAIN LAYOUT -->
+    <div class="ai-main">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar-left">
+            <div class="bloomi-avatar">
+                <div class="avatar-ring">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="av-name">Bloomi</div>
+                <div class="av-tagline">Advanced Botanical<br>Intelligence Engine</div>
+            </div>
+
+            <div class="sb-section">
+                <div class="sb-label">Skin Profile</div>
+                <div id="skinProfilePanel">
+                    <div class="profile-row">
+                        <span class="profile-key">Skin Type</span>
+                        <span class="profile-val" id="pv-type">—</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-key">Sensitivity</span>
+                        <span class="profile-val" id="pv-sens">—</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-key">Environment</span>
+                        <span class="profile-val" id="pv-env">—</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-key">Concerns</span>
+                        <span class="profile-val" id="pv-concerns">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sb-section">
+                <div class="sb-label">Botanical Insight</div>
+                <div class="insight-card" id="insightCard">
+                    <div class="insight-icon"><i class="fa-solid fa-flask-vial"></i></div>
+                    <p class="insight-text">Your personalised botanical facts will appear here as you complete the assessment.</p>
+                    <p class="insight-source">// BLOOMI INTELLIGENCE</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CHAT COLUMN -->
+        <div class="chat-column">
+            <div class="chat-scroll" id="chatScroll"></div>
+
+            <div class="confirm-zone">
+                <button class="confirm-btn" id="confirmBtn">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span id="confirmLabel">Continue</span>
+                </button>
+            </div>
+
+            <div class="chat-input-bar" id="chatInputBar">
+                <div class="chat-input-wrap">
+                    <input type="text" class="chat-input" id="chatInput"
+                        placeholder="Ask Bloomi anything… e.g. 'What soap for dry skin in winter?'">
+                    <button class="chat-send-btn" onclick="handleFreeChat()">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar-right" id="sidebarRight">
+            <div class="sb-label">My Ritual</div>
+            <div class="ritual-tracker-empty" id="ritualEmpty">
+                <div class="tracker-empty-orb"><i class="fa-solid fa-spa"></i></div>
+                <p>Your curated ritual products will appear here after the assessment.</p>
+            </div>
+            <div class="ritual-tracker-items" id="ritualItems" style="display:none;"></div>
+            <div class="ritual-total" id="ritualTotal" style="display:none;">
+                <span class="ritual-total-label">Ritual Total</span>
+                <span class="ritual-total-val" id="ritualTotalVal">₹0</span>
+            </div>
+            <a href="cart.html" class="checkout-btn" id="checkoutBtn" style="display:none;">
+                <i class="fa-solid fa-bag-shopping"></i> View Cart
+            </a>
+        </aside>
+    </div>
+
+    <!-- TOAST -->
     <div id="toast">
-        <i class="fa-solid fa-circle-check" style="color: #c5a028; font-size: 1.5rem;"></i>
+        <div class="toast-icon"><i class="fa-solid fa-check"></i></div>
         <div>
-            <strong style="display:block; margin-bottom: 2px;">Added to Routine</strong>
-            <span id="toastMsg" style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Product</span>
+            <div class="toast-title">Added to Ritual</div>
+            <div class="toast-sub" id="toastSub">Product added</div>
         </div>
     </div>
 
     <script>
-        // Advanced Knowledge Base
-        const PRODUCTS = [
-            {
-                name: "Activated Charcoal Soap",
-                price: "299",
-                img: "assets/logo.jpg",
-                types: ["Oily", "Combination"],
-                sensitivities: ["Resilient"],
-                concerns: ["Acne", "Large Pores", "Blackheads", "Detox"],
-                benefits: {
-                    "Activated Charcoal": "Draws out impurities, toxins, and excess oils from deep within the pores.",
-                    "Tea Tree Extract": "Antibacterial properties help clear and prevent future breakouts."
-                },
-                tip: "Use lukewarm water to gently open pores before cleansing for a deep detox effect."
+    // ═══════════════════════════════════════════════════════
+    //  KNOWLEDGE BASE
+    // ═══════════════════════════════════════════════════════
+    const PRODUCTS = [
+        {
+            id: "charcoal", name: "Activated Charcoal Soap", price: 299,
+            img: "assets/logo.jpg",
+            types: ["Oily", "Combination"],
+            sensitivities: ["Resilient"],
+            concerns: ["Acne", "Large Pores", "Blackheads", "Detox", "Dullness"],
+            category: "cleanser",
+            benefits: {
+                "Activated Charcoal": "Draws out impurities, toxins, and excess oils from deep within pores like a magnet.",
+                "Tea Tree Extract": "Powerful antibacterial action clears and prevents future breakouts at the root."
             },
-            {
-                name: "Neem Purify",
-                price: "399",
-                img: "assets/logo.jpg",
-                types: ["Oily", "Combination", "Acne-Prone"],
-                sensitivities: ["Resilient", "Moderate"],
-                concerns: ["Acne", "Blemishes", "Inflammation"],
-                benefits: {
-                    "Pure Neem Oil": "Naturally purifies skin and significantly reduces inflammation caused by severe acne.",
-                    "Turmeric": "Soothes redness and enhances natural bright radiance."
-                },
-                tip: "Lather well and let it sit on your skin for 30-60 seconds before rinsing."
+            tip: "Use with lukewarm water to open pores first. Rinse cold to seal them shut.",
+            insight: "Activated charcoal can adsorb up to 1000x its own weight in impurities — making it one of the most effective natural pore cleansers known to dermatology."
+        },
+        {
+            id: "neem", name: "Neem Purify Bar", price: 399,
+            img: "assets/logo.jpg",
+            types: ["Oily", "Combination", "Acne-Prone"],
+            sensitivities: ["Resilient", "Moderate"],
+            concerns: ["Acne", "Blemishes", "Inflammation", "Redness"],
+            category: "treatment",
+            benefits: {
+                "Pure Neem Oil": "Clinically purifies skin and reduces inflammation from severe acne.",
+                "Turmeric": "Soothes redness and enhances natural radiance with antioxidant power."
             },
-            {
-                name: "Multani Mitti Soap",
-                price: "249",
-                img: "assets/logo.jpg",
-                types: ["Oily", "Combination"],
-                sensitivities: ["Resilient", "Moderate"],
-                concerns: ["Acne", "Oiliness", "Pores"],
-                benefits: {
-                    "Multani Mitti": "Absorbs excess sebum instantly and acts as a natural cooling agent.",
-                    "Sandalwood Base": "Soothes skin and evens out tone without drying."
-                },
-                tip: "Perfect for warm climates to keep your face feeling naturally matte all day."
+            tip: "Lather well and let the rich foam sit on your skin for 45–60 seconds before rinsing for maximum antibacterial contact.",
+            insight: "Neem contains nimbidin and nimbin compounds that outperform many synthetic antifungals in peer-reviewed trials while being completely skin-safe."
+        },
+        {
+            id: "multani", name: "Multani Mitti Clay Bar", price: 249,
+            img: "assets/logo.jpg",
+            types: ["Oily", "Combination"],
+            sensitivities: ["Resilient", "Moderate"],
+            concerns: ["Acne", "Oiliness", "Large Pores", "Texture"],
+            category: "cleanser",
+            benefits: {
+                "Multani Mitti": "Instantly absorbs excess sebum and acts as a powerful natural cooling agent.",
+                "Sandalwood Base": "Soothes and evens skin tone without over-drying."
             },
-            {
-                name: "Rice Goat Milk Soap",
-                price: "299",
-                img: "assets/logo.jpg",
-                types: ["Sensitive", "Dry", "Normal"],
-                sensitivities: ["Highly Sensitive", "Moderate"],
-                concerns: ["Dryness", "Sensitivity", "Redness", "Texture"],
-                benefits: {
-                    "Goat Milk": "Rich in lactic acid and fatty acids to deeply hydrate while gently exfoliating.",
-                    "Rice Extract": "Brightens complexion and soothes highly irritated or inflamed skin."
-                },
-                tip: "Keep the water cool rather than hot to preserve your skin's natural delicate lipid barrier."
+            tip: "Perfect for warm climates to keep skin naturally matte all day without stripping the barrier.",
+            insight: "Fuller's earth clay is a smectite silicate mineral that expands as it absorbs oils — its physical action prevents pore blockage unlike surfactant-only cleansers."
+        },
+        {
+            id: "goat-milk", name: "Rice & Goat Milk Soap", price: 299,
+            img: "assets/logo.jpg",
+            types: ["Sensitive", "Dry", "Normal"],
+            sensitivities: ["Highly Sensitive", "Moderate"],
+            concerns: ["Dryness", "Sensitivity", "Redness", "Texture", "Inflammation"],
+            category: "cleanser",
+            benefits: {
+                "Goat Milk": "Rich in lactic acid and fatty acids to deeply hydrate while gently exfoliating.",
+                "Rice Extract": "Brightens complexion and soothes highly irritated or inflamed skin."
             },
-            {
-                name: "Virgin Coconut Oil Soap",
-                price: "349",
-                img: "assets/logo.jpg",
-                types: ["Dry", "Normal"],
-                sensitivities: ["Highly Sensitive", "Moderate", "Resilient"],
-                concerns: ["Dryness", "Flakiness", "Dullness"],
-                benefits: {
-                    "Cold-Pressed Virgin Coconut Oil": "Provides intense hydration and restores the protective skin barrier.",
-                    "Plant-derived Glycerin": "A natural humectant that draws moisture from the air directly to your skin."
-                },
-                tip: "Apply your moisturizer immediately after patting your skin dry to lock in the rich hydration."
+            tip: "Use cool water — not hot — to preserve your skin's natural lipid barrier and prevent transepidermal water loss.",
+            insight: "Goat milk has a pH level almost identical to human skin (6.4–6.8), making it uniquely compatible and minimising disruption to the acid mantle."
+        },
+        {
+            id: "coconut", name: "Virgin Coconut Oil Soap", price: 349,
+            img: "assets/logo.jpg",
+            types: ["Dry", "Normal", "Sensitive"],
+            sensitivities: ["Highly Sensitive", "Moderate", "Resilient"],
+            concerns: ["Dryness", "Flakiness", "Dullness", "Barrier Repair"],
+            category: "moisturising",
+            benefits: {
+                "Cold-Pressed Virgin Coconut": "Provides intense hydration and actively restores the protective skin barrier.",
+                "Plant-Derived Glycerin": "A humectant that draws atmospheric moisture directly to your skin."
             },
-            {
-                name: "Red Sandalwood Herbal Bar",
-                price: "449",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Dry", "Combination", "Mature"],
-                sensitivities: ["Moderate", "Resilient"],
-                concerns: ["Pigmentation", "Glow", "Aging", "Dullness"],
-                benefits: {
-                    "Rakta Chandana (Red Sandalwood)": "Clinically known to reduce pigmentation, fade scars, and impart a dramatic glow.",
-                    "Aurvedic Herbal Oils": "Nourish the skin deeply halting premature aging signs."
-                },
-                tip: "Massage the creamy lather onto your face in gentle upward circular motions to stimulate blood circulation."
+            tip: "Apply your moisturizer within 30 seconds of patting skin dry to lock in the rich hydration cascade.",
+            insight: "Lauric acid in virgin coconut oil constitutes 49% of its fatty acid profile, giving it unique antimicrobial properties unmatched by refined oils."
+        },
+        {
+            id: "red-sandalwood", name: "Red Sandalwood Herbal Bar", price: 449,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Dry", "Combination", "Mature"],
+            sensitivities: ["Moderate", "Resilient"],
+            concerns: ["Pigmentation", "Glow", "Aging", "Dullness", "Fine Lines"],
+            category: "treatment",
+            benefits: {
+                "Rakta Chandana": "Clinically reduces pigmentation, fades scars, and imparts a dramatic natural glow.",
+                "Ayurvedic Herbal Oil Blend": "Nourishes deeply, halting visible signs of premature aging."
             },
-            {
-                name: "Red Wine Soap",
-                price: "399",
-                img: "assets/logo.jpg",
-                types: ["Mature", "Normal", "Dry"],
-                sensitivities: ["Moderate", "Resilient"],
-                concerns: ["Aging", "Fine Lines", "Dullness", "Elasticity"],
-                benefits: {
-                    "Red Wine Extract": "Packed with antioxidants and resveratrol to fight free radicals and boost collagen.",
-                    "Essential Oils": "Improve skin elasticity and visible plumpness instantly."
-                },
-                tip: "Use this exclusively as part of your evening routine to help your skin reverse oxidative damage overnight."
+            tip: "Massage the creamy lather onto your face in gentle upward circular motions to stimulate collagen-supporting blood circulation.",
+            insight: "Red sandalwood contains β-santalol and pterostilbene — potent antioxidants shown to inhibit melanin synthesis, offering a natural alternative to chemical brightening agents."
+        },
+        {
+            id: "red-wine", name: "Red Wine Resveratrol Soap", price: 399,
+            img: "assets/logo.jpg",
+            types: ["Mature", "Normal", "Dry"],
+            sensitivities: ["Moderate", "Resilient"],
+            concerns: ["Aging", "Fine Lines", "Dullness", "Elasticity", "Pigmentation"],
+            category: "anti-aging",
+            benefits: {
+                "Red Wine Extract": "Packed with antioxidants and resveratrol to combat free radicals and boost collagen production.",
+                "Essential Oil Complex": "Improves skin elasticity and visible plumpness with each use."
             },
-            {
-                name: "Exfoliating Coffee Soap",
-                price: "399",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Combination", "Oily"],
-                sensitivities: ["Resilient"],
-                concerns: ["Dullness", "Texture", "Cellulite"],
-                benefits: {
-                    "Organic Coffee Beans": "Provides robust physical exfoliation and stimulates blood flow.",
-                    "Caffeine Content": "Temporarily tightens the skin and visibly reduces the appearance of cellulite."
-                },
-                tip: "Use 2-3 times a week on your body, focusing on areas with rough texture. Not recommended for facial use."
+            tip: "Use exclusively in your evening routine to allow resveratrol to work synergistically with your skin's overnight repair cycle.",
+            insight: "Resveratrol activates sirtuins (SIRT1 genes) — the same longevity-linked proteins triggered by caloric restriction — making it one of the most studied anti-aging botanical compounds."
+        },
+        {
+            id: "coffee", name: "Exfoliating Coffee Bar", price: 399,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Combination", "Oily"],
+            sensitivities: ["Resilient"],
+            concerns: ["Dullness", "Texture", "Cellulite", "Circulation"],
+            category: "exfoliating",
+            benefits: {
+                "Organic Coffee Grounds": "Physical exfoliation stimulates blood flow and instantly reveals brighter skin.",
+                "Caffeine Complex": "Temporarily tightens skin and visibly reduces the appearance of cellulite."
             },
-            {
-                name: "Hand made Sandalwood Soap",
-                price: "349",
-                img: "assets/logo.jpg",
-                types: ["Sensitive", "Normal", "Combination"],
-                sensitivities: ["Highly Sensitive", "Moderate"],
-                concerns: ["Soothing", "Sensitivity", "Glow", "Stress"],
-                benefits: {
-                    "Pure Sandalwood Extract": "Calms redness, cools the skin, and leaves a lingering therapeutic aroma.",
-                    "Mild Botanical Base": "Cleanses without stripping the delicate skin acid mantle."
-                },
-                tip: "Inhale deeply while using—the therapeutic scent lowers cortisol levels, indirectly preventing stress-acne."
+            tip: "Use 2–3 times a week on the body, focusing on rough-texture zones. Not recommended for facial areas.",
+            insight: "Caffeine applied topically constricts blood vessels and reduces water retention below the skin's surface — the same mechanism behind many expensive anti-cellulite creams at a fraction of the cost."
+        },
+        {
+            id: "sandalwood", name: "Handmade Sandalwood Soap", price: 349,
+            img: "assets/logo.jpg",
+            types: ["Sensitive", "Normal", "Combination"],
+            sensitivities: ["Highly Sensitive", "Moderate"],
+            concerns: ["Soothing", "Sensitivity", "Glow", "Stress", "Redness"],
+            category: "soothing",
+            benefits: {
+                "Pure Sandalwood Extract": "Calms redness and cools the skin while leaving a lingering therapeutic aroma.",
+                "Mild Botanical Base": "Cleanses without stripping the delicate skin acid mantle."
             },
-            {
-                name: "Soap Nut Power",
-                price: "100",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Sensitive", "Combination"],
-                sensitivities: ["Highly Sensitive", "Moderate"],
-                concerns: ["Gentle Cleansing", "Chemical-Free", "Silky Skin"],
-                benefits: {
-                    "Natural Saponins": "Ancient reetha cleanser provides gentle, chemical-free cleansing.",
-                    "Botanical Oils": "Leaves skin feeling silky and naturally hydrated."
-                },
-                tip: "Perfect for those with extremely reactive skin who need a purely natural alternative."
+            tip: "Inhale the wood-amber scent during your routine — sandalwood aromatherapy actively lowers cortisol, indirectly preventing stress-induced breakouts.",
+            insight: "Sandalwood's α-santalol interacts directly with olfactory receptors in skin cells, triggering a cascade of anti-inflammatory responses — an effect entirely independent of its scent."
+        },
+        {
+            id: "soapnut", name: "Soap Nut Power Bar", price: 100,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Sensitive", "Combination"],
+            sensitivities: ["Highly Sensitive", "Moderate"],
+            concerns: ["Gentle Cleansing", "Sensitivity", "Chemical-Free"],
+            category: "gentle",
+            benefits: {
+                "Natural Saponins": "Ancient reetha cleansers provide gentle, 100% chemical-free cleansing.",
+                "Botanical Oils": "Leaves skin feeling silky and naturally hydrated post-cleanse."
             },
-            {
-                name: "Seegekai",
-                price: "399",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Oily"],
-                sensitivities: ["Resilient", "Moderate"],
-                concerns: ["Scalp Care", "Deep Cleansing", "Herbal Shine"],
-                benefits: {
-                    "Shikakai": "Traditional infused bar for deep cleansing and scalp health.",
-                    "Herbal Extracts": "Imparts a natural herbal shine and strengthens hair roots."
-                },
-                tip: "Can be used as a multipurpose bar for both hair and body cleansing."
+            tip: "Perfect for those with extreme reactivity who need a purely ancestral, natural alternative to synthetic foaming agents.",
+            insight: "Soapnut saponins have an HLB (Hydrophilic-Lipophilic Balance) of 9–11, making them naturally surfactant-grade cleansers with near-zero irritation potential."
+        },
+        {
+            id: "seegekai", name: "Seegekai Herbal Bar", price: 399,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Oily"],
+            sensitivities: ["Resilient", "Moderate"],
+            concerns: ["Scalp Care", "Deep Cleansing", "Hair Shine", "Detox"],
+            category: "hair-body",
+            benefits: {
+                "Shikakai": "Traditional bar for deep scalp cleansing and robust hair health.",
+                "Herbal Extracts": "Imparts a natural herbal shine and strengthens hair roots from within."
             },
-            {
-                name: "Besan",
-                price: "109",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Combination", "Oily"],
-                sensitivities: ["Resilient", "Moderate"],
-                concerns: ["Exfoliation", "Complexion", "Glow"],
-                benefits: {
-                    "Gram Flour (Besan)": "Traditional ingredient for radiant complexion and natural exfoliation.",
-                    "Botanical Base": "Ensures smooth, naturally exfoliated skin without harshness."
-                },
-                tip: "Excellent for daily use to maintain a naturally bright and smooth skin texture."
+            tip: "A true multipurpose bar — use on hair AND body for a fully botanical cleanse routine.",
+            insight: "Shikakai's naturally low pH (around 4.5) closely matches the scalp's optimal environment, preventing follicle damage caused by alkaline commercial shampoos."
+        },
+        {
+            id: "besan", name: "Besan Gram Flour Bar", price: 109,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Combination", "Oily"],
+            sensitivities: ["Resilient", "Moderate"],
+            concerns: ["Exfoliation", "Glow", "Texture", "Complexion"],
+            category: "exfoliating",
+            benefits: {
+                "Gram Flour (Besan)": "Centuries-old secret for a radiant complexion and natural micro-exfoliation.",
+                "Botanical Base": "Ensures smooth, naturally exfoliated skin without any harshness."
             },
-            {
-                name: "Relaxing Bath Salts",
-                price: "199",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Dry", "Combination", "Oily", "Sensitive"],
-                sensitivities: ["Highly Sensitive", "Moderate", "Resilient"],
-                concerns: ["Stress", "Muscle Recovery", "Sleep", "Dullness"],
-                benefits: {
-                    "Epsom & Pink Salt": "Promotes muscle recovery and significant stress relief.",
-                    "Lavender Essential Oil": "Calming scent that aids in better sleep and relaxation."
-                },
-                tip: "Add to a warm bath and soak for 20 minutes to fully absorb the minerals."
+            tip: "Excellent for daily use — its gentle exfoliation is safe enough for every-day application to maintain a naturally bright, smooth texture.",
+            insight: "Besan contains saponins and proteases that dissolve dead skin cells enzymatically — providing a form of chemical exfoliation without any synthetic AHAs or BHAs."
+        },
+        {
+            id: "bath-salts", name: "Relaxing Bath Salts", price: 199,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Dry", "Combination", "Oily", "Sensitive"],
+            sensitivities: ["Highly Sensitive", "Moderate", "Resilient"],
+            concerns: ["Stress", "Muscle Recovery", "Sleep", "Dullness", "Sensitivity"],
+            category: "ritual",
+            benefits: {
+                "Epsom & Pink Salt": "Promotes deep muscle recovery and significant cortisol-level stress relief.",
+                "Lavender Essential Oil": "Proven aromatherapeutic compound that aids deep sleep and anxiety reduction."
             },
-            {
-                name: "Loofah Body Scrubber",
-                price: "50",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Dry", "Combination", "Oily"],
-                sensitivities: ["Resilient", "Moderate"],
-                concerns: ["Texture", "Glow", "Exfoliation"],
-                benefits: {
-                    "Natural Fibers": "Eco-friendly, 100% biodegradable sponge for effective exfoliation.",
-                    "Eco-Friendly": "Sustainable choice for a smooth, glowing skin routine."
-                },
-                tip: "Use with your favorite Bloom Cure soap to enhance the lather and exfoliation."
+            tip: "Add to a 37°C warm bath and soak for 20 minutes to fully absorb transdermal magnesium benefits.",
+            insight: "Transdermal magnesium absorption via Epsom salt baths can increase serum magnesium levels by 35% in as little as 7 days, directly impacting inflammation and muscle recovery."
+        },
+        {
+            id: "loofah", name: "Natural Loofah Scrubber", price: 50,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Dry", "Combination", "Oily"],
+            sensitivities: ["Resilient", "Moderate"],
+            concerns: ["Texture", "Glow", "Exfoliation", "Circulation"],
+            category: "accessory",
+            benefits: {
+                "Natural Plant Fibers": "100% biodegradable sponge for effective, eco-conscious exfoliation.",
+                "Open Mesh Structure": "Maximises lather from any bar soap for an elevated cleanse."
             },
-            {
-                name: "Bamboo Toothbrush",
-                price: "70",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Dry", "Combination", "Oily", "Sensitive"],
-                sensitivities: ["Highly Sensitive", "Moderate", "Resilient"],
-                concerns: ["Sustainability", "Eco-Friendly", "Oral Care"],
-                benefits: {
-                    "Charcoal Bristles": "Infused with charcoal for effective and gentle cleaning.",
-                    "Bamboo Handle": "Biodegradable handle making it a zero-plastic choice."
-                },
-                tip: "Replace every 3 months for optimal oral hygiene and sustainability."
+            tip: "Pair with any Bloom Cure soap bar to create a luxurious, spa-grade lather and enhanced exfoliation.",
+            insight: "Natural loofah (Luffa aegyptiaca) is actually a dried vegetable gourd — its fibrous xylem structure creates the perfect mechanical exfoliation pressure without micro-tearing skin."
+        },
+        {
+            id: "bamboo", name: "Charcoal Bamboo Toothbrush", price: 70,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Dry", "Combination", "Oily", "Sensitive"],
+            sensitivities: ["Highly Sensitive", "Moderate", "Resilient"],
+            concerns: ["Sustainability", "Oral Care", "Chemical-Free"],
+            category: "accessory",
+            benefits: {
+                "Charcoal Bristles": "Infused with activated charcoal for effective and gentle whitening.",
+                "Bamboo Handle": "Fully biodegradable, zero-plastic handle for a guilt-free routine."
             },
-            {
-                name: "Seegekai Powder",
-                price: "249",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Oily"],
-                sensitivities: ["Resilient", "Moderate"],
-                concerns: ["Hair Strength", "Natural Shine", "Scalp Health"],
-                benefits: {
-                    "Pure Organic Powder": "Promotes strong roots and a natural, healthy shine.",
-                    "Amla & Hibiscus": "Traditional herbs that nourish the scalp and hair."
-                },
-                tip: "Mix with water to form a paste and apply to damp hair for 5-10 minutes."
+            tip: "Replace every 3 months for optimal oral hygiene. The handle can be composted at the end of its life.",
+            insight: "Bamboo grows at up to 91cm per day without pesticides or irrigation, making it the world's most sustainable alternative to petroleum-derived plastics."
+        },
+        {
+            id: "hotel", name: "Artisan Hotel Soaps (Set)", price: 599,
+            img: "assets/logo.jpg",
+            types: ["Normal", "Dry"],
+            sensitivities: ["Moderate", "Resilient"],
+            concerns: ["Luxury", "Nourishment", "Glow", "Dullness"],
+            category: "luxury",
+            benefits: {
+                "Premium Botanical Blend": "Exclusive hotel-grade formulation for a truly luxurious cleanse.",
+                "Artisan Cold-Pressed Oils": "Deeply nourishing oils that protect skin during travel and daily use."
             },
-            {
-                name: "Hotel Soaps",
-                price: "599",
-                img: "assets/logo.jpg",
-                types: ["Normal", "Dry"],
-                sensitivities: ["Moderate", "Resilient"],
-                concerns: ["Luxury", "Travel", "Nourishment"],
-                benefits: {
-                    "Premium Blend": "Exclusive hotel-grade formulation for a luxurious experience.",
-                    "Artisan Oils": "Deeply nourishing oils that protect skin during travel."
-                },
-                tip: "The perfect travel companion to maintain your botanical routine on the go."
-            }
-        ];
+            tip: "The ultimate travel companion to maintain a completely botanical routine wherever life takes you.",
+            insight: "Cold-process crafting preserves up to 3x more glycerin in the final soap compared to commercially detergent-based production — that retained glycerin is what makes the lather feel genuinely skin-soft."
+        }
+    ];
 
-        // Advanced AI State
-        const state = {
-            step: 0,
-            userData: {
-                skinType: '',
-                sensitivity: '',
-                concerns: [],
-                environment: ''
-            }
-        };
+    // ═══════════════════════════════════════════════════════
+    //  FREE CHAT KNOWLEDGE BASE
+    // ═══════════════════════════════════════════════════════
+    const FREE_CHAT_KB = [
+        { keywords: ["oily", "greasy", "shine"], response: "For oily skin, I'd strongly recommend our <strong>Activated Charcoal Soap</strong> or the <strong>Multani Mitti Clay Bar</strong>. Both excel at sebum control without over-stripping your barrier. In humid climates, the Multani Mitti's cooling action is particularly powerful." },
+        { keywords: ["dry", "dehydrated", "flaky", "tight"], response: "Dry skin needs deep barrier repair. Our <strong>Virgin Coconut Oil Soap</strong> and <strong>Rice & Goat Milk Soap</strong> are both outstanding — coconut for intense nourishment and goat milk for its near-skin-identical pH. Always follow with a moisturiser immediately after patting dry." },
+        { keywords: ["sensitive", "react", "allergy", "fragrance", "irritated"], response: "For highly sensitive skin, I recommend the <strong>Rice & Goat Milk Soap</strong> or our <strong>Soap Nut Power Bar</strong> — both are formulated with zero harsh surfactants and are suited even for reactive skin. Avoid fragrance-forward options like our Coffee Bar until sensitivity is established." },
+        { keywords: ["acne", "breakout", "pimple", "blemish", "spot"], response: "Fight acne with our <strong>Neem Purify Bar</strong> — neem's nimbidin compounds outperform many synthetic antibacterials. Our <strong>Activated Charcoal Soap</strong> is also excellent for drawing out the congestion that leads to breakouts. Leave lather on skin for 60 seconds for best results." },
+        { keywords: ["aging", "anti-age", "wrinkle", "fine lines", "collagen", "elasticity"], response: "For anti-aging, our <strong>Red Wine Resveratrol Soap</strong> is the star — resveratrol activates SIRT1 longevity genes and boosts collagen synthesis. The <strong>Red Sandalwood Herbal Bar</strong> is equally powerful for reducing pigmentation and fading aging spots." },
+        { keywords: ["glow", "bright", "dull", "radiance", "luminous"], response: "For a visible glow upgrade, try the <strong>Red Sandalwood Herbal Bar</strong> — β-santalol inhibits melanin synthesis naturally. The <strong>Exfoliating Coffee Bar</strong> dramatically brightens by sloughing off dull, dead skin layers and stimulating circulation." },
+        { keywords: ["summer", "humid", "hot", "tropical"], response: "In hot & humid environments, sebum production surges and pores clog rapidly. I recommend our <strong>Multani Mitti Clay Bar</strong> for daily control and the <strong>Activated Charcoal Soap</strong> for 2–3x/week deep cleansing. Both keep skin matte and decongested even in intense heat." },
+        { keywords: ["winter", "cold", "dry weather", "harsh"], response: "Cold weather strips your skin's lipid barrier aggressively. Our <strong>Virgin Coconut Oil Soap</strong> and <strong>Rice & Goat Milk Soap</strong> are your best allies — they actively replenish barrier lipids as they cleanse. Follow every use with a heavy-duty moisturiser." },
+        { keywords: ["hair", "scalp", "shampoo"], response: "For hair and scalp, our <strong>Seegekai Herbal Bar</strong> is a natural traditional cleanser with a pH of ~4.5 that matches the scalp perfectly — unlike alkaline shampoos that damage follicles. The <strong>Seegekai Powder</strong> can also be mixed into a paste for a weekly deep treatment." },
+        { keywords: ["stress", "calm", "relax", "sleep", "anxiety"], response: "Stress directly triggers cortisol-driven breakouts. Our <strong>Relaxing Bath Salts</strong> with lavender actively lower cortisol levels. Our <strong>Handmade Sandalwood Soap</strong> also contains α-santalol that interacts with skin's own olfactory receptors to trigger anti-inflammatory responses." },
+        { keywords: ["eco", "sustainable", "environment", "plastic", "green"], response: "All Bloom Cure products are crafted with radical sustainability at their core. Our <strong>Bamboo Toothbrush</strong>, <strong>Natural Loofah</strong>, <strong>Soap Nut Power Bar</strong>, and <strong>Seegekai</strong> bar are our most zero-waste offerings. Every purchase also contributes 10% to wildlife conservation." },
+        { keywords: ["pigmentation", "dark spot", "uneven", "hyperpigmentation", "discoloration"], response: "For pigmentation and dark spots, the <strong>Red Sandalwood Herbal Bar</strong> is your most potent ally — pterostilbene inhibits melanin synthesis at the enzymatic level. Paired with the <strong>Rice & Goat Milk Soap</strong> for brightening lactic acid, you'll see a visible difference in a few weeks." },
+        { keywords: ["pore", "blackhead", "congestion", "open pores"], response: "Large pores and congestion need a clay or charcoal-based deep cleanser. Our <strong>Activated Charcoal Soap</strong> and <strong>Multani Mitti Clay Bar</strong> physically bind to and extract pore congestion. Always use lukewarm water to open pores, then rinse cold to tighten them." },
+        { keywords: ["price", "cheap", "affordable", "budget"], response: "Our most budget-friendly gems are the <strong>Soap Nut Power Bar</strong> (₹100), <strong>Besan Gram Flour Bar</strong> (₹109), <strong>Natural Loofah</strong> (₹50), and the <strong>Bamboo Toothbrush</strong> (₹70). Despite their price, they're crafted with the same botanical philosophy as our premium range." },
+        { keywords: ["combination", "t-zone", "dry cheeks", "oily nose"], response: "Combination skin is all about zone-based balance. Our <strong>Handmade Sandalwood Soap</strong> or <strong>Neem Purify Bar</strong> cleanse effectively without over-drying the dry zones. Avoid the Charcoal and Coffee bars on the entire face — restrict them to the oily T-zone only." },
+        { keywords: ["best", "most popular", "recommend", "top"], response: "Our most acclaimed products are the <strong>Red Sandalwood Herbal Bar</strong> (the glow legend), <strong>Neem Purify Bar</strong> (the acne warrior), and <strong>Virgin Coconut Oil Soap</strong> (the dry-skin saviour). For a complete ritual starter kit, I always suggest pairing your primary cleanser with our <strong>Natural Loofah</strong> and <strong>Relaxing Bath Salts</strong>." }
+    ];
 
-        const chatContainer = document.getElementById('chatContainer');
-        const confirmBtn = document.getElementById('confirmBtn');
+    const INSIGHTS = [
+        { icon: "fa-solid fa-flask-vial", text: "Botanical soaps preserve natural glycerin, a powerful humectant stripped from commercial detergent bars.", source: "// INGREDIENT SCIENCE" },
+        { icon: "fa-solid fa-leaf", text: "Cold-process soap making retains up to 3x more active botanical compounds than industrial hot-process methods.", source: "// CRAFTING PROTOCOL" },
+        { icon: "fa-solid fa-droplet", text: "The pH of healthy skin sits at 4.5–5.5. Matching your cleanser to this range prevents the barrier disruption that causes 80% of skin issues.", source: "// DERMATOLOGICAL DATA" },
+        { icon: "fa-solid fa-seedling", text: "BloomCure donates 10% of proceeds to wildlife conservation. Your ritual supports endangered ecosystems.", source: "// BLOOM CURE MISSION" },
+        { icon: "fa-solid fa-sun", text: "Turmeric's curcumin has been shown to inhibit NF-κB inflammatory pathways — the same target as many pharmaceutical anti-inflammatory drugs.", source: "// PHYTOCHEMISTRY" }
+    ];
+
+    // ═══════════════════════════════════════════════════════
+    //  APP STATE
+    // ═══════════════════════════════════════════════════════
+    const state = {
+        step: 0,
+        mode: 'guided',
+        userData: { skinType: '', sensitivity: '', environment: '', concerns: [] },
+        ritualCart: [],
+        totalSteps: 5
+    };
+
+    // ═══════════════════════════════════════════════════════
+    //  DOM REFS
+    // ═══════════════════════════════════════════════════════
+    const chatScroll = document.getElementById('chatScroll');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const confirmLbl = document.getElementById('confirmLabel');
+    const chatInput  = document.getElementById('chatInput');
+
+    // ═══════════════════════════════════════════════════════
+    //  UTILITIES
+    // ═══════════════════════════════════════════════════════
+    function scrollBottom() {
+        setTimeout(() => chatScroll.scrollTo({ top: chatScroll.scrollHeight, behavior: 'smooth' }), 60);
+    }
+
+    function showToast(name) {
         const toast = document.getElementById('toast');
+        document.getElementById('toastSub').textContent = name;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3500);
+    }
 
-        function scrollToBottom() {
-            setTimeout(() => {
-                chatContainer.scrollTo({
-                    top: chatContainer.scrollHeight,
-                    behavior: 'smooth'
-                });
-            }, 50);
+    function updateHud(step) {
+        const total = state.totalSteps;
+        const pct = Math.round((step / total) * 100);
+        document.getElementById('hudCompletion').textContent = pct + '%';
+        for (let i = 0; i <= total; i++) {
+            const el = document.getElementById('hud-' + i);
+            if (!el) continue;
+            el.classList.remove('active', 'done');
+            if (i < step) el.classList.add('done');
+            if (i === step) el.classList.add('active');
         }
+    }
 
-        // Simulating AI streaming text
-        function createSystemMessage(content, delay = 800) {
-            return new Promise(resolve => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'message-wrapper sys-msg';
-                wrapper.innerHTML = `
-                    <div class="avatar sys-avatar"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <div class="message-bubble">
-                        <div class="typing-indicator"><span></span><span></span><span></span></div>
-                    </div>
-                `;
-                chatContainer.appendChild(wrapper);
-                scrollToBottom();
-                
-                setTimeout(() => {
-                    wrapper.querySelector('.message-bubble').innerHTML = content;
-                    scrollToBottom();
-                    resolve();
-                }, delay);
-            });
-        }
+    function updateProfile(field, val) {
+        document.getElementById('pv-' + field).textContent = val;
+    }
 
-        function createUserMessage(content) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'message-wrapper user-msg';
-            wrapper.innerHTML = `
-                <div class="message-bubble"><p>${content}</p></div>
-                <div class="avatar user-avatar"><i class="fa-solid fa-user"></i></div>
+    function rotateInsight(idx) {
+        const ins = INSIGHTS[idx % INSIGHTS.length];
+        const card = document.getElementById('insightCard');
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(5px)';
+        setTimeout(() => {
+            card.innerHTML = `
+                <div class="insight-icon"><i class="${ins.icon}"></i></div>
+                <p class="insight-text">${ins.text}</p>
+                <p class="insight-source">${ins.source}</p>
             `;
-            chatContainer.appendChild(wrapper);
-            scrollToBottom();
-        }
+            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 300);
+    }
 
-        function generateOptions(optionsData, multiSelect = false, callback) {
-            const grid = document.createElement('div');
-            grid.className = 'options-grid';
-            
-            let selected = [];
-            
-            optionsData.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                // Opt could be object with label and icon
-                if (typeof opt === 'string') {
-                    btn.innerHTML = `<span>${opt}</span>`;
-                } else {
-                    btn.innerHTML = `<i class="${opt.icon}"></i> <span>${opt.label}</span>`;
-                }
-                
-                const value = typeof opt === 'string' ? opt : opt.label;
-                
-                btn.onclick = () => {
-                    if (multiSelect) {
-                        btn.classList.toggle('selected');
-                        if (selected.includes(value)) {
-                            selected = selected.filter(s => s !== value);
-                        } else {
-                            selected.push(value);
-                        }
-                        callback(selected);
-                    } else {
-                        Array.from(grid.children).forEach(c => c.classList.remove('selected'));
-                        btn.classList.add('selected');
-                        callback([value]);
-                    }
-                };
-                grid.appendChild(btn);
-            });
-            return grid;
-        }
-
-        async function initChat() {
-            await createSystemMessage(`
-                <h3>Botanical Assessment</h3>
-                <p>Hello. I'm Bloomi, your Advanced Botanical AI by Bloom Cure.</p>
-                <p>I will cross-reference your specific skin profile against our artisan ingredient matrix to prescribe exactly what your skin needs.</p>
-                <p>Shall we begin the diagnostics?</p>
-            `, 1200);
-            
-            confirmBtn.textContent = "Start Assessment";
-            confirmBtn.classList.add('visible');
-            
-            confirmBtn.onclick = () => {
-                confirmBtn.classList.remove('visible');
-                createUserMessage("Yes, let's start.");
-                state.step = 1;
-                proceedChat();
-            };
-        }
-
-        async function proceedChat() {
-            if (state.step === 1) {
-                const types = [
-                    {label: "Oily", icon: "fa-solid fa-droplet"},
-                    {label: "Dry", icon: "fa-solid fa-sun-plant-wilt"},
-                    {label: "Combination", icon: "fa-solid fa-circle-half-stroke"},
-                    {label: "Normal", icon: "fa-regular fa-face-smile"},
-                    {label: "Mature", icon: "fa-solid fa-spa"}
-                ];
-                
-                await createSystemMessage(`<p><strong>Question 1 of 4:</strong> What is your baseline skin type?</p>`);
-                
-                const optionBox = document.createElement('div');
-                optionBox.className = 'message-wrapper sys-msg';
-                optionBox.innerHTML = `
-                    <div class="avatar sys-avatar" style="visibility:hidden;"></div>
-                    <div class="message-bubble" style="background:transparent; border:none; padding:0; padding-bottom: 1rem; box-shadow:none;">
-                        <div id="opts-1"></div>
-                    </div>
-                `;
-                chatContainer.appendChild(optionBox);
-                
-                document.getElementById('opts-1').appendChild(generateOptions(types, false, (sel) => {
-                    if(sel.length) {
-                        state.userData.skinType = sel[0];
-                        confirmBtn.textContent = "Next";
-                        confirmBtn.classList.add('visible');
-                    }
-                }));
-                scrollToBottom();
-                
-                confirmBtn.onclick = () => {
-                    confirmBtn.classList.remove('visible');
-                    optionBox.style.display = 'none';
-                    createUserMessage(`My skin is mainly **${state.userData.skinType}**.`);
-                    state.step = 2;
-                    proceedChat();
-                };
-                
-            } else if (state.step === 2) {
-                const sensitivities = [
-                    {label: "Highly Sensitive", icon: "fa-solid fa-feather"},
-                    {label: "Moderate", icon: "fa-solid fa-leaf"},
-                    {label: "Resilient", icon: "fa-solid fa-shield-halved"}
-                ];
-                
-                await createSystemMessage(`<p><strong>Question 2 of 4:</strong> How sensitive is your skin to new ingredients, physical exfoliants, or fragrances?</p>`);
-                
-                const optionBox = document.createElement('div');
-                optionBox.className = 'message-wrapper sys-msg';
-                optionBox.innerHTML = `
-                    <div class="avatar sys-avatar" style="visibility:hidden;"></div>
-                    <div class="message-bubble" style="background:transparent; border:none; padding:0; padding-bottom: 1rem; box-shadow:none;">
-                        <div id="opts-2"></div>
-                    </div>
-                `;
-                chatContainer.appendChild(optionBox);
-                
-                document.getElementById('opts-2').appendChild(generateOptions(sensitivities, false, (sel) => {
-                    if(sel.length) {
-                        state.userData.sensitivity = sel[0];
-                        confirmBtn.classList.add('visible');
-                    }
-                }));
-                scrollToBottom();
-                
-                confirmBtn.onclick = () => {
-                    confirmBtn.classList.remove('visible');
-                    optionBox.style.display = 'none';
-                    createUserMessage(`I would say it is **${state.userData.sensitivity}**.`);
-                    state.step = 3;
-                    proceedChat();
-                };
-                
-            } else if (state.step === 3) {
-                const env = [
-                    {label: "Hot & Humid", icon: "fa-solid fa-temperature-arrow-up"},
-                    {label: "Cold & Dry", icon: "fa-regular fa-snowflake"},
-                    {label: "Air Conditioned/Indoors", icon: "fa-solid fa-wind"},
-                    {label: "Polluted/Urban", icon: "fa-solid fa-city"}
-                ];
-                
-                await createSystemMessage(`<p><strong>Question 3 of 4:</strong> What is your primary daily environment? (This heavily affects hydration drift and pore clogging)</p>`);
-                
-                const optionBox = document.createElement('div');
-                optionBox.className = 'message-wrapper sys-msg';
-                optionBox.innerHTML = `
-                    <div class="avatar sys-avatar" style="visibility:hidden;"></div>
-                    <div class="message-bubble" style="background:transparent; border:none; padding:0; padding-bottom: 1rem; box-shadow:none;">
-                        <div id="opts-3"></div>
-                    </div>
-                `;
-                chatContainer.appendChild(optionBox);
-                
-                document.getElementById('opts-3').appendChild(generateOptions(env, false, (sel) => {
-                    if(sel.length) {
-                        state.userData.environment = sel[0];
-                        confirmBtn.classList.add('visible');
-                    }
-                }));
-                scrollToBottom();
-                
-                confirmBtn.onclick = () => {
-                    confirmBtn.classList.remove('visible');
-                    optionBox.style.display = 'none';
-                    createUserMessage(`I mostly live in a **${state.userData.environment}** environment.`);
-                    state.step = 4;
-                    proceedChat();
-                };
-
-            } else if (state.step === 4) {
-                const concerns = ["Acne", "Large Pores", "Dryness", "Redness", "Pigmentation", "Aging", "Dullness", "Texture"];
-                
-                await createSystemMessage(`<p><strong>Question 4 of 4:</strong> Finally, what are the primary targets you want to improve? (Select all that apply)</p>`);
-                
-                const optionBox = document.createElement('div');
-                optionBox.className = 'message-wrapper sys-msg';
-                optionBox.innerHTML = `
-                    <div class="avatar sys-avatar" style="visibility:hidden;"></div>
-                    <div class="message-bubble" style="background:transparent; border:none; padding:0; padding-bottom: 1rem; box-shadow:none;">
-                        <div id="opts-4"></div>
-                    </div>
-                `;
-                chatContainer.appendChild(optionBox);
-                
-                document.getElementById('opts-4').appendChild(generateOptions(concerns, true, (sel) => {
-                    state.userData.concerns = sel;
-                    if(sel.length) {
-                        confirmBtn.textContent = "Analyze Profile";
-                        confirmBtn.classList.add('visible');
-                    } else {
-                        confirmBtn.classList.remove('visible');
-                    }
-                }));
-                scrollToBottom();
-                
-                confirmBtn.onclick = async () => {
-                    confirmBtn.classList.remove('visible');
-                    optionBox.style.display = 'none';
-                    createUserMessage(`I want to target: **${state.userData.concerns.join(', ')}**.`);
-                    state.step = 5;
-                    proceedChat();
-                };
-            } else if (state.step === 5) {
-                
-                // Advanced loading simulation
-                await createSystemMessage(`
-                    <p style="color:var(--clr-gold);"><i class="fa-solid fa-microchip"></i> Initializing botanical cross-reference model...</p>
-                    <div class="analysis-progress"><div class="analysis-bar" id="aBar"></div></div>
-                    <p id="aText" style="font-size:0.85rem; color:rgba(255,255,255,0.6);">Compiling ingredients list...</p>
-                `, 100);
-
-                setTimeout(() => { document.getElementById('aBar').style.width = "45%"; document.getElementById('aText').innerText = "Analyzing sensitivity constraints..."; }, 800);
-                setTimeout(() => { document.getElementById('aBar').style.width = "80%"; document.getElementById('aText').innerText = "Matching environmental factors..."; }, 1800);
-                setTimeout(() => { document.getElementById('aBar').style.width = "100%"; document.getElementById('aText').innerText = "Match found."; }, 2600);
-
-                setTimeout(() => {
-                    compileRecommendations();
-                }, 3200);
-            }
-        }
-
-        function compileRecommendations() {
-            const u = state.userData;
-            
-            // 1. Advanced Multi-Factor Synergy Algorithm
-            let matchScores = PRODUCTS.map(p => {
-                let s = 0;
-                let synergyBonus = 0;
-                let penalty = 0;
-                let synergiesMatched = [];
-
-                // Base Type Score
-                if (p.types.includes(u.skinType)) {
-                    s += 45;
-                } else if (u.skinType === "Combination" && (p.types.includes("Oily") || p.types.includes("Normal"))) {
-                    s += 25; // Good partial match
-                }
-                
-                // Sensitivity Profiling (Crucial Clinical Gateway)
-                if (u.sensitivity === "Highly Sensitive") {
-                    if (p.sensitivities.includes("Highly Sensitive")) {
-                        s += 30; 
-                    } else {
-                        penalty += 500; // Immediate disqualification
-                    }
-                } else if (u.sensitivity === "Moderate") {
-                    if (p.sensitivities.includes("Moderate")) s += 25;
-                    else if (p.sensitivities.includes("Highly Sensitive")) s += 15; // Gentle enough
-                } else {
-                    if (p.sensitivities.includes("Resilient")) s += 25;
-                    else s += 10;
-                }
-
-                // Concern Targeting & Synergy
-                u.concerns.forEach(c => {
-                    if (p.concerns.includes(c)) s += 20;
-                });
-
-                // Environment x Concern Synergies (The "Advanced" Logic)
-                const nameLow = p.name.toLowerCase();
-                
-                if (u.environment === "Hot & Humid" && u.concerns.includes("Acne")) {
-                    if (nameLow.includes("multani") || nameLow.includes("neem") || nameLow.includes("charcoal")) {
-                        synergyBonus += 25;
-                        synergiesMatched.push("Active sebum control for humid climates");
-                    }
-                }
-                if (u.environment === "Cold & Dry" && (u.concerns.includes("Dryness") || u.concerns.includes("Flakiness"))) {
-                    if (nameLow.includes("coconut") || nameLow.includes("goat")) {
-                        synergyBonus += 25;
-                        synergiesMatched.push("Deep barrier repair for harsh cold weather");
-                    }
-                }
-                if (u.environment === "Polluted/Urban" && u.concerns.includes("Dullness")) {
-                    if (nameLow.includes("charcoal") || nameLow.includes("coffee")) {
-                        synergyBonus += 20;
-                        synergiesMatched.push("Intense free-radical & pollution extraction");
-                    }
-                }
-                
-                // Stress & Sensitivity Synergy
-                if (u.sensitivity === "Highly Sensitive" && u.concerns.includes("Redness")) {
-                    if (nameLow.includes("sandalwood") || nameLow.includes("goat")) {
-                        synergyBonus += 30;
-                        synergiesMatched.push("Clinical anti-inflammatory soothing action");
-                    }
-                }
-
-                // Calculate final
-                const totalScore = Math.max(0, s + synergyBonus - penalty);
-                
-                return { ...p, score: totalScore, synergies: synergiesMatched };
-            });
-
-            // Defensive Sorting: Score -> Amount of Synergies -> Highest Sensitivity Rating
-            matchScores.sort((a,b) => {
-                if (b.score !== a.score) return b.score - a.score;
-                if (b.synergies.length !== a.synergies.length) return b.synergies.length - a.synergies.length;
-                if (a.sensitivities.includes("Highly Sensitive")) return -1;
-                return 1;
-            });
-            
-            const best = matchScores[0];
-            const alt = matchScores[1];
-
-            // 2. Format Key Ingredients
-            const keyIngredientsObj = [];
-            for (const [k, v] of Object.entries(best.benefits)) {
-                keyIngredientsObj.push({ "ingredient": k, "benefit": v });
-            }
-
-            // 3. Dynamic Psychological Protocol Drafting
-            let synergyText = best.synergies.length ? ` Highly recommended because it offers: <em style="color:var(--clr-gold);">${best.synergies.join(' and ')}</em>.` : '';
-            let primaryReason = `Our algorithm matched <strong>${best.name}</strong> to your ${u.skinType.toLowerCase()} profile. Because you're in a ${u.environment.toLowerCase()} environment, your skin barrier requires specific adaptations. This formula directly addresses ${u.concerns.length ? u.concerns.join(" and ") : 'daily skin maintenance'} while safely respecting your ${u.sensitivity.toLowerCase()} tolerance.${synergyText}`;
-            
-            let altReason = `Secondary Option: <strong>${alt.name}</strong>. Ideal if you want to pivot focus specifically towards ${alt.concerns[0] || 'general balance'}.`;
-
-            // Calculate percentage based on theoretical perfect score (~130)
-            const matchPercent = Math.min(99, Math.max(75, Math.round((best.score / 130) * 100)));
-
-            // 5. Render Expert Output
-            let bensHTML = '';
-            keyIngredientsObj.forEach(i => {
-                bensHTML += `<div class="ben-item"><strong>${i.ingredient}</strong><span>${i.benefit}</span></div>`;
-            });
-
-            const html = `
-                <div class="product-result-card" style="margin-top:0;">
-                    <div class="prc-header">
-                        <div>
-                            <div class="prc-subtitle">ALGORITHMIC ASSESSMENT COMPLETE</div>
-                            <h3 class="prc-title" style="font-size:1.6rem; color:#f9f7f2;">Your Personalized Ritual</h3>
-                        </div>
-                        <div class="prc-match">
-                            <i class="fa-solid fa-ranking-star"></i> ${matchPercent}% Match
-                        </div>
-                    </div>
-                    
-                    <h4 style="margin: 2rem 0 0.5rem; font-family:var(--ff-heading); color:#c5a028; font-size:1.8rem; letter-spacing: 0.5px;">${best.name}</h4>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height:1.7;">${primaryReason}</p>
-                    
-                    <div class="ben-grid">
-                        ${bensHTML}
-                    </div>
-                    
-                    <div style="margin-top:1.5rem; padding: 1rem; background: rgba(197, 160, 40, 0.1); border-left: 3px solid #c5a028; border-radius: 4px;">
-                        <strong style="color:#c5a028; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:5px;">Protocol Tip:</strong>
-                        <span style="font-size:0.95rem;">${best.tip}</span>
-                    </div>
-
-                    <div style="margin-top:2rem; padding-top:1.5rem; border-top: 1px dashed rgba(255,255,255,0.1);">
-                        <strong style="color:rgba(255,255,255,0.5); font-size:0.85rem; text-transform:uppercase;">Alternative Protocol:</strong>
-                        <p style="margin: 0.5rem 0 0; color:rgba(255,255,255,0.8); font-size:0.9rem;">${altReason}</p>
-                    </div>
-                    
-                    <div class="prc-actions" style="margin-top:2rem;">
-                        <button class="add-to-ritual-btn" onclick="addToRitual('${best.name}', '${best.price}', '${best.img}')">
-                            <i class="fa-solid fa-cart-plus"></i> Add Primary to Ritual — ₹${best.price}
-                        </button>
+    // ═══════════════════════════════════════════════════════
+    //  MESSAGE CREATION
+    // ═══════════════════════════════════════════════════════
+    function mkAiMsg(htmlContent, delay = 700) {
+        return new Promise(resolve => {
+            const wrap = document.createElement('div');
+            wrap.className = 'msg-wrap ai-msg';
+            wrap.innerHTML = `
+                <div class="msg-avatar"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="bubble">
+                    <div class="typing-bubble">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
                     </div>
                 </div>
             `;
-
-            // Replace loader box
-            const sysMsgs = document.querySelectorAll('.sys-msg .message-bubble');
-            const lastBox = sysMsgs[sysMsgs.length - 1];
-            lastBox.innerHTML = html;
-            scrollToBottom();
-
-            // Restart option
+            chatScroll.appendChild(wrap);
+            scrollBottom();
             setTimeout(() => {
-                confirmBtn.textContent = "Initiate New Assessment";
-                confirmBtn.classList.add('visible');
-                confirmBtn.onclick = () => location.reload();
-            }, 1000);
+                wrap.querySelector('.bubble').innerHTML = htmlContent;
+                scrollBottom();
+                resolve(wrap.querySelector('.bubble'));
+            }, delay);
+        });
+    }
+
+    async function typewriterAiMsg(html, delay = 600) {
+        const bubble = await mkAiMsg('', delay);
+        bubble.innerHTML = html;
+        scrollBottom();
+        return bubble;
+    }
+
+    function mkUserMsg(text) {
+        const wrap = document.createElement('div');
+        wrap.className = 'msg-wrap user-msg';
+        wrap.innerHTML = `
+            <div class="bubble"><p>${text}</p></div>
+            <div class="msg-avatar"><i class="fa-solid fa-user"></i></div>
+        `;
+        chatScroll.appendChild(wrap);
+        scrollBottom();
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  OPTIONS RENDERER
+    // ═══════════════════════════════════════════════════════
+    function renderOptions(options, multiSelect, callback) {
+        const wrap = document.createElement('div');
+        wrap.className = 'msg-wrap ai-msg';
+        wrap.style.paddingLeft = '44px';
+        const inner = document.createElement('div');
+        inner.className = 'options-wrap';
+        let selected = [];
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            const label = typeof opt === 'string' ? opt : opt.label;
+            const icon  = typeof opt === 'object' ? opt.icon : null;
+            btn.innerHTML = icon ? `<i class="${icon}"></i><span>${label}</span>` : `<span>${label}</span>`;
+            btn.onclick = () => {
+                if (multiSelect) {
+                    btn.classList.toggle('selected');
+                    selected = selected.includes(label)
+                        ? selected.filter(s => s !== label)
+                        : [...selected, label];
+                } else {
+                    inner.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selected = [label];
+                }
+                callback(selected);
+            };
+            inner.appendChild(btn);
+        });
+        wrap.appendChild(inner);
+        chatScroll.appendChild(wrap);
+        scrollBottom();
+        return wrap;
+    }
+
+    function showConfirm(label) {
+        confirmLbl.textContent = label;
+        confirmBtn.classList.add('visible');
+    }
+
+    function hideConfirm() {
+        confirmBtn.classList.remove('visible');
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  ASSESSMENT FLOW
+    // ═══════════════════════════════════════════════════════
+    async function initChat() {
+        updateHud(0);
+        rotateInsight(0);
+        document.getElementById('chatInputBar').querySelector('.chat-input').disabled = true;
+
+        await mkAiMsg(`
+            <h3>Botanical Assessment</h3>
+            <p>Hello. I'm <strong>Bloomi</strong>, Bloom Cure's Advanced Botanical Intelligence Engine.</p>
+            <p>I'll cross-reference your unique skin profile against our artisan ingredient matrix — and prescribe a <em>personalised 3-step ritual</em> designed precisely for your biology and environment.</p>
+            <p style="color:var(--text-muted); font-size:0.84rem;">You can also switch to <strong>Free Chat</strong> mode at the top to ask me anything about skincare.</p>
+        `, 1000);
+
+        showConfirm('Begin Assessment');
+        confirmBtn.onclick = () => {
+            hideConfirm();
+            mkUserMsg("Let's begin the assessment.");
+            state.step = 1;
+            updateHud(1);
+            proceedFlow();
+        };
+    }
+
+    async function proceedFlow() {
+        if (state.step === 1) {
+            rotateInsight(1);
+            const types = [
+                {label:"Oily",       icon:"fa-solid fa-droplet"},
+                {label:"Dry",        icon:"fa-solid fa-sun-plant-wilt"},
+                {label:"Combination",icon:"fa-solid fa-circle-half-stroke"},
+                {label:"Normal",     icon:"fa-regular fa-face-smile"},
+                {label:"Sensitive",  icon:"fa-solid fa-feather"},
+                {label:"Mature",     icon:"fa-solid fa-spa"}
+            ];
+            await mkAiMsg(`<p><span style="font-family:var(--ff-m); font-size:0.65rem; color:var(--gold-muted); letter-spacing:2px;">DIAGNOSTIC 01/04</span></p><p>What is your baseline <strong>skin type</strong>? Select the option that best describes how your skin typically behaves mid-day, without products.</p>`, 800);
+            let optWrap = renderOptions(types, false, sel => {
+                if (sel.length) {
+                    state.userData.skinType = sel[0];
+                    updateProfile('type', sel[0]);
+                    showConfirm('Next →');
+                }
+            });
+            confirmBtn.onclick = () => {
+                if (!state.userData.skinType) return;
+                hideConfirm();
+                optWrap.style.display = 'none';
+                mkUserMsg(`My skin is primarily <strong>${state.userData.skinType}</strong>.`);
+                state.step = 2;
+                updateHud(2);
+                proceedFlow();
+            };
+
+        } else if (state.step === 2) {
+            rotateInsight(2);
+            const sens = [
+                {label:"Highly Sensitive", icon:"fa-solid fa-feather"},
+                {label:"Moderate",         icon:"fa-solid fa-leaf"},
+                {label:"Resilient",        icon:"fa-solid fa-shield-halved"}
+            ];
+            await mkAiMsg(`<p><span style="font-family:var(--ff-m); font-size:0.65rem; color:var(--gold-muted); letter-spacing:2px;">DIAGNOSTIC 02/04</span></p><p>How sensitive is your skin to <strong>new ingredients, fragrances, or physical exfoliants</strong>? This is my most critical safety filter.</p>`, 800);
+            let optWrap = renderOptions(sens, false, sel => {
+                if (sel.length) {
+                    state.userData.sensitivity = sel[0];
+                    updateProfile('sens', sel[0]);
+                    showConfirm('Next →');
+                }
+            });
+            confirmBtn.onclick = () => {
+                if (!state.userData.sensitivity) return;
+                hideConfirm();
+                optWrap.style.display = 'none';
+                mkUserMsg(`My sensitivity level is <strong>${state.userData.sensitivity}</strong>.`);
+                state.step = 3;
+                updateHud(3);
+                proceedFlow();
+            };
+
+        } else if (state.step === 3) {
+            rotateInsight(3);
+            const envs = [
+                {label:"Hot & Humid",           icon:"fa-solid fa-temperature-arrow-up"},
+                {label:"Cold & Dry",             icon:"fa-regular fa-snowflake"},
+                {label:"Air Conditioned/Indoors",icon:"fa-solid fa-wind"},
+                {label:"Polluted/Urban",          icon:"fa-solid fa-city"}
+            ];
+            await mkAiMsg(`<p><span style="font-family:var(--ff-m); font-size:0.65rem; color:var(--gold-muted); letter-spacing:2px;">DIAGNOSTIC 03/04</span></p><p>What is your <strong>primary daily environment</strong>? This directly affects transepidermal water loss, sebum production, and free-radical exposure.</p>`, 800);
+            let optWrap = renderOptions(envs, false, sel => {
+                if (sel.length) {
+                    state.userData.environment = sel[0];
+                    updateProfile('env', sel[0]);
+                    showConfirm('Next →');
+                }
+            });
+            confirmBtn.onclick = () => {
+                if (!state.userData.environment) return;
+                hideConfirm();
+                optWrap.style.display = 'none';
+                mkUserMsg(`I primarily live in a <strong>${state.userData.environment}</strong> environment.`);
+                state.step = 4;
+                updateHud(4);
+                proceedFlow();
+            };
+
+        } else if (state.step === 4) {
+            rotateInsight(4);
+            const concerns = [
+                "Acne","Large Pores","Dryness","Redness","Pigmentation",
+                "Aging","Fine Lines","Dullness","Texture","Stress","Oiliness","Sensitivity"
+            ];
+            await mkAiMsg(`<p><span style="font-family:var(--ff-m); font-size:0.65rem; color:var(--gold-muted); letter-spacing:2px;">DIAGNOSTIC 04/04</span></p><p>Finally, select your <strong>primary skin concerns</strong>. Choose all that apply — my algorithm rewards precision targeting.</p>`, 800);
+            let optWrap = renderOptions(concerns, true, sel => {
+                state.userData.concerns = sel;
+                updateProfile('concerns', sel.length ? sel.join(', ') : '—');
+                if (sel.length) showConfirm('Analyse Profile');
+                else hideConfirm();
+            });
+            confirmBtn.onclick = async () => {
+                if (!state.userData.concerns.length) return;
+                hideConfirm();
+                optWrap.style.display = 'none';
+                mkUserMsg(`My primary targets: <strong>${state.userData.concerns.join(', ')}</strong>.`);
+                state.step = 5;
+                updateHud(5);
+                proceedFlow();
+            };
+
+        } else if (state.step === 5) {
+            await runAnalysis();
+        }
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  ANALYSIS ENGINE
+    // ═══════════════════════════════════════════════════════
+    async function runAnalysis() {
+        const analysisMsgBubble = await mkAiMsg(`
+            <p style="color:var(--gold-muted); font-family:var(--ff-m); font-size:0.7rem; letter-spacing:1px;">
+                <i class="fa-solid fa-microchip"></i> &nbsp;BOTANICAL CROSS-REFERENCE ENGINE — INITIALISING
+            </p>
+            <div class="analysis-wrap">
+                <div class="analysis-track"><div class="analysis-fill" id="aFill"></div></div>
+                <div class="analysis-label" id="aLabel">Compiling ingredient safety matrix...</div>
+                <div class="analysis-phase"><i class="fa-solid fa-gear"></i><span id="aPhase">Phase 1: Sensitivity screening</span></div>
+            </div>
+        `, 200);
+
+        const phases = [
+            [15,  "Compiling ingredient safety matrix...",      "Phase 1: Sensitivity screening"],
+            [30,  "Mapping skin type biome...",                 "Phase 2: Skin microbiome cross-reference"],
+            [50,  "Analysing environmental stress factors...",  "Phase 3: Environmental impact analysis"],
+            [68,  "Running concern-targeting synergy model...", "Phase 4: Multi-factor synergy scoring"],
+            [82,  "Calculating botanical potency match...",     "Phase 5: Ingredient efficacy ranking"],
+            [95,  "Generating ritual prescription...",          "Phase 6: Personalised protocol assembly"],
+            [100, "Match found. Ritual ready.",                 "Analysis complete ✦"]
+        ];
+
+        const fill  = document.getElementById('aFill');
+        const label = document.getElementById('aLabel');
+        const phase = document.getElementById('aPhase');
+
+        for (let i = 0; i < phases.length; i++) {
+            await new Promise(r => setTimeout(r, 480 + i * 120));
+            fill.style.width  = phases[i][0] + '%';
+            label.textContent = phases[i][1];
+            phase.innerHTML   = `<i class="fa-solid fa-gear"></i><span>${phases[i][2]}</span>`;
+            scrollBottom();
         }
 
-        function addToRitual(name, price, img) {
-            let cart = [];
-            try {
-                const stored = localStorage.getItem('bloom_cure_cart');
-                if (stored) cart = JSON.parse(stored);
-            } catch (e) {}
-            if (!Array.isArray(cart)) cart = [];
+        await new Promise(r => setTimeout(r, 600));
+        buildRitual(analysisMsgBubble);
+    }
 
-            const exactItem = cart.findIndex(i => i.name === name);
-            if (exactItem > -1) {
-                cart[exactItem].quantity = (cart[exactItem].quantity || 1) + 1;
+    // ═══════════════════════════════════════════════════════
+    //  SCORING ALGORITHM
+    // ═══════════════════════════════════════════════════════
+    function scoreProducts() {
+        const u = state.userData;
+        return PRODUCTS.map(p => {
+            let score = 0, synergies = [], penalty = 0;
+
+            if (p.types.includes(u.skinType)) score += 40;
+            else if (u.skinType === 'Combination' && (p.types.includes('Oily') || p.types.includes('Normal'))) score += 22;
+            else if (u.skinType === 'Sensitive' && p.types.includes('Normal')) score += 15;
+
+            if (u.sensitivity === 'Highly Sensitive') {
+                if (p.sensitivities.includes('Highly Sensitive')) score += 35;
+                else penalty += 800;
+            } else if (u.sensitivity === 'Moderate') {
+                if (p.sensitivities.includes('Moderate')) score += 28;
+                else if (p.sensitivities.includes('Highly Sensitive')) score += 18;
             } else {
-                cart.push({ name, price, img, quantity: 1 });
+                if (p.sensitivities.includes('Resilient')) score += 25;
+                else score += 10;
             }
 
-            localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
-            
-            // Show toast
-            document.getElementById('toastMsg').textContent = name;
-            toast.classList.add('active');
-            setTimeout(() => {
-                toast.classList.remove('active');
-            }, 3000);
+            u.concerns.forEach(c => {
+                if (p.concerns.some(pc => pc.toLowerCase().includes(c.toLowerCase()) || c.toLowerCase().includes(pc.toLowerCase()))) score += 20;
+            });
+
+            const nl = p.name.toLowerCase();
+            if (u.environment === 'Hot & Humid' && (u.concerns.includes('Acne') || u.concerns.includes('Oiliness'))) {
+                if (nl.includes('multani') || nl.includes('neem') || nl.includes('charcoal')) {
+                    score += 28; synergies.push('Active sebum control for humid climate');
+                }
+            }
+            if (u.environment === 'Cold & Dry' && (u.concerns.includes('Dryness') || u.concerns.includes('Texture'))) {
+                if (nl.includes('coconut') || nl.includes('goat') || nl.includes('milk')) {
+                    score += 28; synergies.push('Deep barrier repair for harsh cold');
+                }
+            }
+            if (u.environment === 'Polluted/Urban' && (u.concerns.includes('Dullness') || u.concerns.includes('Acne'))) {
+                if (nl.includes('charcoal') || nl.includes('coffee')) {
+                    score += 25; synergies.push('Pollution extraction & free-radical defence');
+                }
+            }
+            if (u.environment === 'Air Conditioned/Indoors' && u.concerns.includes('Dryness')) {
+                if (nl.includes('coconut') || nl.includes('goat') || nl.includes('sandalwood')) {
+                    score += 20; synergies.push('Combats air-conditioned transepidermal water loss');
+                }
+            }
+            if (u.sensitivity === 'Highly Sensitive' && (u.concerns.includes('Redness') || u.concerns.includes('Sensitivity'))) {
+                if (nl.includes('sandalwood') || nl.includes('goat') || nl.includes('soap nut') || nl.includes('coconut')) {
+                    score += 30; synergies.push('Clinical anti-inflammatory sensitivity action');
+                }
+            }
+            if (u.concerns.includes('Stress')) {
+                if (nl.includes('bath') || nl.includes('sandalwood')) {
+                    score += 18; synergies.push('Cortisol-reducing aromatherapy synergy');
+                }
+            }
+
+            return { ...p, score: Math.max(0, score - penalty), synergies };
+        });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  RITUAL BUILDER
+    // ═══════════════════════════════════════════════════════
+    function buildRitual(targetBubble) {
+        const scored = scoreProducts().sort((a, b) => b.score - a.score);
+
+        const ritual = [];
+        const accessoryCat = ['ritual', 'accessory', 'hair-body', 'luxury'];
+        const usedIds = new Set();
+
+        ritual.push(scored[0]);
+        usedIds.add(scored[0].id);
+
+        const secondary = scored.find(p => !usedIds.has(p.id) && p.category !== scored[0].category && p.score > 0);
+        if (secondary) { ritual.push(secondary); usedIds.add(secondary.id); }
+        else {
+            const fallback = scored.find(p => !usedIds.has(p.id) && p.score > 0);
+            if (fallback) { ritual.push(fallback); usedIds.add(fallback.id); }
         }
 
-        // Advanced WebGL style particle logic
-        (function initAdvancedCanvas() {
-            const canvas = document.getElementById('botCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let w, h, particles = [];
+        const complementary = scored.find(p =>
+            !usedIds.has(p.id) &&
+            (accessoryCat.includes(p.category) || p.category !== ritual[0].category) &&
+            p.score > 0
+        );
+        if (complementary) ritual.push(complementary);
+        else {
+            const finalFallback = scored.find(p => !usedIds.has(p.id));
+            if (finalFallback) ritual.push(finalFallback);
+        }
 
-            function resize() {
-                w = canvas.width = window.innerWidth;
-                h = canvas.height = window.innerHeight;
+        const overallMatch = Math.min(99, Math.max(78, Math.round((ritual[0].score / 165) * 100)));
+        const stepLabels = ["Primary Cleanser", "Targeted Treatment", "Ritual Enhancer"];
+        const stepDescriptions = [
+            `Your <strong>${state.userData.skinType} + ${state.userData.environment}</strong> profile makes this the highest-precision match in our catalogue.`,
+            `A synergistic second layer that directly targets <strong>${state.userData.concerns.slice(0,2).join(' & ') || 'your primary concern'}</strong> for a compounded result.`,
+            `Chosen to complement your primary ritual steps and address your <strong>${state.userData.environment}</strong> environmental stressors.`
+        ];
+
+        const skinScores = buildSkinScores(ritual[0]);
+
+        let ritualHtml = `
+            <div class="ritual-header">
+                <div>
+                    <div style="font-family:var(--ff-m); font-size:0.6rem; color:var(--gold-muted); letter-spacing:2px; margin-bottom:0.4rem;">ANALYSIS COMPLETE</div>
+                    <h3 style="margin:0;">Your Personalised Ritual</h3>
+                </div>
+                <div class="match-pct"><i class="fa-solid fa-ranking-star"></i> ${overallMatch}% Match</div>
+            </div>
+
+            <div style="margin-bottom:2rem;">
+                <div style="font-family:var(--ff-m); font-size:0.6rem; letter-spacing:1.5px; color:var(--text-dim); margin-bottom:0.8rem; text-transform:uppercase;">Projected Skin Score — 4-Week Ritual</div>
+                ${buildRadarHtml(skinScores)}
+            </div>
+
+            <div class="ritual-steps" id="ritualStepsContainer">
+        `;
+
+        ritual.forEach((p, i) => {
+            const bensHtml = Object.entries(p.benefits).slice(0,2).map(([k,v]) =>
+                `<div class="benefit-item"><strong>${k}</strong><span>${v}</span></div>`
+            ).join('');
+            const synergyHtml = p.synergies.length
+                ? `<span class="ritual-card-synergy"><i class="fa-solid fa-bolt"></i>${p.synergies[0]}</span><br>`
+                : '';
+            ritualHtml += `
+                <div class="ritual-card" id="rcard-${i}">
+                    <div class="ritual-step-num">0${i+1}</div>
+                    <div class="ritual-card-body">
+                        <div class="ritual-card-step-label">${stepLabels[i]}</div>
+                        <div class="ritual-card-name">${p.name}</div>
+                        <div class="ritual-card-reason">${stepDescriptions[i]}</div>
+                        ${synergyHtml}
+                        <div class="benefit-grid">${bensHtml}</div>
+                        <div class="tip-card">
+                            <span class="tip-label"><i class="fa-solid fa-lightbulb"></i> Expert Protocol</span>
+                            <span class="tip-text">${p.tip}</span>
+                        </div>
+                        <div class="ritual-card-footer" style="margin-top:1.2rem;">
+                            <span class="ritual-card-price">₹${p.price}</span>
+                            <button class="ritual-add-btn" id="addbtn-${i}" onclick="addToRitual(${i}, '${p.name}', ${p.price}, '${p.img}')">
+                                <i class="fa-solid fa-cart-plus"></i> Add to Ritual
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        ritualHtml += `</div>`;
+
+        window._currentRitual = ritual;
+        window._currentRitualData = ritual.map((p, i) => ({ step: stepLabels[i], name: p.name, price: p.price }));
+
+        targetBubble.innerHTML = ritualHtml;
+        scrollBottom();
+
+        setTimeout(() => {
+            document.querySelectorAll('.radar-stat__bar').forEach(bar => {
+                bar.style.transform = 'scaleX(1)';
+            });
+        }, 300);
+
+        setTimeout(() => {
+            showConfirm('New Assessment');
+            confirmBtn.onclick = () => restartAssessment();
+        }, 800);
+
+        document.getElementById('chatInputBar').querySelector('.chat-input').disabled = false;
+    }
+
+    function buildSkinScores(primaryProduct) {
+        const u = state.userData;
+        const scores = { Hydration: 50, Clarity: 50, Sensitivity: 50, Radiance: 50, Balance: 50 };
+        if (u.skinType === 'Dry')     { scores.Hydration = 30; scores.Balance = 35; }
+        if (u.skinType === 'Oily')    { scores.Clarity = 30; scores.Balance = 40; }
+        if (u.skinType === 'Combination') { scores.Balance = 35; }
+        if (u.skinType === 'Sensitive')   { scores.Sensitivity = 28; }
+        if (u.skinType === 'Mature')  { scores.Radiance = 34; scores.Hydration = 38; }
+        if (u.sensitivity === 'Highly Sensitive') scores.Sensitivity = Math.min(scores.Sensitivity, 30);
+        if (u.concerns.includes('Acne'))        { scores.Clarity -= 15; }
+        if (u.concerns.includes('Dryness'))     { scores.Hydration -= 12; }
+        if (u.concerns.includes('Pigmentation') || u.concerns.includes('Dullness')) { scores.Radiance -= 14; }
+        if (u.concerns.includes('Oiliness'))    { scores.Balance -= 12; }
+        const projected = {
+            Hydration:   Math.min(95, scores.Hydration + 38),
+            Clarity:     Math.min(95, scores.Clarity + 40),
+            Sensitivity: Math.min(95, scores.Sensitivity + 42),
+            Radiance:    Math.min(95, scores.Radiance + 35),
+            Balance:     Math.min(95, scores.Balance + 38)
+        };
+        return { current: scores, projected };
+    }
+
+    function buildRadarHtml(data) {
+        const stats = ['Hydration', 'Clarity', 'Sensitivity', 'Radiance', 'Balance'];
+        let html = '<div class="radar-legend">';
+        stats.forEach(s => {
+            const proj = data.projected[s];
+            html += `
+                <div class="radar-stat">
+                    <span class="radar-stat__label">${s}</span>
+                    <div class="radar-stat__bar-wrap">
+                        <div class="radar-stat__bar" style="transform:scaleX(${proj/100})"></div>
+                    </div>
+                    <span class="radar-stat__val">${proj}</span>
+                </div>
+            `;
+        });
+        html += `</div>
+            <p style="font-size:0.64rem; color:var(--text-dim); margin-top:0.75rem; font-family:var(--ff-m); letter-spacing:0.5px;">
+                ↑ Projected post-ritual scores after 4 weeks of consistent use
+            </p>
+        `;
+        return html;
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  CART MANAGEMENT
+    // ═══════════════════════════════════════════════════════
+    function addToRitual(cardIdx, name, price, img) {
+        const btn = document.getElementById(`addbtn-${cardIdx}`);
+        if (btn.classList.contains('added')) return;
+        btn.classList.add('added');
+        btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Added to Ritual';
+
+        let cart = [];
+        try { cart = JSON.parse(localStorage.getItem('bloom_cure_cart') || '[]'); } catch(e) {}
+        const idx = cart.findIndex(i => i.name === name);
+        if (idx > -1) cart[idx].quantity = (cart[idx].quantity || 1) + 1;
+        else cart.push({ name, price, img, quantity: 1 });
+        localStorage.setItem('bloom_cure_cart', JSON.stringify(cart));
+
+        state.ritualCart.push({ name, price });
+        updateRitualTracker();
+        showToast(name);
+    }
+
+    function updateRitualTracker() {
+        const empty    = document.getElementById('ritualEmpty');
+        const items    = document.getElementById('ritualItems');
+        const totalEl  = document.getElementById('ritualTotalVal');
+        const totalWrap= document.getElementById('ritualTotal');
+        const checkout = document.getElementById('checkoutBtn');
+
+        empty.style.display    = 'none';
+        items.style.display    = 'flex';
+        totalWrap.style.display= 'flex';
+        checkout.style.display = 'block';
+
+        items.innerHTML = '';
+        let total = 0;
+        state.ritualCart.forEach(item => {
+            total += item.price;
+            const el = document.createElement('div');
+            el.className = 'tracker-item';
+            el.innerHTML = `<i class="fa-solid fa-spa"></i><span class="tracker-item-name">${item.name}</span><span class="tracker-item-price">₹${item.price}</span>`;
+            items.appendChild(el);
+        });
+        totalEl.textContent = '₹' + total;
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  FREE CHAT MODE
+    // ═══════════════════════════════════════════════════════
+    async function handleFreeChat() {
+        const raw = chatInput.value.trim();
+        if (!raw) return;
+        chatInput.value = '';
+        mkUserMsg(raw);
+
+        const query = raw.toLowerCase();
+        let response = null;
+
+        for (const entry of FREE_CHAT_KB) {
+            if (entry.keywords.some(kw => query.includes(kw))) {
+                response = entry.response;
+                break;
             }
-            resize();
-            window.addEventListener('resize', resize);
+        }
 
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * w;
-                    this.y = Math.random() * h;
-                    this.vx = (Math.random() - 0.5) * 0.4;
-                    this.vy = (Math.random() - 0.5) * 0.4;
-                    this.r = Math.random() * 1.5;
-                }
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-                    if(this.x < 0 || this.x > w) this.vx *= -1;
-                    if(this.y < 0 || this.y > h) this.vy *= -1;
-                }
-                draw(ctx) {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
-                    ctx.fillStyle = 'rgba(197, 160, 40, 0.4)';
-                    ctx.fill();
-                }
+        if (!response) {
+            const matched = PRODUCTS.find(p => query.includes(p.name.toLowerCase().split(' ')[0]));
+            if (matched) {
+                const bens = Object.entries(matched.benefits).map(([k,v]) => `<li><strong>${k}</strong>: ${v}</li>`).join('');
+                response = `The <strong>${matched.name}</strong> (₹${matched.price}) is crafted for ${matched.types.join(', ')} skin types. <br><br>Key ingredients:<ul style="padding-left:1.2rem; margin-top:0.5rem;">${bens}</ul><br><em style="color:var(--text-muted); font-size:0.85rem;">💡 ${matched.tip}</em>`;
+            } else {
+                response = `That's a great question! I'd love to give you a precise answer. For the most personalised recommendation, try our <strong>Guided Assessment</strong> — I'll match your exact skin profile to the ideal botanical formula from our full range of ${PRODUCTS.length} products. You can also ask me about specific skin concerns like <em>acne, dryness, aging, pigmentation</em>, or ingredients.`;
             }
+        }
 
-            for(let i=0; i<40; i++) particles.push(new Particle());
+        await mkAiMsg(`<p>${response}</p>`, 900);
+    }
 
-            function animate() {
-                ctx.clearRect(0,0,w,h);
-                // Draw connecting lines
-                for(let i=0; i<particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw(ctx);
-                    for(let j=i; j<particles.length; j++) {
-                        let dx = particles[i].x - particles[j].x;
-                        let dy = particles[i].y - particles[j].y;
-                        let dist = dx*dx + dy*dy;
-                        if(dist < 15000) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(197, 160, 40, ${0.1 - dist/150000})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                requestAnimationFrame(animate);
-            }
-            animate();
-        })();
+    function switchMode(mode) {
+        state.mode = mode;
+        document.getElementById('modeGuided').classList.toggle('active', mode === 'guided');
+        document.getElementById('modeFree').classList.toggle('active', mode === 'free');
+    }
 
-        window.addEventListener('DOMContentLoaded', initChat);
+    chatInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleFreeChat(); }
+    });
+
+    // ═══════════════════════════════════════════════════════
+    //  RESTART & COPY
+    // ═══════════════════════════════════════════════════════
+    function restartAssessment() {
+        state.step = 0;
+        state.userData = { skinType: '', sensitivity: '', environment: '', concerns: [] };
+        state.ritualCart = [];
+        chatScroll.innerHTML = '';
+        hideConfirm();
+        updateHud(0);
+        ['type','sens','env','concerns'].forEach(f => updateProfile(f, '—'));
+        document.getElementById('ritualEmpty').style.display  = 'flex';
+        document.getElementById('ritualItems').style.display  = 'none';
+        document.getElementById('ritualTotal').style.display  = 'none';
+        document.getElementById('checkoutBtn').style.display  = 'none';
+        initChat();
+    }
+
+    function copyRitual() {
+        if (!window._currentRitualData) { showToast('Complete assessment first'); return; }
+        const txt = window._currentRitualData.map(r => `${r.step}: ${r.name} — ₹${r.price}`).join('\n');
+        const full = `My Bloom Cure Ritual\n${'─'.repeat(30)}\n${txt}\n\nGenerated by Bloomi AI — bloomcure.com`;
+        navigator.clipboard.writeText(full).then(() => showToast('Ritual summary copied!'));
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  BOOT
+    // ═══════════════════════════════════════════════════════
+    window.addEventListener('DOMContentLoaded', initChat);
     </script>
+
+    </div><!-- /.app-wrapper -->
+
+    <!-- ══════════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════════ -->
+    <footer class="ai-footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-brand__logo">
+                        <img src="assets/logo.jpg" alt="Bloom Cure">
+                        <h2 class="footer-brand__name">Bloom Cure</h2>
+                    </a>
+                    <div class="footer-bloomi-badge">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Powered by Bloomi AI
+                    </div>
+                    <p class="footer-brand__desc">Handcrafting nature's best to help your skin bloom with radiance and health. Artisan botanicals for a mindful daily ritual.</p>
+                </div>
+
+                <!-- Shop -->
+                <div>
+                    <h4 class="footer-heading">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="shop.html">Soaps &amp; Bars</a></li>
+                        <li><a href="shop.html">Bath &amp; Body</a></li>
+                        <li><a href="cart.html">My Cart</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="assistant.html">Bloomi AI</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h4 class="footer-heading">Botanical Circle</h4>
+                    <p class="footer-newsletter__desc">Join our community for exclusive skincare tips, early product drops, and your first ritual guide free.</p>
+                    <form class="footer-newsletter__form" action="https://api.web3forms.com/submit" method="POST" onsubmit="submitFooterNewsletter(event)">
+                        <input type="hidden" name="access_key" value="3968ade5-1b45-45e8-ac7d-3ce09bcc4fa7">
+                        <input type="hidden" name="subject" value="New Newsletter Subscription — Bloomi AI">
+                        <input type="email" name="email" placeholder="Your email address" class="footer-newsletter__input" required>
+                        <button type="submit" class="footer-newsletter__btn" id="footerNewsBtn">Join</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bloom Cure. Handcrafted for you with healing intent.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/bloomcure.skincare/" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="Pinterest">
+                        <i class="fa-brands fa-pinterest"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61582243962413" target="_blank" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        async function submitFooterNewsletter(e) {
+            e.preventDefault();
+            const btn = document.getElementById('footerNewsBtn');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(e.target) });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Welcome to the botanical circle! 🌿');
+                    e.target.reset();
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 4000);
+                } else throw new Error();
+            } catch { btn.innerHTML = orig; btn.disabled = false; showToast('Something went wrong. Please try again.'); }
+        }
+    </script>
+
 </body>
 </html>
