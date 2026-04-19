@@ -1753,7 +1753,27 @@ body:has(.ag-ticker-container) .bc-ticker {
     .footer-brand, .footer-newsletter { grid-column: span 2; text-align: center; }
     .footer-brand__logo { justify-content: center; }
     .footer-brand__desc { margin: 0 auto 1.5rem auto; }
-    .footer-newsletter__form { flex-direction: column; max-width: 350px; margin: 0 auto; border-radius: 12px; }
+    .footer-newsletter__form {
+        flex-direction: column;
+        max-width: 350px;
+        margin: 0 auto;
+        border-radius: 14px;
+        padding: 8px;
+        gap: 8px;
+    }
+    .footer-newsletter__input {
+        width: 100%;
+        padding: 0.9rem 1.2rem;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.06);
+        text-align: center;
+    }
+    .footer-newsletter__input::placeholder { text-align: center; }
+    .footer-newsletter__btn {
+        width: 100%;
+        border-radius: 8px;
+        padding: 0.9rem 1.2rem;
+    }
     .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
     .footer-socials { justify-content: center; }
 }
