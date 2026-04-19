@@ -59,7 +59,7 @@
            Index Page — Premium Enhancements
            Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â */
 
-       
+
 
         /* ───────────────────────────────────────────────────────────────────
            CORE SHELL
@@ -70,7 +70,22 @@
             display: flex;
             align-items: center;
             overflow: hidden;
-            background: #080e0b;
+            background: #050a07;
+            /* Subtly imprinted noise texture over the darkest zones */
+            isolation: isolate;
+        }
+
+        /* Full-hero vignette to keep it cinematic at all edges */
+        .ag-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, transparent 55%, rgba(5,10,7,0.65) 100%),
+                        radial-gradient(ellipse at 0%  50%, rgba(5,10,7,0.4) 0%, transparent 60%),
+                        radial-gradient(ellipse at 100% 50%, rgba(5,10,7,0.4) 0%, transparent 60%),
+                        radial-gradient(ellipse at 50% 100%, rgba(5,10,7,0.55) 0%, transparent 55%);
+            z-index: 5;
+            pointer-events: none;
         }
 
         /* Magnetic cursor orb — follows the mouse with physics lag */
@@ -109,96 +124,62 @@
         .ag-blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(120px);
             opacity: 0;
-            animation: blobAppear 2s forwards;
+            animation: blobAppear 2.5s ease-out forwards;
         }
 
+        /* Top-right: sage-green — fresh, botanical */
         .ag-blob-1 {
-            width: 700px;
-            height: 700px;
-            top: -15%;
-            right: -8%;
-            background: radial-gradient(circle, rgba(123, 139, 79, 0.22) 0%, transparent 70%);
-            animation: blobAppear 2.5s forwards, blobMorph1 22s 2.5s ease-in-out infinite alternate;
+            width: 820px;
+            height: 820px;
+            top: -20%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(100, 130, 65, 0.28) 0%, rgba(60,90,40,0.12) 50%, transparent 70%);
+            animation: blobAppear 2.5s ease-out forwards, blobMorph1 26s 2.5s ease-in-out infinite alternate;
         }
 
+        /* Bottom-left: warm gold — opulent */
         .ag-blob-2 {
-            width: 600px;
-            height: 600px;
-            bottom: -20%;
-            left: -5%;
-            background: radial-gradient(circle, rgba(197, 160, 40, 0.18) 0%, transparent 70%);
-            animation: blobAppear 2s 0.4s forwards, blobMorph2 18s 2.4s ease-in-out infinite alternate;
+            width: 680px;
+            height: 680px;
+            bottom: -15%;
+            left: -8%;
+            background: radial-gradient(circle, rgba(197, 160, 40, 0.22) 0%, rgba(140,100,20,0.1) 55%, transparent 72%);
+            animation: blobAppear 2s 0.5s ease-out forwards, blobMorph2 20s 2.5s ease-in-out infinite alternate;
         }
 
+        /* Center: deep rose — warmth & skin tones */
         .ag-blob-3 {
-            width: 400px;
-            height: 400px;
-            top: 30%;
-            left: 35%;
-            background: radial-gradient(circle, rgba(232, 168, 168, 0.12) 0%, transparent 70%);
-            filter: blur(80px);
-            animation: blobAppear 2s 0.8s forwards, blobMorph3 14s 2.8s ease-in-out infinite alternate;
+            width: 480px;
+            height: 480px;
+            top: 25%;
+            left: 30%;
+            background: radial-gradient(circle, rgba(210, 140, 110, 0.14) 0%, transparent 68%);
+            filter: blur(90px);
+            animation: blobAppear 2s 1s ease-out forwards, blobMorph3 16s 3s ease-in-out infinite alternate;
         }
 
-        @keyframes blobAppear {
-            to {
-                opacity: 1;
-            }
-        }
+        @keyframes blobAppear { to { opacity: 1; } }
 
         @keyframes blobMorph1 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            33% {
-                transform: translate(-40px, 30px) scale(1.08);
-            }
-
-            66% {
-                transform: translate(30px, -20px) scale(0.94);
-            }
-
-            100% {
-                transform: translate(-20px, 50px) scale(1.04);
-            }
+            0%   { transform: translate(0, 0) scale(1); }
+            33%  { transform: translate(-50px, 40px) scale(1.1); }
+            66%  { transform: translate(35px, -25px) scale(0.92); }
+            100% { transform: translate(-25px, 60px) scale(1.06); }
         }
 
         @keyframes blobMorph2 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            40% {
-                transform: translate(30px, -40px) scale(1.1);
-            }
-
-            80% {
-                transform: translate(-20px, 20px) scale(0.92);
-            }
-
-            100% {
-                transform: translate(10px, -30px) scale(1.06);
-            }
+            0%   { transform: translate(0, 0) scale(1); }
+            40%  { transform: translate(40px, -50px) scale(1.12); }
+            80%  { transform: translate(-25px, 25px) scale(0.90); }
+            100% { transform: translate(15px, -35px) scale(1.08); }
         }
 
         @keyframes blobMorph3 {
-            0% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.12;
-            }
-
-            50% {
-                transform: translate(-30px, -20px) scale(1.15);
-                opacity: 0.18;
-            }
-
-            100% {
-                transform: translate(20px, 40px) scale(0.88);
-                opacity: 0.1;
-            }
+            0%   { transform: translate(0, 0) scale(1);    opacity: 0.14; }
+            50%  { transform: translate(-35px, -25px) scale(1.18); opacity: 0.20; }
+            100% { transform: translate(25px, 45px)  scale(0.85); opacity: 0.10; }
         }
 
         /* ───────────────────────────────────────────────────────────────────
@@ -228,19 +209,28 @@
             display: block;
         }
 
-        /* Cinematic overlay — deep gradient with subtle vignette */
+        /* Cinematic overlay — multi-layer depth grading */
         .ag-cinematic-layer {
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(90deg, rgba(4, 10, 6, 0.88) 0%, rgba(4, 10, 6, 0.55) 45%, rgba(4, 10, 6, 0.15) 70%, transparent 100%),
-                radial-gradient(ellipse at center, transparent 40%, rgba(4, 10, 6, 0.5) 100%);
+                /* Strong left wash to read text on any image */
+                linear-gradient(100deg,
+                    rgba(3, 8, 5, 0.92) 0%,
+                    rgba(3, 8, 5, 0.68) 38%,
+                    rgba(3, 8, 5, 0.22) 65%,
+                    transparent 100%
+                ),
+                /* Top darkness for nav breathing room */
+                linear-gradient(180deg, rgba(3, 8, 5, 0.55) 0%, transparent 28%),
+                /* Bottom fade merging into stats */
+                linear-gradient(0deg, rgba(3, 8, 5, 0.80) 0%, transparent 28%),
+                /* Radial vignette corner polish */
+                radial-gradient(ellipse at 80% 50%, transparent 50%, rgba(3, 8, 5, 0.4) 100%);
             z-index: 2;
         }
 
-        .ag-grain-overlay {
-            display: none;
-        }
+        .ag-grain-overlay { display: none; }
 
         /* Canvas particle layer (botanical specks) */
         .ag-canvas {
@@ -369,248 +359,280 @@
         }
 
         /* ───────────────────────────────────────────────────────────────────
-           TYPOGRAPHY
+           TYPOGRAPHY — PREMIUM EDITORIAL SYSTEM
         ─────────────────────────────────────────────────────────────────── */
+
+        /* Eyebrow pill label */
         .ag-label {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             font-family: var(--ff-body);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
             letter-spacing: 6px;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.65);
-            margin-bottom: 1.4rem;
+            color: rgba(232, 200, 94, 0.85);
+            margin-bottom: 1.6rem;
+            padding: 6px 14px 6px 10px;
+            border: 1px solid rgba(197, 160, 40, 0.2);
+            border-radius: 50px;
+            background: rgba(197, 160, 40, 0.06);
+            backdrop-filter: blur(8px);
         }
 
         .ag-label-dot {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
-            background: var(--clr-gold);
+            background: linear-gradient(135deg, #E8C85E, #C5A028);
             display: inline-block;
-            animation: dotPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(197, 160, 40, 0.8);
+            animation: dotPulse 2.5s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         @keyframes dotPulse {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(197, 160, 40, 0.7);
-            }
-
-            50% {
-                box-shadow: 0 0 0 6px rgba(197, 160, 40, 0);
-            }
+            0%, 100% { box-shadow: 0 0 0 0   rgba(197, 160, 40, 0.8); }
+            50%       { box-shadow: 0 0 0 8px rgba(197, 160, 40, 0);   }
         }
 
+        /* Headline — large editorial serif */
         .ag-title {
-            font-size: clamp(3rem, 5.5vw, 5.5rem);
+            font-size: clamp(3.2rem, 5.8vw, 6rem);
             font-family: var(--ff-heading);
-            color: #fff;
-            margin: 0 0 1.4rem;
-            line-height: 1.08;
-            letter-spacing: -0.5px;
+            color: #f5f0e8;
+            margin: 0 0 1.2rem;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 40px rgba(0,0,0,0.5);
         }
 
+        /* Italic golden word */
         .ag-title em {
             font-style: italic;
-            background: linear-gradient(120deg, #E8C85E, #C5A028 50%, #F5DF96);
+            background: linear-gradient(118deg, #F5DF96 0%, #E8C85E 35%, #C5A028 65%, #F5DF96 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 400;
+            animation: shimmerGold 5s linear infinite;
         }
 
-        /* Decorative divider line that animates in */
+        @keyframes shimmerGold {
+            0%   { background-position: 0%   center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Decorative divider line that wipes in on slide activate */
         .ag-divider {
             height: 1px;
             width: 0;
-            background: linear-gradient(90deg, rgba(197, 160, 40, 0.8), transparent);
-            margin-bottom: 1.6rem;
-            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+            background: linear-gradient(90deg, rgba(197, 160, 40, 0.9), rgba(197,160,40,0.3) 60%, transparent);
+            margin-bottom: 2rem;
+            transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+            position: relative;
+        }
+
+        /* Dot at the leading edge of divider */
+        .ag-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #E8C85E;
+            box-shadow: 0 0 8px rgba(232,200,94,0.8);
         }
 
         .ag-content-layer.active .ag-divider {
-            width: 220px;
+            width: 240px;
         }
 
+        /* Body description */
         .ag-desc {
-            font-size: 1rem;
+            font-size: 1.02rem;
             font-family: var(--ff-body);
-            color: rgba(255, 255, 255, 0.72);
-            line-height: 1.85;
+            color: rgba(240, 232, 210, 0.70);
+            line-height: 1.9;
             margin-bottom: 2.8rem;
-            max-width: 420px;
+            max-width: 430px;
             font-weight: 300;
+            letter-spacing: 0.2px;
         }
 
         /* ───────────────────────────────────────────────────────────────────
-           BUTTON SYSTEM
+           BUTTON SYSTEM — LUXURY TIER
         ─────────────────────────────────────────────────────────────────── */
         .ag-actions {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1.4rem;
+            flex-wrap: wrap;
         }
 
+        /* Primary CTA — rich gold pill */
         .ag-btn {
             position: relative;
             display: inline-flex;
             align-items: center;
             gap: 12px;
             padding: 1.05rem 2.4rem;
-            background: linear-gradient(135deg, #C5A028 0%, #E8C85E 100%);
-            color: #0d1a10;
+            background: linear-gradient(135deg, #C5A028 0%, #E8C85E 50%, #C5A028 100%);
+            color: #0c1810;
             text-decoration: none;
             font-family: var(--ff-body);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 2.5px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 2.8px;
             text-transform: uppercase;
             border-radius: 60px;
             overflow: hidden;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 8px 28px rgba(197, 160, 40, 0.28),
-                0 0 0 0 rgba(197, 160, 40, 0.4);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 6px 20px rgba(197, 160, 40, 0.28);
         }
 
-        .ag-btn::after {
+        /* Glass shimmer sweep on hover */
+        .ag-btn::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, #E8C85E 0%, #fff6c2 100%);
-            opacity: 0;
-            transition: opacity 0.35s ease;
+            top: -50%; left: -80%;
+            width: 55%; height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.22), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.65s ease;
+            pointer-events: none;
         }
 
         .ag-btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 45px rgba(197, 160, 40, 0.38),
-                0 0 0 6px rgba(197, 160, 40, 0.12);
-            color: #0d1a10;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 36px rgba(197, 160, 40, 0.38);
+            color: #0c1810;
         }
 
-        .ag-btn:hover::after {
-            opacity: 1;
-        }
+        .ag-btn:hover::before { left: 140%; }
 
-        .ag-btn>* {
-            position: relative;
-            z-index: 1;
-        }
+        .ag-btn > * { position: relative; z-index: 1; }
 
-        /* Animated arrow inside primary button */
+        /* Arrow icon — no circle badge, just the icon */
         .ag-btn .btn-arrow {
             display: inline-flex;
-            transition: transform 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            opacity: 0.85;
         }
 
-        .ag-btn:hover .btn-arrow {
-            transform: translateX(4px);
-        }
+        .ag-btn:hover .btn-arrow { transform: translateX(5px); }
 
+        /* Ghost secondary */
         .ag-btn-secondary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 1.05rem 2.2rem;
+            padding: 1.1rem 2.3rem;
             background: rgba(255, 255, 255, 0.04);
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(240, 232, 210, 0.80);
             text-decoration: none;
             font-family: var(--ff-body);
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 600;
-            letter-spacing: 2.5px;
+            letter-spacing: 2.8px;
             text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 60px;
-            backdrop-filter: blur(6px);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .ag-btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(197, 160, 40, 0.6);
+            background: rgba(197, 160, 40, 0.08);
+            border-color: rgba(197, 160, 40, 0.55);
             color: #E8C85E;
             transform: translateY(-4px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3),
+                        0 0 20px rgba(197, 160, 40, 0.12);
         }
 
         /* ───────────────────────────────────────────────────────────────────
-           NAVIGATION ARROWS
+           NAVIGATION ARROWS — PREMIUM
         ─────────────────────────────────────────────────────────────────── */
         .ag-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: rgba(255, 255, 255, 0.75);
+            background: rgba(10, 20, 13, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            color: rgba(255, 255, 255, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             cursor: pointer;
             z-index: 20;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3),
+                        inset 0 1px 0 rgba(255,255,255,0.06);
         }
 
-        .ag-arrow-left {
-            left: 2.5%;
-        }
-
-        .ag-arrow-right {
-            right: 2.5%;
-        }
+        .ag-arrow-left  { left: 2%; }
+        .ag-arrow-right { right: 2%; }
 
         .ag-arrow:hover {
-            background: rgba(197, 160, 40, 0.12);
-            border-color: rgba(197, 160, 40, 0.6);
+            background: rgba(197, 160, 40, 0.14);
+            border-color: rgba(197, 160, 40, 0.55);
             color: #E8C85E;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 25px rgba(197, 160, 40, 0.2);
+            transform: translateY(-50%) scale(1.12);
+            box-shadow: 0 0 30px rgba(197, 160, 40, 0.25),
+                        inset 0 1px 0 rgba(255,255,255,0.06);
         }
 
         /* ───────────────────────────────────────────────────────────────────
-           SLIDE COUNTER
+           SLIDE COUNTER — EDITORIAL
         ─────────────────────────────────────────────────────────────────── */
         .ag-slide-counter {
             position: absolute;
             right: 4%;
-            bottom: 5rem;
+            bottom: 8rem; /* above the stats strip */
             z-index: 20;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 8px;
+            gap: 6px;
         }
 
         .ag-counter-current {
             font-family: var(--ff-heading);
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.05);
             line-height: 1;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             position: relative;
         }
 
+        /* Small crisp version layered over ghost number */
         .ag-counter-current::after {
             content: attr(data-counter);
             position: absolute;
             inset: 0;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.4rem;
+            color: rgba(232, 200, 94, 0.90);
+            font-size: 1.3rem;
             font-weight: 600;
-            letter-spacing: 0;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -618,20 +640,20 @@
 
         .ag-counter-total {
             font-family: var(--ff-body);
-            font-size: 0.68rem;
-            letter-spacing: 3px;
-            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.28);
             text-transform: uppercase;
         }
 
         .ag-counter-line {
             width: 1px;
-            height: 40px;
-            background: linear-gradient(180deg, rgba(197, 160, 40, 0.6), transparent);
+            height: 48px;
+            background: linear-gradient(180deg, rgba(197, 160, 40, 0.7) 0%, transparent 100%);
         }
 
         /* ───────────────────────────────────────────────────────────────────
-           PROGRESS TIMER DOTS
+           PROGRESS DOTS — ELONGATED CAPSULE STYLE
         ─────────────────────────────────────────────────────────────────── */
         .ag-dots {
             position: absolute;
@@ -639,18 +661,18 @@
             left: 6%;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 10px;
             z-index: 20;
         }
 
         .ag-dot {
             position: relative;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.22);
+            width: 24px;
+            height: 3px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.20);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             flex-shrink: 0;
         }
 
@@ -658,29 +680,29 @@
             content: '';
             position: absolute;
             inset: -4px;
-            border-radius: 50%;
+            border-radius: 6px;
             border: 1px solid transparent;
             transition: border-color 0.4s ease;
         }
 
         .ag-dot.active {
-            background: #C5A028;
-            transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(197, 160, 40, 0.6);
+            width: 48px;
+            background: linear-gradient(90deg, #E8C85E, #C5A028);
+            box-shadow: 0 0 12px rgba(197, 160, 40, 0.6);
         }
 
         .ag-dot.active::before {
-            border-color: rgba(197, 160, 40, 0.35);
+            border-color: rgba(197, 160, 40, 0.3);
         }
 
-        /* Progress timer bar under dots */
+        /* Progress timer bar */
         .ag-progress-bar {
             position: absolute;
             bottom: 0;
             left: 0;
             height: 2px;
-            background: linear-gradient(90deg, #C5A028, #E8C85E);
-            z-index: 20;
+            background: linear-gradient(90deg, rgba(197,160,40,0.9), #E8C85E);
+            z-index: 21;
             width: 0%;
             transition: none;
         }
@@ -691,7 +713,7 @@
         }
 
         /* ───────────────────────────────────────────────────────────────────
-           BOTTOM STATS STRIP
+           BOTTOM STATS STRIP — LUXURY GLASS PANEL
         ─────────────────────────────────────────────────────────────────── */
         .ag-stats-strip {
             position: absolute;
@@ -701,44 +723,60 @@
             z-index: 15;
             display: flex;
             align-items: stretch;
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
-            background: rgba(4, 10, 6, 0.55);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(197, 160, 40, 0.12);
+            background: rgba(4, 8, 5, 0.60);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
         }
 
         .ag-stat {
             flex: 1;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.8rem;
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            border-right: 1px solid rgba(255, 255, 255, 0.06);
-            transition: background 0.3s ease;
+            gap: 5px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .ag-stat:last-child {
-            border-right: none;
+        /* Gold accent line on hover that slides up */
+        .ag-stat::before {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(197,160,40,0.5), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
         }
+
+        .ag-stat:last-child  { border-right: none; }
 
         .ag-stat:hover {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(197, 160, 40, 0.04);
         }
+
+        .ag-stat:hover::before { transform: translateX(0); }
 
         .ag-stat__num {
             font-family: var(--ff-heading);
-            font-size: 1.3rem;
+            font-size: 1.45rem;
             font-weight: 700;
-            color: #E8C85E;
+            background: linear-gradient(120deg, #E8C85E 0%, #F5DF96 50%, #C5A028 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             line-height: 1;
         }
 
         .ag-stat__label {
             font-family: var(--ff-body);
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             letter-spacing: 2.5px;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(240, 232, 210, 0.38);
         }
 
 
@@ -757,52 +795,38 @@
                 margin: 0 auto;
             }
 
-            .ag-actions {
-                justify-content: center;
-            }
+            .ag-actions    { justify-content: center; }
+            .ag-label      { justify-content: center; }
+            .ag-desc       { margin: 0 auto 2.5rem; }
+            .ag-divider    { margin: 0 auto 1.6rem; }
 
-            .ag-label {
-                justify-content: center;
-            }
-
-            .ag-desc {
-                margin: 0 auto 2.5rem;
-            }
-
-            .ag-divider {
-                margin: 0 auto 1.6rem;
-            }
-
-            .ag-slide-counter {
-                display: none;
-            }
-
-            .ag-stats-strip {
-                display: none;
-            }
+            .ag-slide-counter { display: none; }
+            .ag-stats-strip   { display: none; }
         }
 
         @media (max-width: 768px) {
             .ag-hero {
-                min-height: 90vh;
+                min-height: 92vh;
             }
 
             .ag-content-layer {
                 align-items: flex-end;
-                padding-bottom: 5.5rem;
+                padding-bottom: 6rem;
             }
 
             .ag-title {
-                font-size: clamp(2.2rem, 8vw, 3rem);
+                font-size: clamp(2.4rem, 9vw, 3.2rem);
+                letter-spacing: -0.5px;
             }
 
             .ag-desc {
-                font-size: 0.92rem;
+                font-size: 0.93rem;
                 margin: 0 auto 2rem;
+                line-height: 1.75;
             }
 
             .ag-glass-card {
-                padding: 0 1.2rem;
+                padding: 0 1.4rem;
                 max-width: 100%;
                 text-align: center !important;
                 margin: 0 auto;
@@ -820,13 +844,16 @@
                 justify-content: center;
             }
 
-            .ag-arrow {
-                display: none;
-            }
+            .ag-arrow { display: none; }
 
+            /* Override cinematic for mobile — image needs to breathe */
             .ag-cinematic-layer {
                 background:
-                    linear-gradient(180deg, rgba(4, 10, 6, 0.1) 0%, rgba(4, 10, 6, 0.5) 40%, rgba(4, 10, 6, 0.97) 100%) !important;
+                    linear-gradient(180deg,
+                        rgba(3, 8, 5, 0.35) 0%,
+                        rgba(3, 8, 5, 0.55) 40%,
+                        rgba(3, 8, 5, 0.95) 100%
+                    ) !important;
             }
 
             .ag-dots {
@@ -2785,7 +2812,8 @@
         .ai-widget-wrapper {
             position: fixed;
             bottom: 30px;
-            right: 100px; /* Offset to not overlap with back-to-top which is right:2rem (32px) */
+            right: 100px;
+            /* Offset to not overlap with back-to-top which is right:2rem (32px) */
             z-index: 1000;
         }
 
@@ -2799,7 +2827,7 @@
             padding: 10px 16px;
             border-radius: 12px;
             border: 1px solid rgba(197, 160, 40, 0.4);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             font-family: var(--ff-body);
             font-size: 0.8rem;
             font-weight: 600;
@@ -2828,16 +2856,26 @@
         }
 
         @keyframes popIn {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes subtleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
         }
 
         .ai-widget-btn {
-            background: linear-gradient(135deg, rgba(26,46,32,0.95), rgba(0,0,0,0.9));
+            background: linear-gradient(135deg, rgba(26, 46, 32, 0.95), rgba(0, 0, 0, 0.9));
             border: 1px solid rgba(197, 160, 40, 0.4);
             color: #f9f7f2;
             padding: 10px 18px;
@@ -2847,7 +2885,7 @@
             gap: 12px;
             text-decoration: none;
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
             font-family: var(--ff-body);
             font-weight: 500;
@@ -2860,7 +2898,10 @@
         .ai-widget-btn::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: radial-gradient(circle at center, rgba(197, 160, 40, 0.2) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -2907,28 +2948,703 @@
         @media (max-width: 768px) {
             .ai-widget-wrapper {
                 bottom: 20px;
-                right: 80px; 
+                right: 80px;
             }
+
             .ai-suggestion-bubble {
                 margin-bottom: 12px;
                 right: -10px;
             }
+
             .ai-suggestion-bubble::after {
                 right: 25px;
             }
+
             .ai-widget-btn {
                 padding: 8px;
                 border-radius: 50%;
             }
+
             .ai-widget-text {
                 display: none;
             }
+
             .ai-widget-icon {
                 margin: 0;
             }
+
             .ai-widget-btn {
                 gap: 0;
             }
+        }
+        /* ══════════════════════════════════════════════════════════════════════
+           PREMIUM SHARE UI — Salesperson Modal 
+           ══════════════════════════════════════════════════════════════════════ */
+        
+        /* ══════════════════════════════════════════════════════════════════
+           PREMIUM SHARE MODAL — Maison-Grade v2
+        ══════════════════════════════════════════════════════════════════ */
+
+        /* ─── Keyframes ─── */
+        @keyframes shareBackdropIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes sharePanelIn {
+            from { opacity: 0; transform: translate(-50%, -48%) scale(0.92); }
+            to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes shareIconPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.5), 0 8px 32px rgba(201,168,76,0.2); }
+            50%       { box-shadow: 0 0 0 10px rgba(201,168,76,0), 0 8px 32px rgba(201,168,76,0.3); }
+        }
+        @keyframes shareGoldSweep {
+            0%   { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes shareBorderRotate {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        @keyframes shareTagFloat {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-4px); }
+        }
+        @keyframes shareMsgReveal {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── Backdrop ─── */
+        .bc-share-backdrop {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(80,110,60,0.08) 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 60%, rgba(197,160,40,0.07) 0%, transparent 55%),
+                rgba(3, 5, 4, 0.92);
+            backdrop-filter: blur(14px) saturate(1.2);
+            -webkit-backdrop-filter: blur(14px) saturate(1.2);
+            z-index: 99998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bc-share-active .bc-share-backdrop {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ─── Outer glow ring (decoration) ─── */
+        #bc-share-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 99997;
+            pointer-events: none;
+        }
+        #bc-share-modal.bc-share-active {
+            pointer-events: auto;
+        }
+
+        /* ─── Main panel ─── */
+        .bc-share-panel {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -48%) scale(0.92);
+            width: min(90vw, 460px);
+            background:
+                linear-gradient(160deg,
+                    rgba(20, 28, 22, 0.97) 0%,
+                    rgba(12, 17, 13, 0.99) 60%,
+                    rgba(8, 10, 8, 1) 100%);
+            border-radius: 28px;
+            padding: 0;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+            /* Layered luxury shadow */
+            box-shadow:
+                0 0 0 1px rgba(201,168,76,0.18),
+                0 2px 0 rgba(255,255,255,0.04) inset,
+                0 60px 120px rgba(0,0,0,0.9),
+                0 20px 50px rgba(0,0,0,0.6),
+                0 0 60px rgba(201,168,76,0.06);
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bc-share-active .bc-share-panel {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+            animation: sharePanelIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Animated gold conic sweep at the border */
+        .bc-share-panel::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 29px;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0%,
+                rgba(201,168,76,0.6) 15%,
+                rgba(232,200,94,0.9) 25%,
+                rgba(201,168,76,0.6) 35%,
+                transparent 50%,
+                transparent 100%
+            );
+            animation: shareBorderRotate 4s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Panel inner mask over the conic border */
+        .bc-share-panel::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: 27px;
+            background: linear-gradient(160deg,
+                rgba(20, 28, 22, 0.97) 0%,
+                rgba(12, 17, 13, 0.99) 60%,
+                rgba(8, 10, 8, 1) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ─── Hero banner strip at top ─── */
+        .bc-share-hero {
+            position: relative;
+            padding: 2.2rem 2rem 1.8rem;
+            text-align: center;
+            background: linear-gradient(180deg,
+                rgba(201,168,76,0.08) 0%,
+                transparent 100%);
+            border-bottom: 1px solid rgba(201,168,76,0.08);
+            overflow: hidden;
+        }
+
+        /* Radial ambient behind just the hero zone */
+        .bc-share-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%; left: 50%;
+            transform: translateX(-50%);
+            width: 280px; height: 200px;
+            background: radial-gradient(ellipse at top,
+                rgba(201,168,76,0.20) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ─── Close button ─── */
+        .bc-share-close {
+            position: absolute;
+            top: 1.1rem; right: 1.1rem;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            color: rgba(245,240,232,0.35);
+            display: flex;
+            align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+        }
+
+        .bc-share-close:hover {
+            background: rgba(201,168,76,0.12);
+            color: #C9A84C;
+            border-color: rgba(201,168,76,0.35);
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 0 14px rgba(201,168,76,0.2);
+        }
+
+        /* ─── Icon: animated halo ─── */
+        .bc-share-icon-wrap {
+            width: 56px; height: 56px;
+            margin: 0 auto 1.4rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg,
+                rgba(201,168,76,0.25) 0%,
+                rgba(201,168,76,0.06) 100%);
+            border: 1px solid rgba(201,168,76,0.4);
+            color: #C9A84C;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.35rem;
+            animation: shareIconPulse 2.4s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bc-share-icon-wrap::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(201,168,76,0.12);
+        }
+
+        /* ─── Eyebrow label ─── */
+        .bc-share-eyebrow {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: rgba(201,168,76,0.6);
+            font-weight: 600;
+            margin-bottom: 0.55rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .bc-share-eyebrow::before,
+        .bc-share-eyebrow::after {
+            content: '';
+            flex: 1;
+            max-width: 35px;
+            height: 1px;
+            background: rgba(201,168,76,0.25);
+        }
+
+        /* ─── Product title ─── */
+        .bc-share-title {
+            font-family: var(--ff-heading);
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            color: #F5F0E8;
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            /* Subtle gold shimmer on text */
+            background: linear-gradient(90deg,
+                #F5F0E8 0%, #F5F0E8 30%,
+                #E8C85E 50%,
+                #F5F0E8 70%, #F5F0E8 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shareGoldSweep 5s linear infinite;
+        }
+
+        /* ─── Body area below header ─── */
+        .bc-share-body {
+            padding: 1.8rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* ─── Message preview ─── */
+        .bc-share-message-wrap {
+            background: rgba(4, 6, 4, 0.7);
+            border: 1px solid rgba(201,168,76,0.10);
+            border-radius: 14px;
+            padding: 1.2rem 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gold shimmer roll across message box on open */
+        .bc-share-message-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(201,168,76,0.04), transparent);
+            animation: shareGoldSweep 3.5s ease infinite 0.8s;
+            pointer-events: none;
+        }
+
+        .bc-share-message-label {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(201,168,76,0.7);
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .bc-share-message-label i {
+            font-size: 0.58rem;
+            animation: shareTagFloat 2s ease-in-out infinite;
+        }
+
+        .bc-share-message {
+            font-family: var(--ff-body);
+            font-size: 0.82rem;
+            color: rgba(245,240,232,0.65);
+            line-height: 1.75;
+            white-space: pre-wrap;
+            max-height: 115px;
+            overflow-y: auto;
+            padding-right: 0.4rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(201,168,76,0.25) transparent;
+            animation: shareMsgReveal 0.5s ease 0.3s both;
+        }
+
+        .bc-share-message::-webkit-scrollbar { width: 3px; }
+        .bc-share-message::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, rgba(201,168,76,0.5), rgba(201,168,76,0.15));
+            border-radius: 10px;
+        }
+
+        /* ─── Share channels ─── */
+        .bc-share-channels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+        }
+
+        .bc-share-channel {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            padding: 1.3rem 0;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.35s ease,
+                        background 0.35s ease,
+                        box-shadow 0.4s ease;
+            color: rgba(245,240,232,0.7);
+            text-decoration: none;
+        }
+
+        /* Shimmer sweep inside each channel on hover */
+        .bc-share-channel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -80%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-15deg);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+
+        .bc-share-channel:hover::before { left: 140%; }
+
+        .bc-share-channel i {
+            font-size: 1.6rem;
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        color 0.3s ease;
+        }
+
+        .bc-share-channel span {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .bc-share-channel:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(201,168,76,0.35);
+            background: rgba(201,168,76,0.05);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.4),
+                        0 0 20px rgba(201,168,76,0.08);
+            color: #C9A84C;
+        }
+
+        .bc-share-channel:hover i { transform: scale(1.22) translateY(-3px); }
+        .bc-share-channel:hover span { color: #C9A84C; }
+
+        /* WhatsApp: distinct green glow */
+        .bc-share-channel--wa {
+            background: rgba(37,211,102,0.03);
+            border-color: rgba(37,211,102,0.10);
+        }
+
+        .bc-share-channel--wa:hover {
+            background: rgba(37,211,102,0.07);
+            border-color: rgba(37,211,102,0.45);
+            color: #25D366;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.4),
+                        0 0 24px rgba(37,211,102,0.12);
+        }
+
+        .bc-share-channel--wa:hover i,
+        .bc-share-channel--wa:hover span { color: #25D366; }
+
+        /* Copy: link icon, gold on hover */
+        .bc-share-channel--copy:hover i,
+        .bc-share-channel--copy:hover span { color: #E8C85E; }
+
+        /* Native / System share: full-width minimal row */
+        .bc-share-channel--native {
+            grid-column: 1 / -1;
+            flex-direction: row;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border-style: dashed;
+            border-color: rgba(255,255,255,0.06);
+        }
+
+        .bc-share-channel--native i { font-size: 1rem; }
+
+        /* Success state */
+        .bc-share-channel--success {
+            background: rgba(201,168,76,0.12) !important;
+            border-color: rgba(201,168,76,0.5) !important;
+            color: #C9A84C !important;
+            transform: translateY(-2px) scale(0.98) !important;
+            box-shadow: 0 6px 16px rgba(201,168,76,0.15) !important;
+        }
+
+        /* ─── Footer note ─── */
+        .bc-share-footer-note {
+            text-align: center;
+            font-size: 0.68rem;
+            color: rgba(245,240,232,0.22);
+            font-style: italic;
+            letter-spacing: 0.2px;
+            line-height: 1.6;
+            padding-top: 0.3rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 500px) {
+            .bc-share-panel { width: 95vw; }
+            .bc-share-hero { padding: 1.8rem 1.5rem 1.4rem; }
+            .bc-share-body { padding: 1.4rem 1.5rem 1.6rem; }
+            .bc-share-channels { gap: 0.7rem; }
+            .bc-share-title { font-size: 1.3rem; }
+        }
+
+        .bc-share-panel {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -45%) scale(0.95);
+            width: 90%;
+            max-width: 440px;
+            background: linear-gradient(145deg, rgba(16, 22, 18, 0.95) 0%, rgba(10, 14, 11, 0.98) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            z-index: 100000;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8),
+                        0 0 40px rgba(201, 168, 76, 0.05),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Ambient glow */
+        .bc-share-panel::before {
+            content: '';
+            position: absolute;
+            top: -20%; left: -20%;
+            width: 140%; height: 140%;
+            background: radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bc-share-active .bc-share-backdrop {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .bc-share-active.bc-share-panel,
+        .bc-share-active .bc-share-panel {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .bc-share-close {
+            position: absolute;
+            top: 1.2rem; right: 1.2rem;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: rgba(245,240,232,0.4);
+            display: flex;
+            align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bc-share-close:hover {
+            background: rgba(201, 168, 76, 0.1);
+            color: #C9A84C;
+            border-color: rgba(201, 168, 76, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .bc-share-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .bc-share-icon-wrap {
+            width: 48px; height: 48px;
+            margin: 0 auto 1.2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.05));
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            color: #C9A84C;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.15);
+        }
+
+        .bc-share-eyebrow {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(245, 240, 232, 0.4);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .bc-share-title {
+            font-family: var(--ff-heading);
+            font-size: 1.8rem;
+            color: #F5F0E8;
+            font-weight: 300;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .bc-share-message-wrap {
+            background: rgba(6, 8, 7, 0.6);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bc-share-message-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #C9A84C;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center; gap: 6px;
+        }
+
+        .bc-share-message-label i { font-size: 0.6rem; }
+
+        .bc-share-message {
+            font-family: var(--ff-body);
+            font-size: 0.85rem;
+            color: rgba(245, 240, 232, 0.7);
+            line-height: 1.6;
+            white-space: pre-wrap;
+            max-height: 120px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(201,168,76,0.3) transparent;
+        }
+
+        .bc-share-message::-webkit-scrollbar { width: 4px; }
+        .bc-share-message::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 10px; }
+
+        .bc-share-channels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bc-share-channel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1.2rem 0;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            color: rgba(245, 240, 232, 0.8);
+            text-decoration: none;
+        }
+
+        .bc-share-channel i {
+            font-size: 1.5rem;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .bc-share-channel span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .bc-share-channel:hover {
+            background: rgba(201, 168, 76, 0.08);
+            border-color: rgba(201, 168, 76, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 15px rgba(201,168,76,0.1);
+            color: #C9A84C;
+        }
+
+        .bc-share-channel:hover i { transform: scale(1.15) translateY(-2px); }
+
+        .bc-share-channel--wa:hover {
+            background: rgba(37, 211, 102, 0.08);
+            border-color: rgba(37, 211, 102, 0.4);
+            color: #25D366;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 15px rgba(37,211,102,0.1);
+        }
+
+        .bc-share-channel--native {
+            grid-column: 1 / -1;
+            flex-direction: row;
+            padding: 1rem 0;
+            background: transparent;
+            border-style: dashed;
+        }
+
+        .bc-share-channel--native i { font-size: 1.1rem; }
+
+        .bc-share-channel--success {
+            background: rgba(201, 168, 76, 0.15) !important;
+            border-color: #C9A84C !important;
+            color: #C9A84C !important;
+            transform: scale(0.98) !important;
+        }
+
+        .bc-share-footer-note {
+            text-align: center;
+            font-size: 0.7rem;
+            color: rgba(245, 240, 232, 0.3);
+            font-style: italic;
+        }
+
+        @media (max-width: 500px) {
+            .bc-share-panel { padding: 2rem 1.5rem; }
+            .bc-share-channels { gap: 0.8rem; }
         }
     </style>
 </head>
@@ -3238,8 +3954,10 @@
                 </div>
                 <div class="ag-strip-price">&#8377;449</div>
                 <div class="ag-card__actions" data-name="Red Sandalwood Herbal Bar" data-price="449">
-                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
-                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary"
+                        onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary"
+                        onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
@@ -3255,8 +3973,10 @@
                 </div>
                 <div class="ag-strip-price">&#8377;399</div>
                 <div class="ag-card__actions" data-name="Red Wine Soap" data-price="399">
-                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
-                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary"
+                        onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary"
+                        onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
@@ -3272,8 +3992,10 @@
                 </div>
                 <div class="ag-strip-price">&#8377;100</div>
                 <div class="ag-card__actions" data-name="Soap Nut Power" data-price="100">
-                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
-                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary"
+                        onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary"
+                        onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
@@ -3289,8 +4011,10 @@
                 </div>
                 <div class="ag-strip-price">&#8377;399</div>
                 <div class="ag-card__actions" data-name="Seegekai" data-price="399">
-                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
-                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary"
+                        onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary"
+                        onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
@@ -3302,12 +4026,15 @@
                 <div class="ag-strip-info">
                     <span class="ag-strip-badge">Eco</span>
                     <h3 class="ag-strip-name">Bamboo Toothbrush</h3>
-                    <p class="ag-strip-desc">Eco-friendly sustainable toothbrush with charcoal-infused soft bristles.</p>
+                    <p class="ag-strip-desc">Eco-friendly sustainable toothbrush with charcoal-infused soft bristles.
+                    </p>
                 </div>
                 <div class="ag-strip-price">&#8377;70</div>
                 <div class="ag-card__actions" data-name="Bamboo Toothbrush" data-price="70">
-                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
-                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary"
+                        onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary"
+                        onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
@@ -3323,8 +4050,10 @@
                 </div>
                 <div class="ag-strip-price">&#8377;199</div>
                 <div class="ag-card__actions" data-name="Relaxing Bath Salts" data-price="199">
-                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary" onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
-                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary" onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="ag-strip-btn ag-strip-btn--primary ag-card__btn ag-card__btn--primary"
+                        onclick="addToCart(this)"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                    <button class="ag-strip-btn ag-strip-btn--wa ag-card__btn ag-card__btn--secondary"
+                        onclick="buyNow(this)"><i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
@@ -5479,10 +6208,12 @@
     <section class="cta-banner">
         <canvas id="ctaCanvas"></canvas>
         <div class="container" style="position: relative; z-index: 2;">
-            <div class="cta-eyebrow"><i class="fa-solid fa-wand-magic-sparkles" style="color: #c5a028;"></i> Personalized Care</div>
+            <div class="cta-eyebrow"><i class="fa-solid fa-wand-magic-sparkles" style="color: #c5a028;"></i>
+                Personalized Care</div>
             <h2>Find Your <em>Botanical Match</em></h2>
             <div class="cta-gold-rule"></div>
-            <p>Our expert AI assistant cross-references your unique skin profile against our artisan ingredient matrix to prescribe your perfect ritual.</p>
+            <p>Our expert AI assistant cross-references your unique skin profile against our artisan ingredient matrix
+                to prescribe your perfect ritual.</p>
             <div class="cta-actions">
                 <a href="assistant.html" class="cta-btn-primary">
                     Start Assessment <i class="fa-solid fa-sparkles"></i>
@@ -5497,7 +6228,7 @@
                 <div class="cta-trust-item"><i class="fa-solid fa-leaf"></i> Plastic Free</div>
             </div>
         </div>
-        
+
         <script>
             (function initCtaCanvas() {
                 const canvas = document.getElementById('ctaCanvas');
@@ -5539,12 +6270,12 @@
                         p.life++;
                         const progress = p.life / p.maxLife;
                         const fade = progress < 0.2 ? progress / 0.2 : progress > 0.8 ? (1 - progress) / 0.2 : 1;
-                        
+
                         ctx.beginPath();
                         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                         ctx.fillStyle = p.color + (p.alpha * fade) + ')';
                         ctx.fill();
-                        
+
                         if (p.life >= p.maxLife || p.y < -10 || p.x < -10 || p.x > w + 10) {
                             particles[idx] = createParticle();
                             particles[idx].y = h + 10;
@@ -6181,62 +6912,200 @@
 
         // Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â SHARE PRODUCT Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
 
-        function shareProduct(btn) {
-            const card = btn.closest('.product-card') || btn.closest('.spotlight-card') || btn.closest('.shop-card');
-            if (!card) return;
-            const name = card.dataset.name || card.querySelector('h3')?.textContent || 'Product';
-            const price = card.dataset.price || '0';
+        // ======================================================
+        //  PREMIUM SHARE ENGINE — Bloom Cure Salesperson v2.0
+        // ======================================================
 
-            const shareText = `🌿 Check out *${name}* (₹${price}) from Bloom Cure! Handcrafted botanical goodness.\n\nShop now: https://bloomcure.bloomcure-co.workers.dev/shop`;
-            const shareUrl = window.location.href.split('#')[0] + '#shop';
+        const PRODUCT_PITCHES = {
+            'Red Sandalwood Herbal Bar': {
+                hook:  "🌹 Nature's most coveted skin secret — now in your hands.",
+                pitch: "Red Sandalwood has been treasured in Ayurveda for centuries for its ability to refine pores, even skin tone, and deliver a luminous glow. Bloom Cure's *Red Sandalwood Herbal Bar* is handcrafted in small batches with authentic red sandalwood extract — no fillers, no shortcuts.",
+                cta:   "Your skin deserves this ritual. 🌿",
+            },
+            'Red Wine Soap': {
+                hook:  "🍷 The secret behind flawless, ageless skin.",
+                pitch: "Packed with natural resveratrol and antioxidants from real red wine extract, this bar fights free radicals and restores radiance from the very first use. Bloom Cure's *Red Wine Soap* is a luxurious, anti-ageing ritual that turns your daily cleanse into a spa moment.",
+                cta:   "Glow like you've earned it. ✨",
+            },
+            'Soap Nut Power': {
+                hook:  "🌰 The ancient cleanser rediscovered by modern skin.",
+                pitch: "Reetha (Soap Nut) has been India's natural lather secret for generations. Rich in saponins, this bar gently cleanses without stripping your skin's natural moisture barrier — perfect for sensitive skin and everyday use.",
+                cta:   "Go back to roots. Your skin will thank you. 🌱",
+            },
+            'Seegekai': {
+                hook:  "✨ Traditional Ayurvedic cleansing, perfected.",
+                pitch: "Shikakai has been the cornerstone of South Indian hair and skin care for centuries. Bloom Cure's *Seegekai Bar* combines authentic shikakai with nourishing botanicals to deeply cleanse while leaving skin silky and hair shining.",
+                cta:   "Tradition you can feel. 🌿",
+            },
+            'Bamboo Toothbrush': {
+                hook:  "🌏 One small switch. One big difference.",
+                pitch: "Every year, billions of plastic toothbrushes end up in oceans. Bloom Cure's *Bamboo Toothbrush* features charcoal-infused soft bristles for a superior clean — and a 100% biodegradable handle that leaves zero trace on the planet.",
+                cta:   "Make the switch. The earth is watching. 🌎",
+            },
+            'Relaxing Bath Salts': {
+                hook:  "🛁 Melt away the week. Reclaim your calm.",
+                pitch: "A luxurious blend of Epsom Salt and Himalayan Pink Salt soothes sore muscles, draws out toxins, and whisks your mind into calm. Bloom Cure's *Relaxing Bath Salts* turn any bathroom into a private wellness retreat.",
+                cta:   "You've earned this moment. 🌸",
+            },
+            'Neem Purify': {
+                hook:  "🌿 Nature's most powerful antibacterial — in your daily cleanse.",
+                pitch: "Neem has been called the 'village pharmacy' of India for good reason. Bloom Cure's *Neem Purify Bar* harnesses concentrated neem extract to fight acne, unclog pores, and prevent breakouts — without harsh chemicals.",
+                cta:   "Clearer skin. Naturally. ✅",
+            },
+            'Exfoliating Coffee Soap': {
+                hook:  "☕ Wake up your skin — literally.",
+                pitch: "Roasted coffee granules exfoliate dead cells while caffeine tightens and energises your skin. Bloom Cure's *Coffee Soap* reduces cellulite appearance, brightens dull skin, and leaves you with the most alive feeling you've had all week.",
+                cta:   "Your skin's morning ritual. ☀️",
+            },
+            'Activated Charcoal Soap': {
+                hook:  "🖤 Deep pore detox. The urban skin saviour.",
+                pitch: "Pollution, dirt, environmental toxins — activated charcoal pulls it all out like a magnet. Bloom Cure's *Charcoal Soap* is the deep-cleansing powerhouse your skin needs after every long day in the city.",
+                cta:   "Detox daily. Glow always. ✨",
+            },
+            'Multani Mitti Soap': {
+                hook:  "🏺 Fuller's Earth — the ancient secret to clear, matte skin.",
+                pitch: "Multani Mitti is the original oil-control miracle. This bar absorbs excess sebum, shrinks pores, and calms acne-prone skin with zero harshness. Bloom Cure's *Multani Mitti Soap* gives you the benefits of a clay mask — every single day.",
+                cta:   "Matte. Clear. Confident. 💫",
+            },
+            'Hotel Soaps Set': {
+                hook:  "🎁 Give the gift of botanical luxury.",
+                pitch: "A curated collection of Bloom Cure's finest botanical bars — beautifully presented for gifting. Perfect for celebrations, wellness lovers, and anyone who deserves a little luxury in their daily ritual.",
+                cta:   "The perfect gift for someone special (or yourself). 🌿",
+            },
+        };
 
-            // Button feedback UI
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-            btn.style.color = '#25D366';
-            btn.style.borderColor = '#25D366';
-            setTimeout(() => {
-                btn.innerHTML = originalHTML || '<i class="fa-solid fa-share-nodes"></i>';
-                btn.style.color = '';
-                btn.style.borderColor = '';
-            }, 2000);
-
-            // 1. Try modern Web Share API (native sheet on mobile/desktop)
-            if (navigator.share && window.isSecureContext) {
-                navigator.share({
-                    title: `${name} — Bloom Cure`,
-                    text: `🌿 Check out ${name} (₹${price}) from Bloom Cure!`,
-                    url: shareUrl
-                }).catch((error) => {
-                    if (error.name !== 'AbortError') {
-                        executeFallbackShare(shareText);
-                    }
-                });
-            } else {
-                executeFallbackShare(shareText);
-            }
-
-            function executeFallbackShare(text) {
-                // 2. Try Clipboard API as primary fallback
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(text).then(() => {
-                        if (typeof showToast === 'function') {
-                            showToast('✨ Product link copied to clipboard!');
-                        } else {
-                            alert('Product link copied to clipboard!');
-                        }
-                    }).catch(() => {
-                        // 3. Ultimate Fallback: WhatsApp intent
-                        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                    });
-                } else {
-                    // 3. Ultimate Fallback: WhatsApp intent
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                }
-            }
+        function buildShareMessage(name, price, url) {
+            const p = PRODUCT_PITCHES[name] || {
+                hook:  "🌿 Discover handcrafted botanical luxury.",
+                pitch: `*${name}* is a handcrafted, all-natural botanical bar from Bloom Cure — made with the finest Ayurvedic ingredients for skin that feels alive and radiant.`,
+                cta:   "Join the botanical ritual. ✨",
+            };
+            return `${p.hook}\n\n${p.pitch}\n\n💰 *Only ₹${price}* — handcrafted in small batches.\n\n${p.cta}\n\n🛒 Shop now: ${url}\n\n_Bloom Cure · Pure Botanicals, No Compromise_`;
         }
 
+        function ensureShareModal() {
+            if (document.getElementById('bc-share-modal')) return;
+            const modal = document.createElement('div');
+            modal.id = 'bc-share-modal';
+            modal.innerHTML = `
+                <div class="bc-share-backdrop" onclick="closeShareModal()"></div>
+                <div class="bc-share-panel" role="dialog" aria-modal="true" aria-label="Share this product">
+                    <button class="bc-share-close" onclick="closeShareModal()" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
 
+                    <!-- ✦ Hero zone — icon + title -->
+                    <div class="bc-share-hero">
+                        <div class="bc-share-icon-wrap">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <p class="bc-share-eyebrow">Share This Ritual</p>
+                        <h3 class="bc-share-title" id="bc-share-product-name"></h3>
+                    </div>
+
+                    <!-- ✦ Body zone — message + channels -->
+                    <div class="bc-share-body">
+                        <div class="bc-share-message-wrap">
+                            <p class="bc-share-message-label">
+                                <i class="fa-solid fa-sparkles"></i> Your personalised pitch
+                            </p>
+                            <div class="bc-share-message" id="bc-share-message-preview"></div>
+                        </div>
+
+                        <div class="bc-share-channels">
+                            <button class="bc-share-channel bc-share-channel--wa" id="bc-share-wa">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </button>
+                            <button class="bc-share-channel bc-share-channel--copy" id="bc-share-copy">
+                                <i class="fa-solid fa-copy"></i>
+                                <span>Copy Pitch</span>
+                            </button>
+                            <button class="bc-share-channel bc-share-channel--native" id="bc-share-native">
+                                <i class="fa-solid fa-share-nodes"></i>
+                                <span>Share via Device</span>
+                            </button>
+                        </div>
+
+                        <p class="bc-share-footer-note">
+                            Every share plants a seed 🌱 — thank you for spreading botanical love!
+                        </p>
+                    </div>
+                </div>`;
+            document.body.appendChild(modal);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeShareModal(); });
+        }
+
+        window.closeShareModal = function () {
+            const m = document.getElementById('bc-share-modal');
+            if (!m) return;
+            m.classList.remove('bc-share-active');
+            document.body.style.overflow = '';
+            setTimeout(() => m.remove(), 350);
+        };
+
+        function shareProduct(btn) {
+            const card = btn.closest('[data-name]') || btn.closest('.product-card') ||
+                         btn.closest('.spotlight-card') || btn.closest('.shop-card') ||
+                         btn.closest('.ag-card') || btn.closest('.ag-strip-row');
+            const name  = card?.dataset?.name || card?.querySelector('h3')?.textContent?.trim() || 'Bloom Cure Product';
+            const price = card?.dataset?.price || '0';
+            const shopUrl = 'https://bloomcure.bloomcure-co.workers.dev/shop';
+            const message = buildShareMessage(name, price, shopUrl);
+
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+            btn.style.color = '#C9A84C';
+            setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2200);
+
+            ensureShareModal();
+            const modal     = document.getElementById('bc-share-modal');
+            const nameEl    = document.getElementById('bc-share-product-name');
+            const preview   = document.getElementById('bc-share-message-preview');
+            const waBtn     = document.getElementById('bc-share-wa');
+            const copyBtn   = document.getElementById('bc-share-copy');
+            const nativeBtn = document.getElementById('bc-share-native');
+
+            if (nameEl)  nameEl.textContent  = name;
+            if (preview) preview.textContent = message;
+
+            if (waBtn) waBtn.onclick = () => {
+                window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+                setPulse(waBtn, '<i class="fa-solid fa-check"></i> Sent!');
+            };
+            if (copyBtn) copyBtn.onclick = () => {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(message)
+                        .then(() => { setPulse(copyBtn, '<i class="fa-solid fa-check"></i> Copied!'); showToast('✨ Message copied — paste it anywhere!'); })
+                        .catch(() => fallbackCopy(message));
+                } else fallbackCopy(message);
+            };
+            if (nativeBtn) {
+                if (navigator.share && window.isSecureContext) {
+                    nativeBtn.style.display = '';
+                    nativeBtn.onclick = () => navigator.share({ title: `${name} — Bloom Cure`, text: message, url: shopUrl }).catch(() => {});
+                } else {
+                    nativeBtn.style.display = 'none';
+                }
+            }
+
+            document.body.style.overflow = 'hidden';
+            modal.classList.add('bc-share-active');
+        }
+
+        function setPulse(btn, html) {
+            const orig = btn.innerHTML;
+            btn.innerHTML = html;
+            btn.classList.add('bc-share-channel--success');
+            setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('bc-share-channel--success'); }, 2000);
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+            document.body.removeChild(ta); showToast('✨ Message copied!');
+        }
 
         // Initialize UI
         updateCartUI();
@@ -6468,7 +7337,7 @@
                 btn.disabled = false;
             }
         }
-        
+
         // Loaded from external modular script
         // See js/antigravity-carousel.js
     </script>
@@ -6494,22 +7363,23 @@
     <script src="js/bloom-smooth.js"></script>
     <script src="js/antigravity-carousel.js"></script>
     <script src="js/anti-gravity-ticker.js"></script>
+    <script src="js/bloom-recommend.js"></script>
 
     <!-- Magazine Strip Scroll Reveal -->
     <script>
-    (function () {
-        const rows = document.querySelectorAll('.ag-strip-row');
-        if (!rows.length) return;
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('bc-visible');
-                    obs.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        rows.forEach(r => obs.observe(r));
-    })();
+        (function () {
+            const rows = document.querySelectorAll('.ag-strip-row');
+            if (!rows.length) return;
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('bc-visible');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            rows.forEach(r => obs.observe(r));
+        })();
     </script>
 
 </body>
